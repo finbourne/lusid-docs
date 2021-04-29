@@ -1,0 +1,45 @@
+= Create  account
+:page-pagination: true
+:description: This guide walks through how to create a LUSID account.
+
+In this guide you'll learn how to create a LUSID account. 
+
+Navigate to https://www.lusid.com/app/signup[lusid.com/app/signup], where you'll see the following screen:
+
+.Create Account
+image::account-part-0.png[]
+
+Populate your details and click on `Create Account`. 
+You'll then be taken to the following screen:
+
+.Create Domain
+image::account-part-1.png[]
+
+Choose a domain and click on `Create domain`
+
+[NOTE]
+====
+You will use this domain for all future interactions with LUSID, so choose a name that you actually want to use!
+====
+
+Once you've done that, you'll need to read and click through terms and a data processing agreement:
+
+.Evaluation Use Terms
+image::account-part-2.png[width=400]
+
+.Data Processing Agreement
+image::account-part-3.png[width=400]
+
+After that you'll see the following success screen:
+
+.Success
+image::account-part-4.png[]
+
+You should also now have an email confirmation.
+You'll need to view that email to finalise account creation.
+
+.Email Confirmation
+image::account-part-5.png[]
+
+Click on `Activate my LUSID account` and setup your password and 2 factor authentication.
+Now you're ready to login to your account.

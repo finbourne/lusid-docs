@@ -1,0 +1,234 @@
+= How to maintain an instruments master
+:description: In this guide we will learn how to maintain an instruments master in LUSID by FINBOURNE. An instruments master typically contains details about our financial assets.
+
+In this guide we will learn how to maintain an instruments master.
+Instruments in LUSID are used to represent financial assets that you own or have exposure to.
+We'll start by importing some instruments, then we'll retrieve them, update them, and finally delete them.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_instruments_master.py[test_instruments_master.py^] file, and the data under {examples-repository-base}/data/test_instruments_master[data/test_instruments_master^].
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="imports"]
+----
+
+And then create an API factory:
+
+include::partial$api-factory.adoc[]
+
+We're now ready to start building an instruments master.
+
+== Our Instruments
+
+Before we import our instruments into LUSID, let's have a look at what we have. 
+Our instruments are stored in a CSV file, so we'll first load that into a Pandas DataFrame:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="instruments-file"]
+include::example$instrument-master/test_instruments_master.py[tag="load-instruments"]
+----
+
+.instruments
+[format="csv", options="header"]
+|===
+include::example$instrument-master/instruments.csv[]
+|===
+
+We've got a mix of equities and government bonds. 
+
+[[instrument-identifier]]
+== Instrument identifiers
+
+Instruments in LUSID must have at least one unique identifier. 
+You can return the unique identifiers from the Instruments API, as shown below:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="instruments-api"]
+
+include::example$instrument-master/test_instruments_master.py[tag="identifiers"]
+----
+
+.unique_identifiers
+[format="csv", options="header"]
+|===
+include::example$instrument-master/identifiers.csv[]
+|===
+
+Each of our instruments has a Figi and ClientInternal identifier, so we will use both of those as identifiers.
+
+== Upsert instruments
+
+We're now ready to upsert instruments into LUSID. 
+
+We'll need to do some mapping between the column names in our DataFrame and those expected by the LUSID API.
+`client_internal` becomes `ClientInternal` and `figi` becomes `Figi`.
+You can import the instruments by running the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="import-instruments"]
+----
+
+.LUIDs
+[format="csv", options="header"]
+|===
+include::example$instrument-master/luids.csv[]
+|===
+
+== Get instruments by identifier
+
+We can get back instruments by any of the identifiers that we used when upserting the instruments. 
+We imported the `Figi` and `ClientInternal` identifiers for each instrument.
+
+To retrieve the BP instrument by Figi, run the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="get-instrument"]
+----
+
+.Instrument by FIGI
+[format="csv", options="header"]
+|===
+include::example$instrument-master/get_instrument.csv[]
+|===
+
+To retrieve the BP instrument by Client Internal code, run the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="get-instrument-client-internal"]
+----
+
+.Instrument by Client Internal
+[format="csv", options="header"]
+|===
+include::example$instrument-master/get_instrument_client_internal.csv[]
+|===
+
+We can also retrieve more than one instrument at the same time.
+To retrieve the BP and US Treasury instruments by Figi, run the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="get-instruments"]
+----
+
+.Instruments by FIGI
+[format="csv", options="header"]
+|===
+include::example$instrument-master/get_instruments.csv[]
+|===
+
+
+== Upsert instrument properties
+
+In addition to our unique identifier and aliases, we can also add properties to our instruments.
+For example, we might want to store the asset class for each instrument.
+
+To define a property we need to first create a property definition.
+Every property has a data type, which is specified via the `data_type_id` parameter.
+You can create a string property, by running the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="create-property"]
+----
+
+And now add this property to each of our instruments:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="upsert-properties"]
+----
+
+== Search instruments
+
+We can search for instruments based on property values. 
+For example, to find all instruments with the `equity` asset class, run the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="search-instrument"]
+----
+
+.Equity Instruments
+[format="csv", options="header"]
+|===
+include::example$instrument-master/search_instruments.csv[]
+|===
+
+== Update instrument identifier
+
+We can also update an instrument's identifiers.
+For example, to change the `ClientInternal` identifier for BP effective in 10 minutes time, you can run the following:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="update-instrument-identifier"]
+----
+
+[NOTE]
+====
+The instrument identifier change applies from the `effective_at` time.
+If none is provided it applies from now.
+====
+
+Since we've specified that the identifier change should happen in 10 minutes, it means that if we look up the BT instrument now, we won't see a change. 
+You can see this by running the following code:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="get-instruments-now"]
+----
+
+.Instrument identifiers before ClientInternal change
+[format="csv", options="header"]
+|===
+include::example$instrument-master/get_instruments_now.csv[]
+|===
+
+But if we get the instrument with an effective date of 11 minutes later:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="get-instruments-later"]
+----
+
+.Instrument identifiers after ClientInternal change
+[format="csv", options="header"]
+|===
+include::example$instrument-master/get_instruments_later.csv[]
+|===
+
+As we can see, the `ClientInternal` has been updated.
+
+== Delete instruments
+
+And finally, we can delete instruments.
+To delete all instruments based on their Figi, run the following:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="delete-instruments"]
+----
+
+[NOTE]
+====
+When we delete an instrument it becomes unavailable from the time that we delete it onwards.
+But it's not permanently deleted from the system - if we look back in time at our instruments or transactions based on those instruments, we will still be able to find them.
+====

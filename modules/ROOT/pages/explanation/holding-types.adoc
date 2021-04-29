@@ -1,0 +1,16 @@
+= Holding Types
+:description: This guide describes the holding types used in LUSID by FINBOURNE.
+
+A holding is the amount of an instrument held in a portfolio at a point in time.
+It can be one of the following types depending on the instrument or on the stage of a holding in its life cycle:
+
+[options="header", cols="20,10,70"]
+|===
+| Holding Type | Code | Description
+| Position |  P |  A holding in an instrument.
+| Cash Balance  |  B |  The settled cash balance. For example, the cash from a SELL trade which settled last week is included in this balance.
+|  Cash Commitment |  C |  Future cash payment in/out of the portfolio from trading activity. For example, the unsettled cash from yesterday's BUY trade. Each separate unsettled trade is represented as a unique line in the response.
+|  Cash Receivable |  R |  Future cash flow into the portfolio from non-trading activity such subscriptions, redemptions, fees, taxes etc. This label of "Receivable" is used to capture the class of holding types which represent both Receivables and Payables.
+|  Cash Accrual |  A |  Future cash flow that has been classified as an accrual (e.g. accrued dividend from a corporate action)
+|  Forward FX | F |  Future cash flow from an FX forward transaction. These will be represented in pairs, one for each leg of the FX Forward.
+|===

@@ -1,0 +1,69 @@
+= Set Holdings
+
+:description: In this guide we'll learn how to set the holdings of a transaction portfolio.
+
+{description}
+We might want to do this if we have a set of positions but don't have transaction data to create those positions.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_set_holdings.py[test_set_holdings.py^] file, and the data under {examples-repository-base}/data/test_set_holdings[data/test_set_holdings^].
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$set-holdings/test_set_holdings.py[tag="imports"]
+----
+
+Create the API factory:
+
+include::partial$api-factory.adoc[]
+
+And initialise the API end points that we're going to use:
+
+[source, python, indent=0]
+----
+include::example$set-holdings/test_set_holdings.py[tag="apis"]
+----
+
+[source, python, indent=0]
+----
+include::example$set-holdings/test_set_holdings.py[tag="create-portfolio"]
+----
+
+== Our Holdings
+
+[source, python, indent=0]
+----
+include::example$set-holdings/test_set_holdings.py[tag="holdings-file"]
+include::example$set-holdings/test_set_holdings.py[tag="load-holdings"]
+----
+
+.Holdings
+[format="csv", options="header"]
+|===
+include::example$set-holdings/holdings.csv[]
+|===
+
+== Import Instruments
+
+[source, python, indent=0]
+----
+include::example$set-holdings/test_set_holdings.py[tag="import-instruments"]
+----
+
+== Set Holdings
+
+[source, python, indent=0]
+----
+include::example$set-holdings/test_set_holdings.py[tag="set-holdings"]
+----

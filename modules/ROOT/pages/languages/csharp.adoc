@@ -1,0 +1,64 @@
+= C#
+:description: This guide covers the C# SDK for LUSID by FINBOURNE.
+
+This guide will help you get started with building applications with LUSID by FINBOURNE and the C# programming language.
+
+FINBOURNE develops and maintains two versions of the LUSID® C# SDK:
+
+https://github.com/finbourne/lusid-sdk-csharp[lusid-sdk-csharp^] ::
+supports `Production` and `Early Access` API endpoints
+https://github.com/finbourne/lusid-sdk-csharp-preview[lusid-sdk-csharp-preview^] ::
+supports `Production`, `Early Access`, `Beta` and `Experimental` API endpoints.
+
+include::partial$api-endpoints.adoc[]
+
+[NOTE]
+====
+You should only use `lusid-sdk-csharp-preview` if you want to use the `Beta` or `Experimental` API endpoints.
+====
+
+== Installation
+
+The SDK is available on Nuget and can be installed by running the following:
+
+[source, bash]
+----
+dotnet add package Lusid.Sdk 
+----
+
+The preview version of the SDK can be installed by running the following:
+
+[source, bash]
+----
+dotnet add package Lusid.Sdk.Preview
+----
+
+== Configuring API Client
+
+Now that you've installed the SDK, it's time to use it. 
+First, import the following modules:
+
+[source, csharp]
+----
+include::example$getting-started/HelloWorld.cs[tag="lusid-imports"]
+----
+
+You can create the API factory by running the following code:
+
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="create-client-factory"]
+----
+
+include::partial$credentials.adoc[]
+
+Now that the API client is ready, you are ready to use the various API endpoints. 
+An API endpoint can be constructed by calling `apiFactory.Api(Lusid.Sdk.Api.<className>)` for any of the returned classes.
+For example, to construct the Transactions Portfolio API, run the following:
+
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="create-tx-portfolios-api"]
+----
+
+For a worked example showing how to use the C# SDK for a simple workflow, see xref:lusid:get-started/quick-start.adoc[].

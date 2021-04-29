@@ -1,0 +1,15 @@
+= Create User
+
+In this guide we'll learn how to create a user that has access to the LUSID API.
+
+
+should we create a user or service account?
+The state starts as 'provisioned'. How do you make it active?
+
+
+
+A service account is a special type of LUSID user account, intended to represent a non-human user that needs to be authenticated and authorised to perform functions via LUSID's API. Service accounts are typically used to automate repetitive functions, for example, the daily load and extraction of position files.
+
+Service accounts can be created like ordinary user accounts via LUSID's "Identity and Access Management" screens. To learn how to manage a service account, please visit our tutorial.
+
+Through permissions, you can also control the actions that the service can perform. To learn more about how we manage permissions please visit our article on this topic.

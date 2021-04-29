@@ -1,0 +1,46 @@
+// * xref:lusid:languages/index.adoc[Language SDKs]
+//     ** xref:lusid:languages/python.adoc[Python]
+//     ** xref:lusid:languages/csharp.adoc[C#]
+//     ** xref:lusid:languages/java.adoc[Java]
+//     ** xref:lusid:languages/javascript.adoc[JavaScript]
+
+.xref:lusid:tutorials/index.adoc[Tutorials]
+
+* xref:lusid:tutorials/set-up-basic-portfolio.adoc[]
+* xref:lusid:tutorials/create-holdings-report.adoc[]
+
+.xref:lusid:how-to/index.adoc[How-To Guides]
+
+* xref:lusid:how-to/get-started/index.adoc[Getting Started]
+** xref:lusid:how-to/get-started/create-account.adoc[]
+** xref:lusid:how-to/get-started/login-account.adoc[]
+** xref:lusid:how-to/get-started/create-application.adoc[]
+** xref:lusid:how-to/get-started/configure-secrets-file.adoc[]
+
+
+* xref:lusid:how-to/ibor/index.adoc[IBOR]
+** xref:lusid:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
+** xref:lusid:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master]
+** xref:lusid:how-to/load-transactions.adoc[Load Transactions]
+** xref:lusid:how-to/set-holdings.adoc[Set Holdings]
+** xref:lusid:how-to/view-holdings.adoc[View Holdings]
+** xref:lusid:how-to/load-quotes.adoc[Load Quotes]
+
+* Transactions
+** xref:lusid:how-to/get-default-transaction-types.adoc[Get Transaction Types]
+** xref:lusid:how-to/configure-transaction-types.adoc[Set Transaction Types]
+
+* Modelling
+** xref:lusid:how-to/user-defined-properties.adoc[User Defined Properties]
+
+
+* xref:lusid:how-to/access-control/index.adoc[]
+** xref:lusid:how-to/access-control/create-user.adoc[]
+** xref:lusid:how-to/access-control/create-role.adoc[]
+** xref:lusid:how-to/access-control/create-policy.adoc[]
+
+
+.Explanation
+    
+* xref:lusid:explanation/transaction-types.adoc[]
+* xref:lusid:explanation/holding-types.adoc[]

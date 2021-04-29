@@ -1,0 +1,104 @@
+= How to load transactions
+:description: In this guide we'll learn how to import transactions into LUSID.
+
+{description}
+A transaction is an economic change to a portfolio. 
+Transactions can be one sided e.g. cash inflow or two sided e.g. an equity trade purchasing stock and settling cash.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_transactions.py[test_transactions.py^] file, and the data under {examples-repository-base}/data/test_holdings[data/test_transactions^].
+
+[NOTE]
+====
+To import transactions, you will need to have xref:lusid:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and xref:lusid:how-to/maintain-instruments-master.adoc[loaded the instruments] that the transactions are based on.
+====
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="imports"]
+----
+
+Create the API factory: 
+
+include::partial$api-factory.adoc[]
+
+And initialise the API end points that we're going to use:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="apis"]
+----
+
+== Our Transactions
+
+We have details of transactions, and their accompanying instruments in a CSV file described below:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="transactions-file"]
+include::example$transactions/test_transactions.py[tag="load-transactions"]
+----
+
+.Transactions
+[format="csv", options="header"]
+|===
+include::example$transactions/transactions.csv[]
+|===
+
+== Create Transaction Portfolio
+
+Any transactions that we import must be attached to a transaction portfolio, so we'll first create one of those.
+You can do this using the following code:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="create-portfolio"]
+----
+
+== Import Instruments
+
+Let's first import the instruments used by our transactions:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="import-instruments"]
+----
+
+== Import Transactions
+
+Now for the transactions:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="import-transactions"]
+----
+
+[NOTE]
+====
+For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
+For more information about instrument identifiers, see xref:lusid:how-to/maintain-instruments-master.adoc#instrument-identifier[How to maintain an instruments master: Instrument Identifiers].
+====
+
+== Get Transactions
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="get-transactions"]
+----
+
+.Transactions
+[format="csv", options="header"]
+|===
+include::example$transactions/transactions_response.csv[]
+|===

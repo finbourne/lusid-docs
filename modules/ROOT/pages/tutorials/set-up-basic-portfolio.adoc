@@ -1,0 +1,266 @@
+= Setting up a basic portfolio
+:description: This is a quick start developer guide in which you'll learn how to do some basic operations with the LUSID SDK.
+
+In this guide you'll learn how to do some basic operations with the LUSID SDK.
+You'll create a portfolio, upsert some instruments to that portfolio, upsert some transactions that use those instruments, and finally get the holdings of the portfolio.
+
+== Install SDK
+
+First, install the SDK for your chosen language:
+
+[.tabs]
+
+.Python
+[source, bash]
+----
+pip install lusid
+----
+
+.C#
+[source, bash]
+----
+dotnet add package Lusid.Sdk 
+----
+
+.Java
+--
+The SDK is available on the Open Source Software Repository Hosting (OSSRH). 
+
+include::partial$installation/java.adoc[tag="ossrh"]
+
+And now add the following dependency:
+
+include::partial$installation/java.adoc[tag="java-sdk"]
+--
+
+== Create API Client
+
+Now that we've done that, we're going to create the API client.
+Import the following modules:
+
+[.tabs]
+
+.Python
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="lusid-imports"]
+----
+
+.C#
+[source, csharp]
+----
+include::example$getting-started/HelloWorld.cs[tag="lusid-imports"]
+----
+
+.Java
+[source, java]
+----
+include::example$getting-started/HelloWorld.java[tag="lusid-imports"]
+----
+
+
+Now create the API factory/client:
+
+[.tabs]
+
+.Python
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="create-client-factory"]
+----
+
+.C#
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="create-client-factory"]
+----
+
+.Java
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="create-client-factory"]
+----
+
+include::partial$credentials.adoc[]
+
+== Create Transaction Portfolio
+
+A transaction portfolio records a transaction history of economic events such as transactions and corporate actions.
+A portolio exists within a logical data partition called a https://support.lusid.com/knowledgebase/article/KA-01837/en-us[scope^].
+We'll pass the same scope to the other API calls that we make in this guide.
+
+You can create a portfolio by running the code below:
+
+[.tabs]
+
+.Python
+--
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="create-tx-portfolios-api"]
+
+include::example$getting-started/hello_world.py[tag="create-portfolio"]
+----
+
+include::partial$quick-start-output.adoc[tag="portfolio-code"]
+--
+
+.C#
+--
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="create-tx-portfolios-api"]
+
+include::example$getting-started/HelloWorld.cs[tag="create-portfolio"]
+----
+
+include::partial$quick-start-output.adoc[tag="portfolio-code"]
+--
+
+.Java
+--
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="create-tx-portfolios-api"]
+
+include::example$getting-started/HelloWorld.java[tag="create-portfolio"]
+----
+
+include::partial$quick-start-output.adoc[tag="portfolio-code"]
+--
+
+== Upsert Instruments
+
+A https://support.lusid.com/knowledgebase/article/KA-01857/[financial instrument^] is a financial asset that an investor owns or has exposure to. 
+We're going to create an instrument for https://www.openfigi.com/id/BBG000C6K6G9[Vodafone's common stock on the London Stock Exchange^].
+
+[NOTE]
+====
+We need to assign a unique identifier for each instrument that we create. 
+In this example we'll use the Financial Instrument Global Identifier (FIGI), but if we have an internal identifier, we could use that instead.
+====
+
+[.tabs]
+
+.Python
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="upsert-instruments"]
+----
+
+.C#
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="upsert-instruments"]
+----
+
+.Java
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="upsert-instruments"]
+----
+
+LUSID assigns each instrument that we create a unique indentifier (LUID).
+We'll need to retrieve those LUIDs to use when importing transactions based on that instrument. 
+
+== Get Instruments
+
+We're going to get back instruments based on their Figis.
+We'll then create two maps/dictionaries:
+
+* One that maps `Instrument Name` -> `LUID`
+* One that maps `LUID` -> `Instrument Name`
+
+[.tabs]
+
+.Python
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="get-instruments"]
+----
+
+.C#
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="get-instruments"]
+----
+
+.Java
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="get-instruments"]
+----
+
+== Upsert Transactions
+
+It's time to add some transactions.
+We're going to buy 100 units of Vodafone stock at a price of 103 each.
+
+[.tabs]
+
+.Python
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="upsert-transactions"]
+----
+
+.C#
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="upsert-transactions"]
+----
+
+.Java
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="upsert-transactions"]
+----
+
+== Get Holdings
+
+And finally let's take a look at our holdings. 
+
+[.tabs]
+
+.Python
+--
+[source, python]
+----
+include::example$getting-started/hello_world.py[tag="get-holdings"]
+----
+
+include::partial$quick-start-output.adoc[tag="holdings"]
+--
+
+.C#
+--
+[source, csharp, indent=0]
+----
+include::example$getting-started/HelloWorld.cs[tag="get-holdings"]
+----
+
+include::partial$quick-start-output.adoc[tag="holdings"]
+--
+
+.Java
+--
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="get-holdings"]
+----
+
+include::partial$quick-start-output.adoc[tag="holdings"]
+--
+
+== Download the code
+
+You can download all the code used in this guide from the following repositories:
+
+Python:: 
+https://github.com/mneedham/lusid-sdk-python/blob/readme-refactoring/sdk/examples/hello_world.py[github.com/mneedham/lusid-sdk-python/blob/readme-refactoring/sdk/examples/hello_world.py^]
+
+C#:: 
+https://github.com/mneedham/lusid-sdk-csharp/blob/examples/sdk/Lusid.Sdk.Tests/HelloWorld.cs[github.com/mneedham/lusid-sdk-csharp/blob/examples/sdk/Lusid.Sdk.Tests/HelloWorld.cs^]
+
+Java:: 
+https://github.com/mneedham/lusid-sdk-java/tree/add-example/examples[github.com/mneedham/lusid-sdk-java/tree/add-example/examples^]

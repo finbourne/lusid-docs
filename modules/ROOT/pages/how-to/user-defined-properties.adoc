@@ -1,0 +1,76 @@
+= How to work with User Defined Properties
+:description: In this guide we will learn how to use user defined properties, a key part of LUSID's flexible modelling system.
+
+{description}
+
+LUSID's modelling system has a minimal number of required properties for each entity.
+Often you will want to store meta data for more properties, which is where user defined properties can be used.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_user_defined_properties.py[test_user_defined_properties.py^] file, and the data under {examples-repository-base}/data/test_user_defined_properties[data/test_user_defined_properties^].
+
+== Introduction
+
+User defined properties can be defined for a whole array of different entities.
+When you create a property, you'll need to specify the `domain` in which it exists.
+The following domains are supported:
+
+NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$user-defined-properties/test_user_defined_properties.py[tag="imports"]
+----
+
+And then create an API factory:
+
+include::partial$api-factory.adoc[]
+
+
+== Create a user defined property
+
+We can create user defined properties using the Property Definitions API.
+
+[source, python, indent=0]
+----
+include::example$user-defined-properties/test_user_defined_properties.py[tag="create-apis"]
+----
+
+For example, to create a Portfolio Manager property to be used on Portfolios, you can run the following code:
+
+[source, python, indent=0]
+----
+include::example$user-defined-properties/test_user_defined_properties.py[tag="create-property"]
+----
+
+[source, text]
+----
+include::example$user-defined-properties/portfolio_manager_property.txt[]
+----
+
+You can then add this property to an existing or new portfolio, making sure to refer to the property using the property key.
+For an example of how to use a user defined property with a transaction portfolio, see xref:lusid:how-to/load-transaction-portfolio#user-defined-properties[Adding a user defined property to a portfolio].
+
+== Get a user defined property
+
+[source, python, indent=0]
+----
+include::example$user-defined-properties/test_user_defined_properties.py[tag="get-property"]
+----
+
+.Get user defined property
+[format="csv", options="header", cols="25,15,15,45"]
+|===
+include::example$user-defined-properties/get_property.csv[]
+|===

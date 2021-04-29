@@ -1,0 +1,16 @@
+// tag::portfolio-code[]
+.Portfolio
+[source, text]
+----
+Porfolio Code: Id-9e3e9bc3-729e-4038-b5a7-daa03d0bb3ea
+----
+// end::portfolio-code[]
+
+
+// tag::holdings[]
+.Holdings
+[source, text]
+----
+VODAFONE GROUP PLC 100.0 10300.0
+----
+// end::holdings[]

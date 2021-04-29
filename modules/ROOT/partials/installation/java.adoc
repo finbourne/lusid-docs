@@ -1,0 +1,56 @@
+You'll need to make a couple of changes to your `pom.xml` file.
+
+
+// tag::ossrh[]
+First, add the OSSRH repository:
+
+.pom.xml
+[source, xml]
+----
+<repositories>
+    <repository>
+        <id>osssrh</id>
+        <name>OSSRH</name>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+...
+----
+// end::ossrh[]
+
+// tag::java-sdk[]
+.pom.xml
+[source, xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>com.finbourne</groupId>
+        <artifactId>lusid-sdk</artifactId>
+        <version>{INSERT VERSION}</version>
+    </dependency>
+</dependencies>
+...
+----
+
+Replace `{INSERT VERSION}` with the latest version from the link:https://oss.sonatype.org/#nexus-search;gav~com.finbourne~lusid-sdk~~~~kw,versionexpand[Nexus Repository Manager^].
+// end::java-sdk[]
+
+// tag::java-preview-sdk[]
+.pom.xml
+[source, xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>com.finbourne</groupId>
+        <artifactId>lusid-sdk</artifactId>
+        <version>{INSERT VERSION}</version>
+    </dependency>
+</dependencies>
+...
+----
+
+Replace `{INSERT VERSION}` with the latest version from the link:https://oss.sonatype.org/#nexus-search;gav~com.finbourne~lusid-sdk-preview~~~[Nexus Repository Manager^].
+// end::java-preview-sdk[]

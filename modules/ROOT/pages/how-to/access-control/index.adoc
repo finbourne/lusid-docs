@@ -1,0 +1,6 @@
+= Access Control
+
+
+LUSID's user management is based on the following model:
+
+`(User)-[:HAS_A]->(Role)-[:BASED_ON]->(Policy)`

@@ -1,0 +1,7 @@
+[source, python, indent=0]
+----
+include::example$lusid_utils.py[tag="secrets-file"]
+include::example$lusid_utils.py[tag="api-factory"]
+----
+
+include::partial$credentials.adoc[]

@@ -1,0 +1,124 @@
+= How to load a transaction portfolio
+:description: In this guide we'll learn how to create a transaction portfolio in LUSID by FINBOURNE.
+
+A transaction portfolio records a transaction history of economic events such as transactions and corporate actions. 
+Portolios exists within a logical data partition called a scope.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_transaction_portfolios.py[test_transaction_portfolios.py^] file, and the data under {examples-repository-base}/data/test_transaction_portfolios[data/test_transaction_portfolios^].
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="imports"]
+----
+
+And then create an API factory:
+
+include::partial$api-factory.adoc[]
+
+We're going to be using three different APIs in this guide: Transactions Portfolios, Property Definitions, and Portfolios.
+You can create the classes to call these API end points by running the following code:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="create-apis"]
+----
+
+== Create portfolio
+
+We're now ready to load our transaction portfolio.
+It must have a scope, display name, code, and base currency. 
+You can create a transaction portfolio by running the following code:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="create-portfolio-default"]
+----
+
+We get back a portfolio code, which we'll store in the `portfolio_code` variable to use later in this guide.
+
+[[user-defined-properties]]
+== User defined properties
+
+LUSID supports user defined properties.
+User defined properties can be associated with portfolios to add in additional model data 
+For example, a property for ‘portfolio manager’ could be added and linked to a portfolio for management and reporting purposes.
+
+[NOTE]
+====
+For more details on user defined properties, see xref:lusid:how-to/user-defined-properties.adoc[]
+====
+
+If you want to add a user defined property to a portfolio, you'll need to first create that property:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="create-property"]
+----
+
+The response returns a `key` that we'll need to use when referring to the user defined property later in this guide.
+
+You can Matt Smith as the portfolio manager by running the following code:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="update-portfolio"]
+----
+
+== Get portfolio
+
+Now let's check that our user defined property has been added to our portfolio.
+You can retrieve the details of the portfolio by running the following code:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="get-portfolio"]
+----
+
+[NOTE]
+====
+By default user defined properties aren't returned. 
+You need to specify the ones that you want to return using the `property_keys` parameter.
+====
+
+.Portfolio Properties
+[format="csv", options="header"]
+|===
+include::example$transaction-portfolio/get_portfolio.csv[]
+|===
+
+[[create-portfolio-with-user-defined-properties]]
+== Create portfolio with user defined properties
+
+In the previous part of this guide, we created a portfolio and then later added a user defined property.
+It's also possible to specify user defined properties when we create the portfolio.
+You can see how to do this in the following code sample:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="create-portfolio-with-manager"]
+----
+
+And then you can use the same code as before to retrieve the portfolio:
+
+[source, python, indent=0]
+----
+include::example$transaction-portfolio/test_transaction_portfolios.py[tag="get-updated-portfolio"]
+----
+
+.Portfolio Properties
+[format="csv", options="header"]
+|===
+include::example$transaction-portfolio/get_updated_portfolio.csv[]
+|===

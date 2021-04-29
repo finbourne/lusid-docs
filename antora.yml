@@ -1,0 +1,10 @@
+name: lusid
+title: LUSID
+version: master
+nav:
+- modules/ROOT/nav.adoc
+asciidoc:
+  attributes:
+    page-toclevels: 2@
+    examples-repository: https://github.com/mneedham/lusid-python-tools/tree/instrument-master/tests/integration/examples
+    examples-repository-base: https://github.com/mneedham/lusid-python-tools/blob/instrument-master/tests/integration/examples

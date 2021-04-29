@@ -1,0 +1,185 @@
+= View Holdings
+:description: In this guide we'll learn how to view holdings in LUSID.
+
+{description}
+A holding is the amount of an instrument held in a portfolio at a point in time. 
+The LUSID Movements Engine calculates holdings from the history of transactions and holding adjustments in a portfolio.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_holdings.py[test_holdings.py^] file, and the data under {examples-repository-base}/data/test_holdings[data/test_holdings^].
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="imports"]
+----
+
+And then create an API factory:
+
+include::partial$api-factory.adoc[]
+
+Next, create endpoints for the Instruments and Transactions Portfolio APIs:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="apis"]
+----
+
+== Create transaction portfolio
+
+Create a transaction portfolio by running the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="create-portfolio"]
+----
+
+== Import instruments and transactions
+
+The holdings compute in this guide are based on the transactions in the following CSV file:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="transactions-file"]
+include::example$holdings/test_holdings.py[tag="load-transactions"]
+----
+
+
+.Transactions
+[format="csv", options="header"]
+|===
+include::example$holdings/transactions.csv[]
+|===
+
+We'll need to load the instruments used by this transactions into LUSID.
+You can do this by running the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="import-instruments"]
+----
+
+And now import the transactions:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="import-transactions"]
+----
+
+== Compute holdings
+
+Now we can compute holdings based on these transactions.
+We'll use the following function to format the response that we get back from the Get Holdings API:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="format-holdings"]
+----
+
+=== After funds loaded
+
+We loaded £1,000,000 of funds on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
+You can do this by running the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="get-holdings-funds-loaded"]
+----
+
+.Holdings after funds loaded
+[format="csv", options="header"]
+|===
+include::example$holdings/holdings_funds_loaded.csv[]
+|===
+
+As expected, the only entry is for 1,000,000 GBP.
+
+[NOTE]
+====
+The `Type` returned for this instrument is `B`, which means `Cash Balance`.
+For more details on holding types, see xref:lusid:explanation/holding-types.adoc[].
+====
+
+=== After first day's trading 
+
+Our first day's trading was 2nd January 2020, when we bought 100,000 units of Tesco shares at a price of £2.56 each.
+You can compute the holdings after this transaction by running the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="get-holdings-first-day-trading"]
+----
+
+.Holdings after first day's trading
+[format="csv", options="header"]
+|===
+include::example$holdings/holdings_first_day_trading.csv[]
+|===
+
+The amount of GBP has reduced by 256,000 to 744,000, which is exactly the amount of cash that we spent on the Tesco shares. 
+
+=== After second day's trading 
+
+Our next trades were on 3rd January 2020, when we bought:
+
+* 120,000 of Morrisons @ £1.92
+* 200,000 of Sainsbury's @ £2.26
+
+You can compute the holdings after these transactions by running the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="get-holdings-second-day-trading"]
+----
+
+.Holdings after second day's trading
+[format="csv", options="header"]
+|===
+include::example$holdings/holdings_second_day_trading.csv[]
+|===
+
+We're now down to only £61,600 cash, but we've also got shares in Tesco, Morrison's, and Sainsbury's.
+
+=== As of today
+
+And finally, we can compute our holdings as of today, which will include the purchase of 20,000 of Tesco @ £2.60. 
+You can see today's holdings by running the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="get-holdings-today"]
+----
+
+.Holdings Today
+[format="csv", options="header"]
+|===
+include::example$holdings/holdings.csv[]
+|===
+
+Our cash is now down to £9,600, but our Tesco stock has increased to 120,000 units at a total cost of £308,000.
+
+=== Filtering by type
+
+We can also filter the holdings by type. 
+For example, if you only wanted to see holdings of type `Position`, you could run the following code:
+
+[source, python, indent=0]
+----
+include::example$holdings/test_holdings.py[tag="get-holdings-positions"]
+----
+
+.Holdings of postions
+[format="csv", options="header"]
+|===
+include::example$holdings/holdings_positions.csv[]
+|===

@@ -1,0 +1,90 @@
+= Load quotes
+:description: In this guide we'll learn how to load quotes into LUSID's built-in quote store.
+
+{description}
+This store is used to record market data that can be used to value holdings and run other analyses.
+It can be used to store market prices, rates, and FX quotes.
+
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_quotes.py[test_quotes.py^] file, and the data under {examples-repository-base}/data/test_quotes[data/test_quotes^].
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="imports"]
+----
+
+Create the API factory:
+
+include::partial$api-factory.adoc[]
+
+And initialise the API end points that we're going to use:
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="apis"]
+----
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="create-portfolio"]
+----
+
+== Our Holdings
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="holdings-file"]
+include::example$quotes/test_quotes.py[tag="load-holdings"]
+----
+
+.Holdings
+[format="csv", options="header"]
+|===
+include::example$quotes/holdings.csv[]
+|===
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="import-instruments"]
+----
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="set-holdings"]
+----
+
+== Our Quotes
+
+The file below contains end of day quotes for the Amazon, Apple, and CoinBase instruments from 21st April 2021 to 23rd April 2021:
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="quotes-file"]
+include::example$quotes/test_quotes.py[tag="load-quotes"]
+----
+
+.Quotes
+[format="csv", options="header"]
+|===
+include::example$quotes/quotes.csv[]
+|===
+
+== Import Quotes
+
+You can import these quotes into LUSID by running the following code:
+
+[source, python, indent=0]
+----
+include::example$quotes/test_quotes.py[tag="import-quotes"]
+----

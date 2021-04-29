@@ -1,0 +1,2 @@
+For more details on API endpoint categories, see https://support.lusid.com/knowledgebase/article/KA-01786/en-us[What is the LUSID feature release lifecycle?^]
+To find out which category an API endpoint falls into, see https://www.lusid.com/api/swagger/index.html[LUSID API Documentation^].

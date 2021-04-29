@@ -1,0 +1,64 @@
+= Java
+:description: This guide covers the Java SDK for LUSID by FINBOURNE.
+:tabs:
+
+This guide will help you get started with building applications with LUSID by FINBOURNE and the Java programming language.
+
+FINBOURNE develops and maintains two versions of the LUSID® Java SDK:
+
+https://github.com/finbourne/lusid-sdk-java[lusid-sdk-java^] ::
+supports `Production` and `Early Access` API endpoints
+https://github.com/finbourne/lusid-sdk-java-preview[lusid-sdk-java-preview^] ::
+supports `Production`, `Early Access`, `Beta` and `Experimental` API endpoints.
+
+include::partial$api-endpoints.adoc[]
+
+[NOTE]
+====
+You should only use `lusid-sdk-java-preview` if you want to use the `Beta` or `Experimental` API endpoints.
+====
+
+== Installation
+
+The SDK is available on the Open Source Software Repository Hosting (OSSRH). 
+
+include::partial$installation/java.adoc[tag="ossrh"]
+
+And now add the following dependency:
+
+include::partial$installation/java.adoc[tag="java-sdk"]
+
+To use the preview version of the SDK, you can instead add the following dependency:
+
+include::partial$installation/java.adoc[tag="java-preview-sdk"]
+
+
+== Configuring API Client
+
+Now that you've installed the SDK, it's time to use it. 
+First, import the following modules:
+
+[source, java]
+----
+include::example$getting-started/HelloWorld.java[tag="lusid-imports"]
+----
+
+You can create the API client by running the following code:
+
+.Java
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="create-client-factory"]
+----
+
+include::partial$credentials.adoc[]
+
+Now that the API client is ready, you are ready to use the various API endpoints. 
+For example, to construct the Transactions Portfolio API, run the following:
+
+[source, java, indent=0]
+----
+include::example$getting-started/HelloWorld.java[tag="create-tx-portfolios-api"]
+----
+
+For a worked example showing how to use the Java SDK for a simple workflow, see xref:lusid:get-started/quick-start.adoc[].
