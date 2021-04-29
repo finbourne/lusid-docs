@@ -77,20 +77,28 @@ include::example$transactions/test_transactions.py[tag="import-instruments"]
 
 == Import Transactions
 
-Now for the transactions:
+Now for the transactions.
+For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
+For more information about instrument identifiers, see xref:ROOT:how-to/maintain-instruments-master.adoc#instrument-identifier[How to maintain an instruments master: Instrument Identifiers].
+
+You can import transactions using the code below:
 
 [source, python, indent=0]
 ----
 include::example$transactions/test_transactions.py[tag="import-transactions"]
 ----
 
-[NOTE]
-====
-For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
-For more information about instrument identifiers, see xref:ROOT:how-to/maintain-instruments-master.adoc#instrument-identifier[How to maintain an instruments master: Instrument Identifiers].
-====
-
 == Get Transactions
+
+Now let's retrieve those transactions.
+We'll format the response using the following function:
+
+[source, python, indent=0]
+----
+include::example$transactions/test_transactions.py[tag="format-transactions"]
+----
+
+You can get the transactions using the Get Transactions API, as shown below:
 
 [source, python, indent=0]
 ----

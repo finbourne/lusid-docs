@@ -25,6 +25,7 @@
 ** xref:ROOT:how-to/set-holdings.adoc[Set Holdings]
 ** xref:ROOT:how-to/view-holdings.adoc[View Holdings]
 ** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
+** xref:ROOT:how-to/get-valuation-default-recipe.adoc[Get Valuation]
 
 * Transactions
 ** xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types]
