@@ -16,7 +16,7 @@ pip install lusidtools
 == Get existing transaction types
 
 LUSID comes pre-configured with transaction types. 
-These can be retrieved using the SDK, as described in xref:lusid:how-to/get-default-transaction-types.adoc[].
+These can be retrieved using the SDK, as described in xref:ROOT:how-to/get-default-transaction-types.adoc[].
 
 But if we want to configure new transaction types, we need to replace all transaction types, which is easier to do with the LUSID Tools CLI.
 You can download all transaction types into a file by going to the terminal and running the following command:

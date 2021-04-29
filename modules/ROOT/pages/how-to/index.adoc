@@ -7,35 +7,35 @@ The guides in this section go through the steps to solve problems with LUSID.
 
 Start here if you haven't used LUSID before.
 
-* xref:lusid:how-to/get-started/create-account.adoc[] - Create your account
-* xref:lusid:how-to/get-started/login-account.adoc[] - Login
-* xref:lusid:how-to/get-started/create-application.adoc[] - Create a LUSID Application
-* xref:lusid:how-to/get-started/configure-secrets-file.adoc[] - Setup a secrets file
+* xref:ROOT:how-to/get-started/create-account.adoc[] - Create your account
+* xref:ROOT:how-to/get-started/login-account.adoc[] - Login
+* xref:ROOT:how-to/get-started/create-application.adoc[] - Create a LUSID Application
+* xref:ROOT:how-to/get-started/configure-secrets-file.adoc[] - Setup a secrets file
 
 == IBOR
 
 These guides walk through common tasks when building an Investment Book of Record (IBOR) using LUSID.
 
-* xref:lusid:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] - Create a transaction portfolio.
+* xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] - Create a transaction portfolio.
 
-* xref:lusid:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] - Import all your assets/investments.
+* xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] - Import all your assets/investments.
 
-* xref:lusid:how-to/load-transactions.adoc[Load Transactions] - Import transactions
+* xref:ROOT:how-to/load-transactions.adoc[Load Transactions] - Import transactions
 
-* xref:lusid:how-to/set-holdings.adoc[Set Holdings] - Set the holdings of a portfolio
+* xref:ROOT:how-to/set-holdings.adoc[Set Holdings] - Set the holdings of a portfolio
 
-* xref:lusid:how-to/view-holdings.adoc[View Holdings] - Compute the holdings for a portfolio
+* xref:ROOT:how-to/view-holdings.adoc[View Holdings] - Compute the holdings for a portfolio
 
-* xref:lusid:how-to/load-quotes.adoc[Load Quotes] - Import market data.
+* xref:ROOT:how-to/load-quotes.adoc[Load Quotes] - Import market data.
 
 == Transactions
 
 These guides go through tasks related to transactions in LUSID.
 
-* xref:lusid:how-to/get-default-transaction-types.adoc[Get Transaction Types] - Get a list of the configured transaction types.
+* xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types] - Get a list of the configured transaction types.
 
-* xref:lusid:how-to/configure-transaction-types.adoc[Configure Transaction Types] - Configure new transaction types.
+* xref:ROOT:how-to/configure-transaction-types.adoc[Configure Transaction Types] - Configure new transaction types.
 
 == Data Model
 
-* xref:lusid:how-to/user-defined-properties.adoc[User Defined Properties] - Add your own properties
+* xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties] - Add your own properties

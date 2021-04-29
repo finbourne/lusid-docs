@@ -107,7 +107,7 @@ As expected, the only entry is for 1,000,000 GBP.
 [NOTE]
 ====
 The `Type` returned for this instrument is `B`, which means `Cash Balance`.
-For more details on holding types, see xref:lusid:explanation/holding-types.adoc[].
+For more details on holding types, see xref:ROOT:explanation/holding-types.adoc[].
 ====
 
 === After first day's trading 

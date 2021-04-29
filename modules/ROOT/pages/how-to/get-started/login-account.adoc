@@ -1,4 +1,4 @@
-= Login to account
+= Login to LUSID account
 :description: This guide walks through how to login to a LUSID domain.
 :page-pagination: true
 
@@ -23,7 +23,7 @@ If you aren't logged in you'll see the following screen, which has two `Sign-in`
 .Click on the `Sign-in` button
 image::application-part-1.png[]
 
-Clicking on one of them will take you to the following screen, where you should enter the credentials that you created in xref:get-started/create-account.adoc[].
+Clicking on one of them will take you to the following screen, where you should enter the credentials that you created in xref:how-to/get-started/create-account.adoc[].
 
 .Populate your credentials
 image::application-part-2.png[width=400]

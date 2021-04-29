@@ -1,4 +1,4 @@
-= Create  account
+= Create LUSID account
 :page-pagination: true
 :description: This guide walks through how to create a LUSID account.
 

@@ -61,4 +61,4 @@ For example, to construct the Transactions Portfolio API, run the following:
 include::example$getting-started/HelloWorld.java[tag="create-tx-portfolios-api"]
 ----
 
-For a worked example showing how to use the Java SDK for a simple workflow, see xref:lusid:get-started/quick-start.adoc[].
+For a worked example showing how to use the Java SDK for a simple workflow, see xref:ROOT:get-started/quick-start.adoc[].

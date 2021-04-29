@@ -1,46 +1,46 @@
-// * xref:lusid:languages/index.adoc[Language SDKs]
-//     ** xref:lusid:languages/python.adoc[Python]
-//     ** xref:lusid:languages/csharp.adoc[C#]
-//     ** xref:lusid:languages/java.adoc[Java]
-//     ** xref:lusid:languages/javascript.adoc[JavaScript]
+// * xref:ROOT:languages/index.adoc[Language SDKs]
+//     ** xref:ROOT:languages/python.adoc[Python]
+//     ** xref:ROOT:languages/csharp.adoc[C#]
+//     ** xref:ROOT:languages/java.adoc[Java]
+//     ** xref:ROOT:languages/javascript.adoc[JavaScript]
 
-.xref:lusid:tutorials/index.adoc[Tutorials]
+.xref:ROOT:tutorials/index.adoc[Tutorials]
 
-* xref:lusid:tutorials/set-up-basic-portfolio.adoc[]
-* xref:lusid:tutorials/create-holdings-report.adoc[]
+* xref:ROOT:tutorials/set-up-basic-portfolio.adoc[]
+* xref:ROOT:tutorials/create-holdings-report.adoc[]
 
-.xref:lusid:how-to/index.adoc[How-To Guides]
+.xref:ROOT:how-to/index.adoc[How-To Guides]
 
-* xref:lusid:how-to/get-started/index.adoc[Getting Started]
-** xref:lusid:how-to/get-started/create-account.adoc[]
-** xref:lusid:how-to/get-started/login-account.adoc[]
-** xref:lusid:how-to/get-started/create-application.adoc[]
-** xref:lusid:how-to/get-started/configure-secrets-file.adoc[]
+* xref:ROOT:how-to/get-started/index.adoc[Getting Started]
+** xref:ROOT:how-to/get-started/create-account.adoc[Create account]
+** xref:ROOT:how-to/get-started/login-account.adoc[Login to account]
+** xref:ROOT:how-to/get-started/create-application.adoc[Create application]
+** xref:ROOT:how-to/get-started/configure-secrets-file.adoc[Configure secrets file]
 
 
-* xref:lusid:how-to/ibor/index.adoc[IBOR]
-** xref:lusid:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
-** xref:lusid:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master]
-** xref:lusid:how-to/load-transactions.adoc[Load Transactions]
-** xref:lusid:how-to/set-holdings.adoc[Set Holdings]
-** xref:lusid:how-to/view-holdings.adoc[View Holdings]
-** xref:lusid:how-to/load-quotes.adoc[Load Quotes]
+* xref:ROOT:how-to/ibor/index.adoc[IBOR]
+** xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
+** xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master]
+** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
+** xref:ROOT:how-to/set-holdings.adoc[Set Holdings]
+** xref:ROOT:how-to/view-holdings.adoc[View Holdings]
+** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
 
 * Transactions
-** xref:lusid:how-to/get-default-transaction-types.adoc[Get Transaction Types]
-** xref:lusid:how-to/configure-transaction-types.adoc[Set Transaction Types]
+** xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types]
+** xref:ROOT:how-to/configure-transaction-types.adoc[Set Transaction Types]
 
 * Modelling
-** xref:lusid:how-to/user-defined-properties.adoc[User Defined Properties]
+** xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties]
 
 
-* xref:lusid:how-to/access-control/index.adoc[]
-** xref:lusid:how-to/access-control/create-user.adoc[]
-** xref:lusid:how-to/access-control/create-role.adoc[]
-** xref:lusid:how-to/access-control/create-policy.adoc[]
+* xref:ROOT:how-to/access-control/index.adoc[Access Control]
+** xref:ROOT:how-to/access-control/create-user.adoc[Create user]
+** xref:ROOT:how-to/access-control/create-role.adoc[Create role]
+** xref:ROOT:how-to/access-control/create-policy.adoc[Create policy]
 
 
 .Explanation
     
-* xref:lusid:explanation/transaction-types.adoc[]
-* xref:lusid:explanation/holding-types.adoc[]
+* xref:ROOT:explanation/transaction-types.adoc[Transaction types]
+* xref:ROOT:explanation/holding-types.adoc[Holding types]

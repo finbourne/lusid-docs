@@ -10,7 +10,7 @@ The code is in the {examples-repository-base}/test_transactions.py[test_transact
 
 [NOTE]
 ====
-To import transactions, you will need to have xref:lusid:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and xref:lusid:how-to/maintain-instruments-master.adoc[loaded the instruments] that the transactions are based on.
+To import transactions, you will need to have xref:ROOT:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and xref:ROOT:how-to/maintain-instruments-master.adoc[loaded the instruments] that the transactions are based on.
 ====
 
 == Setup
@@ -87,7 +87,7 @@ include::example$transactions/test_transactions.py[tag="import-transactions"]
 [NOTE]
 ====
 For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
-For more information about instrument identifiers, see xref:lusid:how-to/maintain-instruments-master.adoc#instrument-identifier[How to maintain an instruments master: Instrument Identifiers].
+For more information about instrument identifiers, see xref:ROOT:how-to/maintain-instruments-master.adoc#instrument-identifier[How to maintain an instruments master: Instrument Identifiers].
 ====
 
 == Get Transactions

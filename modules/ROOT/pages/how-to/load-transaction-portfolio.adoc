@@ -57,7 +57,7 @@ For example, a property for ‘portfolio manager’ could be added and linked to
 
 [NOTE]
 ====
-For more details on user defined properties, see xref:lusid:how-to/user-defined-properties.adoc[]
+For more details on user defined properties, see xref:ROOT:how-to/user-defined-properties.adoc[]
 ====
 
 If you want to add a user defined property to a portfolio, you'll need to first create that property:

@@ -1,4 +1,4 @@
-= Create application
+= Create LUSID application
 :description: This guide walks through how to create a LUSID application.
 :page-pagination: true
 
@@ -32,4 +32,4 @@ The `Client Id` must be a string with no spaces.
 You'll then see the following screen if the application has been created:
 
 .Application created
-image::lusid:application-part-5.png[]
+image::application-part-5.png[]

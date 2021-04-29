@@ -3,20 +3,20 @@
 
 These guides walk through common tasks when maintaining an Investment Book of Record (IBOR) or Ledger using LUSID.
 
-xref:lusid:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] ::
+xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] ::
 Create a transaction portfolio.
 
-xref:lusid:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] ::
+xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] ::
 Import all your assets/investments.
 
-xref:lusid:how-to/load-transactions.adoc[Load Transactions] ::
+xref:ROOT:how-to/load-transactions.adoc[Load Transactions] ::
 Import transactions
 
-xref:lusid:how-to/set-holdings.adoc[Set Holdings] ::
+xref:ROOT:how-to/set-holdings.adoc[Set Holdings] ::
 Set the holdings of a portfolio
 
-xref:lusid:how-to/view-holdings.adoc[View Holdings] ::
+xref:ROOT:how-to/view-holdings.adoc[View Holdings] ::
 Compute the holdings for a portfolio
 
-xref:lusid:how-to/load-quotes.adoc[Load Quotes] ::
+xref:ROOT:how-to/load-quotes.adoc[Load Quotes] ::
 Import market data.

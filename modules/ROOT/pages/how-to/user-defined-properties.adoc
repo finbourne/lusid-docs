@@ -60,7 +60,7 @@ include::example$user-defined-properties/portfolio_manager_property.txt[]
 ----
 
 You can then add this property to an existing or new portfolio, making sure to refer to the property using the property key.
-For an example of how to use a user defined property with a transaction portfolio, see xref:lusid:how-to/load-transaction-portfolio#user-defined-properties[Adding a user defined property to a portfolio].
+For an example of how to use a user defined property with a transaction portfolio, see xref:ROOT:how-to/load-transaction-portfolio#user-defined-properties[Adding a user defined property to a portfolio].
 
 == Get a user defined property
 

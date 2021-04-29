@@ -9,7 +9,7 @@ We will then create a holdings report based on our purchases of shares in these 
 [NOTE]
 ====
 This guide assumes that you have a good understanding of portfolio and asset managements.
-You should also have an understanding of LUSID basics, as covered in the xref:lusid:how-to/get-started/index.adoc[] section.
+You should also have an understanding of LUSID basics, as covered in the xref:ROOT:how-to/get-started/index.adoc[] section.
 ====
 
 == Create Portfolio

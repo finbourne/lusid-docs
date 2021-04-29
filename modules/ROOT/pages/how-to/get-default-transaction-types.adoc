@@ -47,4 +47,4 @@ include::example$transaction-types/transaction_types.csv[]
 
 As you can see, there are lots of different transaction types, covering a variety of use cases.
 But if you use a transaction type that isn't on this list, you can add new transaction types.
-For more details, see xref:lusid:how-to/configure-transaction-types.adoc[].
+For more details, see xref:ROOT:how-to/configure-transaction-types.adoc[].

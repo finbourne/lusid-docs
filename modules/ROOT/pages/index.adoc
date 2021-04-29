@@ -1,6 +1,18 @@
 = LUSID
 
 LUSID by FINBOURNE is a bi-temporal investment management data platform with portfolio accounting capabilities.
+The content in these guides is 
+
+
+xref:tutorials/index.adoc[Tutorials] ::
+Learn some stuff about LUSID
+
+xref:how-to/index.adoc[How-To Guides] ::
+How to accomplish common tasks with LUSID
+
+xref:explanation/index.adoc[Explanation] ::
+Background information and explanation of LUSID's core concepts.
+
 
 
 == Getting Started
