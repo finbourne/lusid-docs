@@ -28,6 +28,8 @@ These guides walk through common tasks when building an Investment Book of Recor
 
 * xref:ROOT:how-to/load-quotes.adoc[Load Quotes] - Import market data.
 
+* xref:ROOT:how-to/load-quotes.adoc[Get Valuation] - Compute the valuation of the holdings in a portfolio using the built-in recipe.
+
 == Transactions
 
 These guides go through tasks related to transactions in LUSID.

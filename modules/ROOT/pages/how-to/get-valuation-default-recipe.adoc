@@ -2,17 +2,97 @@
 :description: In this guide we'll learn how to value the holdings in a transaction portfolio using LUSID's default recipe.
 
 {description}
+The diagram below explains how a valuation works:
+
+.How a valuation works
+image::valuation-diagram.svg[]
 
 
+[NOTE.code]
+====
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
 The code is in the {examples-repository-base}/test_valuation.py[test_valuation.py^] file, and the data under {examples-repository-base}/data/test_valuation[data/test_valuation^].
+====
+
+== Setup
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
 
 [source, python, indent=0]
 ----
 include::example$valuation/test_valuation.py[tag="imports"]
 ----
 
-== Load quotes
+Create the API factory:
+
+include::partial$api-factory.adoc[]
+
+And initialise the API end points that we're going to use:
+
+[source, python, indent=0]
+----
+include::example$valuation/test_valuation.py[tag="apis"]
+----
+
+== Pre Requisites
+
+This guide makes some assumptions about the data that should already be loaded into LUSID.
+
+You will need to have created a transaction portfolio with the following scope and code:
+
+[source, python, indent=0]
+----
+include::example$valuation/test_valuation.py[tag="scope-portfolio-code"]
+----
+
+You should also have loaded the following holdings into your portfolio:
+
+.Holdings
+[format="csv", options="header"]
+|===
+include::example$valuation/holdings.csv[]
+|===
+
+And imported the associated instruments into LUSID.
+
+* To learn how to create a transaction portfolio, see xref:how-to/load-transaction-portfolio.adoc[]
+* To learn how to set holdings in a portfolio, see xref:how-to/set-holdings.adoc[].
+* To learn how to create an instruments master, see xref:how-to/maintain-instruments-master.adoc[].
+
+You can also find the complete worked example used in this guide at {examples-repository-base}/test_valuation.py[test_valuation.py^].
+
+
+== LUSID's default valuation recipe
+
+Recipes are a set of instructions for LUSID's valuation engine to determine how pricing will be conducted as well as what data will be used in the process.
+For more on recipes, see https://support.lusid.com/knowledgebase/article/KA-01895/en-us[What is a recipe?]
+
+LUSID comes with a default recipe that computes a basic valuation of a portfolio.
+The default recipe assumes that quotes have been loaded with the following properties:
+
+* `provider` = 'Lusid'
+* `instrumentIdType` = 'LusidInstrumentId'
+* `quoteType` = 'Price'
+* `field` = 'mid'
+
+It uses the `Simple Static` pricing model, which uses the following valuation formula:  `Quantity * Price`.
+
+[TIP]
+====
+The `field` is case-sensitive, so 'Mid' is different to 'mid'.
+The valuation engine will throw an error about not being able to find a quote in the quote store if the field in the quote doesn't exactly match the one used in the recipe.
+====
+
+== Our quotes
+
+We're going to value these holdings using the following quotes for these instruments between 21st April 2021 and 23rd April 2021:
 
 [source, python, indent=0]
 ----
@@ -26,55 +106,114 @@ include::example$valuation/test_valuation.py[tag="load-quotes"]
 include::example$valuation/quotes.csv[]
 |===
 
+You can import these quotes by running the following code:
+
 [source, python, indent=0]
 ----
 include::example$valuation/test_valuation.py[tag="import-quotes"]
 ----
 
-== LUSID's default valuation recipe
-
-LUSID comes with a default recipe that computes the valuation of a portfolio.
-The default recipe assumes that quotes have been loaded with the following properties:
-
-* `quote_type` = 'Price'
-* `field` = 'mid'
-* `provider` = 'Lusid'
-* `instrument_id_type` = 'LusidInstrumentId'
-
-
 == Compute valuation
 
-
-You can compute the number of units of an instrument held on a specific date with their present value and present value as a proportion using the following function:
+You can compute the valuation of a portfolio between specific dates using the following function:
 
 [source, python, indent=0]
 ----
 include::example$valuation/test_valuation.py[tag="compute-valuation"]
 ----
 
-=== Valuation on 21st April 2021
+`metrics` and `group_by` are configurable, and we'll pass in different values depending on the type of valuation that we want to run.
 
-Let's run this function as of 21st April 2021:
+=== Valuation by date
+
+The first thing that we might want to do is compute the valuation of our whole portfolio on one date.
+We can do this by computing a valuation using the following metrics and group by criteria:
+
+[source, python, indent=0]
+----
+include::example$valuation/test_valuation.py[tag="get-valuation-all"]
+----
+
+[NOTE]
+====
+For a full list of the properties that we can use as metrics and group by criteria, see xref:how-to/get-valuation-properties.adoc[].
+====
+
+And we'll set the `from_date` and `to_date` parameters to the same date.
+You can do this by calling the function with the following parameters:
+
+[source, python, indent=0]
+----
+include::example$valuation/test_valuation.py[tag="get-valuation-total"]
+----
+
+.Total valuation on 21st April 2021
+[format="csv", options="header"]
+|===
+include::example$valuation/valuation-all.csv[]
+|===
+
+The total value of our portfolio on 21st April 2021 was $532,212.
+
+=== Valuation by multi-day range
+
+We can also compute the valuation across multiple days by passing in different dates.
+You can compute the valuation for every day between 21st and 23rd April 2021 by running the following code:
+
+[source, python, indent=0]
+----
+include::example$valuation/test_valuation.py[tag="get-valuation-total-multiple-days"]
+----
+
+.Total valuation from 21st April 2021 to 23rd April 2021
+[format="csv", options="header"]
+|===
+include::example$valuation/valuation-all-multiple-days.csv[]
+|===
+
+Our portfolio is slowly going down in value over time.
+Perhaps it's time to invest in some different instruments.
+
+=== Valuation by instrument
+
+We can also compute the value of our holdings in individual instruments, using the following metrics and group by criteria:
+
+[source, python, indent=0]
+----
+include::example$valuation/test_valuation.py[tag="get-valuation-by-instrument"]
+----
+
+==== 21st April 2021
+
+Let's run this function as of 21st April 2021.
+On this day, Amazon was priced at 3362.02, Apple at 133.5, and CoinBase at 311.92.
+You can run the function as shown below:
 
 [source, python, indent=0]
 ----
 include::example$valuation/test_valuation.py[tag="get-valuation-20210421"]
 ----
 
-.Valuation on 21st April 2021
+.Valuation by instrument on 21st April 2021
 [format="csv", options="header"]
 |===
 include::example$valuation/valuation-20210421.csv[]
 |===
 
-=== Valuation on 22nd April 2021
+==== 22nd April 2021
+
+How about the day after?
+On this day Amazon had gone down to 3309.04, Apple down to 131.94, and CoinBase down to 293.45.
+Not a good day for us!
+
+You can compute the valuation of the portfolio on 22nd April 2021 by running the following code:
 
 [source, python, indent=0]
 ----
 include::example$valuation/test_valuation.py[tag="get-valuation-20210422"]
 ----
 
-.Valuation on 22nd April 2021
+.Valuation by instrument on 22nd April 2021
 [format="csv", options="header"]
 |===
 include::example$valuation/valuation-20210422.csv[]

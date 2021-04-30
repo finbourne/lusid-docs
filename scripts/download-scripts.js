@@ -110,6 +110,10 @@ const files = [
         "modules/ROOT/examples/valuation/valuation-20210422.csv"],
     [`${python_tools_base}/data/test_valuation/test_output/valuation-20210421.csv`,
         "modules/ROOT/examples/valuation/valuation-20210421.csv"],
+    [`${python_tools_base}/data/test_valuation/test_output/valuation-all.csv`,
+        "modules/ROOT/examples/valuation/valuation-all.csv"],
+    [`${python_tools_base}/data/test_valuation/test_output/valuation-all-multiple-days.csv`,
+        "modules/ROOT/examples/valuation/valuation-all-multiple-days.csv"],
     [`${python_tools_base}/test_valuation.py`,
         "modules/ROOT/examples/valuation/test_valuation.py"],
 
