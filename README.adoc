@@ -1,0 +1,26 @@
+= LUSID Documentation
+
+== Installation
+
+To build these docs locally you will need link:https://nodejs.org/en/download/package-manager/[Node & NPM^] installed.  Antora requires Node version 10 or higher.
+
+To install the dependencies run:
+
+[source,sh]
+----
+npm install
+----
+
+
+== Live Preview
+
+To preview the docs run:
+
+[source,sh]
+----
+npm start
+----
+
+This will build a set of HTML files in `build/site` and then serve them through an express server at http://localhost:8000.
+The dev script will also listen for changes and automatically rebuild the files automatically.
+You'll still need to refresh the page to view the changes.
