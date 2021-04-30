@@ -8,7 +8,6 @@ from lusid import models
 
 import pytz
 import pandas as pd
-import uuid
 from datetime import datetime
 from dateutil.parser import parse
 # end::imports[]
@@ -30,18 +29,17 @@ class Valuation(unittest.TestCase):
         portfolios_api = api_factory.build(lusid.api.PortfoliosApi)
 
         # tag::create-portfolio[]
-        scope = "Developer-Valuation-Tutorial"
+        now = datetime.now().strftime('%Y-%m-%d-%H_%M_%S')
+        scope = portfolio_code = f"Developer-Valuation-Tutorial-{now}"
         created_date = datetime(year=2019, month=1, day=1, tzinfo=pytz.UTC).isoformat()
-        portfolio = transaction_portfolios_api.create_portfolio(
+        transaction_portfolios_api.create_portfolio(
             scope=scope,
             create_transaction_portfolio_request=models.CreateTransactionPortfolioRequest(
                 display_name="Developer Valuation Tutorial",
-                code=f"Developer-Valuation-Tutorial-{str(uuid.uuid4())[:5]}",
+                code=portfolio_code,
                 created=created_date,
-                base_currency="USD"
-            )
-        )
-        portfolio_code = portfolio.id.code
+                base_currency="USD"))
+        print(scope)
         # end::create-portfolio[]
         self.assertIsNotNone(portfolio_code)
 
@@ -107,7 +105,7 @@ class Valuation(unittest.TestCase):
                         instrument_id=figi_to_luid[quote["figi"]],
                         instrument_id_type="LusidInstrumentId",
                         quote_type="Price",
-                        field="Mid",
+                        field="mid",
                     ),
                     effective_at=pytz.UTC.localize(parse(quote['date'])).isoformat(),
                 ),
@@ -120,10 +118,10 @@ class Valuation(unittest.TestCase):
         # end::import-quotes[]
 
         # tag::compute-valuation[]
-        def compute_valuation_with_default_recipe(scope, code, date):
+        def compute_valuation_with_recipe(scope, portfolio_code, recipe_code, date):
             return aggregation_api.get_valuation(
                 valuation_request=models.ValuationRequest(
-                    recipe_id=models.ResourceId(scope=scope, code="default"),
+                    recipe_id=models.ResourceId(scope=scope, code=recipe_code),
                     metrics=[
                         models.AggregateSpec("Instrument/default/Name", "Value"),
                         models.AggregateSpec("Holding/default/Units", "Sum"),
@@ -134,7 +132,7 @@ class Valuation(unittest.TestCase):
                     valuation_schedule=models.ValuationSchedule(effective_at=date),
                     portfolio_entity_ids=[models.PortfolioEntityId(
                         scope=scope,
-                        code=code,
+                        code=portfolio_code,
                         portfolio_entity_type="SinglePortfolio"
                     )]
                 )
@@ -143,7 +141,7 @@ class Valuation(unittest.TestCase):
 
         # tag::get-valuation-20210421[]
         effective_at = datetime(year=2021, month=4, day=21, tzinfo=pytz.UTC)
-        response = compute_valuation_with_default_recipe(scope, portfolio_code, effective_at)
+        response = compute_valuation_with_recipe(scope, portfolio_code, "default", effective_at)
         valuation = pd.DataFrame(response)
         # end::get-valuation-20210421[]
         self.write_to_test_output(valuation, "valuation-20210421.csv")
@@ -151,7 +149,7 @@ class Valuation(unittest.TestCase):
 
         # tag::get-valuation-20210422[]
         effective_at = datetime(year=2021, month=4, day=22, tzinfo=pytz.UTC)
-        response = compute_valuation_with_default_recipe(scope, portfolio_code, effective_at)
+        response = compute_valuation_with_recipe(scope, portfolio_code, "default", effective_at)
         valuation = pd.DataFrame(response)
         # end::get-valuation-20210422[]
         self.write_to_test_output(valuation, "valuation-20210422.csv")

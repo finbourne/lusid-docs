@@ -1,0 +1,26 @@
+site:
+  title: LUISD by Finbourne
+  url: /lusid
+  start_page: lusid:ROOT:index.adoc
+
+content:
+  sources:
+    - url: ./
+      branches: HEAD
+      exclude:
+        - '!**/_includes/*'
+        - '!**/readme.adoc'
+        - '!**/README.adoc'
+ui:
+  bundle:
+    url: https://raw.githubusercontent.com/finbourne/developer.finbourne.com/main/ui-bundle.zip
+    snapshot: true
+
+urls:
+  html_extension_style: indexify
+
+asciidoc:
+  extensions:
+    - "@neo4j-documentation/remote-include"
+  attributes:
+    images_base_uri: https://angry-dijkstra-6394a6.netlify.app/_images

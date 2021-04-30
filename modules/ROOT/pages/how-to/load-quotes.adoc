@@ -88,3 +88,8 @@ You can import these quotes into LUSID by running the following code:
 ----
 include::example$quotes/test_quotes.py[tag="import-quotes"]
 ----
+
+[NOTE]
+====
+The field value used when loading quotes is case insensitive and is used when xref:how-to/get-valuation-default-recipe.adoc[valuing a portfolio].
+====
