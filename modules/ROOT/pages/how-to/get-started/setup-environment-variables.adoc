@@ -30,3 +30,8 @@ You can then define the following environment variables:
 
 
 include::partial$credentials/get-credentials.adoc[tag="production-users-tip"]
+
+For more details on how to set environment variables, see:
+
+* https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1[Setting environment variables in Windows^]
+* https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/[How to Set and List Environment Variables in Linux^]

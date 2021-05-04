@@ -15,11 +15,12 @@
 ** xref:ROOT:how-to/get-started/create-application.adoc[Create application]
 ** xref:ROOT:how-to/get-started/configure-secrets-file.adoc[Configure secrets file]
 ** xref:ROOT:how-to/get-started/setup-environment-variables.adoc[Set up environment variables]
+** xref:ROOT:how-to/get-started/create-api-factory.adoc[Create API Factory]
 
 
 * xref:ROOT:how-to/ibor/index.adoc[IBOR]
-** xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
 ** xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master]
+** xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
 ** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
 ** xref:ROOT:how-to/set-holdings.adoc[Set Holdings]
 ** xref:ROOT:how-to/view-holdings.adoc[View Holdings]
@@ -47,3 +48,4 @@
 .Explanation
 * xref:ROOT:explanation/transaction-types.adoc[Transaction types]
 * xref:ROOT:explanation/holding-types.adoc[Holding types]
+* xref:ROOT:explanation/recipes.adoc[]

@@ -1,5 +1,5 @@
 = Create an API Factory
-:description: In this guide we'll create an API factory that can be used to connect to the LUSID APIs.
+:description: In this guide we'll create an API factory that can be used to connect to LUSID.
 
 {description}
 

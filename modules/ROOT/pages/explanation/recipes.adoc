@@ -1,0 +1,12 @@
+= Recipes
+
+Recipes in LUSID are a set of instructions for the valuation engine to determine how pricing will be conducted as well as what data will be used in the process.
+
+
+Recipes are used to define the behaviour of the following LUSID sub-systems:
+
+* Market data: How the value of a market data price <item/element> is derived based on data source, quality and hierarchy rules.
+* Holdings: How a set of holdings is constructed from by the Movements Engine from transactions and corporate actions in the Event Register.
+* Pricing (Analytics): How a unitised PV (and other results) are to be calculated based on the engine to be used, the library or model from that engine and the model options/parameters.
+* Reference data: The classification scheme to be used.
+* Results/Aggregation: How the results of the analytics calculations are aggregated and broken out, and where the results are to be stored.
