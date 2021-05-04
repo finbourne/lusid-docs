@@ -1,0 +1,32 @@
+= Set up environment variables
+:description: In this guide you will set up LUSID credentials in environment variables for use with the LUSID SDKs.
+
+In this guide you will set up LUSID credentials in environment variables for use with the LUSID API and xref:languages/index.adoc[LUSID SDKs].
+The LUSID SDKs all support credentials defined as environment variables or in a xref:how-to/get-started/configure-secrets-file.adoc[secrets file].
+You can choose whichever approach better suits your circumstances.
+
+[NOTE]
+====
+You'll need to have created a LUSID application before following the instructions in this guide.
+If you haven't yet created an application, see xref:how-to/get-started/create-application.adoc[].
+====
+
+include::partial$credentials/get-credentials.adoc[tag="how-to-download"]
+
+You can then define the following environment variables:
+
+.Web App -> Environment variables mappings
+[opts="header", cols="2,2,2,3"]
+|===
+|  Environment Variable | LUSID web app |Token | Description
+|  `FBN_LUSID_API_URL` | `API Url` | `<1>` | LUSID API URL
+|  `FBN_TOKEN_URL` | `Token Url` |   `<2>` |  Okta endpoint to generate authentication token
+|  `FBN_CLIENT_ID` | `Client Id` |   `<3>` |  OpenID Connect Client ID
+|  `FBN_CLIENT_SECRET` | `Secret` |  `<4>` |  OpenID Connect Client Secret
+|  `FBN_APP_NAME` | N/A | `<applicationName>` |  An optional identifier for your application
+|  `FBN_USERNAME` | N/A | `<username>` |  Username of the account accessing the API (e.g. email used in xref:how-to/get-started/create-account.adoc[])
+|  `FBN_PASSWORD` | N/A | `<password>` |  Password of the account accessing the API (e.g. password used in xref:how-to/get-started/create-account.adoc[])
+|===
+
+
+include::partial$credentials/get-credentials.adoc[tag="production-users-tip"]

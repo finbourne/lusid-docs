@@ -4,7 +4,7 @@
 {description}
 
 LUSID's modelling system has a minimal number of required properties for each entity.
-Often you will want to store meta data for more properties, which is where user defined properties can be used.
+Often you will want to store metadata for more properties, which is where user defined properties can be used.
 
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
 The code is in the {examples-repository-base}/test_user_defined_properties.py[test_user_defined_properties.py^] file, and the data under {examples-repository-base}/data/test_user_defined_properties[data/test_user_defined_properties^].

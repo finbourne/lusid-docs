@@ -42,6 +42,8 @@ include::example$set-holdings/test_set_holdings.py[tag="create-portfolio"]
 
 == Our Holdings
 
+We have holdings of three instruments stored in the following CSV file:
+
 [source, python, indent=0]
 ----
 include::example$set-holdings/test_set_holdings.py[tag="holdings-file"]
@@ -56,12 +58,16 @@ include::example$set-holdings/holdings.csv[]
 
 == Import Instruments
 
+You can import the instruments that those holdings are based on, by running the following code:
+
 [source, python, indent=0]
 ----
 include::example$set-holdings/test_set_holdings.py[tag="import-instruments"]
 ----
 
 == Set Holdings
+
+And set the holdings themselves, by running the following code:
 
 [source, python, indent=0]
 ----

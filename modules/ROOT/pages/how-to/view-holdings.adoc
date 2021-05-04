@@ -46,7 +46,7 @@ include::example$holdings/test_holdings.py[tag="create-portfolio"]
 
 == Import instruments and transactions
 
-The holdings compute in this guide are based on the transactions in the following CSV file:
+The holdings computed in this guide are based on the transactions in the following CSV file:
 
 [source, python, indent=0]
 ----

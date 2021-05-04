@@ -5,17 +5,16 @@
 //     ** xref:ROOT:languages/javascript.adoc[JavaScript]
 
 .xref:ROOT:tutorials/index.adoc[Tutorials]
-
 * xref:ROOT:tutorials/set-up-basic-portfolio.adoc[]
 * xref:ROOT:tutorials/create-holdings-report.adoc[]
 
 .xref:ROOT:how-to/index.adoc[How-To Guides]
-
 * xref:ROOT:how-to/get-started/index.adoc[Getting Started]
 ** xref:ROOT:how-to/get-started/create-account.adoc[Create account]
 ** xref:ROOT:how-to/get-started/login-account.adoc[Login to account]
 ** xref:ROOT:how-to/get-started/create-application.adoc[Create application]
 ** xref:ROOT:how-to/get-started/configure-secrets-file.adoc[Configure secrets file]
+** xref:ROOT:how-to/get-started/setup-environment-variables.adoc[Set up environment variables]
 
 
 * xref:ROOT:how-to/ibor/index.adoc[IBOR]
@@ -42,6 +41,5 @@
 
 
 .Explanation
-    
 * xref:ROOT:explanation/transaction-types.adoc[Transaction types]
 * xref:ROOT:explanation/holding-types.adoc[Holding types]

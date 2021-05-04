@@ -42,6 +42,8 @@ include::example$quotes/test_quotes.py[tag="create-portfolio"]
 
 == Our Holdings
 
+We have holdings of three instruments stored in the following CSV file:
+
 [source, python, indent=0]
 ----
 include::example$quotes/test_quotes.py[tag="holdings-file"]
@@ -54,10 +56,14 @@ include::example$quotes/test_quotes.py[tag="load-holdings"]
 include::example$quotes/holdings.csv[]
 |===
 
+You can import the instruments that those holdings are based on, by running the following code:
+
 [source, python, indent=0]
 ----
 include::example$quotes/test_quotes.py[tag="import-instruments"]
 ----
+
+And set the holdings themselves, by running the following code:
 
 [source, python, indent=0]
 ----
@@ -91,5 +97,5 @@ include::example$quotes/test_quotes.py[tag="import-quotes"]
 
 [NOTE]
 ====
-The field value used when loading quotes is case insensitive and is used when xref:how-to/get-valuation-default-recipe.adoc[valuing a portfolio].
+The field value used when loading quotes is case-insensitive and is used when xref:how-to/get-valuation-default-recipe.adoc[valuing a portfolio].
 ====
