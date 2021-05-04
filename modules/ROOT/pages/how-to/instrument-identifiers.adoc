@@ -1,0 +1,22 @@
+= How to get a list of instrument identifiers
+:description: In this guide we will return the list of unique identifiers used by instruments in LUSID.
+
+Instruments in LUSID must have at least one unique identifier.
+You can return the unique identifiers from the Instruments API, as shown below:
+
+[source, python, indent=0]
+----
+include::example$instrument-master/test_instruments_master.py[tag="instruments-api"]
+
+include::example$instrument-master/test_instruments_master.py[tag="identifiers"]
+----
+
+If you run this code, you'll get the following output:
+
+.unique_identifiers
+[format="csv", options="header"]
+|===
+include::example$instrument-master/identifiers.csv[]
+|===
+
+For an example of how to import instruments into LUSID, see xref:how-to/maintain-instruments-master.adoc[].

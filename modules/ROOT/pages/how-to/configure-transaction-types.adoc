@@ -15,7 +15,7 @@ pip install lusidtools
 
 == Get existing transaction types
 
-LUSID comes pre-configured with transaction types. 
+LUSID comes pre-configured with transaction types.
 These can be retrieved using the SDK, as described in xref:ROOT:how-to/get-default-transaction-types.adoc[].
 
 But if we want to configure new transaction types, we need to replace all transaction types, which is easier to do with the LUSID Tools CLI.
@@ -63,7 +63,7 @@ transactionConfigRequests:
 
 == Set transaction types
 
-Let's say that we want to add two new aliases: 
+Let's say that we want to add two new aliases:
 
 * `B` that does the same thing as `Buy` and `BY` - increments StockMovement and decrements CashCommitment
 * `S` that does the same thing as `Sell` and `SL` - decrements StockMovement and increments CashCommitment
@@ -108,3 +108,8 @@ lusidtools txn_cfg set \
   --secrets-file /path/to/secrets.json \
   --file transaction-config.yaml
 ----
+
+[TIP]
+====
+So that you always know what transaction config is being used by LUSID, keep your Transaction Config file in a version control system like Git.
+====

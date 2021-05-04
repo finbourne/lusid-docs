@@ -1,0 +1,39 @@
+= Create an API Factory
+:description: In this guide we'll create an API factory that can be used to connect to the LUSID APIs.
+
+{description}
+
+We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^], which you can install by running the following:
+
+[source, bash]
+----
+pip install lusidtools
+----
+
+Once you've got that installed, import the following modules:
+
+[source, python, indent=0]
+----
+include::example$lusid_utils.py[tag="imports"]
+----
+
+== Secrets file
+
+You can then create an API factory from a secrets file:
+
+include::partial$api-factory.adoc[tag]
+
+== Environment variables
+
+Or you can create an API factory from environment variables:
+
+[source, python, indent=0]
+----
+include::example$lusid_utils.py[tag="api-factory-env-variables"]
+----
+
+[NOTE]
+====
+You will need to create environment variables containing your LUSID credentials.
+For instructions on how to do this, see xref:how-to/get-started/setup-environment-variables.adoc[].
+====

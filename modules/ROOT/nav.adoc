@@ -30,6 +30,10 @@
 ** xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types]
 ** xref:ROOT:how-to/configure-transaction-types.adoc[Set Transaction Types]
 
+
+* Instruments
+** xref:ROOT:how-to/instrument-identifiers.adoc[Get Instrument Identifiers]
+
 * Modelling
 ** xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties]
 

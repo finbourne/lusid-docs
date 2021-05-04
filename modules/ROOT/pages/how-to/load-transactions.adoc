@@ -2,7 +2,7 @@
 :description: In this guide we'll learn how to import transactions into LUSID.
 
 {description}
-A transaction is an economic change to a portfolio. 
+A transaction is an economic change to a portfolio.
 Transactions can be one sided e.g. cash inflow or two sided e.g. an equity trade purchasing stock and settling cash.
 
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
@@ -29,7 +29,7 @@ Once you've got that installed, import the following modules:
 include::example$transactions/test_transactions.py[tag="imports"]
 ----
 
-Create the API factory: 
+Create the API factory:
 
 include::partial$api-factory.adoc[]
 
@@ -79,7 +79,7 @@ include::example$transactions/test_transactions.py[tag="import-instruments"]
 
 Now for the transactions.
 For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
-For more information about instrument identifiers, see xref:ROOT:how-to/maintain-instruments-master.adoc#instrument-identifier[How to maintain an instruments master: Instrument Identifiers].
+For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
 
 You can import transactions using the code below:
 

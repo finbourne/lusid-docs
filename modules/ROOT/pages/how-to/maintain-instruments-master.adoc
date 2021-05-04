@@ -32,7 +32,7 @@ We're now ready to start building an instruments master.
 
 == Our Instruments
 
-Before we import our instruments into LUSID, let's have a look at what we have. 
+Before we import our instruments into LUSID, let's have a look at what we have.
 Our instruments are stored in a CSV file, so we'll first load that into a Pandas DataFrame:
 
 [source, python, indent=0]
@@ -47,32 +47,16 @@ include::example$instrument-master/test_instruments_master.py[tag="load-instrume
 include::example$instrument-master/instruments.csv[]
 |===
 
-We've got a mix of equities and government bonds. 
-
-[[instrument-identifier]]
-== Instrument identifiers
-
-Instruments in LUSID must have at least one unique identifier. 
-You can return the unique identifiers from the Instruments API, as shown below:
-
-[source, python, indent=0]
-----
-include::example$instrument-master/test_instruments_master.py[tag="instruments-api"]
-
-include::example$instrument-master/test_instruments_master.py[tag="identifiers"]
-----
-
-.unique_identifiers
-[format="csv", options="header"]
-|===
-include::example$instrument-master/identifiers.csv[]
-|===
-
-Each of our instruments has a Figi and ClientInternal identifier, so we will use both of those as identifiers.
+We've got a mix of equities and government bonds.
 
 == Upsert instruments
 
-We're now ready to upsert instruments into LUSID. 
+We're now ready to upsert instruments into LUSID.
+
+Any instrument imported into LUSID must have at least one unique identifier.
+A list of valid identifiers is described in xref:how-to/instrument-identifiers.adoc[].
+Each of our instruments has a Figi and ClientInternal identifier, so we will use both of those as identifiers.
+
 
 We'll need to do some mapping between the column names in our DataFrame and those expected by the LUSID API.
 `client_internal` becomes `ClientInternal` and `figi` becomes `Figi`.
@@ -91,7 +75,7 @@ include::example$instrument-master/luids.csv[]
 
 == Get instruments by identifier
 
-We can get back instruments by any of the identifiers that we used when upserting the instruments. 
+We can get back instruments by any of the identifiers that we used when upserting the instruments.
 We imported the `Figi` and `ClientInternal` identifiers for each instrument.
 
 To retrieve the BP instrument by Figi, run the following code:
@@ -158,7 +142,7 @@ include::example$instrument-master/test_instruments_master.py[tag="upsert-proper
 
 == Search instruments
 
-We can search for instruments based on property values. 
+We can search for instruments based on property values.
 For example, to find all instruments with the `equity` asset class, run the following code:
 
 [source, python, indent=0]
@@ -188,7 +172,7 @@ The instrument identifier change applies from the `effective_at` time.
 If none is provided it applies from now.
 ====
 
-Since we've specified that the identifier change should happen in 10 minutes, it means that if we look up the BT instrument now, we won't see a change. 
+Since we've specified that the identifier change should happen in 10 minutes, it means that if we look up the BT instrument now, we won't see a change.
 You can see this by running the following code:
 
 [source, python, indent=0]
