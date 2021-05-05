@@ -100,14 +100,14 @@ We're now down to only $670,659 cash, but we've also got shares in Amazon, Apple
 === After all trading
 
 And finally, we can compute our holdings as of 1st February 2020, which will include the purchase of 25 units of Amazon @ $1869.44.
-You can see today's holdings by running the following code:
+You can see these holdings by running the following code:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="get-holdings-today"]
 ----
 
-.Holdings Today
+.Holdings after all trading
 [format="csv", options="header"]
 |===
 include::example$ibor/holdings_today.csv[]

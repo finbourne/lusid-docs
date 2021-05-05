@@ -8,66 +8,15 @@ It can be used to store market prices, rates, and FX quotes.
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
 The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_quotes[data/test_ibor^].
 
-== Setup
+== Pre Requisites
 
-We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
+This guide assumes that you have imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
-[source, bash]
-----
-pip install lusidtools
-----
-
-Once you've got that installed, import the following modules:
+You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
-include::example$quotes/test_quotes.py[tag="imports"]
-----
-
-Create the API factory:
-
-include::partial$api-factory.adoc[]
-
-And initialise the API end points that we're going to use:
-
-[source, python, indent=0]
-----
-include::example$quotes/test_quotes.py[tag="apis"]
-----
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="create-portfolio"]
-----
-
-== Our Holdings
-
-We have holdings of three instruments stored in the following CSV file:
-
-[source, python, indent=0]
-----
-include::example$quotes/test_quotes.py[tag="holdings-file"]
-include::example$quotes/test_quotes.py[tag="load-holdings"]
-----
-
-.Holdings
-[format="csv", options="header"]
-|===
-include::example$quotes/holdings.csv[]
-|===
-
-You can import the instruments that those holdings are based on, by running the following code:
-
-[source, python, indent=0]
-----
-include::example$quotes/test_quotes.py[tag="import-instruments"]
-----
-
-And set the holdings themselves, by running the following code:
-
-[source, python, indent=0]
-----
-include::example$quotes/test_quotes.py[tag="set-holdings"]
+include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 ----
 
 == Our Quotes
@@ -76,14 +25,14 @@ The file below contains end of day quotes for the Amazon, Apple, and CoinBase in
 
 [source, python, indent=0]
 ----
-include::example$quotes/test_quotes.py[tag="quotes-file"]
-include::example$quotes/test_quotes.py[tag="load-quotes"]
+include::example$ibor/test_ibor.py[tag="quotes-file"]
+include::example$ibor/test_ibor.py[tag="load-quotes"]
 ----
 
 .Quotes
 [format="csv", options="header"]
 |===
-include::example$quotes/quotes.csv[]
+include::example$ibor/quotes.csv[]
 |===
 
 == Import Quotes
@@ -92,7 +41,7 @@ You can import these quotes into LUSID by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$quotes/test_quotes.py[tag="import-quotes"]
+include::example$ibor/test_ibor.py[tag="import-quotes"]
 ----
 
 [NOTE]

@@ -46,11 +46,6 @@ const files = [
     [`${python_tools_base}/test_quotes.py`,
         "modules/ROOT/examples/quotes/test_quotes.py"],
 
-    [`${python_tools_base}/data/test_set_holdings/test_output/holdings.csv`,
-        "modules/ROOT/examples/set-holdings/holdings.csv"],
-    [`${python_tools_base}/test_set_holdings.py`,
-        "modules/ROOT/examples/set-holdings/test_set_holdings.py"],
-
     [`${python_tools_base}/data/test_valuation/test_output/holdings.csv`,
         "modules/ROOT/examples/valuation/holdings.csv"],
     [`${python_tools_base}/data/test_valuation/test_output/quotes.csv`,
