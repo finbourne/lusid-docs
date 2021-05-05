@@ -11,35 +11,8 @@ image::valuation-diagram.svg[]
 [NOTE.code]
 ====
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_valuation.py[test_valuation.py^] file, and the data under {examples-repository-base}/data/test_valuation[data/test_valuation^].
+The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
 ====
-
-== Setup
-
-We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
-
-[source, bash]
-----
-pip install lusidtools
-----
-
-Once you've got that installed, import the following modules:
-
-[source, python, indent=0]
-----
-include::example$valuation/test_valuation.py[tag="imports"]
-----
-
-Create the API factory:
-
-include::partial$api-factory.adoc[]
-
-And initialise the API end points that we're going to use:
-
-[source, python, indent=0]
-----
-include::example$valuation/test_valuation.py[tag="apis"]
-----
 
 == Pre Requisites
 
@@ -49,7 +22,7 @@ You will need to have created a transaction portfolio with the following scope a
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="scope-portfolio-code"]
+include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 ----
 
 You should also have loaded the following holdings into your portfolio:
@@ -57,16 +30,25 @@ You should also have loaded the following holdings into your portfolio:
 .Holdings
 [format="csv", options="header"]
 |===
-include::example$valuation/holdings.csv[]
+include::example$ibor/holdings.csv[]
+|===
+
+These quotes should also have been loaded into LUSID:
+
+.Quotes
+[format="csv", options="header"]
+|===
+include::example$ibor/quotes.csv[]
 |===
 
 And imported the associated instruments into LUSID.
 
-* To learn how to create a transaction portfolio, see xref:how-to/load-transaction-portfolio.adoc[]
-* To learn how to set holdings in a portfolio, see xref:how-to/set-holdings.adoc[].
-* To learn how to create an instruments master, see xref:how-to/maintain-instruments-master.adoc[].
+* To create a transaction portfolio, see xref:how-to/load-transaction-portfolio.adoc[]
+* To set holdings in a portfolio, see xref:how-to/set-holdings.adoc[].
+* To create an instruments master, see xref:how-to/maintain-instruments-master.adoc[].
+* To import quotes, see xref:how-to/load-quotes.adoc[].
 
-You can also find the complete worked example used in this guide at {examples-repository-base}/test_valuation.py[test_valuation.py^].
+You can also find the complete worked example used in this guide at {examples-repository-base}/test_ibor.py[test_ibor.py^].
 
 
 == LUSID's default valuation recipe
@@ -90,36 +72,13 @@ The `field` is case-sensitive, so 'Mid' is different to 'mid'.
 The valuation engine will throw an error about not being able to find a quote in the quote store if the field in the quote doesn't exactly match the one used in the recipe.
 ====
 
-== Our quotes
-
-We're going to value these holdings using the following quotes for these instruments between 21st April 2021 and 23rd April 2021:
-
-[source, python, indent=0]
-----
-include::example$valuation/test_valuation.py[tag="quotes-file"]
-include::example$valuation/test_valuation.py[tag="load-quotes"]
-----
-
-.Quotes
-[format="csv", options="header"]
-|===
-include::example$valuation/quotes.csv[]
-|===
-
-You can import these quotes by running the following code:
-
-[source, python, indent=0]
-----
-include::example$valuation/test_valuation.py[tag="import-quotes"]
-----
-
 == Compute valuation
 
 You can compute the valuation of a portfolio between specific dates using the following function:
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="compute-valuation"]
+include::example$ibor/test_ibor.py[tag="compute-valuation"]
 ----
 
 `metrics` and `group_by` are configurable, and we'll pass in different values depending on the type of valuation that we want to run.
@@ -131,7 +90,7 @@ We can do this by computing a valuation using the following metrics and group by
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="get-valuation-all"]
+include::example$ibor/test_ibor.py[tag="get-valuation-all"]
 ----
 
 [NOTE]
@@ -144,13 +103,13 @@ You can do this by calling the function with the following parameters:
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="get-valuation-total"]
+include::example$ibor/test_ibor.py[tag="get-valuation-total"]
 ----
 
 .Total valuation on 21st April 2021
 [format="csv", options="header"]
 |===
-include::example$valuation/valuation-all.csv[]
+include::example$ibor/valuation-all.csv[]
 |===
 
 The total value of our portfolio on 21st April 2021 was $532,212.
@@ -162,13 +121,13 @@ You can compute the valuation for every day between 21st and 23rd April 2021 by 
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="get-valuation-total-multiple-days"]
+include::example$ibor/test_ibor.py[tag="get-valuation-total-multiple-days"]
 ----
 
 .Total valuation from 21st April 2021 to 23rd April 2021
 [format="csv", options="header"]
 |===
-include::example$valuation/valuation-all-multiple-days.csv[]
+include::example$ibor/valuation-all-multiple-days.csv[]
 |===
 
 Our portfolio is slowly going down in value over time.
@@ -180,7 +139,7 @@ We can also compute the value of our holdings in individual instruments, using t
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="get-valuation-by-instrument"]
+include::example$ibor/test_ibor.py[tag="get-valuation-by-instrument"]
 ----
 
 ==== 21st April 2021
@@ -191,13 +150,13 @@ You can run the function as shown below:
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="get-valuation-20210421"]
+include::example$ibor/test_ibor.py[tag="get-valuation-20210421"]
 ----
 
 .Valuation by instrument on 21st April 2021
 [format="csv", options="header"]
 |===
-include::example$valuation/valuation-20210421.csv[]
+include::example$ibor/valuation-20210421.csv[]
 |===
 
 ==== 22nd April 2021
@@ -210,11 +169,11 @@ You can compute the valuation of the portfolio on 22nd April 2021 by running the
 
 [source, python, indent=0]
 ----
-include::example$valuation/test_valuation.py[tag="get-valuation-20210422"]
+include::example$ibor/test_ibor.py[tag="get-valuation-20210422"]
 ----
 
 .Valuation by instrument on 22nd April 2021
 [format="csv", options="header"]
 |===
-include::example$valuation/valuation-20210422.csv[]
+include::example$ibor/valuation-20210422.csv[]
 |===

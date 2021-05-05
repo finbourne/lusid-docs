@@ -39,28 +39,6 @@ const files = [
     [`${python_tools_base}/test_user_defined_properties.py`,
         "modules/ROOT/examples/user-defined-properties/test_user_defined_properties.py"],
 
-    [`${python_tools_base}/data/test_quotes/test_output/quotes.csv`,
-        "modules/ROOT/examples/quotes/quotes.csv"],
-    [`${python_tools_base}/data/test_quotes/test_output/holdings.csv`,
-        "modules/ROOT/examples/quotes/holdings.csv"],
-    [`${python_tools_base}/test_quotes.py`,
-        "modules/ROOT/examples/quotes/test_quotes.py"],
-
-    [`${python_tools_base}/data/test_valuation/test_output/holdings.csv`,
-        "modules/ROOT/examples/valuation/holdings.csv"],
-    [`${python_tools_base}/data/test_valuation/test_output/quotes.csv`,
-        "modules/ROOT/examples/valuation/quotes.csv"],
-    [`${python_tools_base}/data/test_valuation/test_output/valuation-20210422.csv`,
-        "modules/ROOT/examples/valuation/valuation-20210422.csv"],
-    [`${python_tools_base}/data/test_valuation/test_output/valuation-20210421.csv`,
-        "modules/ROOT/examples/valuation/valuation-20210421.csv"],
-    [`${python_tools_base}/data/test_valuation/test_output/valuation-all.csv`,
-        "modules/ROOT/examples/valuation/valuation-all.csv"],
-    [`${python_tools_base}/data/test_valuation/test_output/valuation-all-multiple-days.csv`,
-        "modules/ROOT/examples/valuation/valuation-all-multiple-days.csv"],
-    [`${python_tools_base}/test_valuation.py`,
-        "modules/ROOT/examples/valuation/test_valuation.py"],
-
     [`${python_tools_base}/data/test_ibor/test_output/transactions.csv`,
         "modules/ROOT/examples/ibor/transactions.csv"],
 
@@ -77,8 +55,10 @@ const files = [
     [`${python_tools_base}/data/test_ibor/test_output/holdings_today.csv`,
         "modules/ROOT/examples/ibor/holdings_today.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/quotes.csv`,
-
         "modules/ROOT/examples/ibor/quotes.csv"],
+    [`${python_tools_base}/data/test_ibor/test_output/quotes_with_luid.csv`,
+        "modules/ROOT/examples/ibor/quotes_with_luid.csv"],
+
     [`${python_tools_base}/data/test_ibor/test_output/valuation-20210422.csv`,
         "modules/ROOT/examples/ibor/valuation-20210422.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/valuation-20210421.csv`,

@@ -1,4 +1,4 @@
-= Load quotes
+= How to load quotes/market data
 :description: In this guide we'll learn how to load quotes into LUSID's built-in quote store.
 
 {description}
@@ -12,11 +12,27 @@ The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, 
 
 This guide assumes that you have imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
 You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+----
+
+And then initialise the Quotes API:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="quotes-api"]
 ----
 
 == Our Quotes
