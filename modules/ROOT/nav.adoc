@@ -45,7 +45,9 @@
 ** xref:ROOT:how-to/access-control/create-policy.adoc[Create policy]
 
 
-.Explanation
+.xref:ROOT:explanation/index.adoc[Explanation]
 * xref:ROOT:explanation/transaction-types.adoc[Transaction types]
-* xref:ROOT:explanation/holding-types.adoc[Holding types]
 * xref:ROOT:explanation/recipes.adoc[]
+
+.xref:ROOT:reference/index.adoc[Reference]
+* xref:ROOT:reference/holding-types.adoc[Holding types]

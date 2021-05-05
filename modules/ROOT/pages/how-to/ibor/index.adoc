@@ -1,7 +1,8 @@
 = Maintaining your IBOR or Ledger with LUSID
+:description: These guides walk through common tasks when maintaining an Investment Book of Record (IBOR) or Ledger using LUSID.
 
+{description}
 
-These guides walk through common tasks when maintaining an Investment Book of Record (IBOR) or Ledger using LUSID.
 
 xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] ::
 Import all your assets/investments.

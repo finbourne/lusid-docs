@@ -3,6 +3,5 @@
 
 {description}
 
-* xref:explanation/holding-types.adoc[]
 * xref:explanation/movements-engine.adoc[]
 * xref:explanation/transaction-types.adoc[]

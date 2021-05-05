@@ -17,9 +17,9 @@ Start here if you haven't used LUSID before.
 
 These guides walk through common tasks when building an Investment Book of Record (IBOR) using LUSID.
 
-* xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] - Create a transaction portfolio.
-
 * xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] - Import all your assets/investments.
+
+* xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] - Create a transaction portfolio.
 
 * xref:ROOT:how-to/load-transactions.adoc[Load Transactions] - Import transactions
 

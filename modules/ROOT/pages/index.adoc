@@ -12,7 +12,7 @@ xref:how-to/index.adoc[How-To Guides] ::
 Recipes for how to accomplish common tasks with LUSID.
 They are more advanced than tutorials and assume some knowledge of how LUSID works.
 
-Reference Guides ::
+xref:reference/index.adoc[Reference] ::
 Contain API documentation for LUSID.
 
 xref:explanation/index.adoc[Explanation] ::
@@ -20,13 +20,14 @@ Provide background information and explanation of LUSID's core concepts.
 
 
 
+////
 == Getting Started
 
-These guides will help you get up and running with LUSID. 
+These guides will help you get up and running with LUSID.
 
 == Common Tasks
 
-Use case specific content 
+Use case specific content
 https://support.lusid.com/knowledgebase/article/KA-01828/
 
 Examples of tutorials:
@@ -40,3 +41,5 @@ https://github.com/finbourne/sample-notebooks/blob/develop/examples/features/cor
 == LUSID Architecture
 
 == Glossary / Terminology
+
+////

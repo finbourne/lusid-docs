@@ -12,5 +12,7 @@ If, at a later date, a new source of data is added to LUSID which has a new tran
 
 The idea here is simple but powerful – LUSID is not concerned with naming conventions of transaction codes in external systems, we only care about the economic impact of these transaction codes.
 
-For more information on configuring transaction types, see xref:how-to/configure-transaction-types.adoc[].
-
+[TIP]
+====
+For more on transaction types, see xref:how-to/configure-transaction-types.adoc[].
+====
