@@ -4,10 +4,30 @@
 Instruments in LUSID must have at least one unique identifier.
 You can return the unique identifiers from the Instruments API, as shown below:
 
+== Pre Requisites
+
+This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
+
+== Setup
+
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+----
+
+You can initialise the Instruments API by running the following code:
+
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="instruments-api"]
+----
 
+== Get instruments identifiers
+
+[source, python, indent=0]
+----
 include::example$ibor/test_ibor.py[tag="identifiers"]
 ----
 

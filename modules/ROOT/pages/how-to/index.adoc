@@ -11,6 +11,7 @@ Start here if you haven't used LUSID before.
 * xref:ROOT:how-to/get-started/login-account.adoc[] - Login
 * xref:ROOT:how-to/get-started/create-application.adoc[] - Create a LUSID Application
 * xref:ROOT:how-to/get-started/configure-secrets-file.adoc[] - Setup a secrets file
+* xref:ROOT:how-to/get-started/create-api-factory.adoc[] - Create API factory to connect to LUSID
 
 == IBOR
 
