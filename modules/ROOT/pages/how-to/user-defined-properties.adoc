@@ -21,6 +21,8 @@ NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfig
 
 This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
 
+== Setup
+
 You will need to import the following modules into your Python script:
 
 [source, python, indent=0]
@@ -28,16 +30,16 @@ You will need to import the following modules into your Python script:
 include::example$user-defined-properties/test_user_defined_properties.py[tag="imports"]
 ----
 
-== Create a user defined property
-
-We can create user defined properties using the Property Definitions API.
+We will use the Property Definitions API to create user defined properties:
 
 [source, python, indent=0]
 ----
 include::example$user-defined-properties/test_user_defined_properties.py[tag="create-apis"]
 ----
 
-For example, to create a Portfolio Manager property to be used on Portfolios, you can run the following code:
+== Create a user defined property
+
+To create a Portfolio Manager property to be used on Portfolios, you can run the following code:
 
 [source, python, indent=0]
 ----

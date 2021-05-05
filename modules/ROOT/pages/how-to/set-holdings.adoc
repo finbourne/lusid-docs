@@ -13,11 +13,30 @@ The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, 
 
 This guide assumes that you have xref:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
+== Setup
+
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
 You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+----
+
+Setting holdings is done using the Transaction Portfolios API.
+You can initialise this API end point by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="set-holdings-api"]
 ----
 
 == Our Holdings
@@ -40,14 +59,6 @@ From this table, we can see that our portfolio holds 100 units of Amazon stock, 
 In this guide we aren't interested in the amount that it cost us to buy these instruments.
 
 == Set Holdings
-
-Setting holdings is done using the Transaction Portfolios API.
-You can initialise this API end point by running the following code:
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="set-holdings-api"]
-----
 
 There are two ways to set the holdings on a portfolio:
 

@@ -16,16 +16,10 @@ The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, 
 
 == Pre Requisites
 
-This guide makes some assumptions about the data that should already be loaded into LUSID.
+This guide assumes that you have gone through the xref:how-to/get-started/index.adoc[] guides.
+It also makes some assumptions about the data that should already be loaded into LUSID.
 
-You will need to have created a transaction portfolio with the following scope and code:
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
-----
-
-You should also have loaded the following holdings into your portfolio:
+You should have loaded the following holdings into your portfolio:
 
 .Holdings
 [format="csv", options="header"]
@@ -33,7 +27,7 @@ You should also have loaded the following holdings into your portfolio:
 include::example$ibor/holdings.csv[]
 |===
 
-These quotes should also have been loaded into LUSID:
+As well as these quotes and the associated instruments:
 
 .Quotes
 [format="csv", options="header"]
@@ -41,15 +35,34 @@ These quotes should also have been loaded into LUSID:
 include::example$ibor/quotes.csv[]
 |===
 
-And imported the associated instruments into LUSID.
-
-* To create a transaction portfolio, see xref:how-to/load-transaction-portfolio.adoc[]
 * To set holdings in a portfolio, see xref:how-to/set-holdings.adoc[].
 * To create an instruments master, see xref:how-to/maintain-instruments-master.adoc[].
 * To import quotes, see xref:how-to/load-quotes.adoc[].
 
-You can also find the complete worked example used in this guide at {examples-repository-base}/test_ibor.py[test_ibor.py^].
+== Setup
 
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
+You can specify your own scope and portfolio code by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+----
+
+And then initialise the Aggregation API:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="apis"]
+----
 
 == LUSID's default valuation recipe
 

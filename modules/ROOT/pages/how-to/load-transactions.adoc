@@ -13,6 +13,8 @@ The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, 
 This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
 This guide uses the portfolio created in xref:ROOT:how-to/load-transaction-portfolio.adoc[], and the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
 
+== Setup
+
 You will need to import the following modules into your Python script:
 
 [source, python, indent=0]
@@ -22,18 +24,18 @@ include::example$ibor/test_ibor.py[tag="imports-pandas"]
 include::example$ibor/test_ibor.py[tag="imports-dates"]
 ----
 
-And then initialise the Transactions Portfolio API:
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
-----
-
 You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+----
+
+And then initialise the Transactions Portfolio API:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 ----
 
 == Our Transactions
