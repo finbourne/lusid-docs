@@ -3,7 +3,7 @@
 
 {description}
 A transaction is an economic change to a portfolio.
-Transactions can be one sided e.g. cash inflow or two sided e.g. an equity trade purchasing stock and settling cash.
+Transactions can be one-sided (e.g. cash inflow) or two-sided (e.g. an equity trade purchasing stock and settling cash).
 
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
 The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
@@ -11,7 +11,7 @@ The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, 
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
-This guide uses the portfolio created in xref:ROOT:how-to/load-transaction-portfolio.adoc[] and in the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
+This guide uses the portfolio created in xref:ROOT:how-to/load-transaction-portfolio.adoc[] and the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
 
 You will need to import the following modules into your Python script:
 
@@ -76,7 +76,7 @@ include::example$ibor/test_ibor.py[tag="get-transactions"]
 ----
 
 .Transactions
-[format="csv", options="header"]
+[format="csv", options="header", cols="20,20,30,10,10"]
 |===
 include::example$ibor/transactions_response.csv[]
 |===
