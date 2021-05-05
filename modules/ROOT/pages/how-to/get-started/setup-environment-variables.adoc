@@ -1,5 +1,6 @@
 = Set up environment variables
 :description: In this guide you will set up LUSID credentials in environment variables for use with the LUSID SDKs.
+:page-pagination: true
 
 In this guide you will set up LUSID credentials in environment variables for use with the LUSID API and xref:languages/index.adoc[LUSID SDKs].
 The LUSID SDKs all support credentials defined as environment variables or in a xref:how-to/get-started/configure-secrets-file.adoc[secrets file].

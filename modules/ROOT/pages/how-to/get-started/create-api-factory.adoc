@@ -3,11 +3,11 @@
 
 {description}
 
-We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^], which you can install by running the following:
+We'll be using the https://github.com/finbourne/lusid-sdk-python-preview[LUSID Python Preview SDK^], which you can install by running the following:
 
 [source, bash]
 ----
-pip install lusidtools
+pip install lusid-sdk-preview
 ----
 
 Once you've got that installed, import the following modules:
@@ -17,13 +17,13 @@ Once you've got that installed, import the following modules:
 include::example$lusid_utils.py[tag="imports"]
 ----
 
-== Secrets file
+== Using a secrets file
 
 You can then create an API factory from a secrets file:
 
 include::partial$api-factory.adoc[tag]
 
-== Environment variables
+== Using environment variables
 
 Or you can create an API factory from environment variables:
 
@@ -37,3 +37,26 @@ include::example$lusid_utils.py[tag="api-factory-env-variables"]
 You will need to create environment variables containing your LUSID credentials.
 For instructions on how to do this, see xref:how-to/get-started/setup-environment-variables.adoc[].
 ====
+
+
+== Testing the connection
+
+Once you've done this, it's time to check if you can connect to LUSID.
+LUSID comes with some pre-loaded data, which includes financial instruments.
+These can be returned from the Instruments API.
+
+You can return the first 10 of these instruments by running the following code:
+
+[source, python]
+----
+instruments_api = api_factory.build(lusid.api.InstrumentsApi)
+instruments_api.list_instruments(limit=10)
+----
+
+If you get back some results, you have successfully connected to LUSID!
+
+== Next Steps
+
+LUSID is commonly used as an Investment Book of Record (IBOR), so a good next step would be to go through the xref:how-to/ibor/index.adoc[] guide.
+
+

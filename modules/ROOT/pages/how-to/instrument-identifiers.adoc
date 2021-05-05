@@ -6,9 +6,9 @@ You can return the unique identifiers from the Instruments API, as shown below:
 
 [source, python, indent=0]
 ----
-include::example$instrument-master/test_instruments_master.py[tag="instruments-api"]
+include::example$ibor/test_ibor.py[tag="instruments-api"]
 
-include::example$instrument-master/test_instruments_master.py[tag="identifiers"]
+include::example$ibor/test_ibor.py[tag="identifiers"]
 ----
 
 If you run this code, you'll get the following output:
@@ -16,7 +16,7 @@ If you run this code, you'll get the following output:
 .unique_identifiers
 [format="csv", options="header"]
 |===
-include::example$instrument-master/identifiers.csv[]
+include::example$ibor/identifiers.csv[]
 |===
 
 For an example of how to import instruments into LUSID, see xref:how-to/maintain-instruments-master.adoc[].
