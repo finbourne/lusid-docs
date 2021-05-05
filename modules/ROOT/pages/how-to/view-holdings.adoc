@@ -59,7 +59,7 @@ include::example$ibor/test_ibor.py[tag="format-holdings"]
 
 === After funds loaded
 
-We loaded £1,000,000 of funds on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
+We loaded $1,000,000 of funds on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
 You can do this by running the following code:
 
 [source, python, indent=0]
@@ -137,7 +137,7 @@ include::example$ibor/test_ibor.py[tag="get-holdings-today"]
 include::example$ibor/holdings_today.csv[]
 |===
 
-Our cash is now down to £623,923, but our Amazon stock has increased to 100 units at a total cost of $189,452.
+Our cash is now down to $623,923, but our Amazon stock has increased to 100 units at a total cost of $189,452.
 
 === Filtering by type
 

@@ -8,7 +8,7 @@ LUSID will automatically construct adjustment transactions based on the holdings
 
 include::partial$ibor-code.adoc[]
 
-== Pre requisites
+== Pre Requisites
 
 This guide assumes that you have xref:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
