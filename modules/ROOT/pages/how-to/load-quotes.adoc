@@ -6,7 +6,7 @@ This store is used to record market data that can be used to value holdings and 
 It can be used to store market prices, rates, and FX quotes.
 
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_quotes.py[test_quotes.py^] file, and the data under {examples-repository-base}/data/test_quotes[data/test_quotes^].
+The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_quotes[data/test_ibor^].
 
 == Setup
 
@@ -37,7 +37,7 @@ include::example$quotes/test_quotes.py[tag="apis"]
 
 [source, python, indent=0]
 ----
-include::example$quotes/test_quotes.py[tag="create-portfolio"]
+include::example$ibor/test_ibor.py[tag="create-portfolio"]
 ----
 
 == Our Holdings

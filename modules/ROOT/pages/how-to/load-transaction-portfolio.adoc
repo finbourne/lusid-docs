@@ -31,11 +31,18 @@ include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 
 We're now ready to load our transaction portfolio.
 It must have a scope, display name, code, and base currency.
-You can create a transaction portfolio by running the following code:
+
+You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+----
+
+You can create a transaction portfolio by running the following code:
+
+[source, python, indent=0]
+----
 include::example$ibor/test_ibor.py[tag="create-portfolio"]
 ----
 

@@ -29,7 +29,7 @@ include::partial$api-factory.adoc[]
 
 == List transaction types
 
-The list of configured transaction types are availabled via the System Configuration API.
+The list of configured transaction types are available via the System Configuration API.
 You can return a list of them by running the following code:
 
 [source, python, indent=0]
