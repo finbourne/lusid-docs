@@ -35,6 +35,18 @@ class IBOR(unittest.TestCase):
         # end::apis[]
         portfolios_api = api_factory.build(lusid.api.PortfoliosApi)
 
+        # tag::instruments-api[]
+        instruments_api = api_factory.build(lusid.api.InstrumentsApi)
+        # end::instruments-api[]
+
+        # tag::property-api[]
+        property_definitions_api = api_factory.build(lusid.api.PropertyDefinitionsApi)
+        # end::property-api[]
+
+        ##################
+        # INSTRUMENTS MASTER
+        ##################
+
         # tag::instruments-file[]
         instruments_file = "data/test_ibor/instruments.csv"
         # end::instruments-file[]
@@ -44,10 +56,6 @@ class IBOR(unittest.TestCase):
         instruments = pd.read_csv(instruments_file)
         # end::load-instruments[]
         self.write_to_test_output(instruments, "instruments.csv")
-
-        # tag::instruments-api[]
-        instruments_api = api_factory.build(lusid.api.InstrumentsApi)
-        # end::instruments-api[]
 
         # tag::identifiers[]
         response = instruments_api.get_instrument_identifier_types()
@@ -132,8 +140,6 @@ class IBOR(unittest.TestCase):
         self.assertCountEqual(instruments_df["Instrument"].values, ["Amazon_Nasdaq_AMZN", "CoinBase_Nasdaq_COIN"])
 
         # tag::create-property[]
-        property_definitions_api = api_factory.build(lusid.api.PropertyDefinitionsApi)
-
         properties_scope = f"custom_properties_{uuid.uuid4()}"
         property_request = lusid.models.CreatePropertyDefinitionRequest(
             domain='Instrument',
@@ -252,6 +258,10 @@ class IBOR(unittest.TestCase):
         )
         # end::delete-instrument-properties[]
 
+        ##################
+        # CREATE PORTFOLIO
+        ##################
+
         # tag::scope-portfolio-code[]
         scope = portfolio_code = "Developer-IBOR-Tutorial"
         # end::scope-portfolio-code[]
@@ -273,6 +283,96 @@ class IBOR(unittest.TestCase):
                 base_currency="USD"))
         # end::create-portfolio[]
         self.assertIsNotNone(portfolio_code)
+
+        # tag::create-portfolio-property[]
+        response = property_definitions_api.create_property_definition(
+            create_property_definition_request=lusid.models.CreatePropertyDefinitionRequest(
+                domain="Portfolio",
+                scope=scope,
+                code="portfolio_manager_name",
+                value_required=False,
+                display_name="portfolio_manager_name",
+                data_type_id=lusid.models.ResourceId(scope="system", code="string")
+            )
+        )
+        portfolio_manager_property = response.key
+        # end::create-portfolio-property[]
+        self.assertIsNotNone(portfolio_manager_property)
+
+        # tag::update-portfolio[]
+        portfolios_api.upsert_portfolio_properties(
+            scope=scope,
+            code=portfolio_code,
+            request_body={
+                portfolio_manager_property: lusid.models.ModelProperty(
+                    key=portfolio_manager_property,
+                    value=lusid.models.PropertyValue(label_value="Matt Smith")
+                )
+            }
+        )
+        # end::update-portfolio[]
+
+        # tag::get-portfolio[]
+        portfolio = portfolios_api.get_portfolio(
+            scope=scope,
+            code=portfolio_code,
+            property_keys=[portfolio_manager_property]
+        )
+        portfolio_df = pd.DataFrame([{
+            "Code": portfolio.id.code,
+            "Name": portfolio.display_name,
+            "Description": portfolio.description,
+            "Base Currency": portfolio.base_currency,
+            "Manager Name": portfolio.properties[portfolio_manager_property].value.label_value
+        }])
+        # end::get-portfolio[]
+        self.write_to_test_output(portfolio_df, "get_portfolio.csv")
+        self.assertEqual(portfolio.properties[portfolio_manager_property].value.label_value, "Matt Smith")
+
+        # tag::create-portfolio-with-manager[]
+        # tag::scope-portfolio-code[]
+        portfolio_code = "Developer-IBOR-With-Manager-Tutorial"
+        # end::scope-portfolio-code[]
+        portfolio_code = f"Developer-IBOR-With-Manager-Tutorial-{now}"
+
+        transaction_portfolios_api.create_portfolio(
+            scope=scope,
+            create_transaction_portfolio_request=lusid.models.CreateTransactionPortfolioRequest(
+                display_name="Developer IBOR With Manager Tutorial",
+                code=portfolio_code,
+                created=created_date,
+                base_currency="USD",
+                properties={
+                    portfolio_manager_property: lusid.models.ModelProperty(
+                        key=portfolio_manager_property,
+                        value=lusid.models.PropertyValue(label_value="David Jones"))
+                }
+            )
+        )
+        # end::create-portfolio-with-manager[]
+
+        # tag::get-updated-portfolio[]
+        portfolio = portfolios_api.get_portfolio(
+            scope=scope,
+            code=portfolio_code,
+            property_keys=[portfolio_manager_property]
+        )
+        portfolio_df = pd.DataFrame([{
+            "Code": portfolio.id.code,
+            "Name": portfolio.display_name,
+            "Description": portfolio.description,
+            "Base Currency": portfolio.base_currency,
+            "Manager Name": portfolio.properties[portfolio_manager_property].value.label_value,
+        }])
+        # end::get-updated-portfolio[]
+        self.write_to_test_output(portfolio_df, "get_new_portfolio.csv")
+        self.assertEqual(portfolio.properties[portfolio_manager_property].value.label_value, "David Jones")
+
+
+
+        ##################
+        # HOLDINGS
+        ##################
 
         # tag::holdings-file[]
         quotes_file = "data/test_ibor/holdings.csv"

@@ -24,12 +24,6 @@ const files = [
     ["https://raw.githubusercontent.com/mneedham/lusid-sdk-java/add-example/examples/src/main/java/com/finbourne/examples/HelloWorld.java",
         "modules/ROOT/examples/getting-started/HelloWorld.java"],
 
-    [`${python_tools_base}/data/test_transaction_portfolios/test_output/get_portfolio.csv`,
-        "modules/ROOT/examples/transaction-portfolio/get_portfolio.csv"],
-    [`${python_tools_base}/data/test_transaction_portfolios/test_output/get_updated_portfolio.csv`,
-        "modules/ROOT/examples/transaction-portfolio/get_updated_portfolio.csv"],
-    [`${python_tools_base}/test_transaction_portfolios.py`,
-        "modules/ROOT/examples/transaction-portfolio/test_transaction_portfolios.py"],
 
     [`${python_tools_base}/data/test_configure_transaction_types/test_output/transaction_types.csv`,
         "modules/ROOT/examples/transaction-types/transaction_types.csv"],
@@ -96,6 +90,7 @@ const files = [
 
     [`${python_tools_base}/data/test_ibor/test_output/transactions.csv`,
         "modules/ROOT/examples/ibor/transactions.csv"],
+
     [`${python_tools_base}/data/test_ibor/test_output/holdings_first_day_trading.csv`,
         "modules/ROOT/examples/ibor/holdings_first_day_trading.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/holdings_funds_loaded.csv`,
@@ -107,6 +102,7 @@ const files = [
     [`${python_tools_base}/data/test_ibor/test_output/holdings.csv`,
         "modules/ROOT/examples/ibor/holdings.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/quotes.csv`,
+
         "modules/ROOT/examples/ibor/quotes.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/valuation-20210422.csv`,
         "modules/ROOT/examples/ibor/valuation-20210422.csv"],
@@ -116,6 +112,7 @@ const files = [
         "modules/ROOT/examples/ibor/valuation-all.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/valuation-all-multiple-days.csv`,
         "modules/ROOT/examples/ibor/valuation-all-multiple-days.csv"],
+
     [`${python_tools_base}/data/test_ibor/test_output/identifiers.csv`,
         "modules/ROOT/examples/ibor/identifiers.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/get_instrument.csv`,
@@ -136,6 +133,12 @@ const files = [
         "modules/ROOT/examples/ibor/luids.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/search_instruments.csv`,
         "modules/ROOT/examples/ibor/search_instruments.csv"],
+
+    [`${python_tools_base}/data/test_ibor/test_output/get_portfolio.csv`,
+        "modules/ROOT/examples/ibor/get_portfolio.csv"],
+    [`${python_tools_base}/data/test_ibor/test_output/get_new_portfolio.csv`,
+        "modules/ROOT/examples/ibor/get_new_portfolio.csv"],
+
     [`${python_tools_base}/test_ibor.py`,
         "modules/ROOT/examples/ibor/test_ibor.py"],
 

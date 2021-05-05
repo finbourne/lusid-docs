@@ -14,7 +14,7 @@ include::example$ibor/test_ibor.py[tag="identifiers"]
 If you run this code, you'll get the following output:
 
 .unique_identifiers
-[format="csv", options="header"]
+[format="csv", options="header", cols="1,2"]
 |===
 include::example$ibor/identifiers.csv[]
 |===
