@@ -1,0 +1,5 @@
+[NOTE.code]
+====
+The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_quotes[data/test_ibor^].
+====

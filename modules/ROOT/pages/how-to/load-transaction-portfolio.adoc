@@ -4,8 +4,7 @@
 A transaction portfolio records a transaction history of economic events such as transactions and corporate actions.
 Portolios exists within a logical data partition called a scope.
 
-The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
+include::partial$ibor-code.adoc[]
 
 == Pre Requisites
 
@@ -33,7 +32,6 @@ include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 
 We're now ready to load our transaction portfolio.
 It must have a scope, display name, code, and base currency.
-
 You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]

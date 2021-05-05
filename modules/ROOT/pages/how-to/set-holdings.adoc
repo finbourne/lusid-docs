@@ -6,8 +6,7 @@
 We might want to do this if we have a set of positions, but don't have transaction data to create those positions.
 LUSID will automatically construct adjustment transactions based on the holdings we provide.
 
-The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
+include::partial$ibor-code.adoc[]
 
 == Pre requisites
 

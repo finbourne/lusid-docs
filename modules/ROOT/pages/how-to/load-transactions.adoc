@@ -5,9 +5,7 @@
 A transaction is an economic change to a portfolio.
 Transactions can be one-sided (e.g. cash inflow) or two-sided (e.g. an equity trade purchasing stock and settling cash).
 
-The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
-
+include::partial$ibor-code.adoc[]
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.

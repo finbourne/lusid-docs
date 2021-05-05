@@ -5,8 +5,7 @@ In this guide we will learn how to maintain an instruments master.
 Instruments in LUSID are used to represent financial assets that you own or have exposure to.
 We'll start by importing some instruments, then we'll retrieve them, update them, and finally delete them.
 
-The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
+include::partial$ibor-code.adoc[]
 
 == Pre Requisites
 
