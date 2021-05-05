@@ -161,7 +161,7 @@ include::example$ibor/search_instruments.csv[]
 == Update instrument identifier
 
 We can also update an instrument's identifiers.
-For example, to change the `ClientInternal` identifier for Amazon effective in 10 minutes time, you can run the following:
+For example, to change the `ClientInternal` identifier for Amazon effective as of 6th May 2021, you can run the following:
 
 [source, python, indent=0]
 ----
@@ -174,7 +174,7 @@ The instrument identifier change applies from the `effective_at` time.
 If none is provided it applies from now.
 ====
 
-Since we've specified that the identifier change should happen in 10 minutes, it means that if we look up the BT instrument now, we won't see a change.
+Since we've specified that the identifier change should happen on 6th May 20201, it means that if we look up the instrument with an earlier effective at date, we won't see a change.
 You can see this by running the following code:
 
 [source, python, indent=0]
@@ -188,7 +188,7 @@ include::example$ibor/test_ibor.py[tag="get-instruments-now"]
 include::example$ibor/get_instruments_now.csv[]
 |===
 
-But if we get the instrument with an effective date of 11 minutes later:
+But if we get the instrument with an effective date of 6th May 2021:
 
 [source, python, indent=0]
 ----

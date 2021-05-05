@@ -39,13 +39,6 @@ const files = [
     [`${python_tools_base}/test_user_defined_properties.py`,
         "modules/ROOT/examples/user-defined-properties/test_user_defined_properties.py"],
 
-    [`${python_tools_base}/data/test_transactions/test_output/transactions.csv`,
-        "modules/ROOT/examples/transactions/transactions.csv"],
-    [`${python_tools_base}/data/test_transactions/test_output/transactions_response.csv`,
-        "modules/ROOT/examples/transactions/transactions_response.csv"],
-    [`${python_tools_base}/test_transactions.py`,
-        "modules/ROOT/examples/transactions/test_transactions.py"],
-
     [`${python_tools_base}/data/test_holdings/test_output/transactions.csv`,
         "modules/ROOT/examples/holdings/transactions.csv"],
     [`${python_tools_base}/data/test_holdings/test_output/holdings.csv`,
@@ -138,6 +131,11 @@ const files = [
         "modules/ROOT/examples/ibor/get_portfolio.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/get_new_portfolio.csv`,
         "modules/ROOT/examples/ibor/get_new_portfolio.csv"],
+
+    [`${python_tools_base}/data/test_ibor/test_output/transactions.csv`,
+        "modules/ROOT/examples/ibor/transactions.csv"],
+    [`${python_tools_base}/data/test_ibor/test_output/transactions_response.csv`,
+        "modules/ROOT/examples/ibor/transactions_response.csv"],
 
     [`${python_tools_base}/test_ibor.py`,
         "modules/ROOT/examples/ibor/test_ibor.py"],

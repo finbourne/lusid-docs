@@ -6,38 +6,27 @@ A transaction is an economic change to a portfolio.
 Transactions can be one sided e.g. cash inflow or two sided e.g. an equity trade purchasing stock and settling cash.
 
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
-The code is in the {examples-repository-base}/test_transactions.py[test_transactions.py^] file, and the data under {examples-repository-base}/data/test_holdings[data/test_transactions^].
+The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, and the data under {examples-repository-base}/data/test_ibor[data/test_ibor^].
 
-[NOTE]
-====
-To import transactions, you will need to have xref:ROOT:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and xref:ROOT:how-to/maintain-instruments-master.adoc[loaded the instruments] that the transactions are based on.
-====
+== Pre Requisites
 
-== Setup
+This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
+This guide uses the portfolio created in xref:ROOT:how-to/load-transaction-portfolio.adoc[] and in the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
 
-We'll be using the https://github.com/finbourne/lusid-python-tools[LUSID Python Tools library^] in this guide, which you can install by running the following:
-
-[source, bash]
-----
-pip install lusidtools
-----
-
-Once you've got that installed, import the following modules:
+You will need to import the following modules into your Python script:
 
 [source, python, indent=0]
 ----
-include::example$transactions/test_transactions.py[tag="imports"]
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
 ----
 
-Create the API factory:
-
-include::partial$api-factory.adoc[]
-
-And initialise the API end points that we're going to use:
+And then initialise the Transactions Portfolio API:
 
 [source, python, indent=0]
 ----
-include::example$transactions/test_transactions.py[tag="apis"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 ----
 
 == Our Transactions
@@ -46,38 +35,19 @@ We have details of transactions, and their accompanying instruments in a CSV fil
 
 [source, python, indent=0]
 ----
-include::example$transactions/test_transactions.py[tag="transactions-file"]
-include::example$transactions/test_transactions.py[tag="load-transactions"]
+include::example$ibor/test_ibor.py[tag="transactions-file"]
+include::example$ibor/test_ibor.py[tag="load-transactions"]
 ----
 
 .Transactions
 [format="csv", options="header"]
 |===
-include::example$transactions/transactions.csv[]
+include::example$ibor/transactions.csv[]
 |===
-
-== Create Transaction Portfolio
-
-Any transactions that we import must be attached to a transaction portfolio, so we'll first create one of those.
-You can do this using the following code:
-
-[source, python, indent=0]
-----
-include::example$transactions/test_transactions.py[tag="create-portfolio"]
-----
-
-== Import Instruments
-
-Let's first import the instruments used by our transactions:
-
-[source, python, indent=0]
-----
-include::example$transactions/test_transactions.py[tag="import-instruments"]
-----
 
 == Import Transactions
 
-Now for the transactions.
+Let's import the transactions.
 For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
 For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
 
@@ -85,7 +55,7 @@ You can import transactions using the code below:
 
 [source, python, indent=0]
 ----
-include::example$transactions/test_transactions.py[tag="import-transactions"]
+include::example$ibor/test_ibor.py[tag="import-transactions"]
 ----
 
 == Get Transactions
@@ -95,18 +65,18 @@ We'll format the response using the following function:
 
 [source, python, indent=0]
 ----
-include::example$transactions/test_transactions.py[tag="format-transactions"]
+include::example$ibor/test_ibor.py[tag="format-transactions"]
 ----
 
 You can get the transactions using the Get Transactions API, as shown below:
 
 [source, python, indent=0]
 ----
-include::example$transactions/test_transactions.py[tag="get-transactions"]
+include::example$ibor/test_ibor.py[tag="get-transactions"]
 ----
 
 .Transactions
 [format="csv", options="header"]
 |===
-include::example$transactions/transactions_response.csv[]
+include::example$ibor/transactions_response.csv[]
 |===
