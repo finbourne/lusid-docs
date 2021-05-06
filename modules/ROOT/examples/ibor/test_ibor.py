@@ -418,8 +418,7 @@ class IBOR(unittest.TestCase):
                 "Entry Date": value.entry_date_time,
                 "Amount": value.total_consideration.amount,
                 "Units": value.units,
-            } for value in response.values
-            ])
+            } for value in response.values])
 
         # end::format-transactions[]
 
@@ -670,9 +669,9 @@ class IBOR(unittest.TestCase):
         )
         # end::set-holdings[]
 
-        # portfolios_api.delete_portfolio(scope, portfolio_code)
+        portfolios_api.delete_portfolio(scope, portfolio_code)
 
         # tag::delete-instruments[]
-        # for figi in instruments.loc[:, 'figi'].values:
-        #     instruments_api.delete_instrument(identifier_type='Figi', identifier=figi)
+        for figi in instruments.loc[:, 'figi'].values:
+            instruments_api.delete_instrument(identifier_type='Figi', identifier=figi)
         # end::delete-instruments[]

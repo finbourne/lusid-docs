@@ -1,8 +1,8 @@
 = How to get a list of instrument identifiers
-:description: In this guide we will return the list of unique identifiers used by instruments in LUSID.
+:description: In this guide we will return the list of unique market identifiers used by instruments in LUSID.
 
-Instruments in LUSID must have at least one unique identifier.
-You can return the unique identifiers from the Instruments API, as shown below:
+Instruments in LUSID must have at least one unique market identifier, but can have as many non-unique identifiers as they like.
+In this guide we'll see how to return a list of these identifiers.
 
 == Pre Requisites
 
@@ -14,29 +14,64 @@ You will need to import the following modules into your Python script:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$identifiers/test_identifiers.py[tag="imports-lusid"]
+include::example$identifiers/test_identifiers.py[tag="imports-pandas"]
 ----
 
 You can initialise the Instruments API by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="instruments-api"]
+include::example$identifiers/test_identifiers.py[tag="instruments-api"]
 ----
 
-== Get instruments identifiers
+== Get instrument identifiers
+
+To return a list of instrument identifiers, run the following:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="identifiers"]
+include::example$identifiers/test_identifiers.py[tag="identifiers"]
 ----
 
-If you run this code, you'll get the following output:
+This DataFrame will contain both unique and other identifiers.
+
+=== Unique Identifiers
+
+You can filter the unique identifiers as shown below:
+
+[source, python, indent=0]
+----
+include::example$identifiers/test_identifiers.py[tag="unique-identifiers"]
+----
 
 .unique_identifiers
 [format="csv", options="header", cols="1,2"]
 |===
-include::example$ibor/identifiers.csv[]
+include::example$identifiers/identifiers.csv[]
 |===
 
+When importing instruments into LUSID, you will need to have at least one of these identifiers per instrument.
+
+=== Non-Unique Identifiers
+
+You can filter the non-unique identifiers as shown below:
+
+[source, python, indent=0]
+----
+include::example$identifiers/test_identifiers.py[tag="other-identifiers"]
+----
+
+.other_identifiers
+[format="csv", options="header", cols="1,2"]
+|===
+include::example$identifiers/other_identifiers.csv[]
+|===
+
+When importing instruments into LUSID, you can associate an instrument with as many non-unique identifiers as you like.
+
+
+[TIP]
+====
 For an example of how to import instruments into LUSID, see xref:how-to/maintain-instruments-master.adoc[].
+====

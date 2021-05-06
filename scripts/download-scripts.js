@@ -39,6 +39,13 @@ const files = [
     [`${python_tools_base}/test_user_defined_properties.py`,
         "modules/ROOT/examples/user-defined-properties/test_user_defined_properties.py"],
 
+    [`${python_tools_base}/test_identifiers.py`,
+        "modules/ROOT/examples/identifiers/test_identifiers.py"],
+    [`${python_tools_base}/data/test_identifiers/test_output/identifiers.csv`,
+        "modules/ROOT/examples/identifiers/identifiers.csv"],
+    [`${python_tools_base}/data/test_identifiers/test_output/other_identifiers.csv`,
+        "modules/ROOT/examples/identifiers/other_identifiers.csv"],
+
     [`${python_tools_base}/data/test_ibor/test_output/transactions.csv`,
         "modules/ROOT/examples/ibor/transactions.csv"],
 
@@ -68,8 +75,6 @@ const files = [
     [`${python_tools_base}/data/test_ibor/test_output/valuation-all-multiple-days.csv`,
         "modules/ROOT/examples/ibor/valuation-all-multiple-days.csv"],
 
-    [`${python_tools_base}/data/test_ibor/test_output/identifiers.csv`,
-        "modules/ROOT/examples/ibor/identifiers.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/get_instrument.csv`,
         "modules/ROOT/examples/ibor/get_instrument.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/get_instrument_client_internal.csv`,

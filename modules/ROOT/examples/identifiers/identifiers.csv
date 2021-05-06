@@ -1,0 +1,7 @@
+identifier_type,property_key
+Figi,Instrument/default/Figi
+QuotePermId,Instrument/default/QuotePermId
+EdiKey,Instrument/default/EdiKey
+Currency,Instrument/default/Currency
+ClientInternal,Instrument/default/ClientInternal
+LusidInstrumentId,Instrument/default/LusidInstrumentId
