@@ -1,0 +1,201 @@
+= How to filter data in LUSID APIs
+
+In this guide we will learn about the filtering functionality that is available on many LUSID API end points.
+For more details, see the https://www.lusid.com/docs/api[API documentation^].
+
+[NOTE]
+====
+One example of an end point that supports filtering is https://www.lusid.com/docs/api/#operation/ListInstruments[List instruments^].
+====
+
+== Filtering on fields
+
+The filtering functionality allows you to specify a string defining the subset of results that are returned by the API call.
+LUSID filter syntax has the following format: `<field> <operator> <value>`.
+
+[TIP]
+====
+Filtering is case-insensitive and does not return null values or values that are not set, except when filtering using not exists.
+====
+
+[[operators]]
+=== Operator
+
+The logical operator that determines how the specified value will be compared against records in LUSID.
+The table below outlines the supported operators:
+
+
+.Supported operators
+[options="header", cols="1,3,3"]
+|===
+| Operator	| Description	| Examples of valid expressions
+| `eq` | equals +
+returns a record if the value exactly matches the specified value |
+`displayname eq 'MyPortfolio'` +
+`isDerived eq True`
+
+| `neq` | not equals +
+returns a record if the value doesn't match the specified value |
+
+`displayname neq 'MyPortfolio'` +
+`isDerived neq True`
+
+| gt  | greater than +
+returns a record if the value is greater than the specified value. |
+`created gt 2019-01-01` +
+`created gt 2019-01-15T10:00:00`
+`unit gt 10`
+
+| gte | greater than or equal to +
+returns a record, if the value is greater than or equal to the specified value. |
+`created gte 2019-01-15` +
+`created gte 2017-02-15T18:00:00` +
+`unit gte 10` +
+
+| lt | less than  +
+returns a record, if the value is less than the specified value. |
+`created lt 2017-02-01` +
+`created lt 2017-02-15T18:00:00`
+`unit lt 10`
+| startswith* | starts with +
+returns a record, if the value starts with the specified value. |
+`displayName startswith ‘Mypo’` +
+| in |	returns a record, if the value matches any of the specified values. |
+`displayName in 'MyPortfolio', 'MyOtherPortfolio'`
+
+| not in | 	returns a record if the value is not in any of the specified values	 |
+`displayName not in 'My Portfolio', 'MyOtherPortfolio'`
+
+| exists |	returns a record if the value is set |
+`properties.Portfolio/scope/code exists`
+
+| not exists |	returns a record if the value is not set |
+`properties.Portfolio/scope/code not exists`
+
+| and / or |	logical operators that can be used to compound two or more queries |
+`isDerived eq True and created lt 2017-03-15`
+`isDerived eq True or displayName eq 'MyPortfolio'`
+
+| not |	Filter string can be preceded with a not operator that will negate the results from the filter string |
+`not displayName in 'MyPortfolio', 'MyOtherPOrtfolio'`
+|===
+
+=== Field
+
+An attribute of the schema returned in the response of a given API endpoint.
+
+The filtering functionality supported varies based on the field's data type.
+The table below summarises support for operators by data type:
+
+.Supported data types
+[options="header"]
+|===
+| Data Type | Example field | Supported operators
+| String | Scope, Code | `eq`, `ne`, `*startswith*`, `in`, `not`
+| DateTime | effectiveAt, asAt | `eq`, `ne`, `gt`, `gte`, `lt`, `lte`
+| Enum | quoteType, instrumendIdType | `in`, `not in`, `eq`, `ne`
+| Boolean |	isDerived	| `eq`, `ne`
+| Dictionary | properties/identifiers	| Depends on type of value
+|===
+
+The following data types do not yet support filtering:
+
+.Unsupported data types
+[options="header"]
+|===
+| Data Type | Example field | Supported operators
+| DateOrCutLabel | effectiveAt, asAt | NA
+| Array / List | NA | 	NA
+|===
+
+=== Value
+
+The value that you wish to filter on.
+Filtering of values is case-insensitive and wildcard characters are not supported.
+
+== Identifier filtering
+
+Some LUSID entities, such as instruments, support filtering on identifiers.
+Records can be filtered using instrument identifiers by providing the identifier key for the identifier collection.
+Syntax to filter records based on identifiers is as follows:
+
+`identifiers['Currency'] eq 'CCY_USD'`
+
+This will find all records where the identifierType Currency is set to `CCY_USD`.
+
+== Property filtering
+
+Some LUSID API end points support decorating additional metadata information with properties.
+Properties can be filtered in the same way by providing a three part property key and one of the above operators, as shown below:
+
+* `properties[key] <operator> value`
+* `properties.key <operator> value`
+
+`key` is a three part identifier used to identify properties.
+The structure of the key is:  `<Domain>/<Scope>/<Code>`.
+
+[TIP]
+====
+These property keys *are case-sensitive*.
+====
+
+Examples of valid expressions are shown below:
+
+* `properties[Instrument/FinbourneScope/portfolioManager] eq 'Tom'`
+* `properties.Instrument/FinbourneScope/portfolioManager eq 'Tom'`
+* `properties[Instrument/FinbourneScope/startDate] eq 2019-01-01`
+
+== Filtering on nested fields
+
+The LUSID API supports nested filtering.
+Fields not present at the root level can be accessed using the '.' syntax.
+On the https://www.lusid.com/docs/api/#operation/ListPortfolios[List Portfolio] end point, for example, we could return portfolios with a specific scope by writing the following filter:
+
+`id.scope eq 'Finbourne-Examples'`
+
+
+== Error reporting
+
+The table below summarises filtering related error messages, including descriptions and potential resolutions:
+
+.Error messages
+[options="header", cols="15,10,35,40"]
+|===
+| Error Name	 | Code | 	Error Description	| Potential Resolution
+| DataFilterApplicationFailure	| 181 | 	There was a problem with the syntax of the provided filter. +
+The problematic token was: 'equal'  |
+Check the syntax supplied in the string is correct one. Look at the examples above. +
+In this case the operator 'equal' is not supported, the correct operator is eq
+
+| DataFilterApplicationFailure	| 181 | 	One or more failures occurred. +
+Cannot apply 'operator' to a 'instrument' and a 'string	|
+Operator used in the filter syntax is not supported. +
+For supported operators, see the xref:#operators[] section.
+| DataFilterApplicationFailure	| 181 | 	One or more failures occurred. +
+The field 'fieldName' referred to in the supplied filter is not valid or is not available for filtering	|
+Field being used in the filtering is not currently supported. +
+Check if the fieldName used is the correct one.
+| FilterExecutionTimeout	| 415 |	Timed out when attempting to filter records. |
+LUSID allows a maximum time of 30 seconds for any filter query to run. +
+Try adding additional parameters to reduce query time. +
+If that doesn't help, please an email on support@lusid.com.
+| PropertyNotDefined	| 121 |	Property not defined |
+Make sure that the key used for property filtering is the right one and uses the property filtering syntax described above. +
+Property keys are case sensitive
+|===
+
+
+== Searching on fields
+
+The search parameter is supported only on Search API endpoints and can be used to make wildcard searches across all fields for a given resource.
+It applies across the whole record and utilizes features such as ElasticSearch tokenisation.
+Results returned from Search can be filtered further to return only the relevant records
+
+For example:
+
+* `Global*` - matches records where the text string starts with Global
+
+* `Global` - matches records where Global is mentioned as a word token in the string.
+Tokens for Search API endpoints are delimited by looking at the space and dash literals in a given string.
+
+

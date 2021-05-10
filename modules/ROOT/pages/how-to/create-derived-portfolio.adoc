@@ -1,0 +1,41 @@
+= How to create a derived portfolio
+:description: In this guide we'll create a derived portfolio, which can be used to do pre-trade and post-trade what-if analysis.
+
+A derived portfolio is a copy of an existing portfolio.
+A derived transaction portfolio inherits all holdings and transactions from its parent transaction portfolio.
+Changes made to the parent portfolio are automatically reflected in the derived portfolio, but the derived portfolio can also contain its own additional transactions, which take precedence over the parent portfolio's transactions.
+
+[TIP]
+====
+Derived portfolios in conjunction with scopes are a powerful construct.
+For example, to do pre-trade what-if analysis, a derived portfolio could be created in a new namespace linked to the underlying live (parent) portfolio in the ‘official’ scope.
+Scenario transactions can then be booked in the derived portfolio, and the performance of the two could be compared without affecting the live book.
+====
+
+== Pre Requisites
+
+This guide assumes that you have already created a transaction portfolio, as covered in the xref:how-to/load-transaction-portfolio.adoc[] guide.
+
+
+== Setup
+
+
+
+[source, python]
+----
+derived_api = api_factory.build(lusid.api.DerivedTransactionPortfoliosApi)
+
+derived_portfolio_code = f"Developer-WhatIf-Tutorial-Derived-{now}"
+
+derived_api.create_derived_portfolio(
+    scope=scope,
+    create_derived_transaction_portfolio_request=(lusid.models.CreateDerivedTransactionPortfolioRequest(
+        display_name=f"Derived Portfolio of {portfolio_code}",
+        code=derived_portfolio_code,
+        parent_portfolio_id=lusid.models.ResourceId(scope=scope, code=portfolio_code),
+        description="What if we didn't sell DOGE?",
+        created=created_date
+    ))
+)
+
+----

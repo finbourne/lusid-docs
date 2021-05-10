@@ -51,3 +51,4 @@
 
 .xref:ROOT:reference/index.adoc[Reference]
 * xref:ROOT:reference/holding-types.adoc[Holding types]
+* xref:ROOT:reference/filtering-data.adoc[Filtering data]
