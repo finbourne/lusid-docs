@@ -1,0 +1,40 @@
+= What is a scope?
+
+
+Every entity lives within a logical data partition known as a scope.
+Scope is an identity namespace allowing two entities with the same unique code to co-exist within individual address spaces.
+
+For example, prices for equities from different vendors could be uploaded into different scopes, such as Refinitiv and Bloomberg.
+A portfolio can then be valued using either of the price sources by referencing the appropriate scope.
+
+Scopes can be used in a number of ways.
+
+* To model organisational units (think departments) in your company
+* To act as entitlement boundaries (people can read/write/etc all portfolios in a given scope)
+* To allow for a personal folder / research area for every user (and entitle only them to write to it as a side benefit)
+* To allow for multiple providers of the same piece of information.
+For instance, one portfolio could be provided by your:
+    ** Fund Accountant [*FA*/myPortfolio]
+    ** Custodian [*Cust*/myPortfolio]
+    ** Middle Office [*MO*/myPortfolio]
+    ** Transfer Agent [*TA*/myPortfolio]
+    ** my own copy [*dave*/myPortfolio]
+
+Scopes are in bold.
+
+This concept lets us load multiple copies of what is logically the same data, compare them, safely modify them as required, and entitle people to see only what they need to.
+
+A scope can contain a maximum of 64 characters, consisting of the following characters:
+
+* Lowercase and uppercase letters
+* Numbers
+* Dash ("-")
+* Underscore ("_")
+
+There are many more uses for scopes including the safe provision of a UAT environment in your production system.
+
+[NOTE]
+====
+You don't need to explicitly create scopes.
+When you use a scope in a request to put data into LUSID it will be automatically created if it does not exist.
+====

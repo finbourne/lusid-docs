@@ -1,18 +1,19 @@
 = Transaction Types
 
-LUSID has a flexible transaction modelling system.
-This means that you can configure the economic impact of your own transaction types.
+LUSID has a flexible transaction modelling system that lets you configure the economic impact of your own transaction types.
 
-For example, you could define a transaction code of "Buy", "B", or "IBOR_BUY", which all have the same meaning:
+For example, you could define the transaction codes `Buy`, `B`, or `IBOR_BUY`, which all have the same meaning:
 
-* Increase the amount of an instrument in a portfolio .
+* Increase the amount of an instrument in a portfolio.
 * Decrease the amount of cash in a portfolio.
 
 If, at a later date, a new source of data is added to LUSID which has a new transaction type of “Purchase”, but has the same underlying economic requirement (increase amount of instrument, decrease cash), then that type can be added to the current configuration.
 
-The idea here is simple but powerful – LUSID is not concerned with naming conventions of transaction codes in external systems, we only care about the economic impact of these transaction codes.
+LUSID is not concerned with naming conventions of transaction codes in external systems, it only cares about the economic impact of these transaction codes.
 
 [TIP]
 ====
-For more on transaction types, see xref:how-to/configure-transaction-types.adoc[].
+LUSID comes with in-built transaction types.
+For more details, see xref:how-to/get-default-transaction-types.adoc[].
+If you want to add new transactions types, see xref:how-to/configure-transaction-types.adoc[].
 ====

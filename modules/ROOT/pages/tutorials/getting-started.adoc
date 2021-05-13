@@ -1,0 +1,3 @@
+= Getting started with LUSID
+
+In this guide you'll get up and running with LUSID.

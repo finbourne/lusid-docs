@@ -16,7 +16,7 @@ The code is in the {examples-repository-base}/test_ibor.py[test_ibor.py^] file, 
 
 == Pre Requisites
 
-This guide assumes that you have gone through the xref:how-to/get-started/index.adoc[] guides.
+This guide assumes that you have gone through the xref:how-to/connecting-to-lusid/index.adoc[] guides.
 It also makes some assumptions about the data that should already be loaded into LUSID.
 
 You should have loaded the following holdings into your portfolio:

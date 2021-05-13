@@ -1,0 +1,15 @@
+= What is a portfolio group?
+
+Portfolio grouping within LUSID allows for the construction of a hierarchy of portfolios and sub-groups, limited to five levels of nesting.
+Portfolio groups can be used to run aggregations across data in multiple portfolios or portfolio groups.
+
+Portfolios can belong to portfolio groups and portfolio groups can also belong to other portfolio groups, as shown in the diagram below:
+
+.Portfolio Groups
+image::portfolio-diagram.svg[]
+
+In a global fund we might do multiple levels of aggregation.
+For example, we could have portfolios for individual countries and then group them by continent and then globally, as shown below:
+
+.A global fund of portfolios and portfolio groups
+image::portfolio-groups-example.svg[]

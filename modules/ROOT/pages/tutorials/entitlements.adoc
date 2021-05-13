@@ -1,0 +1,155 @@
+= An introduction to entitlements
+
+In this guide we will set up entitlements for a hypothetical investment management company.
+Entitlements control the level of access that users have been using LUSID, and we want to make sure that our users only have access to the functionality and data that they actually need.
+
+
+== A.N. Other Hedge Fund
+
+We are working for A.N. Other Hedge Fund, a hedge fund that is using LUSID to manage their investment data.
+They have the following types of users:
+
+Data Operations ::
+They change, control, and edit the data, so they need access to all data operations.
+
+Portfolio Managers ::
+They trade portfolios and therefore need to see their portfolio's holdings and any prices, but they shouldn't be able to change any data.
+We have portfolio managers working in Europe and the US.
+They should only be  able to see their own portfolios.
+
+Research ::
+They should have access to some data.
+
+Risk ::
+They need to be able to see all the data.
+
+We have a mix of users needing read and write access to LUSID.
+Let's see how we can configure that in LUSID.
+
+[NOTE]
+====
+We would also have at least one LUSID Administrator who has access to all everything.
+This user can be assigned the in-built `lusid-administrator` role that has the `full-access-to-all-resources` policy collection.
+====
+
+== Pre Requisites
+
+This guide assumes that LUSID has been configured with the following:
+
+* A `Developer-Entitlements-Tutorial` scope.
+* Portfolios with the codes `uk-entities-trading` and `us-entities-trading`.
+* A portfolio group with the code `global-entities-trading` that have `uk-entities-trading` and `us-entities-trading` as child portfolios.
+
+== LUSID's entitlement model
+
+LUSID's entitlement model consists of users, roles, policies, and policy collections.
+The diagram below explains how these are related to each other:
+
+.Entitlements in LUSID
+image::entitlements.svg[width=500]
+
+
+== Roles and Policies
+
+Let's now define the roles and policies that we'll need to create.
+For each role we'll create two policies :
+
+* one that controls access to data.
+* one that controls access to API endpoints.
+
+Data based policies are defined for particular entity identifiers.
+API based policies only grant access to end points.
+
+
+.Composing policies
+****
+API based policies can easily be composed.
+
+For example, imagine that we have a role that needs access to end points `X`, `Y`, and `Z` and `policy-A` already grants access to end points `X` and `Y`.
+
+We don't need to create a new policy that has access to `X`, `Y`, and `Z`.
+Instead, we can create `policy-B` that has access to `Z` and then grant the role policies `policy-A` and `policy-B` to achieve the desired end point access.
+****
+
+=== Policies
+
+This breaks down into the following policies:
+
+.Data policies
+[opts="header", cols="20,40"]
+|===
+| Policy | Description
+| data-uk-portfolio-manager a| * Read access to all quotes
+* Read access to portfolio with code `uk-equities-trading`
+| data-us-portfolio-manager a| * Read access to all quotes
+* Read access to portfolio with code `us-equities-trading`
+| data-global-portfolio-manager a|
+* Read access to all quotes
+* Read access to portfolios with codes `us-equities-trading` or `uk-equities-trading`
+* Read access to portfolio group with code `global-equities-trading`
+| data-data-operations a| * Read/Write access to all entities
+|===
+
+[NOTE]
+====
+All data policies have access to the `Developer-Entitlements-Tutorial` scope.
+====
+
+.API policies
+[opts="header", cols="20,40"]
+|===
+| Policy | Access to features (API end points)
+| api-portfolio-managers | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
+| api-global-portfolio-managers | SearchPortfolioGroups, ListPortfolioGroups
+| api-data-operations |
+|===
+
+=== Roles
+
+We can assign those policies to roles as follows:
+
+.Roles to Policies
+[opts="header", cols="20,40"]
+|===
+| Role | Policies
+| us-portfolio-manager a| * data-us-portfolio-manager
+* api-portfolio-managers
+| uk-portfolio-manager a| * data-uk-portfolio-manager
+* api-portfolio-managers
+| global-portfolio-manager a| * data-global-portfolio-manager
+* api-portfolio-managers
+| data-operations a| * data-data-operations
+* api-data-operations
+|===
+
+
+
+* Data Operations
+* US Portfolio Manager
+    ** Data -
+* UK Portfolio Manager
+* Global Portfolio Manager
+* Risk
+* Research
+
+.data-uk-portfolio-manager
+[source, json]
+----
+include::example$entitlements/data-uk-portfolio-manager.json[]
+----
+
+.api-portfolio-managers
+[source, json]
+----
+include::example$entitlements/api-portfolio-managers.json[]
+----
+
+////
+[opts="header", cols="20,30,50"]
+|===
+| Role | Data Access | API Access
+| US Portfolio Manager | Read only access to the `us-equities-trading` portfolio | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
+| UK Portfolio Manager | Read only access to the `uk-equities-trading` portfolio | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
+| Global Portfolio Manager | Read only access to the `uk-equities-trading` and `us-equities-trading` portfolios and to the `global-equities-trading` portfolio group  | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails, GetPortfolioGroup, ListPortfolioGroups, SearchPortfolioGroups, GetTransactionsForPortfolioGroup, GetHoldingsForPortfolioGroup
+|===
+////

@@ -107,6 +107,11 @@ const files = [
     [`${python_tools_base}/test_ibor.py`,
         "modules/ROOT/examples/ibor/test_ibor.py"],
 
+    [`${python_tools_base}/data/test_entitlements/entitlements/data-uk-portfolio-manager.json`,
+        "modules/ROOT/examples/entitlements/data-uk-portfolio-manager.json"],
+    [`${python_tools_base}/data/test_entitlements/entitlements/api-portfolio-managers.json`,
+        "modules/ROOT/examples/entitlements/api-portfolio-managers.json"],
+
 ]
 files.forEach(value => {
     const [remote, local] = value

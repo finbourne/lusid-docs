@@ -1,4 +1,4 @@
-= View Holdings
+= How to view the holdings of a portfolio
 :description: In this guide we'll learn how to view holdings in LUSID.
 
 {description}
@@ -9,7 +9,7 @@ include::partial$ibor-code.adoc[]
 
 == Pre Requisites
 
-This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
+This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.
 This guide uses the transactions created in xref:how-to/load-transactions.adoc[].
 
 == Setup

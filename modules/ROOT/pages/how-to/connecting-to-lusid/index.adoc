@@ -1,29 +1,30 @@
-= Getting Started with LUSID
+= Connecting to LUSID
 
 // {docdatetime}
 
 In this series of guides you will go through the steps to get you connected to LUSID by FINBOURNE, a bi-temporal investment management data platform with portfolio accounting capabilities.
 
-You will need to follow the steps in the following guides to setup your LUSID application:
+== Pre Requisites
 
-xref:ROOT:how-to/get-started/create-account.adoc[] ::
-Create a LUSID domain and account.
+These guides assume that you have already created and logged into your LUSID account.
+For more details, see the xref:tutorials/getting-started.adoc[] guide.
 
-xref:ROOT:how-to/get-started/login-account.adoc[] ::
-Login to your LUSID account.
+== Connecting to LUSID
 
-xref:ROOT:how-to/get-started/create-application.adoc[] ::
+The guides below go through tasks for connecting to LUSID from the language SDKs:
+
+xref:ROOT:how-to/connecting-to-lusid/create-application.adoc[] ::
 Create a LUSID application to use with the language SDKs.
 
 Then follow the steps in one of the guides below, depending on which approach you prefer to take for storing LUSID credentials:
 
-xref:ROOT:how-to/get-started/configure-secrets-file.adoc[] ::
+xref:ROOT:how-to/connecting-to-lusid/configure-secrets-file.adoc[] ::
 Set up your credentials in a secrets file for use with the language SDKs.
 
-xref:ROOT:how-to/get-started/setup-environment-variables.adoc[] ::
+xref:ROOT:how-to/connecting-to-lusid/setup-environment-variables.adoc[] ::
 Set up your credentials in environment variables for use with the language SDKs.
 
 Finally, follow the guide below to connect to LUSID:
 
-xref:ROOT:how-to/get-started/create-api-factory.adoc[] ::
+xref:ROOT:how-to/connecting-to-lusid/create-api-factory.adoc[] ::
 Set up your credentials in environment variables for use with the language SDKs.

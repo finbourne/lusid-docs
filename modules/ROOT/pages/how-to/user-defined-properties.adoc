@@ -19,7 +19,7 @@ NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfig
 
 == Pre Requisites
 
-This guide assumes that you have followed the xref:how-to/get-started/index.adoc[] guides and have successfully connected to LUSID.
+This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.
 
 == Setup
 

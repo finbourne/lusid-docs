@@ -14,3 +14,5 @@ It can be one of the following types depending on the instrument or on the stage
 |  Cash Accrual |  A |  Future cash flow that has been classified as an accrual (e.g. accrued dividend from a corporate action)
 |  Forward FX | F |  Future cash flow from an FX forward transaction. These will be represented in pairs, one for each leg of the FX Forward.
 |===
+
+For an example of how holdings types are used in LUSID, see xref:how-to/view-holdings.adoc[].

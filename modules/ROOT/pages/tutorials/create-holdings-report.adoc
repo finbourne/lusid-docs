@@ -1,24 +1,24 @@
 = Create a holdings report
 :description: In this guide you'll learn how to use LUSID by FINBOURNE to create a holdings report.
 
-In this guide you'll learn how to use LUSID to create a holdings report. 
-We will create a long-only UK Equity Portfolio denominated in GBP. 
+In this guide you'll learn how to use LUSID to create a holdings report.
+We will create a long-only UK Equity Portfolio denominated in GBP.
 Our portfolio will invest in 3 stocks in the Food & Retail sector: Tesco, Sainsbury’s, and Morrisons.
 We will then create a holdings report based on our purchases of shares in these companies.
 
 [NOTE]
 ====
 This guide assumes that you have a good understanding of portfolio and asset managements.
-You should also have an understanding of LUSID basics, as covered in the xref:ROOT:how-to/get-started/index.adoc[] section.
+You should also have an understanding of LUSID basics, as covered in the xref:ROOT:how-to/connecting-to-lusid/index.adoc[] section.
 ====
 
 == Create Portfolio
 
-We load a portfolio in LUSID using the create portfolio endpoint. 
-To setup a portfolio in LUSID, a minimum of 4 data fields must be provided: scope, displayName, code and a baseCurrency. 
-You are then free to add as many additional properties as you require. 
+We load a portfolio in LUSID using the create portfolio endpoint.
+To setup a portfolio in LUSID, a minimum of 4 data fields must be provided: scope, displayName, code and a baseCurrency.
+You are then free to add as many additional properties as you require.
 These additional properties could be anything from regulatory data points (e.g. LEI for MiFID) or details about the underlying client.
 
-In our UK Equity example, we create a portfolio with code UK_EQUITY which has a baseCurrency of GBP. We then add additional properties such as “Portfolio Manager Name” and “Portfolio Manager ID”. 
+In our UK Equity example, we create a portfolio with code UK_EQUITY which has a baseCurrency of GBP. We then add additional properties such as “Portfolio Manager Name” and “Portfolio Manager ID”.
 
 == Create Instruments Master

@@ -1,16 +1,17 @@
-= Set up environment variables
+= How to set up environment variables
 :description: In this guide you will set up LUSID credentials in environment variables for use with the LUSID SDKs.
 :page-pagination: true
 
 In this guide you will set up LUSID credentials in environment variables for use with the LUSID API and xref:languages/index.adoc[LUSID SDKs].
-The LUSID SDKs all support credentials defined as environment variables or in a xref:how-to/get-started/configure-secrets-file.adoc[secrets file].
+The LUSID SDKs all support credentials defined as environment variables or in a xref:how-to/connecting-to-lusid/configure-secrets-file.adoc[secrets file].
 You can choose whichever approach better suits your circumstances.
 
-[NOTE]
-====
+== Pre Requisites
+
 You'll need to have created a LUSID application before following the instructions in this guide.
-If you haven't yet created an application, see xref:how-to/get-started/create-application.adoc[].
-====
+If you haven't yet created an application, see xref:how-to/connecting-to-lusid/create-application.adoc[].
+
+== Setting up environment variables
 
 include::partial$credentials/get-credentials.adoc[tag="how-to-download"]
 
@@ -25,8 +26,8 @@ You can then define the following environment variables:
 |  `FBN_CLIENT_ID` | `Client Id` |   `<3>` |  OpenID Connect Client ID
 |  `FBN_CLIENT_SECRET` | `Secret` |  `<4>` |  OpenID Connect Client Secret
 |  `FBN_APP_NAME` | N/A | `<applicationName>` |  An optional identifier for your application
-|  `FBN_USERNAME` | N/A | `<username>` |  Username of the account accessing the API (e.g. email used in xref:how-to/get-started/create-account.adoc[])
-|  `FBN_PASSWORD` | N/A | `<password>` |  Password of the account accessing the API (e.g. password used in xref:how-to/get-started/create-account.adoc[])
+|  `FBN_USERNAME` | N/A | `<username>` |  Username of the account accessing the API (e.g. email used in xref:how-to/connecting-to-lusid/create-account.adoc[])
+|  `FBN_PASSWORD` | N/A | `<password>` |  Password of the account accessing the API (e.g. password used in xref:how-to/connecting-to-lusid/create-account.adoc[])
 |===
 
 

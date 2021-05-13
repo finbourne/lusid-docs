@@ -1,44 +1,47 @@
 = How To Guides for LUSID by FINBOURNE
 :description: How-To Guides for LUSID by FINBOURNE, a bi-temporal investment management data platform with portfolio accounting capabilities.
 
-The guides in this section go through the steps to solve problems with LUSID.
+The guides in this section provide recipes for doing common tasks with LUSID.
 
-== Getting Started
+== Connecting to LUSID
 
-Start here if you haven't used LUSID before.
+* xref:ROOT:how-to/connecting-to-lusid/create-application.adoc[]
+* xref:ROOT:how-to/connecting-to-lusid/configure-secrets-file.adoc[]
+* xref:ROOT:how-to/connecting-to-lusid/setup-environment-variables.adoc[]
+* xref:ROOT:how-to/connecting-to-lusid/create-api-factory.adoc[]
 
-* xref:ROOT:how-to/get-started/create-account.adoc[] - Create your account
-* xref:ROOT:how-to/get-started/login-account.adoc[] - Login
-* xref:ROOT:how-to/get-started/create-application.adoc[] - Create a LUSID Application
-* xref:ROOT:how-to/get-started/configure-secrets-file.adoc[] - Setup a secrets file
-* xref:ROOT:how-to/get-started/create-api-factory.adoc[] - Create API factory to connect to LUSID
+== Instruments
 
-== IBOR
+* xref:ROOT:how-to/maintain-instruments-master.adoc[]
 
-These guides walk through common tasks when building an Investment Book of Record (IBOR) using LUSID.
+* xref:ROOT:how-to/instrument-identifiers.adoc[]
 
-* xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master] - Import all your assets/investments.
+== Portfolios
 
-* xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio] - Create a transaction portfolio.
-
-* xref:ROOT:how-to/load-transactions.adoc[Load Transactions] - Import transactions
-
-* xref:ROOT:how-to/set-holdings.adoc[Set Holdings] - Set the holdings of a portfolio
-
-* xref:ROOT:how-to/view-holdings.adoc[View Holdings] - Compute the holdings for a portfolio
-
-* xref:ROOT:how-to/load-quotes.adoc[Load Quotes] - Import market data.
-
-* xref:ROOT:how-to/load-quotes.adoc[Get Valuation] - Compute the valuation of the holdings in a portfolio using the built-in recipe.
+* xref:ROOT:how-to/load-transaction-portfolio.adoc[]
+* xref:ROOT:how-to/create-derived-portfolio.adoc[]
+* xref:ROOT:how-to/create-portfolio-group.adoc[]
 
 == Transactions
 
-These guides go through tasks related to transactions in LUSID.
+* xref:ROOT:how-to/load-transactions.adoc[]
+* xref:ROOT:how-to/get-default-transaction-types.adoc[]
+* xref:ROOT:how-to/configure-transaction-types.adoc[]
 
-* xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types] - Get a list of the configured transaction types.
+== Holdings
 
-* xref:ROOT:how-to/configure-transaction-types.adoc[Configure Transaction Types] - Configure new transaction types.
+* xref:ROOT:how-to/set-holdings.adoc[]
+* xref:ROOT:how-to/view-holdings.adoc[]
+
+== Quotes/Market Data
+
+* xref:ROOT:how-to/load-quotes.adoc[]
+
+== Valuation
+
+* xref:ROOT:how-to/get-valuation-default-recipe.adoc[]
+
 
 == Data Model
 
-* xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties] - Add your own properties
+* xref:ROOT:how-to/user-defined-properties.adoc[]

@@ -3,7 +3,8 @@
 
 A derived portfolio is a copy of an existing portfolio.
 A derived transaction portfolio inherits all holdings and transactions from its parent transaction portfolio.
-Changes made to the parent portfolio are automatically reflected in the derived portfolio, but the derived portfolio can also contain its own additional transactions, which take precedence over the parent portfolio's transactions.
+
+Changes made to the parent portfolio are automatically reflected in the derived portfolio, but the derived portfolio can also contain its own additional transactions that take precedence over the parent portfolio's transactions.
 
 [TIP]
 ====
@@ -19,7 +20,9 @@ This guide assumes that you have already created a transaction portfolio, as cov
 
 == Setup
 
+You'll need to import the following modules into your Python script:
 
+== Create derived portfolio
 
 [source, python]
 ----

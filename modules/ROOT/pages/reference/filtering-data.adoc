@@ -1,6 +1,6 @@
-= How to filter data in LUSID APIs
+= Filtering data in LUSID APIs
 
-In this guide we will learn about the filtering functionality that is available on many LUSID API end points.
+This guide gives a high level of the filtering functionality that is available on many LUSID API end points.
 For more details, see the https://www.lusid.com/docs/api[API documentation^].
 
 [NOTE]
@@ -40,43 +40,43 @@ returns a record if the value doesn't match the specified value |
 `displayname neq 'MyPortfolio'` +
 `isDerived neq True`
 
-| gt  | greater than +
+| `gt`  | greater than +
 returns a record if the value is greater than the specified value. |
 `created gt 2019-01-01` +
 `created gt 2019-01-15T10:00:00`
 `unit gt 10`
 
-| gte | greater than or equal to +
+| `gte` | greater than or equal to +
 returns a record, if the value is greater than or equal to the specified value. |
 `created gte 2019-01-15` +
 `created gte 2017-02-15T18:00:00` +
 `unit gte 10` +
 
-| lt | less than  +
+| `lt` | less than  +
 returns a record, if the value is less than the specified value. |
 `created lt 2017-02-01` +
 `created lt 2017-02-15T18:00:00`
 `unit lt 10`
-| startswith* | starts with +
+| `startswith*` | starts with +
 returns a record, if the value starts with the specified value. |
 `displayName startswith ‘Mypo’` +
-| in |	returns a record, if the value matches any of the specified values. |
+| `in` |	returns a record, if the value matches any of the specified values. |
 `displayName in 'MyPortfolio', 'MyOtherPortfolio'`
 
-| not in | 	returns a record if the value is not in any of the specified values	 |
+| `not in` | 	returns a record if the value is not in any of the specified values	 |
 `displayName not in 'My Portfolio', 'MyOtherPortfolio'`
 
-| exists |	returns a record if the value is set |
+| `exists` |	returns a record if the value is set |
 `properties.Portfolio/scope/code exists`
 
-| not exists |	returns a record if the value is not set |
+| `not exists` |	returns a record if the value is not set |
 `properties.Portfolio/scope/code not exists`
 
-| and / or |	logical operators that can be used to compound two or more queries |
+| `and` / `or` |	logical operators that can be used to compound two or more queries |
 `isDerived eq True and created lt 2017-03-15`
 `isDerived eq True or displayName eq 'MyPortfolio'`
 
-| not |	Filter string can be preceded with a not operator that will negate the results from the filter string |
+| `not` |	Filter string can be preceded with a not operator that will negate the results from the filter string |
 `not displayName in 'MyPortfolio', 'MyOtherPOrtfolio'`
 |===
 

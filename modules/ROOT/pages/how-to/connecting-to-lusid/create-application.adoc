@@ -1,16 +1,16 @@
-= Create LUSID application
+= How to create a LUSID application
 :description: This guide walks through how to create a LUSID application.
 :page-pagination: true
 
 In this guide you will create a LUSID application to use with the LUSID API and xref:languages/index.adoc[LUSID SDKs].
 
-[NOTE]
-====
-You'll need to have created and logged into a LUSID account before following the instructions in this guide.
-If you haven't yet created an account, see xref:how-to/get-started/create-account.adoc[].
-If you haven't yet logged in, see xref:how-to/get-started/login-account.adoc[].
-====
+== Pre Requisites
 
+You'll need to have created and logged into a LUSID account before following the instructions in this guide.
+If you haven't yet created an account, see xref:how-to/connecting-to-lusid/create-account.adoc[].
+If you haven't yet logged in, see xref:how-to/connecting-to-lusid/login-account.adoc[].
+
+== Creating a LUSID application
 
 From the home page, click on the person icon on the left hand menu and then click on the `Applications` link.
 

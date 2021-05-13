@@ -1,4 +1,4 @@
-= How to set holdings
+= How to set holdings of a portfolio
 
 :description: In this guide we'll set the holdings of a transaction portfolio.
 

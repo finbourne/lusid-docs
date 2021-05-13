@@ -4,36 +4,47 @@
 //     ** xref:ROOT:languages/java.adoc[Java]
 //     ** xref:ROOT:languages/javascript.adoc[JavaScript]
 
-.xref:ROOT:tutorials/index.adoc[Tutorials]
+[.documentation-type]
+* xref:ROOT:tutorials/index.adoc[*Tutorials*]
+
+* xref:ROOT:tutorials/getting-started.adoc[]
 * xref:ROOT:tutorials/set-up-basic-portfolio.adoc[]
 * xref:ROOT:tutorials/create-holdings-report.adoc[]
+* xref:ROOT:tutorials/entitlements.adoc[Intro to entitlements]
 
-.xref:ROOT:how-to/index.adoc[How-To Guides]
-* xref:ROOT:how-to/get-started/index.adoc[Getting Started]
-** xref:ROOT:how-to/get-started/create-account.adoc[Create account]
-** xref:ROOT:how-to/get-started/login-account.adoc[Login to account]
-** xref:ROOT:how-to/get-started/create-application.adoc[Create application]
-** xref:ROOT:how-to/get-started/configure-secrets-file.adoc[Configure secrets file]
-** xref:ROOT:how-to/get-started/setup-environment-variables.adoc[Set up environment variables]
-** xref:ROOT:how-to/get-started/create-api-factory.adoc[Create API Factory]
+[.documentation-type]
+* xref:ROOT:how-to/index.adoc[*How-To Guides*]
 
-
-* xref:ROOT:how-to/ibor/index.adoc[IBOR]
-** xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master]
-** xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
-** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
-** xref:ROOT:how-to/set-holdings.adoc[Set Holdings]
-** xref:ROOT:how-to/view-holdings.adoc[View Holdings]
-** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
-** xref:ROOT:how-to/get-valuation-default-recipe.adoc[Get Valuation]
-
-* Transactions
-** xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types]
-** xref:ROOT:how-to/configure-transaction-types.adoc[Set Transaction Types]
+* xref:ROOT:how-to/connecting-to-lusid/index.adoc[]
+    ** xref:ROOT:how-to/connecting-to-lusid/create-application.adoc[Create application]
+    ** xref:ROOT:how-to/connecting-to-lusid/configure-secrets-file.adoc[Configure secrets file]
+    ** xref:ROOT:how-to/connecting-to-lusid/setup-environment-variables.adoc[Set up environment variables]
+    ** xref:ROOT:how-to/connecting-to-lusid/create-api-factory.adoc[Create API Factory]
 
 
 * Instruments
+** xref:ROOT:how-to/maintain-instruments-master.adoc[Maintaining Instruments Master]
 ** xref:ROOT:how-to/instrument-identifiers.adoc[Get Instrument Identifiers]
+
+* Portfolios
+** xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
+** xref:ROOT:how-to/create-derived-portfolio.adoc[Derived Portfolio]
+** xref:ROOT:how-to/create-portfolio-group.adoc[Portfolio Group]
+
+* Transactions
+** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
+** xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types]
+** xref:ROOT:how-to/configure-transaction-types.adoc[Set Transaction Types]
+
+* Holdings
+** xref:ROOT:how-to/set-holdings.adoc[Set Holdings]
+** xref:ROOT:how-to/view-holdings.adoc[View Holdings]
+
+* Market Data
+    ** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
+
+* Valuation
+** xref:ROOT:how-to/get-valuation-default-recipe.adoc[Get Valuation]
 
 * Modelling
 ** xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties]
@@ -44,11 +55,16 @@
 ** xref:ROOT:how-to/access-control/create-role.adoc[Create role]
 ** xref:ROOT:how-to/access-control/create-policy.adoc[Create policy]
 
+[.documentation-type]
+* xref:ROOT:explanation/index.adoc[*Explanation*]
 
-.xref:ROOT:explanation/index.adoc[Explanation]
 * xref:ROOT:explanation/transaction-types.adoc[Transaction types]
 * xref:ROOT:explanation/recipes.adoc[]
 
-.xref:ROOT:reference/index.adoc[Reference]
+[.documentation-type]
+* xref:ROOT:reference/index.adoc[*Reference*]
+
 * xref:ROOT:reference/holding-types.adoc[Holding types]
 * xref:ROOT:reference/filtering-data.adoc[Filtering data]
+* xref:ROOT:reference/scope.adoc[]
+* xref:ROOT:reference/portfolio-group.adoc[]

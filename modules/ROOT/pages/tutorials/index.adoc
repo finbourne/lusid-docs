@@ -5,3 +5,6 @@ The guides in this section go through the steps to solve problems with LUSID.
 
 xref:ROOT:tutorials/create-holdings-report.adoc[Create Holdings Report] ::
 Create a holdings report of your investments.
+
+xref:ROOT:tutorials/entitlements.adoc[] ::
+Get your team setup with the right permissions to use LUSID.

@@ -7,10 +7,10 @@ In this guide you will learn how to login to your LUSID account.
 [NOTE]
 ====
 You'll need to have created a LUSID account before following the instructions in this guide.
-If you haven't yet created an account, see xref:how-to/get-started/create-account.adoc[].
+If you haven't yet created an account, see xref:how-to/connecting-to-lusid/create-account.adoc[].
 ====
 
-First, you'll need to navigate to your LUSID domain that you created in ref:get-started/create-account.adoc[].  
+First, you'll need to navigate to your LUSID domain that you created in ref:get-started/create-account.adoc[].
 e.g. `yourname.lusid.com`.
 You'll see the screen below:
 
@@ -23,10 +23,10 @@ If you aren't logged in you'll see the following screen, which has two `Sign-in`
 .Click on the `Sign-in` button
 image::application-part-1.png[]
 
-Clicking on one of them will take you to the following screen, where you should enter the credentials that you created in xref:how-to/get-started/create-account.adoc[].
+Clicking on one of them will take you to the following screen, where you should enter the credentials that you created in xref:how-to/connecting-to-lusid/create-account.adoc[].
 
 .Populate your credentials
 image::application-part-2.png[width=400]
 
 Once you've filled in your credentials, click on the `Sign In` button.
-You'll then be redirected to the LUSID home page. 
+You'll then be redirected to the LUSID home page.

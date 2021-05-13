@@ -1,7 +1,15 @@
-= Create an API Factory
+= How to create an API Factory
 :description: In this guide we'll create an API factory that can be used to connect to LUSID.
 
 {description}
+
+
+== Pre Requisites
+
+You'll need to have created a LUSID application before following the instructions in this guide.
+If you haven't yet created an application, see xref:how-to/connecting-to-lusid/create-application.adoc[].
+
+== Setup
 
 We'll be using the https://github.com/finbourne/lusid-sdk-python-preview[LUSID Python Preview SDK^], which you can install by running the following:
 
@@ -35,7 +43,7 @@ include::example$lusid_utils.py[tag="api-factory-env-variables"]
 [NOTE]
 ====
 You will need to create environment variables containing your LUSID credentials.
-For instructions on how to do this, see xref:how-to/get-started/setup-environment-variables.adoc[].
+For instructions on how to do this, see xref:how-to/connecting-to-lusid/setup-environment-variables.adoc[].
 ====
 
 
