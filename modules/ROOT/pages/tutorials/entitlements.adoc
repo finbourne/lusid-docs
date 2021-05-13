@@ -64,21 +64,20 @@ API based policies only grant access to end points.
 .Composing policies
 ****
 API based policies can easily be composed.
-
-For example, imagine that we have a role that needs access to end points `X`, `Y`, and `Z` and `policy-A` already grants access to end points `X` and `Y`.
+For example, imagine that we want to create a role `role-Z` with access to end points `X`, `Y`, and `Z` and we already have a policy `policy-A` that grants access to `X` and `Y`.
 
 We don't need to create a new policy that has access to `X`, `Y`, and `Z`.
-Instead, we can create `policy-B` that has access to `Z` and then grant the role policies `policy-A` and `policy-B` to achieve the desired end point access.
+Instead, we can create `policy-B` that has access to `Z` and then grant `role-Z` policies `policy-A` and `policy-B` to achieve the desired access.
 ****
 
 === Policies
 
-This breaks down into the following policies:
+We'll create the following policies:
 
 .Data policies
-[opts="header", cols="20,40"]
+[opts="header", cols="15,40"]
 |===
-| Policy | Description
+| Policy | Data Access
 | data-uk-portfolio-manager a| * Read access to all quotes
 * Read access to portfolio with code `uk-equities-trading`
 | data-us-portfolio-manager a| * Read access to all quotes
@@ -96,12 +95,12 @@ All data policies have access to the `Developer-Entitlements-Tutorial` scope.
 ====
 
 .API policies
-[opts="header", cols="20,40"]
+[opts="header", cols="15,40"]
 |===
-| Policy | Access to features (API end points)
+| Policy | Feature Access
 | api-portfolio-managers | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
 | api-global-portfolio-managers | SearchPortfolioGroups, ListPortfolioGroups
-| api-data-operations |
+| api-data-operations | GetValuation, CreateDerivedPortfolio, GetPortfolioChanges, ReconcileValuation, GetHoldingsWithOrders, SetHoldings, GetTransactions, GetHoldingsAdjustment, CancelTransactions, GetHoldings, GetDetails, BuildTransactions, CreatePortfolio, ReconcileInline, CancelAdjustHoldings, AdjustHoldings, SearchProperties, SearchPortfolioGroups, SearchPortfolios, ReconcileHoldingsPreview, ListScopes, ReconcileHoldings, DeleteInstrument, DeletePortfolioGroup, UpsertQuotes, ListQuotesForScope, ListQuotes, GetQuotes, DeleteQuotes, ListPortfoliosForScope, UpdatePortfolio, ListPortfolios, GetPortfolioProperties, GetPortfolio, UpsertGroupProperties, DeletePortfolio, UpdatePortfolioGroup, ListPortfolioGroups, GetPortfolioGroup, GetGroupProperties, DeleteGroupProperties, CreatePortfolioGroup, DeletePortfolioFromGroup, DeleteInstrumentProperties, BuildTransactionsForPortfolioGroup, GetPortfolioGroupAccessMetadataByKey, UpsertInstrumentsProperties, AddPortfolioToGroup, GetPortfolioGroupMetadata, UpsertInstruments, GetInstrumentIdentifierTypes, UpdateInstrumentIdentifier, ListInstruments, GetInstruments, GetInstrumentPropertyTimeSeries, GetInstrumentProperties, GetInstrument
 |===
 
 === Roles
@@ -118,6 +117,7 @@ We can assign those policies to roles as follows:
 * api-portfolio-managers
 | global-portfolio-manager a| * data-global-portfolio-manager
 * api-portfolio-managers
+* api-global-portfolio-managers
 | data-operations a| * data-data-operations
 * api-data-operations
 |===
