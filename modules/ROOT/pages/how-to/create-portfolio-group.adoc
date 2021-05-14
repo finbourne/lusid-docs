@@ -3,15 +3,50 @@
 
 {description}
 
-
 == Pre Requisites
 
-This guide assumes that you have already created transaction portfolios `us-entities-trading` and `uk-entities-trading`.
-For more details on creating portfolios, see the xref:how-to/load-transaction-portfolio.adoc[] guide.
+This guide assumes that you have created transaction portfolio with the codes `uk-portfolio-code` and `us-portfolio-code`.
+For more details, see the xref:how-to/load-transaction-portfolio.adoc[] guide.
 
 == Setup
 
 You'll need to import the following modules into your Python script:
 
-== Create portfolio group
+[source, python]
+----
+include::example$portfolios/test_portfolios.py[tag="imports-lusid"]
+include::example$portfolios/test_portfolios.py[tag="imports-dates"]
+----
 
+You can specify your own scope and portfolio codes by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$portfolios/test_portfolios.py[tag="scope"]
+include::example$portfolios/test_portfolios.py[tag="uk-portfolio-code"]
+include::example$portfolios/test_portfolios.py[tag="us-portfolio-code"]
+----
+
+== Initialise API
+
+Initialise the Derived Portfolio Groups API:
+
+[source, python, indent=0]
+----
+include::example$portfolios/test_portfolios.py[tag="portfolio-groups-api"]
+----
+
+== API calls
+
+You can create a portfolio group by running the following code:
+
+[source, python, indent=0]
+----
+include::example$portfolios/test_portfolios.py[tag="global-portfolio-code"]
+
+include::example$portfolios/test_portfolios.py[tag="create-portfolio-group"]
+----
+
+Now add portfolios to the portfolio group:
+
+include::example$portfolios/test_portfolios.py[tag="add-to-portfolio-group"]

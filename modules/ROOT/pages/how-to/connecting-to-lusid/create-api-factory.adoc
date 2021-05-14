@@ -63,8 +63,4 @@ instruments_api.list_instruments(limit=10)
 
 If you get back some results, you have successfully connected to LUSID!
 
-== Next Steps
-
-LUSID is commonly used as an Investment Book of Record (IBOR), so a good next step would be to go through the xref:how-to/ibor/index.adoc[] guide.
-
 

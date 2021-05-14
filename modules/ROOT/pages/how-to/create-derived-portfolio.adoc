@@ -15,30 +15,43 @@ Scenario transactions can then be booked in the derived portfolio, and the perfo
 
 == Pre Requisites
 
-This guide assumes that you have already created a transaction portfolio, as covered in the xref:how-to/load-transaction-portfolio.adoc[] guide.
-
+This guide assumes that you have created a transaction portfolio with the code `uk-portfolio-code`.
+For more details, see the xref:how-to/load-transaction-portfolio.adoc[] guide.
 
 == Setup
 
 You'll need to import the following modules into your Python script:
 
-== Create derived portfolio
-
 [source, python]
 ----
-derived_api = api_factory.build(lusid.api.DerivedTransactionPortfoliosApi)
+include::example$portfolios/test_portfolios.py[tag="imports-lusid"]
+include::example$portfolios/test_portfolios.py[tag="imports-dates"]
+----
 
-derived_portfolio_code = f"Developer-WhatIf-Tutorial-Derived-{now}"
+You can specify your own scope and portfolio code by updating the line below:
 
-derived_api.create_derived_portfolio(
-    scope=scope,
-    create_derived_transaction_portfolio_request=(lusid.models.CreateDerivedTransactionPortfolioRequest(
-        display_name=f"Derived Portfolio of {portfolio_code}",
-        code=derived_portfolio_code,
-        parent_portfolio_id=lusid.models.ResourceId(scope=scope, code=portfolio_code),
-        description="What if we didn't sell DOGE?",
-        created=created_date
-    ))
-)
+[source, python, indent=0]
+----
+include::example$portfolios/test_portfolios.py[tag="scope"]
+include::example$portfolios/test_portfolios.py[tag="uk-portfolio-code"]
+----
 
+== Initialise API
+
+Initialise the Derived Transaction Portfolios API:
+
+[source, python, indent=0]
+----
+include::example$portfolios/test_portfolios.py[tag="derived-api"]
+----
+
+== API call
+
+You can create a derived portfolio by running the following code:
+
+[source, python, indent=0]
+----
+include::example$portfolios/test_portfolios.py[tag="derived-portfolio-code"]
+
+include::example$portfolios/test_portfolios.py[tag="create-derived-portfolio"]
 ----

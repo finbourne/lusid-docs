@@ -112,6 +112,10 @@ const files = [
     [`${python_tools_base}/data/test_entitlements/entitlements/api-portfolio-managers.json`,
         "modules/ROOT/examples/entitlements/api-portfolio-managers.json"],
 
+
+    [`${python_tools_base}/test_portfolios.py`,
+        "modules/ROOT/examples/portfolios/test_portfolios.py"],
+
 ]
 files.forEach(value => {
     const [remote, local] = value
