@@ -8,6 +8,7 @@
     "start": "npm run build && npm run serve & npm-watch build",
     "serve": "node server.js",
     "build": "antora --stacktrace preview.yml",
+    "validate": "antora --stacktrace --generator @antora/xref-validator preview.yml",
     "downloadScripts": "node scripts/download-scripts.js"
   },
   "author": "Mark Needham <mark.needham@finbourne.com>",

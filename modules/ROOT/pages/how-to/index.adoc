@@ -18,9 +18,9 @@ The guides in this section provide recipes for doing common tasks with LUSID.
 
 == Portfolios
 
-* xref:ROOT:how-to/load-transaction-portfolio.adoc[]
-* xref:ROOT:how-to/create-derived-portfolio.adoc[]
-* xref:ROOT:how-to/create-portfolio-group.adoc[]
+* xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[]
+* xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[]
+* xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[]
 
 == Transactions
 
@@ -30,8 +30,8 @@ The guides in this section provide recipes for doing common tasks with LUSID.
 
 == Holdings
 
-* xref:ROOT:how-to/set-holdings.adoc[]
-* xref:ROOT:how-to/view-holdings.adoc[]
+* xref:ROOT:how-to/holdings/set-holdings.adoc[]
+* xref:ROOT:how-to/holdings/view-holdings.adoc[]
 
 == Quotes/Market Data
 

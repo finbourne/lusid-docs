@@ -6,17 +6,25 @@ A derived transaction portfolio inherits all holdings and transactions from its 
 
 Changes made to the parent portfolio are automatically reflected in the derived portfolio, but the derived portfolio can also contain its own additional transactions that take precedence over the parent portfolio's transactions.
 
+////
 [TIP]
 ====
 Derived portfolios in conjunction with scopes are a powerful construct.
 For example, to do pre-trade what-if analysis, a derived portfolio could be created in a new namespace linked to the underlying live (parent) portfolio in the ‘official’ scope.
 Scenario transactions can then be booked in the derived portfolio, and the performance of the two could be compared without affecting the live book.
 ====
+////
+
+[NOTE.code]
+====
+The code used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+It is in the {examples-repository-base}/test_portfolios.py[test_portfolios.py^] file.
+====
 
 == Pre Requisites
 
-This guide assumes that you have created a transaction portfolio with the code `uk-portfolio-code`.
-For more details, see the xref:how-to/load-transaction-portfolio.adoc[] guide.
+This guide assumes that you have created a transaction portfolio with the code `uk-equities-trading`.
+For more details, see the xref:how-to/portfolios/load-transaction-portfolio.adoc[] guide.
 
 == Setup
 

@@ -9,7 +9,7 @@ include::partial$ibor-code.adoc[]
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.
-This guide uses the portfolio created in xref:ROOT:how-to/load-transaction-portfolio.adoc[], and the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
+This guide uses the portfolio created in xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[], and the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
 
 == Setup
 

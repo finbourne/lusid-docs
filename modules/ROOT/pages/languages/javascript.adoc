@@ -1,4 +1,0 @@
-= JavaScript
-:description: This guide covers the JavaScript SDK for LUSID by FINBOURNE.
-
-Using LUSID with JavaScript...

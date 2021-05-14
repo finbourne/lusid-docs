@@ -10,7 +10,7 @@ include::partial$ibor-code.adoc[]
 
 == Pre Requisites
 
-This guide assumes that you have xref:how-to/load-transaction-portfolio.adoc[created a transaction portfolio] and imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
+This guide assumes that you have xref:how-to/portfolios/load-transaction-portfolio.adoc[created a transaction portfolio] and imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
 == Setup
 
@@ -29,6 +29,8 @@ You can specify your own scope and portfolio code by updating the line below:
 ----
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 ----
+
+== Initialise API
 
 Setting holdings is done using the Transaction Portfolios API.
 You can initialise this API end point by running the following code:
@@ -57,7 +59,7 @@ include::example$ibor/holdings.csv[]
 From this table, we can see that our portfolio holds 100 units of Amazon stock, 300 units of Apple, and 500 units of CoinBase.
 In this guide we aren't interested in the amount that it cost us to buy these instruments.
 
-== Set Holdings
+== Setting Holdings
 
 There are two ways to set the holdings on a portfolio:
 
@@ -67,12 +69,16 @@ Holdings in instruments that are not included in the supplied holdings will be r
 * AdjustHoldings: *augments a portfolio's current holdings* with the supplied holdings.
 Holdings in instruments that are not included in the supplied holdings are left untouched.
 
+=== Set Holdings
+
 To set the holdings on a transaction portfolio, use the `set_holdings` function, as shown below:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="set-holdings"]
 ----
+
+=== Adjust Holdings
 
 To adjust the holdings on a transaction portfolio, use the `adjust_holdings` function, as shown below:
 

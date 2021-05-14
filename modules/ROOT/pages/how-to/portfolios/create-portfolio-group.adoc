@@ -3,10 +3,17 @@
 
 {description}
 
+[NOTE.code]
+====
+The code used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
+It is in the {examples-repository-base}/test_portfolios.py[test_portfolios.py^] file.
+====
+
+
 == Pre Requisites
 
-This guide assumes that you have created transaction portfolio with the codes `uk-portfolio-code` and `us-portfolio-code`.
-For more details, see the xref:how-to/load-transaction-portfolio.adoc[] guide.
+This guide assumes that you have created transaction portfolio with the codes `uk-equities-trading` and `us-equities-trading`.
+For more details, see the xref:how-to/portfolios/load-transaction-portfolio.adoc[] guide.
 
 == Setup
 

@@ -2,7 +2,7 @@
 :description: This guide walks through how to create a LUSID application.
 :page-pagination: true
 
-In this guide you will create a LUSID application to use with the LUSID API and xref:languages/index.adoc[LUSID SDKs].
+In this guide you will create a LUSID application to use with the LUSID API and LUSID SDKs.
 
 == Pre Requisites
 

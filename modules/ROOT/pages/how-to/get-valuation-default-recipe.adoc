@@ -35,7 +35,7 @@ As well as these quotes and the associated instruments:
 include::example$ibor/quotes.csv[]
 |===
 
-* To set holdings in a portfolio, see xref:how-to/set-holdings.adoc[].
+* To set holdings in a portfolio, see xref:how-to/holdings/set-holdings.adoc[].
 * To create an instruments master, see xref:how-to/maintain-instruments-master.adoc[].
 * To import quotes, see xref:how-to/load-quotes.adoc[].
 

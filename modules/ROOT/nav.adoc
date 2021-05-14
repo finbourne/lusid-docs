@@ -27,9 +27,9 @@
 ** xref:ROOT:how-to/instrument-identifiers.adoc[Get Instrument Identifiers]
 
 * Portfolios
-** xref:ROOT:how-to/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
-** xref:ROOT:how-to/create-derived-portfolio.adoc[Derived Portfolio]
-** xref:ROOT:how-to/create-portfolio-group.adoc[Portfolio Group]
+** xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
+** xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[Derived Portfolio]
+** xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[Portfolio Group]
 
 * Transactions
 ** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
@@ -37,8 +37,8 @@
 ** xref:ROOT:how-to/configure-transaction-types.adoc[Set Transaction Types]
 
 * Holdings
-** xref:ROOT:how-to/set-holdings.adoc[Set Holdings]
-** xref:ROOT:how-to/view-holdings.adoc[View Holdings]
+** xref:ROOT:how-to/holdings/set-holdings.adoc[Set Holdings]
+** xref:ROOT:how-to/holdings/view-holdings.adoc[View Holdings]
 
 * Market Data
     ** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
