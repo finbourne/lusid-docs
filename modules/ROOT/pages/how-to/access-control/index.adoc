@@ -1,6 +1,21 @@
 = Access Control
+:description: In these guides you'll learn how to control access to LUSID using entitlements.
 
+{description}
 
-LUSID's user management is based on the following model:
+== Overview
 
-`(User)-[:HAS_A]->(Role)-[:BASED_ON]->(Policy)`
+include::partial$entitlement-model.adoc[]
+
+== Setting up entitlements
+
+The following guides show how to set up entitlements:
+
+* xref:how-to/access-control/create-user.adoc[]
+* xref:how-to/access-control/create-role.adoc[]
+* xref:how-to/access-control/create-policy.adoc[]
+
+[TIP]
+====
+For an end-to-end example showing how to set up entitlements for a hypothetical hedge fund, see xref:tutorials/entitlements.adoc[].
+====

@@ -3,6 +3,15 @@
 In this guide we will set up entitlements for a hypothetical investment management company.
 Entitlements control the level of access that users have been using LUSID, and we want to make sure that our users only have access to the functionality and data that they actually need.
 
+== Pre Requisites
+
+This guide assumes that LUSID has been configured with the following:
+
+* A `Developer-Entitlements-Tutorial` scope.
+* Portfolios with the codes `uk-entities-trading` and `us-entities-trading`.
+* A portfolio group with the code `global-entities-trading` that have `uk-entities-trading` and `us-entities-trading` as child portfolios.
+
+It also assumes that you have administrator access to the LUSID web application.
 
 == A.N. Other Hedge Fund
 
@@ -17,9 +26,6 @@ They trade portfolios and therefore need to see their portfolio's holdings and a
 We have portfolio managers working in Europe and the US.
 They should only be  able to see their own portfolios.
 
-Research ::
-They should have access to some data.
-
 Risk ::
 They need to be able to see all the data.
 
@@ -32,24 +38,11 @@ We would also have at least one LUSID Administrator who has access to all everyt
 This user can be assigned the in-built `lusid-administrator` role that has the `full-access-to-all-resources` policy collection.
 ====
 
-== Pre Requisites
-
-This guide assumes that LUSID has been configured with the following:
-
-* A `Developer-Entitlements-Tutorial` scope.
-* Portfolios with the codes `uk-entities-trading` and `us-entities-trading`.
-* A portfolio group with the code `global-entities-trading` that have `uk-entities-trading` and `us-entities-trading` as child portfolios.
-
 == LUSID's entitlement model
 
-LUSID's entitlement model consists of users, roles, policies, and policy collections.
-The diagram below explains how these are related to each other:
+include::partial$entitlement-model.adoc[]
 
-.Entitlements in LUSID
-image::entitlements.svg[width=500]
-
-
-== Roles and Policies
+== Our roles and policies
 
 Let's now define the roles and policies that we'll need to create.
 For each role we'll create two policies :
@@ -72,7 +65,7 @@ Instead, we can create `policy-B` that has access to `Z` and then grant `role-Z`
 
 === Policies
 
-We'll create the following policies:
+We'll create the following data policies:
 
 .Data policies
 [opts="header", cols="15,40"]
@@ -86,7 +79,8 @@ We'll create the following policies:
 * Read access to all quotes
 * Read access to portfolios with codes `us-equities-trading` or `uk-equities-trading`
 * Read access to portfolio group with code `global-equities-trading`
-| data-data-operations a| * Read/Write access to all entities
+| data-data-operations a| * Read/write access to all entities
+| data-read-all a| * Read access to all entities
 |===
 
 [NOTE]
@@ -94,21 +88,30 @@ We'll create the following policies:
 All data policies have access to the `Developer-Entitlements-Tutorial` scope.
 ====
 
+And these API policies:
+
 .API policies
 [opts="header", cols="15,40"]
 |===
 | Policy | Feature Access
 | api-portfolio-managers | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
 | api-global-portfolio-managers | SearchPortfolioGroups, ListPortfolioGroups
-| api-data-operations | GetValuation, CreateDerivedPortfolio, GetPortfolioChanges, ReconcileValuation, GetHoldingsWithOrders, SetHoldings, GetTransactions, GetHoldingsAdjustment, CancelTransactions, GetHoldings, GetDetails, BuildTransactions, CreatePortfolio, ReconcileInline, CancelAdjustHoldings, AdjustHoldings, SearchProperties, SearchPortfolioGroups, SearchPortfolios, ReconcileHoldingsPreview, ListScopes, ReconcileHoldings, DeleteInstrument, DeletePortfolioGroup, UpsertQuotes, ListQuotesForScope, ListQuotes, GetQuotes, DeleteQuotes, ListPortfoliosForScope, UpdatePortfolio, ListPortfolios, GetPortfolioProperties, GetPortfolio, UpsertGroupProperties, DeletePortfolio, UpdatePortfolioGroup, ListPortfolioGroups, GetPortfolioGroup, GetGroupProperties, DeleteGroupProperties, CreatePortfolioGroup, DeletePortfolioFromGroup, DeleteInstrumentProperties, BuildTransactionsForPortfolioGroup, GetPortfolioGroupAccessMetadataByKey, UpsertInstrumentsProperties, AddPortfolioToGroup, GetPortfolioGroupMetadata, UpsertInstruments, GetInstrumentIdentifierTypes, UpdateInstrumentIdentifier, ListInstruments, GetInstruments, GetInstrumentPropertyTimeSeries, GetInstrumentProperties, GetInstrument
+| api-read-all |  GetValuation,  GetPortfolioChanges,  ReconcileValuation,  GetHoldingsWithOrders,  GetTransactions,  GetHoldingsAdjustment,  GetHoldings,  GetDetails,  ReconcileInline,  SearchProperties,  SearchPortfolioGroups,  SearchPortfolios,  ReconcileHoldingsPreview,  ListScopes,  ReconcileHoldings,  ListQuotesForScope,  ListQuotes,  GetQuotes,  ListPortfoliosForScope,  ListPortfolios,  GetPortfolioProperties,  GetPortfolio,  ListPortfolioGroups,  GetPortfolioGroup,  GetGroupProperties,  BuildTransactionsForPortfolioGroup,  GetPortfolioGroupAccessMetadataByKey,  GetPortfolioGroupMetadata,  GetInstrumentIdentifierTypes,  ListInstruments,  GetInstruments,  GetInstrumentPropertyTimeSeries,  GetInstrumentProperties,  GetInstrument
+| api-write-all | CreateDerivedPortfolio,  SetHoldings,  CancelTransactions,  CreatePortfolio,  CancelAdjustHoldings,  AdjustHoldings,  DeleteInstrument,  DeletePortfolioGroup,  UpsertQuotes,  DeleteQuotes,  UpdatePortfolio,  UpsertGroupProperties,  DeletePortfolio,  UpdatePortfolioGroup,  DeleteGroupProperties,  DeletePortfolioFromGroup,  DeleteInstrumentProperties,  UpsertInstrumentsProperties,  UpsertInstruments,  UpdateInstrumentIdentifier
 |===
+
+[TIP]
+====
+The values under the `Feature Access` column refer to the `operationId` of API end points.
+For a full list of features, see xref:how-to/access-control/policy-features.adoc[].
+====
 
 === Roles
 
-We can assign those policies to roles as follows:
+We will then assign those policies to roles as follows:
 
 .Roles to Policies
-[opts="header", cols="20,40"]
+[opts="header", cols="15,40"]
 |===
 | Role | Policies
 | us-portfolio-manager a| * data-us-portfolio-manager
@@ -119,18 +122,246 @@ We can assign those policies to roles as follows:
 * api-portfolio-managers
 * api-global-portfolio-managers
 | data-operations a| * data-data-operations
-* api-data-operations
+* api-read-all
+* api-write-all
+| risk a| * data-read-all
+* api-read-all
 |===
 
+== Creating policies
+
+We can create policies from the policies screen, which you can access by clicking on the person icon and then `Policies` link:
+
+.Navigate to policies screen
+image::policy-part-0.png[width=200]
+
+You can then create a policy by clicking on the `Create policy` button in the top right-hand corner.
+You will see the following dialog:
+
+.Creating a policy
+image::policy-part-1.png[]
+
+As we can see from the screenshot, there are two ways to create a policy:
+
+* Policy Wizard - start with this if you've not created a policy before
+* JSON Editor - use this if you're cloning an existing policy and want to make small changes
+
+We're going to create the `data-us-portfolio-manager` and `api-portfolio-managers` policies.
+
+=== Creating a data policy
+
+Let's start with the `data-us-portfolio-manager`.
+To recap, this policy should have read access to all quotes and read access to the portfolio with the code `us-equities-trading`.
+
+We'll create this policy using the policy wizard, so let's first select that option.
+You'll then need to choose an application and control scope, as shown in the screenshot below:
+
+.Application access
+image::policy-part-2.png[]
+
+Select the _LUSID_ application and _DATA_ control scope.
+Once you've done that, click on the _NEXT_ link.
+You'll then see the policy details screen:
+
+.Policy details
+image::policy-part-3.png[]
+
+Choose a code, activation date, and optional description, before clicking the _NEXT_ button.
+You'll then see the scope screen:
+
+.Add scope
+image::policy-part-4.png[]
+
+Click on the _Add scope_ link and search for the `Developer-Entitlements-Tutorial` scope.
+Once you've found it, select it, and then click on the _ADD_ button.
+You should now see the following screen:
+
+.Scope
+image::policy-part-5.png[]
+
+Click on the _NEXT_ button.
+You'll then see the control access to resources screen:
+
+.Control access to resources
+image::policy-part-6.png[]
+
+Select _Selected resource types_.
+This will then open up a list of resource types, as shown below:
+
+.Control access to resources
+image::policy-part-7.png[]
+
+Tick the _Portfolio_ and _Quote_ resource types and select all the read based actions.
+Next you'll need to specify the portfolio identifiers to which this portfolio controls access:
+
+.Policy identifiers
+image::policy-part-8.png[]
+
+Now do the same thing for quote identifiers:
+
+.Quote identifiers
+image::policy-part-9.png[]
+
+We'll give this policy access to all quotes.
+After you've done this you'll see a summary of the policy, as shown below:
+
+.Policy summary
+image::policy-part-10.png[]
+
+You can create the policy by clicking on the _Create_ button.
+The new policy will be added to the list of policies:
+
+.All policies
+image::policy-part-11.png[]
+
+To view the policy, you can click on the eye icon next to the portfolio.
+We'll then choose to see the JSON representation of our policy:
+
+.View policy
+image::policy-part-13.png[]
+
+.Exercise for the reader
+[NOTE.exercise]
+====
+See if you can create the other data policies, `data-uk-portfolio-manager`, `data-global-portfolio-manager`, `data-write-all`, and
+`data-read-all`.
+====
+
+=== Creating an API policy
+
+Now we're going to create the `api-portfolio-managers` policy.
+This time we'll select the _LUSID_ application and _FEATURES_ control scope.
+
+.Application access
+image::policy-part-14.png[]
+
+Once you’ve done that, click on the _NEXT_ link. You’ll then see the policy details screen:
+
+.Policy details
+image::policy-part-15.png[]
+
+Fill in the code and activation date and then click on the _NEXT_ link.
+You'll then see the features screen:
+
+.Features
+image::policy-part-16.png[]
+
+Click on the _Add feature_ link and then search for the features (API endpoints) to which the policy has access.
+You can add a feature by clicking on the _>_ button or by dragging the feature to the right-hand pane.
+
+[TIP]
+====
+If you add a feature by mistake you can remove it by clicking on the _<_ button or by dragging the feature to the left hand pane.
+====
+
+Once you've added all the features, click on the _ADD_ button and then click on the _NEXT_ button.
+You'll then see a summary of the policy:
+
+.Features
+image::policy-part-17.png[]
+
+You can create the policy by clicking on the _CREATE_ button.
+
+.Exercise for the reader
+[NOTE.exercise]
+====
+See if you can create the other API policies, `api-global-portfolio-managers`, `api-read-all`, and +
+`api-write-all`.
+====
+
+== Creating roles
+
+Now we're going to create roles that use these policies.
+You can access the Roles screen by clicking on the _Roles_ link.
+
+.Navigate to roles screen
+image::ROOT:role-part-0a.png[]
+
+Once you've done that, click on the `Create role` button in the top right-hand corner:
+
+.Create `us-portfolios-manager` role
+image::ROOT:role-part-0.png[]
+
+A `Create Role` dialog will pop up.
+Enter a code of `us-portfolio-manager` and set the activation date to `1/1/2021`.
+To assign policies to this role, click on the _Choose_ drop down in the _Policies_ section on the left-hand side:
+
+.Add policy
+image::ROOT:role-part-1.png[]
+
+You'll then see the Select policy dialog, which lets you search for policies by code.
+The policies that we want to assign to this role are `api-portfolio-managers` and `data-us-portfolio-manager`.
+Search by those codes, select them, and then submit the form.
+
+If everything has worked, you should now see the following screen:
+
+.Policies added
+image::ROOT:role-part-2.png[]
+
+Click on the _Create_ button to create the `us-portfolio-manager` role with `api-portfolio-managers` and `data-us-portfolio-manager` policies.
+You should see a confirmation dialog and then the new portfolio will appear on the bottom of the list of roles:
+
+.Role successfully added
+image::ROOT:role-part-3.png[]
+
+.Exercise for the reader
+[NOTE.exercise]
+====
+See if you can create the other roles: `uk-portfolio-manager`, `global-portfolio-manager`, `data-operations`, and `risk`.
+====
+
+== Creating users
+
+Finally, let's create users.
+You can access the Users screen by clicking on the _Users_ link.
+
+.Navigate to users screen
+image::ROOT:user-part-0.png[]
+
+To create a new user, click on the _Create user_ link in the top right-hand corner, and then choose an _Account type_:
+
+.Select account type
+image::ROOT:user-part-1.png[]
+
+=== Create personal account
+
+Personal accounts are for human users.
+You'll need to provide an email address, first name, and surname for the user:
+
+.Create personal account
+image::ROOT:user-part-2.png[]
+
+Click on the _Choose_ link to find roles to assign to this user and then click on the _Submit_ and _Save_ links to create the user.
+After you've done this an email will be sent to the email address provided.
+
+This user will then appear on the list of users:
+
+.List of users
+image::ROOT:user-part-3.png[]
+
+The user will start in the _PROVISIONED_ status.
+They will need to follow the instructions in the email to activate the account and can access LUSID *using the provided email address*.
+
+=== Create service account
+
+Service accounts are for programmatic access to LUSID.
+You'll need to provide an email address and login:
+
+.Create service account
+image::ROOT:user-part-4.png[]
+
+Once you create a service account, an activation email will be sent to the email address provided.
+You'll need to follow the instructions in the email to activate the account and can then access LUSID *using the provided login*.
 
 
-* Data Operations
-* US Portfolio Manager
-    ** Data -
-* UK Portfolio Manager
-* Global Portfolio Manager
-* Risk
-* Research
+////
+[opts="header", cols="20,30,50"]
+|===
+| Role | Data Access | API Access
+| US Portfolio Manager | Read only access to the `us-equities-trading` portfolio | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
+| UK Portfolio Manager | Read only access to the `uk-equities-trading` portfolio | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
+| Global Portfolio Manager | Read only access to the `uk-equities-trading` and `us-equities-trading` portfolios and to the `global-equities-trading` portfolio group  | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails, GetPortfolioGroup, ListPortfolioGroups, SearchPortfolioGroups, GetTransactionsForPortfolioGroup, GetHoldingsForPortfolioGroup
+|===
 
 .data-uk-portfolio-manager
 [source, json]
@@ -144,12 +375,4 @@ include::example$entitlements/data-uk-portfolio-manager.json[]
 include::example$entitlements/api-portfolio-managers.json[]
 ----
 
-////
-[opts="header", cols="20,30,50"]
-|===
-| Role | Data Access | API Access
-| US Portfolio Manager | Read only access to the `us-equities-trading` portfolio | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
-| UK Portfolio Manager | Read only access to the `uk-equities-trading` portfolio | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
-| Global Portfolio Manager | Read only access to the `uk-equities-trading` and `us-equities-trading` portfolios and to the `global-equities-trading` portfolio group  | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails, GetPortfolioGroup, ListPortfolioGroups, SearchPortfolioGroups, GetTransactionsForPortfolioGroup, GetHoldingsForPortfolioGroup
-|===
 ////

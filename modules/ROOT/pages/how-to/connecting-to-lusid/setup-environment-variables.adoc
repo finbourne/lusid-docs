@@ -26,8 +26,8 @@ You can then define the following environment variables:
 |  `FBN_CLIENT_ID` | `Client Id` |   `<3>` |  OpenID Connect Client ID
 |  `FBN_CLIENT_SECRET` | `Secret` |  `<4>` |  OpenID Connect Client Secret
 |  `FBN_APP_NAME` | N/A | `<applicationName>` |  An optional identifier for your application
-|  `FBN_USERNAME` | N/A | `<username>` |  Username of the account accessing the API (e.g. email used in xref:how-to/connecting-to-lusid/create-account.adoc[])
-|  `FBN_PASSWORD` | N/A | `<password>` |  Password of the account accessing the API (e.g. password used in xref:how-to/connecting-to-lusid/create-account.adoc[])
+|  `FBN_USERNAME` | N/A | `<username>` |  Username of the account accessing the API (e.g. email used in xref:tutorials/getting-started.adoc[])
+|  `FBN_PASSWORD` | N/A | `<password>` |  Password of the account accessing the API (e.g. password used in xref:tutorials/getting-started.adoc[])
 |===
 
 

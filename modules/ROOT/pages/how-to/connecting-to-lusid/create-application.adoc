@@ -6,9 +6,7 @@ In this guide you will create a LUSID application to use with the LUSID API and 
 
 == Pre Requisites
 
-You'll need to have created and logged into a LUSID account before following the instructions in this guide.
-If you haven't yet created an account, see xref:how-to/connecting-to-lusid/create-account.adoc[].
-If you haven't yet logged in, see xref:how-to/connecting-to-lusid/login-account.adoc[].
+This guide assumes that you have followed created and logged into a LUSID account, as covered in the  xref:tutorials/getting-started.adoc[] guide.
 
 == Creating a LUSID application
 

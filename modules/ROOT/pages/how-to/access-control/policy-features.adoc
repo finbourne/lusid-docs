@@ -1,0 +1,130 @@
+= How to get a list of policy features
+:attribute-missing: drop
+
+When creating API policies we need to provide access to features (end points).
+The names of these features refer to the operation id of the end point.
+In this guide we'll learn how to
+
+== Pre Requisites
+
+This guide assumes that you have followed created a LUSID account, as covered in the  xref:tutorials/getting-started.adoc[] guide.
+
+You'll also need to download the https://stedolan.github.io/jq/[jq command line tool^].
+
+== Download Swagger file
+
+First you'll need to download the Swagger file for your domain.
+You can find this at `https://<yourname>.lusid.com/api/swagger/v0/swagger.json`
+
+[NOTE]
+====
+The next part of this guide assumes that this file is downloaded to a local file named `swagger.json`.
+====
+
+== Query Swagger file
+
+Now let's query that Swagger file using the jq command line tool.
+You can get a list of operation ids and descriptions for every end point by running the following command:
+
+[source, bash]
+----
+cat swagger.json | \
+jq '.paths | keys[] as $k | {
+  endPoint: $k,
+  feature: (.[$k] | .[]  | .operationId),
+  description: (.[$k] | .[] | .summary)
+}'
+----
+
+This returns a lot of results.
+If you want to return just the first 10 end points, you can run the following command:
+
+[source, bash]
+----
+cat swagger.json | \
+jq 'limit(10; .paths | keys[] as $k | {
+  endPoint: $k,
+  feature: (.[$k] | .[]  | .operationId),
+  description: (.[$k] | .[] | .summary)
+})'
+----
+
+If we run that, we'll see the following output:
+
+.Features / API points
+[source, json]
+----
+{
+  "endPoint": "/api/aggregation/$valuation",
+  "feature": "GetValuation",
+  "description": "[EXPERIMENTAL] Perform valuation for a list of portfolios and/or portfolio groups"
+}
+{
+  "endPoint": "/api/aggregation/$valuationinlined",
+  "feature": "GetValuationOfWeightedInstruments",
+  "description": "[EXPERIMENTAL] Perform valuation for an inlined portfolio"
+}
+{
+  "endPoint": "/api/aggregation/{scope}/{code}/$generateconfigurationrecipe",
+  "feature": "GenerateConfigurationRecipe",
+  "description": "[EXPERIMENTAL] Generates a recipe sufficient to perform valuations for the given portfolio."
+}
+{
+  "endPoint": "/api/allocations",
+  "feature": "ListAllocations",
+  "description": "[EXPERIMENTAL] List Allocations"
+}
+{
+  "endPoint": "/api/allocations",
+  "feature": "ListAllocations",
+  "description": "[EXPERIMENTAL] Upsert Allocations"
+}
+{
+  "endPoint": "/api/allocations",
+  "feature": "UpsertAllocations",
+  "description": "[EXPERIMENTAL] List Allocations"
+}
+{
+  "endPoint": "/api/allocations",
+  "feature": "UpsertAllocations",
+  "description": "[EXPERIMENTAL] Upsert Allocations"
+}
+{
+  "endPoint": "/api/allocations/{scope}/{code}",
+  "feature": "GetAllocation",
+  "description": "[EXPERIMENTAL] Get Allocation"
+}
+{
+  "endPoint": "/api/allocations/{scope}/{code}",
+  "feature": "GetAllocation",
+  "description": "[EXPERIMENTAL] Delete allocation"
+}
+{
+  "endPoint": "/api/allocations/{scope}/{code}",
+  "feature": "DeleteAllocation",
+  "description": "[EXPERIMENTAL] Get Allocation"
+}
+----
+
+////
+
+[source, bash]
+----
+cat swagger.json | \
+jq -r '.paths | keys[] as $k | {
+  endPoint: $k,
+  feature: (.[$k] | .[]  | .operationId),
+  description: (.[$k] | .[] | .summary)
+} | [.endPoint,.feature,.description] | @csv' \
+> swagger.csv
+----
+
+== All endpoints
+
+[format="csv", options="header", cols="20,20,60", role="word-wrap"]
+|===
+End point, Feature Name, Description
+include::example$entitlements/swagger.csv[]
+|===
+
+////

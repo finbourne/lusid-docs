@@ -1,0 +1,12 @@
+LUSID's user management or entitlement model consists of users, roles, policies, and policy collections.
+The diagram below explains how these are related to each other:
+
+.Entitlements in LUSID
+image::entitlements.svg[width=500]
+
+* *Policies* control access to data and features (API endpoints)
+* *Policy collections* are collections of policies or other policy collections
+* *Roles* define access rights that can be assigned to users and consist of policies and policy collections
+* *Users* are how you interact with LUSID. Users are assigned roles that control their access. The following account types are supported:
+** Personal accounts for human users
+** Service accounts for programmatic access

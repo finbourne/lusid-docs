@@ -1,4 +1,4 @@
-= Create Policy
+= How to create a policy
 
 
 Here's how you create a policy.

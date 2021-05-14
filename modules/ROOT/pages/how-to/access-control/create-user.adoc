@@ -1,7 +1,8 @@
-= Create User
+= How to create a user
 
-In this guide we'll learn how to create a user that has access to the LUSID API.
+:description: In this guide we'll learn how to create a user that has access to the LUSID API.
 
+{description}
 
 should we create a user or service account?
 The state starts as 'provisioned'. How do you make it active?
