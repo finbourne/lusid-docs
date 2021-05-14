@@ -29,10 +29,21 @@ You can get a list of operation ids and descriptions for every end point by runn
 [source, bash]
 ----
 cat swagger.json | \
-jq '.paths | keys[] as $k | {
+jq -r '.paths | keys[] as $k |
+{
   endPoint: $k,
-  feature: (.[$k] | .[]  | .operationId),
-  description: (.[$k] | .[] | .summary)
+  feature: (.[$k] |
+    if .get? then .get
+    elif .put? then .put
+    elif .post? then .post
+    elif .delete? then .delete
+    else empty end | .operationId),
+  description: (.[$k] |
+    if .get? then .get
+    elif .put? then .put
+    elif .post? then .post
+    elif .delete? then .delete
+    else empty end | .summary),
 }'
 ----
 
@@ -42,11 +53,23 @@ If you want to return just the first 10 end points, you can run the following co
 [source, bash]
 ----
 cat swagger.json | \
-jq 'limit(10; .paths | keys[] as $k | {
+jq -r '.paths | keys[] as $k |
+{
   endPoint: $k,
-  feature: (.[$k] | .[]  | .operationId),
-  description: (.[$k] | .[] | .summary)
-})'
+  feature: (.[$k] |
+    if .get? then .get
+    elif .put? then .put
+    elif .post? then .post
+    elif .delete? then .delete
+    else empty end | .operationId),
+  description: (.[$k] |
+    if .get? then .get
+    elif .put? then .put
+    elif .post? then .post
+    elif .delete? then .delete
+    else empty end | .summary),
+} ' |
+head -n 40
 ----
 
 If we run that, we'll see the following output:
@@ -75,56 +98,58 @@ If we run that, we'll see the following output:
   "description": "[EXPERIMENTAL] List Allocations"
 }
 {
-  "endPoint": "/api/allocations",
-  "feature": "ListAllocations",
-  "description": "[EXPERIMENTAL] Upsert Allocations"
-}
-{
-  "endPoint": "/api/allocations",
-  "feature": "UpsertAllocations",
-  "description": "[EXPERIMENTAL] List Allocations"
-}
-{
-  "endPoint": "/api/allocations",
-  "feature": "UpsertAllocations",
-  "description": "[EXPERIMENTAL] Upsert Allocations"
-}
-{
   "endPoint": "/api/allocations/{scope}/{code}",
   "feature": "GetAllocation",
   "description": "[EXPERIMENTAL] Get Allocation"
 }
 {
-  "endPoint": "/api/allocations/{scope}/{code}",
-  "feature": "GetAllocation",
-  "description": "[EXPERIMENTAL] Delete allocation"
+  "endPoint": "/api/calendars/businessday/{scope}/{code}",
+  "feature": "IsBusinessDateTime",
+  "description": "[EXPERIMENTAL] Check whether a DateTime is a \"Business DateTime\""
 }
 {
-  "endPoint": "/api/allocations/{scope}/{code}",
-  "feature": "DeleteAllocation",
-  "description": "[EXPERIMENTAL] Get Allocation"
+  "endPoint": "/api/calendars/generic",
+  "feature": "ListCalendars",
+  "description": "[EXPERIMENTAL] List Calenders"
+}
+{
+  "endPoint": "/api/calendars/generic/{scope}",
+  "feature": "ListCalendarsInScope",
+  "description": "[EXPERIMENTAL] List all calenders in a specified scope"
 }
 ----
 
-////
+=== CSV file of all endpoints
+
+We could also generate a CSV file of all endpoints by running the following code:
 
 [source, bash]
 ----
 cat swagger.json | \
-jq -r '.paths | keys[] as $k | {
+jq -r '.paths | keys[] as $k |
+{
   endPoint: $k,
-  feature: (.[$k] | .[]  | .operationId),
-  description: (.[$k] | .[] | .summary)
-} | [.endPoint,.feature,.description] | @csv' \
+  feature: (.[$k] |
+    if .get? then .get
+    elif .put? then .put
+    elif .post? then .post
+    elif .delete? then .delete
+    else empty end | .operationId),
+  description: (.[$k] |
+    if .get? then .get
+    elif .put? then .put
+    elif .post? then .post
+    elif .delete? then .delete
+    else empty end | .summary),
+} |
+[.endPoint,.feature,.description] |
+@csv' \
 > swagger.csv
 ----
 
-== All endpoints
-
-[format="csv", options="header", cols="20,20,60", role="word-wrap"]
+.swagger.csv
+[format="csv", options="header", cols="40,30,30", role="word-wrap"]
 |===
 End point, Feature Name, Description
 include::example$entitlements/swagger.csv[]
 |===
-
-////
