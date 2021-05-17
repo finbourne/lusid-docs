@@ -30,7 +30,10 @@ You can specify your own scope and portfolio code by updating the line below:
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 ----
 
-And then initialise the Transactions Portfolio API:
+== Initialise API
+
+Viewing holdings is done using the Transaction Portfolios API.
+You can initialise this API end point by running the following code:
 
 [source, python, indent=0]
 ----

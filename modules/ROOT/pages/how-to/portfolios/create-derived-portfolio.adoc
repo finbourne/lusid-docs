@@ -28,7 +28,7 @@ For more details, see the xref:how-to/portfolios/load-transaction-portfolio.adoc
 
 == Setup
 
-You'll need to import the following modules into your Python script:
+Import the following modules into your Python script:
 
 [source, python]
 ----

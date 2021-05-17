@@ -1,4 +1,5 @@
 = An introduction to entitlements
+:description: In this guide we will learn how to set up entitlements/access control for a hypothetical investment management company.
 
 In this guide we will set up entitlements for a hypothetical investment management company.
 Entitlements control the level of access that users have been using LUSID, and we want to make sure that our users only have access to the functionality and data that they actually need.

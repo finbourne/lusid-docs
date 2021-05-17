@@ -11,7 +11,9 @@ include::partial$ibor-code.adoc[]
 
 This guide assumes that you have imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
-You will need to import the following modules into your Python script:
+== Setup
+
+Import the following modules into your Python script:
 
 [source, python, indent=0]
 ----
@@ -27,7 +29,9 @@ You can specify your own scope and portfolio code by updating the line below:
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 ----
 
-And then initialise the Quotes and Instruments APIs:
+== Initialise API
+
+Initialise the Quotes and Instruments APIs:
 
 [source, python, indent=0]
 ----
@@ -67,7 +71,7 @@ include::example$ibor/test_ibor.py[tag="load-quotes-get-luid"]
 include::example$ibor/quotes_with_luid.csv[]
 |===
 
-== Import Quotes
+== API call
 
 You can import these quotes into LUSID by running the following code:
 

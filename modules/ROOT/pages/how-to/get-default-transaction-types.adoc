@@ -21,14 +21,16 @@ include::example$ibor/test_ibor.py[tag="imports-lusid"]
 include::example$ibor/test_ibor.py[tag="imports-pandas"]
 ----
 
-== List transaction types
+== Initialise API
 
-The list of configured transaction types are available via the System Configuration API:
+Initialise the System Configuration API:
 
 [source, python, indent=0]
 ----
 include::example$transaction-types/test_configure_transaction_types.py[tag="create-apis"]
 ----
+
+== API call
 
 You can return a list of them by running the following code:
 

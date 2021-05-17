@@ -14,7 +14,7 @@ This guide assumes that you have xref:how-to/portfolios/load-transaction-portfol
 
 == Setup
 
-You will need to import the following modules into your Python script:
+Import the following modules into your Python script:
 
 [source, python, indent=0]
 ----
@@ -32,8 +32,7 @@ include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 
 == Initialise API
 
-Setting holdings is done using the Transaction Portfolios API.
-You can initialise this API end point by running the following code:
+Initialise the Transaction Portfolios API.
 
 [source, python, indent=0]
 ----

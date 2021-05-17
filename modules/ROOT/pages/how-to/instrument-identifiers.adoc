@@ -18,14 +18,16 @@ include::example$identifiers/test_identifiers.py[tag="imports-lusid"]
 include::example$identifiers/test_identifiers.py[tag="imports-pandas"]
 ----
 
-You can initialise the Instruments API by running the following code:
+== Initialise API
+
+Initialise the Instruments API:
 
 [source, python, indent=0]
 ----
 include::example$identifiers/test_identifiers.py[tag="instruments-api"]
 ----
 
-== Get instrument identifiers
+== API call
 
 To return a list of instrument identifiers, run the following:
 

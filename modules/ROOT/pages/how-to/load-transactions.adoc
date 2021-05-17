@@ -29,7 +29,9 @@ You can specify your own scope and portfolio code by updating the line below:
 include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
 ----
 
-And then initialise the Transactions Portfolio API:
+== Initialise API
+
+Initialise the Transactions Portfolio API:
 
 [source, python, indent=0]
 ----
