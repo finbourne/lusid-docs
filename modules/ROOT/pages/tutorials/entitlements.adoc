@@ -46,13 +46,14 @@ include::partial$entitlement-model.adoc[]
 == Our roles and policies
 
 Let's now define the roles and policies that we'll need to create.
-For each role we'll create two policies :
+For each role we'll create two policies:
 
-* one that controls access to data.
 * one that controls access to API endpoints.
+* one that controls access to the data returned by those API endpoints
 
-Data based policies are defined for particular entity identifiers.
-API based policies only grant access to end points.
+API based policies grant access to specific end points.
+Data based policies grant acces defined for particular entity identifiers.
+
 
 
 .Composing policies

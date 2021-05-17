@@ -6,8 +6,11 @@
 LUSID's modelling system has a minimal number of required properties for each entity.
 Often you will want to store metadata for more properties, which is where user defined properties can be used.
 
+[NOTE.code]
+====
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
 The code is in the {examples-repository-base}/test_user_defined_properties.py[test_user_defined_properties.py^] file, and the data under {examples-repository-base}/data/test_user_defined_properties[data/test_user_defined_properties^].
+====
 
 == Introduction
 
@@ -17,20 +20,34 @@ The following domains are supported:
 
 NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity
 
+[TIP]
+====
+For more explanation of user defined properties, see xref:reference/properties.adoc[]
+====
+
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.
 
 == Setup
 
-You will need to import the following modules into your Python script:
+Import the following modules into your Python script:
 
 [source, python, indent=0]
 ----
 include::example$user-defined-properties/test_user_defined_properties.py[tag="imports"]
 ----
 
-We will use the Property Definitions API to create user defined properties:
+You can specify your own scope by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$user-defined-properties/test_user_defined_properties.py[tag="scope"]
+----
+
+== Initialise API
+
+Initialise the Property Definitions API:
 
 [source, python, indent=0]
 ----

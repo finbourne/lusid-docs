@@ -67,6 +67,7 @@
 * xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[What is a LUID?]
 * xref:ROOT:reference/transaction-types.adoc[Transaction types]
 * xref:ROOT:reference/recipes.adoc[]
+* xref:ROOT:reference/properties.adoc[]
 
 [.documentation-type]
 * xref:ROOT:explanation/index.adoc[*Explanation*]
