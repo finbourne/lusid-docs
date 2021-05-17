@@ -57,16 +57,17 @@
 ** xref:how-to/access-control/policy-features.adoc[Policy features]
 
 [.documentation-type]
-* xref:ROOT:explanation/index.adoc[*Explanation*]
-
-* xref:ROOT:explanation/transaction-types.adoc[Transaction types]
-* xref:ROOT:explanation/recipes.adoc[]
-
-[.documentation-type]
 * xref:ROOT:reference/index.adoc[*Reference*]
 
 * xref:ROOT:reference/holding-types.adoc[Holding types]
 * xref:ROOT:reference/filtering-data.adoc[Filtering data]
 * xref:ROOT:reference/scope.adoc[]
+* xref:ROOT:reference/instrument.adoc[]
 * xref:ROOT:reference/portfolio-group.adoc[]
-* xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[LUIDs]
+* xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[What is a LUID?]
+* xref:ROOT:reference/transaction-types.adoc[Transaction types]
+* xref:ROOT:reference/recipes.adoc[]
+
+[.documentation-type]
+* xref:ROOT:explanation/index.adoc[*Explanation*]
+* xref:ROOT:explanation/data-security.adoc[]

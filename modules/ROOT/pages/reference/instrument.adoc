@@ -1,0 +1,80 @@
+= What is an instrument?
+:description: In this guide we'll learn how financial instruments are handled in LUSID.
+
+A financial instrument is a financial asset that an investor either owns, or has an exposure to.
+Below are some definitions:
+
+[quote, Wikipedia,  'https://en.wikipedia.org/wiki/Financial_instrument']
+____
+Financial instruments are monetary contracts between parties. They can be created, traded, modified and settled. They can be cash (currency), evidence of an ownership interest in an entity (share), or a contractual right to receive or deliver cash (bond).
+____
+
+
+[quote, International Accounting Standards - IAS 32 and 39, 'https://www.iasplus.com/en-gb/standards/ias/ias39']
+____
+any contract that gives rise to a financial asset of one entity and a financial liability or equity instrument of another entity
+____
+
+[quote, Investopedia, 'https://www.investopedia.com/terms/f/financialinstrument.asp']
+____
+Financial instruments are assets that can be traded.
+They can also be seen as packages of capital that may be traded.
+Most types of financial instruments provide an efficient flow and transfer of capital all throughout the world's investors.
+These assets can be cash, a contractual right to deliver or receive cash or another type of financial instrument, or evidence of one's ownership of an entity.
+____
+
+
+==  Managing Instruments
+The notion of an instrument is a fundamental building block in the implementation and operation of the LUSID platform.
+LUSID manages investment data, which relates to the instruments that the investment firm has contracts for (i.e. that they hold or have exposure to).
+
+To manage instruments, LUSID has to be able to:
+
+* Identify instruments that are transacted and held
+* Record the attributes of these instruments and
+* Link to other entities (e.g. issuing organisation) that the instrument has a relationship with
+
+It is important to correctly identify an instrument for the purposes of pricing, trading, settling as well as reconciliation with third party suppliers and intermediaries.
+It is also important for accurately reporting to clients and regulators on portfolio constitution.
+
+Knowledge of the attributes of an instrument are also required for investment operations, reporting (client and regulatory) and to support instrument analytics and pricing.
+Finally, the ability to link an instrument to parent and child entities are a pre-requisite for regulatory, trade, and exposure reporting.
+
+== Issues in Managing Instruments
+However, there are many issues around managing instruments:
+
+* There are numerous instrument identification schemes (e.g. SEDOL, ISIN, CUSIP etc.) with different areas of coverage and conflicting views on instrument identity.
+Furthermore, many major identifiers are subject to licensing costs and usage restrictions.
+
+* Whilst identification schemes uniquely identify an instrument, some identifiers can be reused and are not guaranteed to be unique over time.
+
+* The instrument universe is not static. Instruments come into being, change (e.g. because of corporate events), and cease to exist.
+There are inconsistencies between different providers when it comes to identification and the timing of instrument changes.
+
+* The relationship between instruments and quotes. Some instrument identity schemes apply at the security level, and some at the quote level (e.g. exchange or trading venue).
+Different business processes require instruments at either the security or quote level, or sometimes both with navigation between levels.
+
+* Not all securities have a quoted price, either because of thin trading volumes or because they are traded OTC or are exotic instruments.
+If there is no price source, additional information about the instrument is required for analytics based pricing.
+
+== LUSID Design Principles
+LUSID is designed from the ground up to address these issues at source.
+
+* LUSID supports the use of multiple concurrent identifiers which are all stored bi-temporally.
+This allows you to select the identity scheme(s) that you wish to apply at the point of use, and to apply "asAt" views of an instrument's past identity.
+
+* LUSID defines data rules, validations and hierarchies in a unified location (via recipes), and applies these at the point/time of use.
+This allows you to customise security sources and derivation rules to meet the requirements of different investment management processes.
+
+* LUSID has integral audit and logging capabilities to evidence the provenance and lineage of all data sources.
+
+* LUSID can control access to data items down to the level of properties, by user and role.
+This enables effective control of fee liable data, where e.g. only a limited number of divisions or regions within a firm have licenses to use particular instrument identity schemes.
+
+* Finally, LUSID has unique ID for every Instrument, called the xref:reference/lusid-unique-instrument-identifier-luid.adoc[LUSID ‘Unique Instrument Identifier’ (aka ‘LUID’)].
+All trading activity inside a portfolio is expressed in terms of these LUIDs, as are any holding statements or other generated reports. LUIDs are unique to your client.
+
+[TIP]
+====
+For an example of how to store instruments in LUSID, see xref:how-to/maintain-instruments-master.adoc[].
+====

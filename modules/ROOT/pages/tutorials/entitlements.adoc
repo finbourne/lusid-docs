@@ -86,7 +86,7 @@ We'll create the following data policies:
 
 [NOTE]
 ====
-All data policies have access to the `Developer-Entitlements-Tutorial` scope.
+All our data policies will have access to the `Developer-Entitlements-Tutorial` scope.
 ====
 
 And these API policies:

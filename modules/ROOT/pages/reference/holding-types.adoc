@@ -15,4 +15,7 @@ It can be one of the following types depending on the instrument or on the stage
 |  Forward FX | F |  Future cash flow from an FX forward transaction. These will be represented in pairs, one for each leg of the FX Forward.
 |===
 
+[TIP]
+====
 For an example of how holdings types are used in LUSID, see xref:how-to/holdings/view-holdings.adoc[].
+====

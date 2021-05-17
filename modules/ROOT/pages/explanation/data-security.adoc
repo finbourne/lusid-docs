@@ -1,0 +1,51 @@
+= Securing access to LUSID
+
+LUSID implements a number of controls to secure your LUSID tenant and access to the data stored within in.
+
+
+== User accounts
+All access to LUSID requires authentication from a user or service account within your LUSID tenant.
+
+User accounts are tied to a specific user and identified by a unique email address and have an associated password governed by the password policy set for your tenant.
+
+[TIP]
+====
+It is strongly recommended that you implement policies and controls that prohibit users from sharing LUSID user accounts and passwords.
+====
+
+Service accounts are set up with a nominated owner and are governed by the password policy for the tenant.
+Service account passwords are should only be made available to authorised users on an as-needed basis.
+
+LUSID accounts should be associated with a single human, or a single service – this way you can attribute changes to the human/system that manifested them.
+
+By default, FINBOURNE does not remove any user accounts from your tenant.
+If a user leaves your organisation, changes their role, or no longer requires access to LUSID, you should contact your Identity and Access Management (IAM) Administrator to ensure that any accounts and access rights are deleted or access restricted as needed.
+
+
+== Data transfer
+LUSID encrypts data both during transfer and at rest.
+If you are sending any confidential data directly to FINBOURNE, e.g. sample transaction data, it should be appropriately protected and secured.
+FINBOURNE has a number of options available to enable secure transfer of data, and you should contact your FINBOURNE contact for more details.
+
+
+== Access controls
+LUSID has a powerful role-based access control system that allows you to set up polices to control users’ access to features and data with LUSID.
+In concert with https://en.wikipedia.org/wiki/Principle_of_least_privilege[the principle of least privilege^], users should only be given access to those resources they need access to.
+
+Roles should describe job functions, policies should describe ways of being able to access a resource.
+Roles should then be assigned the policies necessary for users to perform their job functions.
+
+The creation of roles and policy assignment is controlled by users within your organisation with the appropriate IAM Administrator role.
+This role ultimately controls who in your organisation has access to features and data with LUSID and therefore the granting of this role should be done by a controlled process in your organisation.
+The policies associated with a role, and the users associated with a role should be reviewed regularly.
+
+[NOTE]
+====
+For an example of how to set up access to LUSID, see xref:tutorials/entitlements.adoc[].
+====
+
+
+== Monitoring
+LUSID makes usage analytics available to users who have the appropriate permissions. This includes (but not limited to) API requests, API results, and request durations.
+
+You should regularly review usage analytics and logs to ensure that your users are operating inline with your organisations policies.

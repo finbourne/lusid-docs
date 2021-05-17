@@ -7,4 +7,8 @@ An instrument's LUID is generated when the instrument is created, and is unique 
 
 Instruments must also be associated with at least 1 unique market identifier (e.g. FIGI or a unique ClientInternal ID you have generated) and can be associated with as many non-unique identifiers as you like (e.g. ISIN, SEDOL, CUSIP, Ticker etc).
 These identifiers can also be used to reference the instrument inside LUSID.
+
+[TIP]
+====
 For more details on market identifiers, see xref:how-to/instrument-identifiers.adoc[].
+====

@@ -13,3 +13,8 @@ For example, we could have portfolios for individual countries and then group th
 
 .A global fund of portfolios and portfolio groups
 image::portfolio-groups-example.svg[]
+
+[TIP]
+====
+For an example of to create a portfolio group, see xref:how-to/portfolios/create-portfolio-group.adoc[].
+====

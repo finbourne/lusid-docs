@@ -2,7 +2,7 @@
 :description: In this guide we will learn how to maintain an instruments master in LUSID by FINBOURNE.
 
 In this guide we will learn how to maintain an instruments master.
-Instruments in LUSID are used to represent financial assets that you own or have exposure to.
+xref:reference/instrument.adoc[Instruments] in LUSID are used to represent financial assets that you own or have exposure to.
 We'll start by importing some instruments, then we'll retrieve them, update them, and finally delete them.
 
 include::partial$ibor-code.adoc[]

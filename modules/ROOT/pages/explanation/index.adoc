@@ -4,4 +4,4 @@
 {description}
 
 * xref:explanation/movements-engine.adoc[]
-* xref:explanation/transaction-types.adoc[]
+* xref:explanation/data-security.adoc[]

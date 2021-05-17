@@ -1,7 +1,10 @@
 = Reference Documentation
 
-
-* xref:reference/holding-types.adoc[]
+* xref:ROOT:reference/holding-types.adoc[]
 * xref:ROOT:reference/filtering-data.adoc[]
 * xref:ROOT:reference/scope.adoc[]
+* xref:ROOT:reference/instrument.adoc[]
 * xref:ROOT:reference/portfolio-group.adoc[]
+* xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[]
+* xref:ROOT:reference/transaction-types.adoc[]
+* xref:ROOT:reference/recipes.adoc[]
