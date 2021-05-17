@@ -54,8 +54,6 @@ For each role we'll create two policies:
 API based policies grant access to specific end points.
 Data based policies grant acces defined for particular entity identifiers.
 
-
-
 .Composing policies
 ****
 API based policies can easily be composed.
@@ -67,7 +65,25 @@ Instead, we can create `policy-B` that has access to `Z` and then grant `role-Z`
 
 === Policies
 
-We'll create the following data policies:
+We'll create these API policies:
+
+.API policies
+[opts="header", cols="15,40"]
+|===
+| Policy | Feature Access
+| api-portfolio-managers | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
+| api-global-portfolio-managers | SearchPortfolioGroups, ListPortfolioGroups
+| api-read-all |  GetValuation,  GetPortfolioChanges,  ReconcileValuation,  GetHoldingsWithOrders,  GetTransactions,  GetHoldingsAdjustment,  GetHoldings,  GetDetails,  ReconcileInline,  SearchProperties,  SearchPortfolioGroups,  SearchPortfolios,  ReconcileHoldingsPreview,  ListScopes,  ReconcileHoldings,  ListQuotesForScope,  ListQuotes,  GetQuotes,  ListPortfoliosForScope,  ListPortfolios,  GetPortfolioProperties,  GetPortfolio,  ListPortfolioGroups,  GetPortfolioGroup,  GetGroupProperties,  BuildTransactionsForPortfolioGroup,  GetPortfolioGroupAccessMetadataByKey,  GetPortfolioGroupMetadata,  GetInstrumentIdentifierTypes,  ListInstruments,  GetInstruments,  GetInstrumentPropertyTimeSeries,  GetInstrumentProperties,  GetInstrument
+| api-write-all | CreateDerivedPortfolio,  SetHoldings,  CancelTransactions,  CreatePortfolio,  CancelAdjustHoldings,  AdjustHoldings,  DeleteInstrument,  DeletePortfolioGroup,  UpsertQuotes,  DeleteQuotes,  UpdatePortfolio,  UpsertGroupProperties,  DeletePortfolio,  UpdatePortfolioGroup,  DeleteGroupProperties,  DeletePortfolioFromGroup,  DeleteInstrumentProperties,  UpsertInstrumentsProperties,  UpsertInstruments,  UpdateInstrumentIdentifier
+|===
+
+[TIP]
+====
+The values under the `Feature Access` column refer to the `operationId` of API end points.
+For a full list of features, see xref:how-to/access-control/policy-features.adoc[].
+====
+
+And the following data policies:
 
 .Data policies
 [opts="header", cols="15,40"]
@@ -88,24 +104,6 @@ We'll create the following data policies:
 [NOTE]
 ====
 All our data policies will have access to the `Developer-Entitlements-Tutorial` scope.
-====
-
-And these API policies:
-
-.API policies
-[opts="header", cols="15,40"]
-|===
-| Policy | Feature Access
-| api-portfolio-managers | GetValuation, GetInstrument, GetInstruments, ListInstruments, GetPortfolio, ListPortfolios, GetQuotes, ListQuotes, InstrumentsSearch, SearchPortfolios, GetTransactions, GetHoldings, GetDetails
-| api-global-portfolio-managers | SearchPortfolioGroups, ListPortfolioGroups
-| api-read-all |  GetValuation,  GetPortfolioChanges,  ReconcileValuation,  GetHoldingsWithOrders,  GetTransactions,  GetHoldingsAdjustment,  GetHoldings,  GetDetails,  ReconcileInline,  SearchProperties,  SearchPortfolioGroups,  SearchPortfolios,  ReconcileHoldingsPreview,  ListScopes,  ReconcileHoldings,  ListQuotesForScope,  ListQuotes,  GetQuotes,  ListPortfoliosForScope,  ListPortfolios,  GetPortfolioProperties,  GetPortfolio,  ListPortfolioGroups,  GetPortfolioGroup,  GetGroupProperties,  BuildTransactionsForPortfolioGroup,  GetPortfolioGroupAccessMetadataByKey,  GetPortfolioGroupMetadata,  GetInstrumentIdentifierTypes,  ListInstruments,  GetInstruments,  GetInstrumentPropertyTimeSeries,  GetInstrumentProperties,  GetInstrument
-| api-write-all | CreateDerivedPortfolio,  SetHoldings,  CancelTransactions,  CreatePortfolio,  CancelAdjustHoldings,  AdjustHoldings,  DeleteInstrument,  DeletePortfolioGroup,  UpsertQuotes,  DeleteQuotes,  UpdatePortfolio,  UpsertGroupProperties,  DeletePortfolio,  UpdatePortfolioGroup,  DeleteGroupProperties,  DeletePortfolioFromGroup,  DeleteInstrumentProperties,  UpsertInstrumentsProperties,  UpsertInstruments,  UpdateInstrumentIdentifier
-|===
-
-[TIP]
-====
-The values under the `Feature Access` column refer to the `operationId` of API end points.
-For a full list of features, see xref:how-to/access-control/policy-features.adoc[].
 ====
 
 === Roles
@@ -150,9 +148,55 @@ As we can see from the screenshot, there are two ways to create a policy:
 
 We're going to create the `data-us-portfolio-manager` and `api-portfolio-managers` policies.
 
+=== Creating an API policy
+
+Now we're going to create the `api-portfolio-managers` policy.
+
+We'll create this policy using the policy wizard, so let's first select that option.
+You'll then need to choose an application and control scope, as shown in the screenshot below:
+
+.Application access
+image::policy-part-14.png[]
+
+Select the _LUSID_ application and _FEATURES_ control scope.
+
+Once you’ve done that, click on the _NEXT_ link. You’ll then see the policy details screen:
+
+.Policy details
+image::policy-part-15.png[]
+
+Fill in the code and activation date and then click on the _NEXT_ link.
+You'll then see the features screen:
+
+.Features
+image::policy-part-16.png[]
+
+Click on the _Add feature_ link and then search for the features (API endpoints) to which the policy has access.
+You can add a feature by clicking on the _>_ button or by dragging the feature to the right-hand pane.
+
+[TIP]
+====
+If you add a feature by mistake you can remove it by clicking on the _<_ button or by dragging the feature to the left hand pane.
+====
+
+Once you've added all the features, click on the _ADD_ button and then click on the _NEXT_ button.
+You'll then see a summary of the policy:
+
+.Features
+image::policy-part-17.png[]
+
+You can create the policy by clicking on the _CREATE_ button.
+
+.Exercise for the reader
+[NOTE.exercise]
+====
+See if you can create the other API policies, `api-global-portfolio-managers`, `api-read-all`, and +
+`api-write-all`.
+====
+
 === Creating a data policy
 
-Let's start with the `data-us-portfolio-manager`.
+Now for the `data-us-portfolio-manager` policy.
 To recap, this policy should have read access to all quotes and read access to the portfolio with the code `us-equities-trading`.
 
 We'll create this policy using the policy wizard, so let's first select that option.
@@ -227,48 +271,6 @@ image::policy-part-13.png[]
 ====
 See if you can create the other data policies, `data-uk-portfolio-manager`, `data-global-portfolio-manager`, `data-write-all`, and
 `data-read-all`.
-====
-
-=== Creating an API policy
-
-Now we're going to create the `api-portfolio-managers` policy.
-This time we'll select the _LUSID_ application and _FEATURES_ control scope.
-
-.Application access
-image::policy-part-14.png[]
-
-Once you’ve done that, click on the _NEXT_ link. You’ll then see the policy details screen:
-
-.Policy details
-image::policy-part-15.png[]
-
-Fill in the code and activation date and then click on the _NEXT_ link.
-You'll then see the features screen:
-
-.Features
-image::policy-part-16.png[]
-
-Click on the _Add feature_ link and then search for the features (API endpoints) to which the policy has access.
-You can add a feature by clicking on the _>_ button or by dragging the feature to the right-hand pane.
-
-[TIP]
-====
-If you add a feature by mistake you can remove it by clicking on the _<_ button or by dragging the feature to the left hand pane.
-====
-
-Once you've added all the features, click on the _ADD_ button and then click on the _NEXT_ button.
-You'll then see a summary of the policy:
-
-.Features
-image::policy-part-17.png[]
-
-You can create the policy by clicking on the _CREATE_ button.
-
-.Exercise for the reader
-[NOTE.exercise]
-====
-See if you can create the other API policies, `api-global-portfolio-managers`, `api-read-all`, and +
-`api-write-all`.
 ====
 
 == Creating roles
