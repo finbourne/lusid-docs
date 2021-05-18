@@ -1,0 +1,45 @@
+= Transaction Types
+:description: Transactions types are used to map transactions to a series of movemnets that update a portfolio's holdings.
+
+In this guide we'll learn about transaction types, which are used to map transactions to a series of movements that update a portfolio's holdings.
+
+== The challenge
+
+One of the biggest challenges in migrating your investment records from one system to another is ensuring that your transactions are represented correctly in the new system.
+
+It is critical that the new system can interpret each transaction appropriately and determine what the underlying movements in cash and securities are.
+
+This can be difficult when transactions are given esoteric types such as '1085' or 'STP' (STP is the MT940 SWIFT transaction type for Stamp Duty, but it could just as easily be an acronym for 'Sale Third Party' or 'Sale Transaction Processed').
+
+The end result is typically a lot of time spent chasing down the handful of people in the organisation that understand the meaning of each transaction type and then laboriously mapping those to the new system's available types.
+This is one of the reasons that migrations between systems can take so long.
+
+== The solution
+
+LUSID has a flexible transaction modelling system that lets you configure the economic impact of your own transaction types.
+
+For example, you could define the transaction codes `Buy`, `B`, or `IBOR_BUY`, which all have the same meaning:
+
+* Increase the amount of an instrument in a portfolio.
+* Decrease the amount of cash in a portfolio.
+
+If, at a later date, a new source of data is added to LUSID which has a new transaction type of “Purchase”, but has the same underlying economic requirement (increase amount of instrument, decrease cash), then that type can be added to the current configuration.
+
+LUSID is not concerned with naming conventions of transaction codes in external systems, it only cares about the economic impact of these transaction codes.
+
+== How does LUSID model transaction types?
+
+Transaction types break down into the following components:
+
+xref:reference/transaction-types/alias.adoc[Alias] ::
+An alias is a way of describing a type of transaction.
+
+xref:reference/transaction-types/movement.adoc[Movement] ::
+A movement is a change to the quantity and/or cost of a holding.
+
+[TIP]
+====
+LUSID comes with in-built transaction types.
+For more details, see xref:how-to/get-default-transaction-types.adoc[].
+If you want to add new transactions types, see xref:how-to/configure-transaction-types.adoc[].
+====

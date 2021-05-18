@@ -1,9 +1,7 @@
 = How to load quotes/market data
 :description: In this guide we'll learn how to load quotes into LUSID's built-in quote store.
 
-{description}
-This store is used to record market data that can be used to value holdings and run other analyses.
-It can be used to store market prices, rates, and FX quotes.
+In this guide we'll learn how to load xref:reference/quotes[quotes] into LUSID's built-in quote store.
 
 include::partial$ibor-code.adoc[]
 

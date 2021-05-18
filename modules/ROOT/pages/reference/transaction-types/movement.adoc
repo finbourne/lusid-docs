@@ -1,0 +1,82 @@
+= What is a movement?
+:description: A movement is a change to the quantity and/or cost of a holding in a portfolio.
+
+A movement is a change to the quantity and/or cost of a holding.
+It forms part of a xref:reference/transaction-types/index.adoc[transaction type].
+
+To generate a xref:reference/holdings.adoc[portfolio's holdings], each transaction in LUSID is decomposed into its underlying economic movements by xref:explanation/movements-engine.adoc[the Movements Engine].
+
+For example, if you had a "Buy" transaction for 100 Vodafone common shares for a total cost of £146.66, this would be made up of two movements:
+
+. An increase of 100 in the units of Vodafone common shares on the transaction date, and the same increase in the settled units on the settlement date.
+
+. The creation of a separate GBP cash commitment of -£146.66 on the transaction date, and a reduction in your GBP cash balance of £146.66 on the settlement date.
+
+In the rest of this guide we'll walk through the parts of a movement.
+
+== Movement Types
+
+The movement type is responsible for how and when the holding is updated.
+The following movement types are supported:
+
+_Settlement_, _Traded_, _StockMovement_, _FutureCash_, _Commitment_, _Receivable_, _CashSettlement_, _CashForward_, _CashCommitment_, _CashReceivable_, _Accrual_, _CashAccrual_, _ForwardFx_, _CashFxForward_, _UnsettledCashTypes_, _Carry_, _CarryAsPnl_
+
+The diagram below breaks down the movement types for the Vodafone example described above.
+
+.Security and cash movement types
+image::movements-diagram.png[]
+
+Some of these movement types are a single movement type that only affect the holding on either the transaction date, OR the settlement date (the ones in yellow with a dashed border).
+
+The others are a combined type which consist of the combination of two single movement types (the ones in red with a solid border).
+One Movement Type for the transaction date and one for the settlement date.
+
+The first movement has a movement type of _StockMovement_.
+This is a combination of the _Traded_ and _Settlement_ movement types and does the following:
+
+* Updates the units of the Vodafone position on the transaction date (the _Traded_ movement type)
+* Updates the settled units of the position on the settlement date (the _Settlement_ movement type).
+
+The second movement has a movement type of _CashCommitment_.
+This is a combination of the _Commitment_ and _CashSettlement_ movement types and does the following:
+
+* Creates a GBP cash commitment on the transaction date (the _Commitment_ movement type)
+* Reduces the GBP cash balance on the settlement date (the _CashSettlement_ movement type).
+
+== Side
+
+Where the movement type is responsible for how and when a holding updated, the side is responsible for what it is updated with.
+
+The side describes which attribute on a transaction should determine the security and currency of the holding to be updated, by how many units, and the amount by which the holding's cost should be updated.
+
+In the Vodafone example above, the default side of _Side1_ is used in the first movement.
+This picks the units, amount, and security from the core required fields on the transaction.
+
+In the second movement, the default side of _Side2_ is used.
+This picks the units, amount, and cash currency from the core required fields on the transaction.
+
+You can create custom sides that pick other attributes such as commission.
+
+
+
+== Direction
+
+The direction of the Movement describes whether the change in the units and the amount of the holding is in a positive or negative direction.
+This is indicated by either `1` or `-1`.
+
+For the Vodafone example above the first movement has a direction of 1.
+The second movement has a direction of -1.
+
+[WARNING]
+====
+It is important to think about how the direction works with the side, as if your units and amount are signed
+(e.g. the units field is -30 for a sell transaction and 30 for a buy transaction) then *a negative direction will have the effect of reversing the sign and could lead to unintended results*.
+====
+
+== Mappings
+
+Mappings allow you to set transaction properties on each movement separately.
+These properties can either be mapped from a property that is already on the transaction or set to a static value.
+
+This allows you to separate the movements in different categories when generating holdings.
+For example, you may want to tag cash flow types such as _Commission_ vs _Dividend_.

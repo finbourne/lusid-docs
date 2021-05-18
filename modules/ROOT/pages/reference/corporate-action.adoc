@@ -1,0 +1,7 @@
+= What is a corporate action?
+
+
+A Corporate Action is an activity that a company does which causes an economic change to all holders of an instrument at a particular point in time.
+Common corporate actions are stock splits and spin offs.
+
+LUSID allows the details of Corporate Actions to be uploaded into the system, and will then automatically apply them to any xref:reference/portfolio/index.adoc[portfolios] which are configured correctly and hold the affected xref:reference/instrument.adoc[instruments].

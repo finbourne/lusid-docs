@@ -1,11 +1,11 @@
 = What is a scope?
-
+:description: A scope in LUSID allows two entities with the same unique code to co-exist within individual address spaces.
 
 Every entity lives within a logical data partition known as a scope.
 Scope is an identity namespace allowing two entities with the same unique code to co-exist within individual address spaces.
 
 For example, prices for equities from different vendors could be uploaded into different scopes, such as Refinitiv and Bloomberg.
-A portfolio can then be valued using either of the price sources by referencing the appropriate scope.
+A xref:reference/portfolio/index.adoc[portfolio] can then be valued using either of the price sources by referencing the appropriate scope.
 
 Scopes can be used in a number of ways.
 

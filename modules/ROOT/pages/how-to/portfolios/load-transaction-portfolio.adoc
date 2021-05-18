@@ -1,8 +1,8 @@
 = How to load a transaction portfolio
 :description: In this guide we'll learn how to create a transaction portfolio in LUSID by FINBOURNE.
 
-A transaction portfolio records a transaction history of economic events such as transactions and corporate actions.
-Portolios exists within a logical data partition called a scope.
+In this guide we'll learn how to create a transaction portfolio.
+For more on transaction portfolios, see xref:reference/portfolio/transaction-portfolio.adoc[]
 
 include::partial$ibor-code.adoc[]
 

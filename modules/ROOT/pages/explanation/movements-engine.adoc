@@ -1,4 +1,13 @@
 = Movements Engine
+:description: LUSID's movement engine takes a portfolio's transaction history and converts it into holdings.
+
+LUSID is a transaction based system.
+To generate the holdings of a portfolio, LUSID runs the entire portfolio's transaction history through what is known as the Movements Engine.
+
+Inside the Movements Engine each transaction is decomposed into the underlying economic _movements_.
+The movements that make up a transaction are based on the transaction's type and can be configured via the transaction type configuration.
+
+The effect of each movement is applied to generate the holdings of the portfolio.
 
 
 Transactions --> Movements Engine --> Holdings

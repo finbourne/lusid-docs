@@ -59,13 +59,28 @@
 [.documentation-type]
 * xref:ROOT:reference/index.adoc[*Reference*]
 
-* xref:ROOT:reference/holding-types.adoc[Holding types]
+* xref:ROOT:reference/portfolio/index.adoc[]
+    ** xref:reference/portfolio/transaction-portfolio.adoc[]
+    ** xref:reference/portfolio/reference-portfolio.adoc[]
+    ** xref:reference/portfolio/derived-portfolio.adoc[]
+
+* xref:ROOT:reference/holdings.adoc[]
+
+* xref:ROOT:reference/quote.adoc[]
+* xref:ROOT:reference/corporate-action.adoc[]
+
+
 * xref:ROOT:reference/filtering-data.adoc[Filtering data]
 * xref:ROOT:reference/scope.adoc[]
 * xref:ROOT:reference/instrument.adoc[]
 * xref:ROOT:reference/portfolio-group.adoc[]
 * xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[What is a LUID?]
-* xref:ROOT:reference/transaction-types.adoc[Transaction types]
+
+* xref:ROOT:reference/transaction-types/index.adoc[Transaction types]
+    ** xref:reference/transaction-types/alias.adoc[]
+    ** xref:reference/transaction-types/movement.adoc[]
+    ** xref:reference/transaction-types/side.adoc[]
+
 * xref:ROOT:reference/recipes.adoc[]
 * xref:ROOT:reference/properties.adoc[]
 

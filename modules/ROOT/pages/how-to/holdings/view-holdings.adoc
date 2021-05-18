@@ -2,8 +2,7 @@
 :description: In this guide we'll learn how to view holdings in LUSID.
 
 {description}
-A holding is the amount of an instrument held in a portfolio at a point in time.
-The LUSID Movements Engine calculates holdings from the history of transactions and holding adjustments in a portfolio.
+For more background on holdings, see xref:reference/holdings.adoc[].
 
 include::partial$ibor-code.adoc[]
 
@@ -81,7 +80,7 @@ As expected, the only entry is for 1,000,000 USD.
 [NOTE]
 ====
 The `Type` returned for this instrument is `B`, which means `Cash Balance`.
-For more details on holding types, see xref:ROOT:reference/holding-types.adoc[].
+For more details on holding types, see xref:ROOT:reference/holdings.adoc#holdings-types[].
 ====
 
 === After first day's trading

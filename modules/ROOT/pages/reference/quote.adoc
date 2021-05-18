@@ -1,0 +1,20 @@
+= What is a quote?
+:description: A quote in LUSID is used to represent market data like market prices, rates, and FX quotes.
+
+LUSID has a built-in quote store, which can be used to record market data to be used for valuing holdings and running other analyses.
+It can be used to store market prices, rates and FX quotes.
+
+Quotes are stored against some kind of instrument identifier, such as an ISIN, SEDOL, RIC or FIGI; or a currency-pair in the case of FX rates.
+
+Each quote has a type (e.g. price, spread, rate), which indicates the nature of the quote.
+The units are also captured against each quote value, together with a price-side: bid, mid, ask.
+
+They also have an effective-date.
+This could be a full date and time (in UTC) to support live intra-day pricing, or a date and a cut-label (e.g. 7 Jan 2019, close).
+
+Finally, quotes are stored in the context of a provider / scope and price source / contributor, which reflect the channel through which the quotes were obtained, and the underlying source of the values, respectively.
+
+[TIP]
+====
+For a worked example of quotes in LUSID, see xref:how-to/load-quotes.adoc[].
+====

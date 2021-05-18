@@ -1,0 +1,110 @@
+= What is a side?
+:description: A side tells LUSID which attributes to use when converting a transaction into a set of movements used to generate a portfolio.
+
+When you xref:how-to/configure-transaction-types.adoc[configure a transaction type] in LUSID you will need to specify a side for each xref:reference/transaction-types/movement.adoc[movement].
+The side tells LUSID which attributes (required, optional and/or properties) to use when converting a transaction into a set of movements that are used to generate the xref:reference/holdings.adoc[holdings] for a xref:reference/portfolio/index.adoc[portfolio].
+
+== Example side
+
+An example of a side is the default _Side1_:
+
+[opts="header", cols="7,40,53"]
+|===
+|Field|	Value|	Description
+|side|	`Side1`|	The unique name for the side.
+In this example "Side1".
+
+|security|	`Txn:LusidInstrumentId`	| The security to use for the side.
+In this example this is the security that the transaction resolves to as identified by its unique xref:reference/lusid-unique-instrument-identifier-luid.adoc[LUID].
+
+|currency|	`Txn:TradeCurrency`|	The currency to use for the side.
+In this example this is the TransactionCurrency on a transaction.
+
+|rate|	`Txn:TradeToPortfolioRate`|	The exchange rate to the portfolio's base currency.
+This is used to maintain the cost basis in the portfolio's base currency.
+
+|units	| `Txn:Units`|	The units to use for the side.
+In this example this is the units on a transaction.
+
+|amount|	`Txn:TradeAmount`	|The amount to use for the side.
+In this example this is a calculated field which uses other attributes on the transaction.
+|===
+
+== Pre-defined field values
+
+The full list of predefined _Txn:_ values for each field in the side configuration is described below:
+
+.security
+[opts="header", cols="35,50,15"]
+|===
+|Valid side values	|Description	|Example value
+| `Txn:LusidInstrumentId`	|The transaction's LUID.	| `LUID_98ABCDJK`
+| `Txn:SettlementCurrency`	|The transaction's settlement currency. |	`CCY_USD`
+|===
+
+.currency
+[opts="header", cols="35,50,15"]
+|===
+|Valid side values	|Description	|Example value
+|`Txn:TradeCurrency`	| The transaction's currency. |	`GBP`
+|`Txn:SettlementCurrency` |	The transaction's settlement currency. |	`USD`
+|===
+
+.rate
+[opts="header", cols="35,50,15"]
+|===
+|Valid side values	|Description	|Example value
+| `Txn:TradeToPortfolioRate`	| The exchange rate between the transaction's trade currency, and the portfolio base currency added to the transaction using the property _Transaction/default/TradeToPortfolioRate_	| `1.09`
+| `Txn:SettledToPortfolioRate`	| The exchange rate between the transaction's settle currency, and the portfolio base currency.	| `1.78`
+|===
+
+.units
+[opts="header", cols="35,50,15"]
+|===
+|Valid side values	|Description	|Example value
+|`Txn:Units`	| The transaction's units. | `10`
+|`Txn:BondInterest` | 	The accrued interest in the settlement currency that is included in the purchase/sale of a bond added to a transaction using the property _Transaction/default/BondInterest_ |	`12678`
+| `Txn:TotalConsideration` |	The transaction's value in the settlement currency. |	`102000`
+| `Txn:BasedOnSeparateBondInterest` |	The transaction's total consideration with the bond interest subtracted. |	`122000`
+| `Txn:TradeAmount` |	The transaction's value in the transaction currency. |	`8000`
+|===
+
+== Custom Sides
+
+If you want to pick the values for units, currency, security, etc. from custom defined properties rather than the default transaction fields, you'll need to create a custom side.
+If we wanted to track trading commissions, we might create the following side to do so:
+
+[opts="header", cols="7,40,53"]
+|===
+|Field|	Value|	Description
+|side|	`TradeCommissions`|	The unique name for the side.
+
+|security|	`Txn:LusidInstrumentId`	| The security to use for the side.
+In this example this is the security that the transaction resolves to as identified by its unique xref:reference/lusid-unique-instrument-identifier-luid.adoc[LUID].
+
+|currency|	`Txn:SettlementCurrency`|	The currency to use for the side.
+In this example this is the settlement currency on a transaction.
+
+|rate|	`Transaction/custodian/exchange_rate`|	The rate to use for the side.
+In this example this is the custom property _Transaction/custodian/exchange_rate_.
+
+|units	| `Transaction/custodian/broker_commission`|	The units to use for the side.
+In this example this is the custom property _Transaction/custodian/broker_commission_.
+
+|amount|	`Txn:TradeAmount`	|The amount to use for the side.
+In this example this is the custom property _Transaction/custodian/broker_commission_.
+|===
+
+== Missing values
+
+If you upsert a transaction with missing values for properties used by a custom side the behaviour is as follows:
+
+[opts="header", cols="20,80"]
+|===
+|Missing Field |	Behaviour
+|security	|The instrument will resolve to the LUSID unknown instrument with `LUID_ZZZZZZZ`
+|currency	|The currency will resolve to the unknown currency "ZZZ"
+|rate	|The rate will default to zero (0)
+|units	|The units will default to zero (0)
+|amount	|The amount will default to zero (0)
+|===

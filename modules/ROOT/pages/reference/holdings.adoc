@@ -1,8 +1,12 @@
-= Holding Types
-:description: This guide describes the holding types used in LUSID by FINBOURNE.
+= What are holdings?
 
-A holding is the amount of an instrument held in a portfolio at a point in time.
-It can be one of the following types depending on the instrument or on the stage of a holding in its life cycle:
+A holding is the amount of an xref:reference/instrument.adoc[instrument] held in a xref:reference/portfolio/index.adoc[portfolio] at a point in time.
+The xref:explanation/movements-engine.adoc[movements engine] calculates holdings from the history of transactions and holding adjustments in a portfolio.
+
+[[holdings-types]]
+== Holdings Types
+
+A holding can be one of the following types, depending on the instrument or on the stage of a holding in its life cycle:
 
 [options="header", cols="20,10,70"]
 |===

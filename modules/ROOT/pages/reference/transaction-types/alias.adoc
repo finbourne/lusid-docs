@@ -1,0 +1,18 @@
+= What is an alias?
+:description: An alias is a way of describing the type of a transaction.
+
+An alias is a way of describing a type of transaction.
+It forms part of a xref:reference/transaction-types/index.adoc[transaction type].
+
+Each alias has the following fields:
+
+* _type_ - The transaction type that this configuration will apply to
+
+* _description_ - A text description of the transaction type
+
+* _transactionGroup_ - Identifies a group of transaction types
+e.g. all types from a given accounting system.
+
+* _transactionClass_ - The class that groups together all the available transaction roles
+
+* _transactionRoles_ - The roles used to map holdings back to appropriate output transactions

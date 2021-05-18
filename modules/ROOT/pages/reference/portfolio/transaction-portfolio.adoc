@@ -1,0 +1,19 @@
+= What is a transaction portfolio?
+
+
+A transaction portfolio in LUSID is a type of xref:reference/portfolio/index.adoc[portfolio] that records a transaction history of economic events such as transactions and corporate actions.
+The events store enables LUSID to calculate xref:reference/holdings.adoc[holdings] (at the taxlot level if required) and cash balances.
+The calculated holdings (positions) form part of the input into the calculation of valuations and trading position profit and loss within LUSID.
+
+xref:reference/properties.adoc[User defined properties] can be associated with portfolios to add in additional model data
+e.g. a property for `portfolio manager` could be added and linked to a portfolio for management and reporting purposes.
+
+To support reconciliation between different views of the same portfolio (e.g. front office portfolio management system against the fund accounting view) a transaction portfolio can have holdings loaded directly, causing LUSID to automatically determine the 'correcting trades' which are required to bring the holdings in line with what has been specified.
+The 'correcting trades' can be used to identify e.g. late or incorrectly booked transactions.
+
+image::transaction-portfolio.png[]
+
+[TIP]
+====
+To learn how to create a transaction portfolio, see xref:how-to/portfolios/load-transaction-portfolio.adoc[].
+====
