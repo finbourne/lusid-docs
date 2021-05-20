@@ -1,11 +1,14 @@
 = How to get the default transaction types
 :description: In this guide we'll learn how to return LUSID's built-in transaction types.
 
-LUSID comes pre-loaded with some commonly used transaction types.
+LUSID comes pre-loaded with some commonly used  xref:reference/transaction-types/index.adoc[transaction types].
 In this guide you will learn how to return those types.
 
+[NOTE.code]
+====
 The code and data used in this guide can be downloaded from the {examples-repository}[examples^] section of the LUSID Python Tools repository.
 The code is in the {examples-repository-base}/test_configure_transaction_types.py[test_configure_transaction_types.py^] file, and the data under {examples-repository-base}/data/test_configure_transaction_types[data/test_configure_transaction_types^].
+====
 
 == Pre Requisites
 

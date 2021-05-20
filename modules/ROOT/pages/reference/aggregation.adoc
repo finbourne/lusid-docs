@@ -1,0 +1,53 @@
+= What is aggregation?
+
+LUSID provides a set of aggregation APIs which gathers metrics on xref:reference/holdings.adoc[holdings] within a xref:reference/portfolio/index.adoc[portfolio] or xref:reference/portfolio/portfolio-group.adoc[portfolio group] and presents them in a configurable way by grouping, sorting and specifying the result set, and the operations used to generate it.
+
+The process is controlled by a xref:reference/recipes.adoc[recipe] - a LUSID-specific ruleset of instructions and parameters for the aggregation request.
+
+The recipe controls the following aspects of the aggregation process:
+
+* The pricing context - control the model and the parameters set
+* The market context - control the market data used, its (temporal) tolerance, source, shape etc at an instrument level
+
+
+Aggregation in LUSID is supported against portfolio and portfolio groups, as an absolute result or nested down the group structure and also against a portfolio in LUSID or in-line (created on the fly).
+
+You can specify the return information by adding metrics.
+
+[TIP]
+====
+For an example of how to use the aggregation APIs, see xref:how-to/get-valuation-default-recipe.adoc[].
+====
+
+== Available metrics within the aggregation
+
+Any custom property can be used as a metric, there are also a number of default metrics available which include:
+
+* _Instrument/default/Name_
+* _Holding/default/SubHoldingKey_
+* _Holding/default/Units_
+* _Holding/default/Cost_
+* _Holding/default/PV_
+* _Holding/default/Type_
+* _Holding/default/PortfolioGroupLevel1_
+* _Holding/default/PortfolioGroupLevel2_
+* _Portfolio/default/Name_
+* _Portfolio/default/Id_
+* _Analytic/default/ValuationDate_
+
+[TIP]
+====
+For a full list of the properties that we can use as metrics and group by criteria, see xref:how-to/get-valuation-properties.adoc[].
+====
+
+== Available Operations
+
+The following operations are currently supported on these metric where appropriate:
+
+* _Sum_
+* _Proportion_
+* _Average_
+* _Count_
+* _Min_
+* _Max_
+* _Value_

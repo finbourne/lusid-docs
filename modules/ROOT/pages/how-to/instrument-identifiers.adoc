@@ -1,7 +1,7 @@
 = How to get a list of instrument identifiers
 :description: In this guide we will return the list of unique market identifiers used by instruments in LUSID.
 
-Instruments in LUSID must have at least one unique market identifier, but can have as many non-unique identifiers as they like.
+xref:reference/instrument.adoc[Instruments] in LUSID must have at least one unique market identifier, but can have as many non-unique identifiers as they like.
 In this guide we'll see how to return a list of these identifiers.
 
 == Pre Requisites

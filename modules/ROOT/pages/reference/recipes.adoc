@@ -1,12 +1,102 @@
-= Recipes
+= What is a recipe?
 
 Recipes in LUSID are a set of instructions for the valuation engine to determine how pricing will be conducted as well as what data will be used in the process.
-
 
 Recipes are used to define the behaviour of the following LUSID sub-systems:
 
 * Market data: How the value of a market data price <item/element> is derived based on data source, quality and hierarchy rules.
-* Holdings: How a set of holdings is constructed from by the Movements Engine from transactions and corporate actions in the Event Register.
-* Pricing (Analytics): How a unitised PV (and other results) are to be calculated based on the engine to be used, the library or model from that engine and the model options/parameters.
+
+* Holdings: How a xref:reference/holdings.adoc[set of holdings] is constructed by the movements engine from xref:reference/transaction.adoc[transactions] and xref:reference/corporate-action.adoc[corporate actions] in the event register.
+
+* Pricing (Analytics): How a unitised PV (and other results) is to be calculated based on the engine to be used, the library, or model from that engine and the model options/parameters.
+
 * Reference data: The classification scheme to be used.
+
 * Results/Aggregation: How the results of the analytics calculations are aggregated and broken out, and where the results are to be stored.
+
+A recipe is comprised of a market context and pricing context.
+
+== Market context
+
+How market data is resolved from the quotes store, specifying where data is loaded from and which source takes precedence over another.
+
+=== Market Data Key Rules
+
+User specified market rules that are provided as a list/array and processed in order.
+
+* Key: The market data key pattern for the rule, can be set by using a dot separated string. (For example, “Equity.ClientInternal*” will search for all quotes using the ClientInternal identifier for instruments falling under the Equity key.)
+
+* Provider/Supplier: The supplier for the required market data (e.g. “Lusid”)
+
+* Data Scope: Specifies under which scope the rule will seek to use for resolving market data from the quotes store. (Should match scope of provided quotes.)
+
+* Quote Type: Specifies the type of quote used.
+The available values are:  _Price_, _Spread_, _Rate_, _LogNormalVol_, _NormalVol_, _ParSpread_, _IsdaSpread_, _Upfront_
+
+* Field: The field for a given price such as mid, bid or ask. Notice that the use of field is case-sensitive and needs to match that of provided quotes.
+
+* Quote Interval: Shorthand for the time interval for which pricing data will be looked up in effectiveAt space.  The interval is specified as a dot separated string with a start and end period, e.g. 5D.0D to look back 5D starting today (0 days ago).
+
+* Price Source: The source of the quote for a given provider/supplier of market data, where relevant.
+e.g. the exchange or bank that provided the quote
+
+=== Market options
+
+Specification over how market resolution behaves.
+
+* Default Supplier: Set the default value for the market data provider/supplier
+
+* Default Scope: Set the default value for the marked data scope
+
+* Default Instrument Code Type: Set the default identifier type by which quotes will be looked up in the quotes store
+
+* Attempt to infer missing FX rate: Boolean for whether or not valuation will seek to infer an FX rate from an inverse when a direct option is not available. (e.g. use GBPUSD if USDGBP not found, seek for a bridge when provided GBp or GBx quotes.)
+
+
+== Pricing context
+
+How valuation will be conducted, allowing for the selection of a pricing model ranging from a simple lookup to more nuanced methodologies.
+
+=== Model Rules
+
+Allow for user specified model rules, that are provided as a list/array and processed in order.
+
+* Provider/Supplier: Specify the model provider (e.g. “Lusid”)
+
+* Model name: Name of the model or vendor library used (e.g. “SimpleStatic”, “Discounting”)
+
+* Instrument Type: The instrument type to which the rule is applied (e.g. “Equity”, “InterestRateSwap”, “Bond”, etc.)
+
+* Parameters: Other opaque model parameters, and empty dictionary can be provided if none are specified.
+
+
+=== Model Options
+
+Allow for user specified options controlling default behaviour of the pricing engine.
+
+* Model Selection: Name of the model or vendor library used (e.g. _SimpleStatic_, _Discounting_)
+
+* Allow Partially Successful Evaluation: If set to True then a failure/exception doesn't cause the entire request to fail.
+Results will be returned where successful, and annotated elsewhere.
+
+=== Result Data Rules
+
+Set of rules that control querying of unit results when overriding certain elements in intermediate calculation.
+For example, we might override the accrued interest calculated by a model and use that in the calculation of the dirty price.
+
+* Resource Key: The result data key identifying the rule's targeted metric (what is the rule applied for?)
+
+* Supplier: The result resource supplier (where is the data coming from?)
+
+* Market Data Scope: The market data scope in which the results are found.
+
+* Document Code: Code that defines which document to use.
+
+* Quote Interval: Shorthand for the time interval for which pricing data will be looked up in effectiveAt space.
+The interval is specified as a dot separated string with a start and end period
+e.g. `5D.0D` to look back 5D starting today (0 days ago).
+
+[TIP]
+====
+For an example of how to compute a valuation using the default recipe, see xref:how-to/get-valuation-default-recipe.adoc[].
+====

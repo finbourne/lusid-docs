@@ -26,3 +26,6 @@ All portfolios are comprised of:
 
 Portfolios can be securitised to become instruments themselves and held by other portfolios.
 This allows LUSID to perform "drill-through" into underlying fund holdings.
+
+Hierarchies of portfolios can be created using xref:reference/portfolio/portfolio-group.adoc[portfolio groups].
+

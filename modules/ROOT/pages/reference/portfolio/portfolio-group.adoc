@@ -1,6 +1,6 @@
 = What is a portfolio group?
 
-Portfolio grouping within LUSID allows for the construction of a hierarchy of portfolios and sub-groups, limited to five levels of nesting.
+Portfolio grouping within LUSID allows for the construction of a hierarchy of xref:reference/portfolio/index.adoc[portfolios] and sub-groups, limited to five levels of nesting.
 Portfolio groups can be used to run aggregations across data in multiple portfolios or portfolio groups.
 
 Portfolios can belong to portfolio groups and portfolio groups can also belong to other portfolio groups, as shown in the diagram below:

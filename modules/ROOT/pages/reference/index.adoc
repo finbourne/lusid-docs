@@ -4,7 +4,13 @@
 * xref:ROOT:reference/filtering-data.adoc[]
 * xref:ROOT:reference/scope.adoc[]
 * xref:ROOT:reference/instrument.adoc[]
-* xref:ROOT:reference/portfolio-group.adoc[]
+
+* xref:ROOT:reference/portfolio/index.adoc[]
+    ** xref:ROOT:reference/portfolio/transaction-portfolio.adoc[]
+    ** xref:ROOT:reference/portfolio/reference-portfolio.adoc[]
+    ** xref:ROOT:reference/portfolio/derived-portfolio.adoc[]
+    ** xref:ROOT:reference/portfolio/portfolio-group.adoc[]
+
 * xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[]
 * xref:ROOT:reference/transaction-types/index.adoc[]
 * xref:ROOT:reference/recipes.adoc[]

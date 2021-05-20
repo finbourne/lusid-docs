@@ -80,7 +80,7 @@ As expected, the only entry is for 1,000,000 USD.
 [NOTE]
 ====
 The `Type` returned for this instrument is `B`, which means `Cash Balance`.
-For more details on holding types, see xref:ROOT:reference/holdings.adoc#holdings-types[].
+For more details on holdings types, see xref:reference/holdings.adoc#holdings-types[What are the holdings types?]
 ====
 
 === After first day's trading

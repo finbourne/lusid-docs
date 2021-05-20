@@ -1,7 +1,7 @@
 = How to create a portfolio group
 :description: In this guide we'll create a portfolio group. Portfolio groups are used for grouping and aggregating portfolios.
 
-{description}
+In this guide we'll create a xref:reference/portfolio/portfolio-group.adoc[portfolio group].
 
 [NOTE.code]
 ====
@@ -36,7 +36,7 @@ include::example$portfolios/test_portfolios.py[tag="us-portfolio-code"]
 
 == Initialise API
 
-Initialise the Derived Portfolio Groups API:
+Initialise the Portfolio Groups API:
 
 [source, python, indent=0]
 ----
@@ -49,6 +49,7 @@ You can create a portfolio group by running the following code:
 
 [source, python, indent=0]
 ----
+include::example$portfolios/test_portfolios.py[tag="creation-date"]
 include::example$portfolios/test_portfolios.py[tag="global-portfolio-code"]
 
 include::example$portfolios/test_portfolios.py[tag="create-portfolio-group"]

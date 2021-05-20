@@ -1,0 +1,15 @@
+= What is a transaction?
+
+A transaction is an economic change to a portfolio.
+Transactions can be one-sided (e.g. cash inflow) or two-sided (e.g. an equity trade purchasing stock and settling cash).
+
+This model is intended to be flexible and customisable by the client.
+A client configures xref:reference/transaction-types/index.adoc[transaction types] in LUSID which maps from the fields and properties on the transaction onto a set of xref:reference/transaction-types/movement.adoc[movements] which represent the economic changes.
+
+A minimal set of mandatory transaction fields have been defined for each domain type.
+The transaction data model can be extended by adding additional properties to a transaction.
+
+[TIP]
+====
+For an example of how to load transactions into LUSID, see xref:how-to/load-transactions.adoc[].
+====

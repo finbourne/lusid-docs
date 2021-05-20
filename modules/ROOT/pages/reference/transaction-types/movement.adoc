@@ -4,7 +4,7 @@
 A movement is a change to the quantity and/or cost of a holding.
 It forms part of a xref:reference/transaction-types/index.adoc[transaction type].
 
-To generate a xref:reference/holdings.adoc[portfolio's holdings], each transaction in LUSID is decomposed into its underlying economic movements by xref:explanation/movements-engine.adoc[the Movements Engine].
+To generate a xref:reference/holdings.adoc[portfolio's holdings], each transaction in LUSID is decomposed into its underlying economic movements by xref:explanation/movements-engine.adoc[the movements engine].
 
 For example, if you had a "Buy" transaction for 100 Vodafone common shares for a total cost of £146.66, this would be made up of two movements:
 

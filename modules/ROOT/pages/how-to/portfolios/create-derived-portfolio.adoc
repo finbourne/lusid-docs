@@ -1,8 +1,7 @@
 = How to create a derived portfolio
 :description: In this guide we'll create a derived portfolio, which can be used to do pre-trade and post-trade what-if analysis.
 
-In this guide we'll create a derived portfolio, which can be used to do pre-trade and post-trade what-if analysis.
-For more on derived portfolios, see xref:reference/portfolio/derived-portfolio.adoc[].
+In this guide we'll create a xref:reference/portfolio/derived-portfolio.adoc[derived portfolio], which can be used to do pre-trade and post-trade what-if analysis.
 
 
 [NOTE.code]

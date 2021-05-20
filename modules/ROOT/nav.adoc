@@ -27,9 +27,9 @@
 ** xref:ROOT:how-to/instrument-identifiers.adoc[Get Instrument Identifiers]
 
 * Portfolios
-** xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[Loading Transaction Portfolio]
-** xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[Derived Portfolio]
-** xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[Portfolio Group]
+** xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[Create transaction portfolio]
+** xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[Create derived portfolio]
+** xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[Create portfolio group]
 
 * Transactions
 ** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
@@ -44,7 +44,8 @@
     ** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
 
 * Valuation
-** xref:ROOT:how-to/get-valuation-default-recipe.adoc[Get Valuation]
+** xref:ROOT:how-to/get-valuation-default-recipe.adoc[]
+** xref:ROOT:how-to/get-valuation-properties.adoc[]
 
 * Modelling
 ** xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties]
@@ -59,29 +60,34 @@
 [.documentation-type]
 * xref:ROOT:reference/index.adoc[*Reference*]
 
+* xref:ROOT:reference/instrument.adoc[]
+
 * xref:ROOT:reference/portfolio/index.adoc[]
     ** xref:reference/portfolio/transaction-portfolio.adoc[]
     ** xref:reference/portfolio/reference-portfolio.adoc[]
     ** xref:reference/portfolio/derived-portfolio.adoc[]
+    ** xref:ROOT:reference/portfolio/portfolio-group.adoc[]
+
+* xref:ROOT:reference/transaction.adoc[]
+* xref:ROOT:reference/transaction-types/index.adoc[Transaction types]
+** xref:reference/transaction-types/alias.adoc[]
+** xref:reference/transaction-types/movement.adoc[]
+** xref:reference/transaction-types/side.adoc[]
 
 * xref:ROOT:reference/holdings.adoc[]
 
 * xref:ROOT:reference/quote.adoc[]
+
+* xref:ROOT:reference/recipes.adoc[]
+* xref:ROOT:reference/aggregation.adoc[]
+
 * xref:ROOT:reference/corporate-action.adoc[]
 
 
-* xref:ROOT:reference/filtering-data.adoc[Filtering data]
+
 * xref:ROOT:reference/scope.adoc[]
-* xref:ROOT:reference/instrument.adoc[]
-* xref:ROOT:reference/portfolio-group.adoc[]
 * xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[What is a LUID?]
-
-* xref:ROOT:reference/transaction-types/index.adoc[Transaction types]
-    ** xref:reference/transaction-types/alias.adoc[]
-    ** xref:reference/transaction-types/movement.adoc[]
-    ** xref:reference/transaction-types/side.adoc[]
-
-* xref:ROOT:reference/recipes.adoc[]
+* xref:ROOT:reference/filtering-data.adoc[Filtering data]
 * xref:ROOT:reference/properties.adoc[]
 
 [.documentation-type]

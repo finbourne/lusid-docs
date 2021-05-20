@@ -1,8 +1,7 @@
 = How to load a transaction portfolio
 :description: In this guide we'll learn how to create a transaction portfolio in LUSID by FINBOURNE.
 
-In this guide we'll learn how to create a transaction portfolio.
-For more on transaction portfolios, see xref:reference/portfolio/transaction-portfolio.adoc[]
+In this guide we'll learn how to create xref:reference/portfolio/transaction-portfolio.adoc[a transaction portfolio].
 
 include::partial$ibor-code.adoc[]
 

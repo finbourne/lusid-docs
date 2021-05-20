@@ -1,3 +1,3 @@
-= Get valuation properties
+= How to get valuation properties
 
-In this guide we will get a list of the properties or queryable keys that we can use when valuing a portfolio.
+In this guide we will get a list of the properties or queryable keys that we can use when valuing a xref:reference/portfolio/index.adoc[portfolio].

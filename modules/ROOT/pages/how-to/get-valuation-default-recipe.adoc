@@ -1,7 +1,7 @@
 = How to get a valuation with a default recipe
 :description: In this guide we'll learn how to value the holdings in a transaction portfolio using LUSID's default recipe.
 
-{description}
+In this guide we'll learn how to value the xref:reference/holdings.adoc[holdings] in a xref:reference/portfolio/transaction-portfolio.adoc[transaction portfolio] using LUSID's default recipe.
 The diagram below explains how a valuation works:
 
 .How a valuation works
@@ -68,8 +68,7 @@ include::example$ibor/test_ibor.py[tag="apis"]
 
 == LUSID's default valuation recipe
 
-Recipes are a set of instructions for LUSID's valuation engine to determine how pricing will be conducted as well as what data will be used in the process.
-For more on recipes, see https://support.lusid.com/knowledgebase/article/KA-01895/en-us[What is a recipe?]
+xref:reference/recipes.adoc[Recipes] are a set of instructions for LUSID's valuation engine to determine how pricing will be conducted as well as what data will be used in the process.
 
 LUSID comes with a default recipe that computes a basic valuation of a portfolio.
 The default recipe assumes that quotes have been loaded with the following properties:

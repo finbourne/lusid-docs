@@ -1,20 +1,20 @@
 = What are properties?
 :description: Properties can be used to extend LUSID's data model, allowing you to attach additional information to entities in LUSID.
 
-Properties can be used to extend LUSID's data model, allowing you to attach additional information to the following entities in LUSID: portfolios, portfolio groups, instruments and transactions.
+Properties can be used to extend LUSID's data model, allowing you to attach additional information to the following entities in LUSID: xref:reference/portfolio/index.adoc[_portfolios_], xref:reference/portfolio/portfolio-group.adoc[_portfolio groups_], xref:reference/instrument.adoc[_instruments_], and xref:reference/transaction.adoc[_transactions_].
 
 For example, you could define a 'Portfolio Manager' property for your portfolios, or an 'Asset Class' property for instruments.
 
 LUSID has a number of predefined properties, but you are able to create your own as well.
 
-== Property Definition
+== Property definition
 
 Every new property must be defined before it can be used.
 To define a new property, you must supply the following information:
 
-=== Property Key
+=== Property key
 
-The Property Key uniquely identifies a property, and comprises the following values:
+The property key uniquely identifies a property, and comprises the following values:
 
 * Domain: what kind of entity this property can be associated with (e.g. 'Portfolio' or 'Instrument').
 
@@ -25,7 +25,7 @@ The Property Key uniquely identifies a property, and comprises the following val
 Property keys are usually represented in the form `\{domain\}/\{scope\}/\{code\}` +
 e.g. `Transaction/primeBrokerA/specialTradedCode`
 
-=== Property Type
+=== Property type
 
 Each property must fall in to one of three types:
 
@@ -37,14 +37,20 @@ Each property must fall in to one of three types:
 
 === Data Type
 
-Data types are used to constrain the values of the property, to help maintain data quality. They are used to validate property data when it is loaded, and to provide details on how best to display the values when they are returned.
+Data types are used to constrain the values of the property, to help maintain data quality.
+They are used to validate property data when it is loaded, and to provide details on how best to display the values when they are returned.
 
-LUSID has a number of built-in data types, including simple primitive types like strings (text), dates or numbers. It also supports more complex data types such as currency (3-letter ISO currency codes).
+LUSID has a number of built-in data types, including simple primitive types like strings (text), dates or numbers.
+It also supports more complex data types such as currency (3-letter ISO currency codes).
 
 === Property Lifetime
-As LUSID is a bi-temporal system, properties can be defined as being either time-variant or perpetual. This indicates whether a property value is expected to change over time, or whether a given value should be valid 'forever'.
 
-An example of a time-variant property would be 'portfolio manager', as it may change during the lifetime of a portfolio. When a time-variant property's value is changed, it must be associated with an effective date.
+As LUSID is a bi-temporal system, properties can be either _time-variant_ or _perpetual_.
+
+==== Time variant
+The property value is expected to change over time. An example would be 'portfolio manager', which will probably change over the lifetime of a portfolio.
+
+When the value is changed, it must be associated with an effective date.
 
 [WARNING]
 ====
@@ -52,14 +58,20 @@ The effective date of a time-variant property must be greater than or equal to t
 e.g. in the portfolio manager example above, your property would need to post-date the creation date of the portfolio.
 ====
 
-Conversely, an example of a perpetual property might be the 'trading venue' for a trade.
-This value is determined at the point of doing the transaction, and can never change thereafter.
-As such, perpetual property values have no effective date - they are considered to be effective always.
+==== Perpetual
+The property value should be valid 'forever'.
+An example would be the 'trading venue' for a trade.
 
-Note this doesn't prevent you from correcting bad data in LUSID.
+This value is determined at the point of doing the transaction, and can never change thereafter.
+Perpetual property values have no effective date - they are considered to be effective always.
+
+This doesn't prevent you from correcting bad data in LUSID.
 You can still overwrite any property value, and LUSID will maintain a full audit history, which can be observed by altering the as-at time for the request.
 
-If this field not defined when defining a new property, property lifetime will default to perpetual.
+[TIP]
+====
+If thr property lifetime is not defined when defining a new property, it will default to perpetual.
+====
 
 === Property Constraint Style
 Property constraint styles define the uniqueness and cardinality of a property value for a given entity object type.

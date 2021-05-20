@@ -1,7 +1,7 @@
 = Transaction Types
 :description: Transactions types are used to map transactions to a series of movemnets that update a portfolio's holdings.
 
-In this guide we'll learn about transaction types, which are used to map transactions to a series of movements that update a portfolio's holdings.
+In this guide we'll learn about transaction types, which are used to map xref:reference/transaction.adoc[transactions] to a series of xref:reference/transaction-types/movement.adoc[movements] that update a portfolio's holdings.
 
 == The challenge
 

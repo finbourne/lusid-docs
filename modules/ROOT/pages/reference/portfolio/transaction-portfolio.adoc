@@ -1,5 +1,5 @@
 = What is a transaction portfolio?
-
+:description: A transaction portfolio in LUSID is a type of portfolio that records a transaction history of economic events such as transactions and corporate actions.
 
 A transaction portfolio in LUSID is a type of xref:reference/portfolio/index.adoc[portfolio] that records a transaction history of economic events such as transactions and corporate actions.
 The events store enables LUSID to calculate xref:reference/holdings.adoc[holdings] (at the taxlot level if required) and cash balances.

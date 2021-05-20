@@ -1,9 +1,7 @@
 = How to load transactions
 :description: In this guide we'll learn how to import transactions into LUSID.
 
-{description}
-A transaction is an economic change to a portfolio.
-Transactions can be one-sided (e.g. cash inflow) or two-sided (e.g. an equity trade purchasing stock and settling cash).
+In this guide we'll learn how to import xref:reference/transaction.adoc[transactions] into LUSID.
 
 include::partial$ibor-code.adoc[]
 == Pre Requisites
