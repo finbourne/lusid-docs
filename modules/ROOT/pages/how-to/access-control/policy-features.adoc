@@ -28,23 +28,12 @@ You can get a list of operation ids and descriptions for every end point by runn
 
 [source, bash]
 ----
-cat swagger.json | \
-jq -r '.paths | keys[] as $k |
-{
-  endPoint: $k,
-  feature: (.[$k] |
-    if .get? then .get
-    elif .put? then .put
-    elif .post? then .post
-    elif .delete? then .delete
-    else empty end | .operationId),
-  description: (.[$k] |
-    if .get? then .get
-    elif .put? then .put
-    elif .post? then .post
-    elif .delete? then .delete
-    else empty end | .summary),
-}'
+cat swagger.json | jq -r '.paths | keys[] as $k | [
+    (.[$k] |
+     keys[] as $k1 |
+     [$k, .[$k1].operationId, .[$k1].summary]
+    )
+  ] | .[]'
 ----
 
 This returns a lot of results.
@@ -52,23 +41,12 @@ If you want to return just the first 10 end points, you can run the following co
 
 [source, bash]
 ----
-cat swagger.json | \
-jq -r '.paths | keys[] as $k |
-{
-  endPoint: $k,
-  feature: (.[$k] |
-    if .get? then .get
-    elif .put? then .put
-    elif .post? then .post
-    elif .delete? then .delete
-    else empty end | .operationId),
-  description: (.[$k] |
-    if .get? then .get
-    elif .put? then .put
-    elif .post? then .post
-    elif .delete? then .delete
-    else empty end | .summary),
-} ' |
+cat swagger.json | jq -r '.paths | keys[] as $k | [
+    (.[$k] |
+     keys[] as $k1 |
+     [$k, .[$k1].operationId, .[$k1].summary]
+    )
+  ] | .[]' |
 head -n 40
 ----
 
@@ -77,46 +55,46 @@ If we run that, we'll see the following output:
 .Features / API points
 [source, json]
 ----
-{
-  "endPoint": "/api/aggregation/$valuation",
-  "feature": "GetValuation",
-  "description": "[EXPERIMENTAL] Perform valuation for a list of portfolios and/or portfolio groups"
-}
-{
-  "endPoint": "/api/aggregation/$valuationinlined",
-  "feature": "GetValuationOfWeightedInstruments",
-  "description": "[EXPERIMENTAL] Perform valuation for an inlined portfolio"
-}
-{
-  "endPoint": "/api/aggregation/{scope}/{code}/$generateconfigurationrecipe",
-  "feature": "GenerateConfigurationRecipe",
-  "description": "[EXPERIMENTAL] Generates a recipe sufficient to perform valuations for the given portfolio."
-}
-{
-  "endPoint": "/api/allocations",
-  "feature": "ListAllocations",
-  "description": "[EXPERIMENTAL] List Allocations"
-}
-{
-  "endPoint": "/api/allocations/{scope}/{code}",
-  "feature": "GetAllocation",
-  "description": "[EXPERIMENTAL] Get Allocation"
-}
-{
-  "endPoint": "/api/calendars/businessday/{scope}/{code}",
-  "feature": "IsBusinessDateTime",
-  "description": "[EXPERIMENTAL] Check whether a DateTime is a \"Business DateTime\""
-}
-{
-  "endPoint": "/api/calendars/generic",
-  "feature": "ListCalendars",
-  "description": "[EXPERIMENTAL] List Calenders"
-}
-{
-  "endPoint": "/api/calendars/generic/{scope}",
-  "feature": "ListCalendarsInScope",
-  "description": "[EXPERIMENTAL] List all calenders in a specified scope"
-}
+[
+  "/api/aggregation/$valuation",
+  "GetValuation",
+  "[BETA] Perform valuation for a list of portfolios and/or portfolio groups"
+]
+[
+  "/api/aggregation/$valuationinlined",
+  "GetValuationOfWeightedInstruments",
+  "[BETA] Perform valuation for an inlined portfolio"
+]
+[
+  "/api/aggregation/{scope}/{code}/$generateconfigurationrecipe",
+  "GenerateConfigurationRecipe",
+  "[EXPERIMENTAL] Generates a recipe sufficient to perform valuations for the given portfolio."
+]
+[
+  "/api/allocations",
+  "ListAllocations",
+  "[EXPERIMENTAL] List Allocations"
+]
+[
+  "/api/allocations",
+  "UpsertAllocations",
+  "[EXPERIMENTAL] Upsert Allocations"
+]
+[
+  "/api/allocations/{scope}/{code}",
+  "DeleteAllocation",
+  "[EXPERIMENTAL] Delete allocation"
+]
+[
+  "/api/allocations/{scope}/{code}",
+  "GetAllocation",
+  "[EXPERIMENTAL] Get Allocation"
+]
+[
+  "/api/calendars/businessday/{scope}/{code}",
+  "IsBusinessDateTime",
+  "[EXPERIMENTAL] Check whether a DateTime is a \"Business DateTime\""
+]
 ----
 
 === CSV file of all endpoints
@@ -125,25 +103,12 @@ We could also generate a CSV file of all endpoints by running the following code
 
 [source, bash]
 ----
-cat swagger.json | \
-jq -r '.paths | keys[] as $k |
-{
-  endPoint: $k,
-  feature: (.[$k] |
-    if .get? then .get
-    elif .put? then .put
-    elif .post? then .post
-    elif .delete? then .delete
-    else empty end | .operationId),
-  description: (.[$k] |
-    if .get? then .get
-    elif .put? then .put
-    elif .post? then .post
-    elif .delete? then .delete
-    else empty end | .summary),
-} |
-[.endPoint,.feature,.description] |
-@csv' \
+cat swagger.json | jq -r '.paths | keys[] as $k | [
+    (.[$k] |
+     keys[] as $k1 |
+     [$k, .[$k1].operationId, .[$k1].summary]
+    )
+  ] | .[] | @csv' \
 > swagger.csv
 ----
 
