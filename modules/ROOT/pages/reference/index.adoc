@@ -11,6 +11,17 @@
     ** xref:ROOT:reference/portfolio/derived-portfolio.adoc[]
     ** xref:ROOT:reference/portfolio/portfolio-group.adoc[]
 
-* xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[]
 * xref:ROOT:reference/transaction-types/index.adoc[]
+    ** xref:reference/transaction-types/side.adoc[]
+    ** xref:reference/transaction-types/alias.adoc[]
+    ** xref:reference/transaction-types/movement.adoc[]
+
 * xref:ROOT:reference/recipes.adoc[]
+
+
+* xref:ROOT:reference/bi-temporal-data.adoc[]
+* xref:ROOT:reference/sub-holding-key.adoc[What is a sub holding key?]
+* xref:ROOT:reference/scope.adoc[]
+* xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[What is a LUID?]
+* xref:ROOT:reference/filtering-data.adoc[Filtering data]
+* xref:ROOT:reference/properties.adoc[]
