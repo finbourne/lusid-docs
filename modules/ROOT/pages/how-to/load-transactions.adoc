@@ -47,10 +47,16 @@ include::example$ibor/test_ibor.py[tag="load-transactions"]
 ----
 
 .Transactions
-[format="csv", options="header"]
+[format="csv", options="header", role="word-wrap", cols="10,11,16,16,7,10,10,8,12"]
 |===
 include::example$ibor/transactions.csv[]
 |===
+
+[TIP]
+====
+We are using the built-in transaction types _FundsIn_ and _Buy_.
+For a full list of transaction types, see the xref:reference/transaction-types/index.adoc#default-transaction-types[transaction types reference guide].
+====
 
 == Import Transactions
 

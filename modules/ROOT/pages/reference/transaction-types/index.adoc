@@ -37,9 +37,308 @@ An alias is a way of describing a type of transaction.
 xref:reference/transaction-types/movement.adoc[Movement] ::
 A movement is a change to the quantity and/or cost of a holding.
 
+[[default-transaction-types]]
+== Default Transaction Types
+
+LUSID comes with in-built transaction types, which are listed below:
+
 [TIP]
 ====
-LUSID comes with in-built transaction types.
-For more details, see xref:how-to/get-default-transaction-types.adoc[].
-If you want to add new transactions types, see xref:how-to/configure-transaction-types.adoc[].
+For more details on how to get the transaction types on your own LUSID tenant, see xref:how-to/get-default-transaction-types.adoc[].
 ====
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_0.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_0.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_1.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_1.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_2.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_2.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_3.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_3.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_4.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_4.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_5.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_5.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_6.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_6.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_7.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_7.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_8.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_8.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_9.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_9.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_10.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_10.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_11.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_11.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_12.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_12.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_13.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_13.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_14.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_14.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_15.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_15.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_16.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_16.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_17.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_17.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_18.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_18.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_19.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_19.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_20.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_20.csv[]
+|===
+
+As you can see, there are lots of different transaction types, covering a variety of use cases.
+But if you use a transaction type that isn't on this list, you can add new transaction types.
+For more details, see xref:ROOT:how-to/configure-transaction-types.adoc[].

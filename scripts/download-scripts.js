@@ -24,11 +24,9 @@ const files = [
     ["https://raw.githubusercontent.com/mneedham/lusid-sdk-java/add-example/examples/src/main/java/com/finbourne/examples/HelloWorld.java",
         "modules/ROOT/examples/getting-started/HelloWorld.java"],
 
-
-    [`${python_tools_base}/data/test_configure_transaction_types/test_output/transaction_types.csv`,
-        "modules/ROOT/examples/transaction-types/transaction_types.csv"],
     [`${python_tools_base}/test_configure_transaction_types.py`,
         "modules/ROOT/examples/transaction-types/test_configure_transaction_types.py"],
+
     [`${python_tools_base}/lusid_utils.py`,
         "modules/ROOT/examples/lusid_utils.py"],
 
@@ -117,7 +115,17 @@ const files = [
         "modules/ROOT/examples/portfolios/test_portfolios.py"],
 
 ]
-files.forEach(value => {
+
+const fileTypes = [...Array(21).keys()].flatMap(index => {
+    return [
+        [`${python_tools_base}/data/test_configure_transaction_types/test_output/transaction_types_${index}.csv`,
+            `modules/ROOT/examples/transaction-types/transaction_types_${index}.csv`],
+        [`${python_tools_base}/data/test_configure_transaction_types/test_output/movements_${index}.csv`,
+            `modules/ROOT/examples/transaction-types/movements_${index}.csv`],
+    ]
+})
+
+files.concat(fileTypes).forEach(value => {
     const [remote, local] = value
     download(remote, local)
 })

@@ -106,7 +106,7 @@ We could also generate a CSV file of all endpoints by running the following code
 cat swagger.json | jq -r '.paths | keys[] as $k | [
     (.[$k] |
      keys[] as $k1 |
-     [$k, .[$k1].operationId, .[$k1].summary]
+     [($k | gsub("{"; "\\{") | gsub("}"; "\\}")), .[$k1].operationId, .[$k1].summary]
     )
   ] | .[] | @csv' \
 > swagger.csv

@@ -42,12 +42,32 @@ You can return a list of them by running the following code:
 include::example$transaction-types/test_configure_transaction_types.py[tag="get-transaction-types"]
 ----
 
-.Default Transaction Types
-[format="csv", options="header"]
+You can see the first two transaction types below:
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
 |===
-include::example$transaction-types/transaction_types.csv[]
+include::example$transaction-types/transaction_types_0.csv[]
 |===
 
-As you can see, there are lots of different transaction types, covering a variety of use cases.
-But if you use a transaction type that isn't on this list, you can add new transaction types.
-For more details, see xref:ROOT:how-to/configure-transaction-types.adoc[].
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_0.csv[]
+|===
+
+'''
+
+.Aliases
+[format="csv", options="header", cols="15,25,20,20,20"]
+|===
+include::example$transaction-types/transaction_types_1.csv[]
+|===
+
+.Movements
+[format="csv", options="header", cols="20,10,10,35,15,10", role="word-wrap"]
+|===
+include::example$transaction-types/movements_1.csv[]
+|===
+
+For a full list of transaction types, see the xref:reference/transaction-types/index.adoc#default-transaction-types[transaction types reference guide].
