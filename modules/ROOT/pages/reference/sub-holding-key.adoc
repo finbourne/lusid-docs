@@ -1,0 +1,24 @@
+= What is a sub holding key (SHK)?
+
+By default, LUSID separates xref:reference/holdings.adoc[holdings] by xref:reference/instrument.adoc[instrument].
+i.e. two transactions in the same instrument will contribute to the same holding in that instrument.
+This also applies to cash, where separate holdings (balances) are created for each currency.
+
+Sub holding keys let you bucket your holding in one instrument into different groups, giving a more granular break down of holdings.
+Examples of where we might use sub holding keys could be if:
+
+* You want to account for different types of cash balances
+e.g. principal, income, margin
+
+* You want to segregate holdings in a single instrument based on a strategy tag supplied with the transaction, allowing the performance of individual strategies to be calculated - see how are Subholding keys used to capture different investment strategies?
+
+
+A sub-holding key is a xref:how-to/user-defined-properties.adoc[user defined property] that is specified on xref:reference/portfolio/index.adoc[portfolio] creation and when xref:how-to/load-transactions.adoc[loading transactions] or xref:how-to/holdings/set-holdings.adoc[setting holdings].
+
+[WARNING]
+====
+Since they play such a critical part in how holdings are calculated by LUSID, it is not possible to update a portfolio's sub-holding keys after it has been created.
+====
+
+
+

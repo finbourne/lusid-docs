@@ -1,0 +1,32 @@
+= What is bi-temporal data?
+:description: In this guide we'll learn how bi-temporal data is used in LUSID.
+
+Bi-temporality in LUSID describes a way of storing information where each piece of data is captured with two datetime values:
+
+* _effectiveAt_ -  the datetime the piece of data is considered ‘valid’, in a business context
+* _asAt_ - the datetime the data was physically recorded in LUSID
+
+It's easier to understand with a worked example.
+Consider the live price quote for a stock:
+
+_Vodafone Group PLC (VOD) @ 20 Aug 2018 10:02 UTC = 176.14 GBX_
+
+* The _effectiveAt_ for this quote is `2018-08-20 10:02:00 UTC`.
+UTC is Universal Time Coordinated, and represents the time at longitude 0°.
+
+* The _asAt_ would be the datetime the quote was actually saved into the system.
+e.g. `2018-08-20 10:03:00 UTC`.
+This datetime would likely be slightly later than the _effectiveAt_, as there may have been a delay in the quote being published or uploaded into LUSID.
+
+Whenever any data is retrieved from LUSID, the user must supply datetimes for both the _effectiveAt_ and the _asAt_ (or _asAt_ = ‘Latest’).
+These datetimes are then used to filter the universe of data, to locate the most appropriate value.
+
+== Benefits of bi-temporality
+
+The primary benefit of storing data bi-temporally is that it allows all data changes to be recorded and audited.
+
+Imagine if the Vodafone quote had been saved with the wrong price.
+Using the bi-temporal model, we can correct the value retrospectively.
+
+The corrected piece of data would have the same _effectiveAt_ as before, but the _asAt_ datetime on the updated record would correspond to the datetime the correction was made in LUSID.
+Since LUSID stores both versions of the piece of data, you can retrieve the latest (i.e. corrected) value using _asAt_ = 'Latest', or retrieve the original value using the _asAt_ from the original record.

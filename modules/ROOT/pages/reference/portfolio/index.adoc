@@ -1,7 +1,7 @@
 = What is a portfolio?
 :description: A portfolio is a top-level entity container that can contains transactions, corporate actions, holdings, or constituents.
 
-{description}
+A portfolio is a top-level entity container that can contains xref:reference/transaction.adoc[transactions], corporate actions, xref:reference/holdings.adoc[holdings], or constituents.
 LUSID supports the following types of portfolios:
 
 xref:reference/portfolio/transaction-portfolio.adoc[Transaction Portfolio] ::
@@ -27,5 +27,7 @@ All portfolios are comprised of:
 Portfolios can be securitised to become instruments themselves and held by other portfolios.
 This allows LUSID to perform "drill-through" into underlying fund holdings.
 
+[TIP]
+====
 Hierarchies of portfolios can be created using xref:reference/portfolio/portfolio-group.adoc[portfolio groups].
-
+====

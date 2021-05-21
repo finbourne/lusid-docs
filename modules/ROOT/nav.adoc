@@ -55,7 +55,7 @@
 ** xref:ROOT:how-to/access-control/create-user.adoc[Create user]
 ** xref:ROOT:how-to/access-control/create-role.adoc[Create role]
 ** xref:ROOT:how-to/access-control/create-policy.adoc[Create policy]
-** xref:how-to/access-control/policy-features.adoc[Policy features]
+** xref:how-to/access-control/policy-features.adoc[]
 
 [.documentation-type]
 * xref:ROOT:reference/index.adoc[*Reference*]
@@ -85,6 +85,8 @@
 
 
 
+* xref:ROOT:reference/bi-temporal-data.adoc[]
+* xref:ROOT:reference/sub-holding-key.adoc[What is a sub holding key?]
 * xref:ROOT:reference/scope.adoc[]
 * xref:ROOT:reference/lusid-unique-instrument-identifier-luid.adoc[What is a LUID?]
 * xref:ROOT:reference/filtering-data.adoc[Filtering data]

@@ -51,10 +51,6 @@ These are described below:
 | UnsettledCashTypes | FutureCash, Receivable, Commitment, Accrual, ForwardFx
 |===
 
-
-_Settlement_, _Traded_, _StockMovement_, _FutureCash_, _Commitment_, _Receivable_, _CashSettlement_, _CashForward_, _CashCommitment_, _CashReceivable_, _Accrual_, _CashAccrual_, _ForwardFx_, _CashFxForward_, _UnsettledCashTypes_, _Carry_, _CarryAsPnl_
-
-
 The diagram below breaks down the movement types for the Vodafone example described above.
 
 .Security and cash movement types

@@ -3,7 +3,7 @@
 
 When creating API policies we need to provide access to features (end points).
 The names of these features refer to the operation id of the end point.
-In this guide we'll learn how to
+In this guide we'll learn how to extract a list of these features and their mapping to API end points.
 
 == Pre Requisites
 
@@ -15,6 +15,11 @@ You'll also need to download the https://stedolan.github.io/jq/[jq command line 
 
 First you'll need to download the Swagger file for your domain.
 You can find this at `https://<yourname>.lusid.com/api/swagger/v0/swagger.json`
+
+[source, bash]
+----
+wget https://<yourname>.lusid.com/api/swagger/v0/swagger.json
+----
 
 [NOTE]
 ====
@@ -106,15 +111,15 @@ We could also generate a CSV file of all endpoints by running the following code
 cat swagger.json | jq -r '.paths | keys[] as $k | [
     (.[$k] |
      keys[] as $k1 |
-     [($k | gsub("{"; "\\{") | gsub("}"; "\\}")), .[$k1].operationId, .[$k1].summary]
+     [($k |  gsub("{"; "\\{") | gsub("}"; "\\}")), $k1, .[$k1].operationId, .[$k1].summary]
     )
   ] | .[] | @csv' \
 > swagger.csv
 ----
 
 .swagger.csv
-[format="csv", options="header", cols="40,30,30", role="word-wrap"]
+[format="csv", options="header", cols="35,10,25,30", role="word-wrap"]
 |===
-End point, Feature Name, Description
+End point, Method, Feature Name, Description
 include::example$entitlements/swagger.csv[]
 |===

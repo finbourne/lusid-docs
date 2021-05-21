@@ -33,17 +33,18 @@ Each property must fall in to one of three types:
 
 * A label set property is a set of multiple text labels that can be attached to an entity object.
 
-* A metric property comprises a decimal value and an associated unit. These can be used in calculations during aggregation, or decorated on to tables of results.
+* A metric property comprises a decimal value and an associated unit.
+These can be used in calculations during aggregation, or decorated on to tables of results.
 
-=== Data Type
+=== Data type
 
 Data types are used to constrain the values of the property, to help maintain data quality.
-They are used to validate property data when it is loaded, and to provide details on how best to display the values when they are returned.
+They validate property data when it is loaded and describe how to display the values when they are returned.
 
 LUSID has a number of built-in data types, including simple primitive types like strings (text), dates or numbers.
 It also supports more complex data types such as currency (3-letter ISO currency codes).
 
-=== Property Lifetime
+=== Property lifetime
 
 As LUSID is a bi-temporal system, properties can be either _time-variant_ or _perpetual_.
 
@@ -73,7 +74,7 @@ You can still overwrite any property value, and LUSID will maintain a full audit
 If thr property lifetime is not defined when defining a new property, it will default to perpetual.
 ====
 
-=== Property Constraint Style
+=== Property constraint style
 Property constraint styles define the uniqueness and cardinality of a property value for a given entity object type.
 LUSID support the below values:
 
@@ -86,7 +87,7 @@ In this case supply a PropertyValue of type LabelValueSet.
 
 If this field not defined when defining a new property, constraint style will default to property.
 
-==  Using Properties
+==  Using properties
 
 Once a property is defined, you can use it via its property key.
 You set property values against entities, and can request that property values are decorated onto results obtained from the API.
@@ -95,3 +96,13 @@ You set property values against entities, and can request that property values a
 ====
 For an example of creating a user defined property, see xref:how-to/user-defined-properties.adoc[].
 ====
+
+== Derived properties
+
+Derived properties differ from properties in that no property value is stored.
+Instead, the derived property value is calculated at run time as a function of other values.
+The formula for calculating the Derived Property value (the _derivationFormula_) is set in the Derived Property Definition.
+
+Derived properties are supported for portfolios, instruments, transactions, and holdings.
+
+
