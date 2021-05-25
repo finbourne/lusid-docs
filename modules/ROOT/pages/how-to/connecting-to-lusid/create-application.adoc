@@ -10,7 +10,7 @@ This guide assumes that you have followed created and logged into a LUSID accoun
 
 == Creating a LUSID application
 
-From the home page, click on the person icon on the left hand menu and then click on the `Applications` link.
+From the home page, click on the person icon on the left-hand menu and then click on the `Applications` link.
 
 .Select the person icon followed by `Applications`
 image::application-part-3.png[]

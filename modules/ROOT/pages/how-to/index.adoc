@@ -1,4 +1,4 @@
-= How To Guides for LUSID by FINBOURNE
+= How To Guides
 :description: How-To Guides for LUSID by FINBOURNE, a bi-temporal investment management data platform with portfolio accounting capabilities.
 
 The guides in this section provide recipes for doing common tasks with LUSID.

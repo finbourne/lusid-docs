@@ -5,6 +5,9 @@ You will create and log into your account, create a LUSID application, and then 
 
 == Create account
 
+First you need to create an account.
+LUSID offers a 30-day trial, which should give you enough time to see what it does and whether it works for you.
+
 Navigate to https://www.lusid.com/app/signup[lusid.com/app/signup], where you'll see the following screen:
 
 .Create Account
@@ -31,7 +34,7 @@ image::account-part-2.png[width=400]
 .Data Processing Agreement
 image::account-part-3.png[width=400]
 
-After that you'll see the following success screen:
+After that, all being well, you'll see the following success screen:
 
 .Success
 image::account-part-4.png[]
@@ -42,8 +45,9 @@ You'll need to view that email to finalise account creation.
 .Email Confirmation
 image::account-part-5.png[]
 
-Click on `Activate my LUSID account` and setup your password and 2 factor authentication.
-Now you're ready to login to your account.
+Click on `Activate my LUSID account` and set up your password and 2-factor authentication.
+
+Once you've done that, you're ready to login to your account.
 
 == Login to account
 
@@ -68,3 +72,187 @@ image::application-part-2.png[width=400]
 Once you've filled in your credentials, click on the `Sign In` button.
 You'll then be redirected to the LUSID home page.
 
+== Create Personal Access Token
+
+Next we're going to create a Personal Access Token that we'll use to authenticate requests against the LUSID API.
+
+Click on the Person icon in the top right-hand corner and then select _Your Profile_:
+
+.Navigate to your profile
+image::profile-0.png[]
+
+Find the _Personal access tokens_ section of this screen.
+Choose a _Name_ and optional _Expiry Date_ for your token and then click on _Create token_:
+
+.Create token
+image::pat-0.png[]
+
+You'll then see the _Personal Access Token_ overlay, which contains your token:
+
+.Copy your token
+image::pat-1.png[]
+
+[WARNING]
+====
+You won't be able to access this token after you click the _Close_ button, so make sure you've copied it somewhere.
+====
+
+== Connecting to the LUSID API
+
+Now we're going to make our first API call using the cURL command line tool.
+Update the following command with your LUSID domain/tenant, and the personal access token that you just created:
+
+[source, bash]
+----
+curl -v "https://<yourname>.lusid.com/api/api/instruments?limit=5" \
+-H "Authorization: Bearer <personal-access-token>"
+----
+
+[NOTE]
+====
+The URL does intentionally contain the `api` string twice in a row!
+====
+
+Everything being well, you will see a response that contains a JSON document describing 5 of LUSID's pre-loaded xref:reference/instrument.adoc[instruments].
+
+[TIP]
+====
+If you receive a `400` status code then you might not have copy/pasted your personal token access token properly.
+Check that you've got the correct value and if it's still not working, try creating a new personal access token.
+====
+
+The raw output of cURL isn't particularly easy to read, but you can pipe the output into the https://stedolan.github.io/jq/[jq command line JSON processor^] to get something more readable:
+
+
+[source, bash]
+----
+curl -v "https://<yourname>.lusid.com/api/api/instruments?limit=5" \
+-H "Authorization: Bearer <personal-access-token>" 2>/dev/null | jq '.'
+----
+
+You should see something like the following output:
+
+[source,json]
+----
+{
+  "values": [
+    {
+      "href": "https://<yourname>.lusid.com/api/api/instruments/LusidInstrumentId/CCY_AED",
+      "lusidInstrumentId": "CCY_AED",
+      "version": {
+        "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+        "asAtDate": "2021-05-25T14:43:23.1242330+00:00"
+      },
+      "name": "AED",
+      "identifiers": {
+        "Currency": "AED",
+        "LusidInstrumentId": "CCY_AED"
+      },
+      "properties": [],
+      "state": "Active"
+    },
+    {
+      "href": "https://<yourname>.lusid.com/api/api/instruments/LusidInstrumentId/CCY_AFN",
+      "lusidInstrumentId": "CCY_AFN",
+      "version": {
+        "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+        "asAtDate": "2021-05-25T14:43:23.1242330+00:00"
+      },
+      "name": "AFN",
+      "identifiers": {
+        "Currency": "AFN",
+        "LusidInstrumentId": "CCY_AFN"
+      },
+      "properties": [],
+      "state": "Active"
+    },
+    {
+      "href": "https://<yourname>.lusid.com/api/api/instruments/LusidInstrumentId/CCY_ALL",
+      "lusidInstrumentId": "CCY_ALL",
+      "version": {
+        "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+        "asAtDate": "2021-05-25T14:43:23.1242330+00:00"
+      },
+      "name": "ALL",
+      "identifiers": {
+        "Currency": "ALL",
+        "LusidInstrumentId": "CCY_ALL"
+      },
+      "properties": [],
+      "state": "Active"
+    },
+    {
+      "href": "https://<yourname>.lusid.com/api/api/instruments/LusidInstrumentId/CCY_AMD",
+      "lusidInstrumentId": "CCY_AMD",
+      "version": {
+        "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+        "asAtDate": "2021-05-25T14:43:23.1242330+00:00"
+      },
+      "name": "AMD",
+      "identifiers": {
+        "Currency": "AMD",
+        "LusidInstrumentId": "CCY_AMD"
+      },
+      "properties": [],
+      "state": "Active"
+    },
+    {
+      "href": "https://<yourname>.lusid.com/api/api/instruments/LusidInstrumentId/CCY_ANG",
+      "lusidInstrumentId": "CCY_ANG",
+      "version": {
+        "effectiveFrom": "0001-01-01T00:00:00.0000000+00:00",
+        "asAtDate": "2021-05-25T14:43:23.1242330+00:00"
+      },
+      "name": "ANG",
+      "identifiers": {
+        "Currency": "ANG",
+        "LusidInstrumentId": "CCY_ANG"
+      },
+      "properties": [],
+      "state": "Active"
+    }
+  ],
+  "href": "https://<yourname>.lusid.com/api/api/instruments/?effectiveAt=2021-05-25T14%3A43%3A27.9390110%2B00%3A00&asAt=2021-05-25T14%3A43%3A23.1242330%2B00%3A00&limit=5&filter=State%20eq%20%27Active%27&page=EfSkHgCeGVp1ix%2FZCFpse3KLH9kIQ0NZX0FFRA%3D%3D",
+  "nextPage": "LRZlZgCeGVp1ix/ZCFpse3KLH9kIQ0NZX0FORw==",
+  "previousPage": "EfSkHgGeGVp1ix/ZCFpse3KLH9kIQ0NZX0FFRA==",
+  "links": [
+    {
+      "relation": "NextPage",
+      "href": "https://<yourname>.lusid.com/api/api/instruments/?effectiveAt=2021-05-25T14%3A43%3A27.9390110%2B00%3A00&asAt=2021-05-25T14%3A43%3A23.1242330%2B00%3A00&limit=5&filter=State%20eq%20%27Active%27&page=LRZlZgCeGVp1ix%2FZCFpse3KLH9kIQ0NZX0FORw%3D%3D",
+      "method": "GET"
+    },
+    {
+      "relation": "PreviousPage",
+      "href": "https://<yourname>.lusid.com/api/api/instruments/?effectiveAt=2021-05-25T14%3A43%3A27.9390110%2B00%3A00&asAt=2021-05-25T14%3A43%3A23.1242330%2B00%3A00&limit=5&filter=State%20eq%20%27Active%27&page=EfSkHgGeGVp1ix%2FZCFpse3KLH9kIQ0NZX0FFRA%3D%3D",
+      "method": "GET"
+    },
+    {
+      "relation": "EntitySchema",
+      "href": "https://<yourname>.lusid.com/api/api/schemas/entities/Instrument",
+      "method": "GET"
+    },
+    {
+      "relation": "RequestLogs",
+      "href": "http://<yourname>.lusid.com/app/insights/logs/0HM8VGUFJIM60:00000001",
+      "description": "A link to the LUSID Insights website showing all logs related to this request",
+      "method": "GET"
+    }
+  ]
+}
+----
+
+.Exercise for the reader
+[NOTE.exercise]
+====
+Try adding other query string parameters to the API request, as described in the https://www.lusid.com/docs/api#operation/ListInstruments[List instruments API documentation^].
+====
+
+== Next steps
+
+Congratulations!
+You've successfully made your first LUSID API call.
+
+Below are some suggestions for guides that you might like to read next:
+
+* To learn how to setup a basic portfolio, see xref:tutorials/set-up-basic-portfolio.adoc[].
+* For a list of guides that go through common workflows, see xref:how-to/index.adoc[].
