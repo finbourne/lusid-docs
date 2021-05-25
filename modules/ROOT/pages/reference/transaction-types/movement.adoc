@@ -25,14 +25,14 @@ The following base  movement types are supported:
 | Movement type | Description
 | Settlement | Updates the settlement-date position of the instrument
 | Traded | Updates the trade-date position of the instrument
-| ForwardFx | A transfer of funds from one currency balance to another at a future point in time
 | Commitment | Updates the cash amount to reflect that it is committed to settling a trade
 | Receivable | Updates the cash amount to reflect that it is soon to be received from settlement of a trade
 | Accrual | Updates the cash amount to indicate that it has accrued from an interest bearing instrument
 | CashSettlement | Updates the cash amount to reflect that it has been settled
-| Carry | Description
-| CarryAsPnl | Description
-| FutureCash | Description
+| ForwardFx | A transfer of funds from one currency balance to another at a future point in time
+| FutureCash | A transfer of funds from one currency balance to another at a future point in time
+| Carry | Cost (e.g. fee or expense) or benefit (e.g. dividend/coupon payment on a bond) of owning an instrument - shown in the A to B report against a flow.
+| CarryAsPnl | Same as Carry, but shown in the A to B report against a gain or loss (e.g. commission when selling an instrument).
 |===
 
 There are also movement types composed of the base movement types.
@@ -43,10 +43,10 @@ These are described below:
 |===
 | Movement type | Base movement types
 | StockMovement | Settlement, Traded
-| CashForward | FutureCash, CashSettlement
 | CashCommitment | Commitment, CashSettlement
 | CashReceivable | Receivable, CashSettlement
 | CashAccrual | Accrual, CashSettlement
+| CashForward | FutureCash, CashSettlement
 | CashFxForward | ForwardFx, CashSettlement
 | UnsettledCashTypes | FutureCash, Receivable, Commitment, Accrual, ForwardFx
 |===

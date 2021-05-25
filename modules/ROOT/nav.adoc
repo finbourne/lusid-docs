@@ -75,6 +75,7 @@
 ** xref:reference/transaction-types/side.adoc[]
 
 * xref:ROOT:reference/holdings.adoc[]
+* xref:ROOT:reference/reconciliation.adoc[]
 
 * xref:ROOT:reference/quote.adoc[]
 

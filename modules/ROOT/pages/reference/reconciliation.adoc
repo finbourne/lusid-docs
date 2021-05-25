@@ -1,0 +1,17 @@
+= What is reconciliation?
+
+A reconciliation is an accounting process that compares two sets of records to check that figures are correct and in agreement.
+LUSID supports holdings and valuation reconciliations.
+
+== Holdings reconciliation
+
+A holdings reconciliation ensures consistency across two versions or views of the "same" portfolio
+e.g. an internal view versus an asset service book of record.
+
+The two representations - or sides - of the reconciliation can be defined by two separate sets of _scope_, _code_, _effectiveAt_, and _asAt_; all can differ between sides.
+
+== Valuation reconciliation
+
+A valuation reconciliation returns the difference between two aggregations.
+
+It is similar to holdings reconciliation in that there is a left and right-hand side to the reconciliation request, and the function returns the unit differences.
