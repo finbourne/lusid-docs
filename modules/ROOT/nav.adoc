@@ -28,6 +28,7 @@
 
 * Portfolios
 ** xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[Create transaction portfolio]
+** xref:ROOT:how-to/portfolios/create-reference-portfolio.adoc[Create reference portfolio]
 ** xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[Create derived portfolio]
 ** xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[Create portfolio group]
 

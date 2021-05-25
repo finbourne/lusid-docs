@@ -1,9 +1,9 @@
 = What is a reference portfolio?
 :description: A reference portfolio in LUSID is a portfolio that contains a set of constituent instruments and weights which can change over time.
 
-A reference portfolio is a type of xref:reference/portfolio/index.adoc[portfolio] that contains a set of constituent instruments and weights which can change over time.
+A reference portfolio is a type of xref:reference/portfolio/index.adoc[portfolio] that contains a set of constituent instruments and weights that can change over time.
 
-These instruments can be securitised portfolios which contain other reference portfolios, allowing a blended benchmark to be represented in LUSID.
+These instruments can be securitised portfolios that contain other reference portfolios, allowing a blended benchmark to be represented in LUSID.
 
 The reference portfolio can be configured to automatically float the weights of the underlying indices (the securitised reference portfolio constituents) so that they move in line with the movements of the index.
 
@@ -11,3 +11,8 @@ Further, the configuration can define a "cycling frequency" where the weights of
 
 .A reference portfolio
 image::reference-portfolio.png[width=500]
+
+[TIP]
+====
+To learn how to create a reference portfolio, see xref:how-to/portfolios/create-reference-portfolio.adoc[].
+====
