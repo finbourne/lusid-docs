@@ -44,7 +44,7 @@ LUSID comes with in-built transaction types, which are listed below:
 
 [TIP]
 ====
-For more details on how to get the transaction types on your own LUSID tenant, see xref:how-to/get-default-transaction-types.adoc[].
+For more details on how to get the transaction types on your own LUSID tenant, see xref:how-to/transactions/get-default-transaction-types.adoc[].
 ====
 
 .Aliases
@@ -341,4 +341,4 @@ include::example$transaction-types/movements_20.csv[]
 
 As you can see, there are lots of different transaction types, covering a variety of use cases.
 But if you use a transaction type that isn't on this list, you can add new transaction types.
-For more details, see xref:ROOT:how-to/configure-transaction-types.adoc[].
+For more details, see xref:ROOT:how-to/transactions/configure-transaction-types.adoc[].

@@ -1,0 +1,79 @@
+= How to get transactions
+
+
+In this guide we'll learn how to import xref:reference/transaction.adoc[transactions] into LUSID.
+
+include::partial$ibor-code.adoc[]
+
+== Pre Requisites
+
+This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.
+This guide uses the portfolio created in xref:ROOT:how-to/portfolios/create-transaction-portfolio.adoc[], and, the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[], and the transactions loaded in xref:how-to/transactions/load-transactions.adoc[].
+
+== Setup
+
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
+You can specify your own scope and portfolio code by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code"]
+----
+
+== Initialise API
+
+Initialise the Transactions Portfolio API:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
+----
+
+== API Call
+
+We'll format the transactions response using the following function:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="format-transactions"]
+----
+
+You can retrieve the transactions using the Get Transactions function, as shown below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="get-transactions"]
+----
+
+.Transactions
+[format="csv", options="header", cols="10,20,30,10,10,10"]
+|===
+include::example$ibor/transactions_response.csv[]
+|===
+
+You can add a filter to only return specific transaction types:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="get-transactions-filter"]
+----
+
+.Transactions
+[format="csv", options="header", cols="10,20,30,10,10,10"]
+|===
+include::example$ibor/transactions_filter_response.csv[]
+|===
+
+[TIP]
+====
+To learn more about filters, see xref:reference/filtering-data.adoc[].
+====

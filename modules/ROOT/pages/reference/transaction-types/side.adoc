@@ -1,7 +1,7 @@
 = What is a side?
 :description: A side tells LUSID which attributes to use when converting a transaction into a set of movements used to generate a portfolio.
 
-When you xref:how-to/configure-transaction-types.adoc[configure a transaction type] in LUSID you will need to specify a side for each xref:reference/transaction-types/movement.adoc[movement].
+When you xref:how-to/transactions/configure-transaction-types.adoc[configure a transaction type] in LUSID you will need to specify a side for each xref:reference/transaction-types/movement.adoc[movement].
 The side tells LUSID which attributes (required, optional and/or properties) to use when converting a transaction into a set of movements that are used to generate the xref:reference/holdings.adoc[holdings] for a xref:reference/portfolio/index.adoc[portfolio].
 
 == Example side

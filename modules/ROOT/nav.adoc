@@ -34,9 +34,10 @@
 ** xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[Create portfolio group]
 
 * Transactions
-** xref:ROOT:how-to/load-transactions.adoc[Load Transactions]
-** xref:ROOT:how-to/get-default-transaction-types.adoc[Get Transaction Types]
-** xref:ROOT:how-to/configure-transaction-types.adoc[Set Transaction Types]
+** xref:ROOT:how-to/transactions/load-transactions.adoc[Load Transactions]
+** xref:ROOT:how-to/transactions/get-transactions.adoc[Get Transactions]
+** xref:ROOT:how-to/transactions/get-default-transaction-types.adoc[Get Transaction Types]
+** xref:ROOT:how-to/transactions/configure-transaction-types.adoc[Set Transaction Types]
 
 * Holdings
 ** xref:ROOT:how-to/holdings/set-holdings.adoc[Set Holdings]

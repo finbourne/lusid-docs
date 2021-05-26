@@ -75,25 +75,4 @@ For the transaction that loads cash into our portfolio we need to use a differen
 For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
 ====
 
-== Get Transactions
-
-Now let's retrieve those transactions.
-We'll format the response using the following function:
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="format-transactions"]
-----
-
-You can get the transactions using the Get Transactions API, as shown below:
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="get-transactions"]
-----
-
-.Transactions
-[format="csv", options="header", cols="20,20,30,10,10"]
-|===
-include::example$ibor/transactions_response.csv[]
-|===
+If we want to retrieve those transactions, we can do this by following the xref:how-to/transactions/get-transactions.adoc[] guide.

@@ -25,9 +25,9 @@ The guides in this section provide recipes for doing common tasks with LUSID.
 
 == Transactions
 
-* xref:ROOT:how-to/load-transactions.adoc[]
-* xref:ROOT:how-to/get-default-transaction-types.adoc[]
-* xref:ROOT:how-to/configure-transaction-types.adoc[]
+* xref:ROOT:how-to/transactions/load-transactions.adoc[]
+* xref:ROOT:how-to/transactions/get-default-transaction-types.adoc[]
+* xref:ROOT:how-to/transactions/configure-transaction-types.adoc[]
 
 == Holdings
 

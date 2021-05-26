@@ -13,7 +13,7 @@ e.g. principal, income, margin
 * You want to segregate holdings in a single instrument based on a strategy tag supplied with the transaction, allowing the performance of individual strategies to be calculated - see how are Subholding keys used to capture different investment strategies?
 
 
-A sub-holding key is a xref:how-to/user-defined-properties.adoc[user defined property] that is specified on xref:reference/portfolio/index.adoc[portfolio] creation and when xref:how-to/load-transactions.adoc[loading transactions] or xref:how-to/holdings/set-holdings.adoc[setting holdings].
+A sub-holding key is a xref:how-to/user-defined-properties.adoc[user defined property] that is specified on xref:reference/portfolio/index.adoc[portfolio] creation and when xref:how-to/transactions/load-transactions.adoc[loading transactions] or xref:how-to/holdings/set-holdings.adoc[setting holdings].
 
 [WARNING]
 ====

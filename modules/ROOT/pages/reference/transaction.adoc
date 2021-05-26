@@ -11,5 +11,5 @@ The transaction data model can be extended by adding additional properties to a 
 
 [TIP]
 ====
-For an example of how to load transactions into LUSID, see xref:how-to/load-transactions.adoc[].
+For an example of how to load transactions into LUSID, see xref:how-to/transactions/load-transactions.adoc[].
 ====

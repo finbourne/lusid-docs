@@ -9,7 +9,7 @@ include::partial$ibor-code.adoc[]
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
-This guide uses the transactions loaded in xref:how-to/load-transactions.adoc[].
+This guide uses the transactions loaded in xref:how-to/transactions/load-transactions.adoc[].
 
 == Setup
 
