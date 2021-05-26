@@ -55,7 +55,7 @@ include::example$ibor/test_ibor.py[tag="get-transactions"]
 ----
 
 .Transactions
-[format="csv", options="header", cols="10,20,30,10,10,10"]
+[format="csv", options="header", cols="10,20,10,10,10"]
 |===
 include::example$ibor/transactions_response.csv[]
 |===
@@ -68,7 +68,7 @@ include::example$ibor/test_ibor.py[tag="get-transactions-filter"]
 ----
 
 .Transactions
-[format="csv", options="header", cols="10,20,30,10,10,10"]
+[format="csv", options="header", cols="10,20,10,10,10"]
 |===
 include::example$ibor/transactions_filter_response.csv[]
 |===
