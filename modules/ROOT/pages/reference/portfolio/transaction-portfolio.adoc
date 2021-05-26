@@ -15,5 +15,5 @@ image::transaction-portfolio.png[]
 
 [TIP]
 ====
-To learn how to create a transaction portfolio, see xref:how-to/portfolios/load-transaction-portfolio.adoc[].
+To learn how to create a transaction portfolio, see xref:how-to/portfolios/create-transaction-portfolio.adoc[].
 ====

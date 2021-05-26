@@ -1,0 +1,56 @@
+= How to create a transaction portfolio with a sub holding key (SHK)
+:description: In this guide we'll learn how to create a transaction portfolio in LUSID by FINBOURNE.
+
+In this guide we'll learn how to create xref:reference/portfolio/transaction-portfolio.adoc[a transaction portfolio] with a xref:reference/sub-holding-key.adoc[sub holding key].
+
+include::partial$ibor-code.adoc[]
+
+== Pre Requisites
+
+This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
+
+== Setup
+
+Import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
+== Initialise API
+
+Initialise the Transactions Portfolios and Property Definitions APIs:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
+include::example$ibor/test_ibor.py[tag="property-api"]
+----
+
+== API call
+
+You can specify your own scope and code by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
+----
+
+Create a property to use as sub holding key:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-sub-holding-key-property"]
+----
+
+
+Create a transaction portfolio using that property as sub holding key:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-portfolio-with-shk"]
+----

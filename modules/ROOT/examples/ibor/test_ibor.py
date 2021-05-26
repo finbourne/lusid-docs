@@ -1,3 +1,4 @@
+import json
 import unittest
 import uuid
 from pathlib import Path
@@ -136,7 +137,7 @@ class IBOR(unittest.TestCase):
             scope=properties_scope,
             code='asset_class',
             value_required=True,
-            display_name='asset_class',
+            display_name='Asset Class',
             life_time='TimeVariant',
             data_type_id=lusid.models.ResourceId(scope='system', code='string'))
 
@@ -252,13 +253,18 @@ class IBOR(unittest.TestCase):
         # CREATE PORTFOLIO
         ##################
 
-        # tag::scope-portfolio-code[]
-        scope = portfolio_code = "Developer-IBOR-Tutorial"
-        # end::scope-portfolio-code[]
-        initial_portfolio_code = portfolio_code
+        # tag::scope[]
+        scope = "Developer-IBOR-Tutorial"
+        # end::scope[]
         now = datetime.now().strftime('%Y-%m-%d-%H_%M_%S')
-        scope = portfolio_code = f"Developer-IBOR-Tutorial-{now}"
+        scope = f"Developer-IBOR-Tutorial-{now}"
 
+        # tag::portfolio-code[]
+        portfolio_code = "Developer-IBOR-Tutorial"
+        # end::portfolio-code[]
+        initial_portfolio_code = portfolio_code
+
+        print("Scope", scope)
         print("Portfolio Code", portfolio_code)
 
         # tag::create-portfolio-api[]
@@ -322,13 +328,13 @@ class IBOR(unittest.TestCase):
         self.write_to_test_output(portfolio_df, "get_portfolio.csv")
         self.assertEqual(portfolio.properties[portfolio_manager_property].value.label_value, "Matt Smith")
 
-        # tag::create-portfolio-with-manager[]
         # tag::new-portfolio-code[]
         new_portfolio_code = "Developer-IBOR-With-Manager-Tutorial"
         # end::new-portfolio-code[]
         initial_new_portfolio_code = new_portfolio_code
         new_portfolio_code = f"Developer-IBOR-With-Manager-Tutorial-{now}"
 
+        # tag::create-portfolio-with-manager[]
         transaction_portfolios_api.create_portfolio(
             scope=scope,
             create_transaction_portfolio_request=lusid.models.CreateTransactionPortfolioRequest(
@@ -344,6 +350,43 @@ class IBOR(unittest.TestCase):
             )
         )
         # end::create-portfolio-with-manager[]
+
+        # tag::sub-holding-key-property[]
+        code = "strategy"
+        # end::sub-holding-key-property[]
+
+        # tag::create-sub-holding-key-property[]
+        domain = "Transaction"
+
+        response = api_factory.build(lusid.api.PropertyDefinitionsApi).create_property_definition(
+            create_property_definition_request=lusid.models.CreatePropertyDefinitionRequest(
+                domain=domain,
+                scope=scope,
+                code=code,
+                display_name="Investment strategy",
+                data_type_id=lusid.ResourceId(scope="system", code="string"),
+            ))
+        # end::create-sub-holding-key-property[]
+
+        # tag::portfolio-code-shk[]
+        portfolio_code = "Developer-IBOR-SHK-Tutorial"
+        # end::portfolio-code-shk[]
+
+        # tag::create-portfolio-with-shk[]
+        strategy_property_key = f"{domain}/{scope}/{code}"
+        created_date = datetime(year=2019, month=1, day=1, tzinfo=pytz.UTC).isoformat()
+        
+        response = transaction_portfolios_api.create_portfolio(
+            scope=scope,
+            create_transaction_portfolio_request=lusid.models.CreateTransactionPortfolioRequest(
+                display_name="Developer IBOR SHK Tutorial",
+                code=portfolio_code,
+                created=created_date,
+                sub_holding_keys=[strategy_property_key],
+                base_currency="USD"))
+        # end::create-portfolio-with-shk[]
+        print(response.id.code)
+        self.assertIsNotNone(response.id.code)
 
         # tag::get-updated-portfolio[]
         portfolio = portfolios_api.get_portfolio(
@@ -387,10 +430,10 @@ class IBOR(unittest.TestCase):
             transactions_request.append(
                 lusid.models.TransactionRequest(
                     transaction_id=txn["txn_id"],
-                    type=txn["transaction_type"],
+                    type=txn["tx_type"],
                     instrument_identifiers=instrument_identifier,
-                    transaction_date=pytz.UTC.localize(parse(txn["trade_date"])).isoformat(),
-                    settlement_date=pytz.UTC.localize(parse(txn["trade_date"])).isoformat(),
+                    transaction_date=pytz.UTC.localize(parse(txn["date"])).isoformat(),
+                    settlement_date=pytz.UTC.localize(parse(txn["date"])).isoformat(),
                     units=txn["quantity"],
                     transaction_price=lusid.models.TransactionPrice(price=txn["price"], type="Price"),
                     total_consideration=lusid.models.CurrencyAndAmount(
@@ -492,6 +535,7 @@ class IBOR(unittest.TestCase):
         # end::get-holdings-positions[]
         self.write_to_test_output(holdings, "holdings_positions.csv")
         self.assertEqual(holdings.shape[0], 3)
+        self.assertAlmostEqual(holdings[holdings["Instrument"] == "Amazon_Nasdaq_AMZN"]["Units"].values[0], 100.0, 3)
 
         ##################
         # QUOTES
@@ -614,12 +658,12 @@ class IBOR(unittest.TestCase):
         # Explicitly set holdings
 
         # tag::holdings-file[]
-        quotes_file = "data/test_ibor/holdings.csv"
+        holdings_file = "data/test_ibor/holdings.csv"
         # end::holdings-file[]
-        quotes_file = Path(__file__).parent.joinpath(quotes_file)
+        holdings_file = Path(__file__).parent.joinpath(holdings_file)
 
         # tag::load-holdings[]
-        holdings = pd.read_csv(quotes_file)
+        holdings = pd.read_csv(holdings_file)
         # end::load-holdings[]
         self.write_to_test_output(holdings, "holdings.csv")
 

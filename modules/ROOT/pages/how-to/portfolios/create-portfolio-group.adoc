@@ -13,7 +13,7 @@ It is in the {examples-repository-base}/test_portfolios.py[test_portfolios.py^] 
 == Pre Requisites
 
 This guide assumes that you have created transaction portfolio with the codes `uk-equities-trading` and `us-equities-trading`.
-For more details, see the xref:how-to/portfolios/load-transaction-portfolio.adoc[] guide.
+For more details, see the xref:how-to/portfolios/create-transaction-portfolio.adoc[] guide.
 
 == Setup
 

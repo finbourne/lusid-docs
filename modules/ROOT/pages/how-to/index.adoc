@@ -18,7 +18,7 @@ The guides in this section provide recipes for doing common tasks with LUSID.
 
 == Portfolios
 
-* xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[]
+* xref:ROOT:how-to/portfolios/create-transaction-portfolio.adoc[]
 * xref:ROOT:how-to/portfolios/create-reference-portfolio.adoc[]
 * xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[]
 * xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[]

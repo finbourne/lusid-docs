@@ -37,7 +37,8 @@ You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code"]
 ----
 
 You can create a transaction portfolio by running the following code:
@@ -66,7 +67,7 @@ If you want to add a user defined property to a portfolio, you'll need to first 
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="create-property"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-property"]
 ----
 
 The response returns a `key` that we'll need to use when referring to the user defined property later in this guide.
@@ -90,7 +91,7 @@ include::example$ibor/test_ibor.py[tag="get-portfolio"]
 
 [NOTE]
 ====
-By default user defined properties aren't returned.
+By default, user defined properties aren't returned.
 You need to specify the ones that you want to return using the `property_keys` parameter.
 ====
 
@@ -109,6 +110,7 @@ You can see how to do this in the following code sample:
 
 [source, python, indent=0]
 ----
+include::example$ibor/test_ibor.py[tag="new-portfolio-code"]
 include::example$ibor/test_ibor.py[tag="create-portfolio-with-manager"]
 ----
 
@@ -124,3 +126,8 @@ include::example$ibor/test_ibor.py[tag="get-updated-portfolio"]
 |===
 include::example$ibor/get_new_portfolio.csv[]
 |===
+
+[TIP]
+====
+If you want to create a transaction portfolio with a sub holding key, see xref:how-to/portfolios/create-transaction-portfolio-sub-holding-key.adoc[].
+====

@@ -24,7 +24,8 @@ You can specify your own scope and portfolio code by updating the line below:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="scope-portfolio-code"]
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code"]
 ----
 
 == Initialise API

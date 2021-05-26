@@ -27,7 +27,8 @@
 ** xref:ROOT:how-to/instrument-identifiers.adoc[Get Instrument Identifiers]
 
 * Portfolios
-** xref:ROOT:how-to/portfolios/load-transaction-portfolio.adoc[Create transaction portfolio]
+** xref:ROOT:how-to/portfolios/create-transaction-portfolio.adoc[Create transaction portfolio]
+** xref:ROOT:how-to/portfolios/create-transaction-portfolio-sub-holding-key.adoc[Create transaction portfolio with SHK]
 ** xref:ROOT:how-to/portfolios/create-reference-portfolio.adoc[Create reference portfolio]
 ** xref:ROOT:how-to/portfolios/create-derived-portfolio.adoc[Create derived portfolio]
 ** xref:ROOT:how-to/portfolios/create-portfolio-group.adoc[Create portfolio group]
