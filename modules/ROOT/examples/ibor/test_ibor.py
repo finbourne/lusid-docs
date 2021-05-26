@@ -355,9 +355,11 @@ class IBOR(unittest.TestCase):
         code = "strategy"
         # end::sub-holding-key-property[]
 
-        # tag::create-sub-holding-key-property[]
+        # tag::sub-holding-key-domain-property[]
         domain = "Transaction"
+        # end::sub-holding-key-domain-property[]
 
+        # tag::create-sub-holding-key-property[]
         response = api_factory.build(lusid.api.PropertyDefinitionsApi).create_property_definition(
             create_property_definition_request=lusid.models.CreatePropertyDefinitionRequest(
                 domain=domain,
@@ -367,22 +369,27 @@ class IBOR(unittest.TestCase):
                 data_type_id=lusid.ResourceId(scope="system", code="string"),
             ))
         # end::create-sub-holding-key-property[]
+        print(response.key)
+        self.assertIsNotNone(response.key)
 
         # tag::portfolio-code-shk[]
-        portfolio_code = "Developer-IBOR-SHK-Tutorial"
+        portfolio_code_with_shk = "Developer-IBOR-SHK-Tutorial"
         # end::portfolio-code-shk[]
 
-        # tag::create-portfolio-with-shk[]
+        # tag::portfolio-with-shk-property-key[]
         strategy_property_key = f"{domain}/{scope}/{code}"
+        # end::portfolio-with-shk-property-key[]
+
+        # tag::create-portfolio-with-shk[]
         created_date = datetime(year=2019, month=1, day=1, tzinfo=pytz.UTC).isoformat()
 
         response = transaction_portfolios_api.create_portfolio(
             scope=scope,
             create_transaction_portfolio_request=lusid.models.CreateTransactionPortfolioRequest(
                 display_name="Developer IBOR SHK Tutorial",
-                code=portfolio_code,
+                code=portfolio_code_with_shk,
                 created=created_date,
-                sub_holding_keys=[strategy_property_key],
+                sub_holding_keys=[strategy_property_key], # <1>
                 base_currency="USD"))
         # end::create-portfolio-with-shk[]
         print(response.id.code)
@@ -437,11 +444,42 @@ class IBOR(unittest.TestCase):
                     units=txn["quantity"],
                     transaction_price=lusid.models.TransactionPrice(price=txn["price"], type="Price"),
                     total_consideration=lusid.models.CurrencyAndAmount(
-                        amount=txn["net_money"], currency=txn["currency"])))
+                        amount=txn["net_money"], currency=txn["currency"]),
+                    ))
+
+        transaction_portfolios_api.upsert_transactions(
+            scope=scope, code=portfolio_code_with_shk, transaction_request=transactions_request)
+        # end::import-transactions[]
+
+        # tag::import-transactions-shk[]
+        transactions_request = []
+        for row, txn in transactions.iterrows():
+            if txn["figi"] == "cash":
+                instrument_identifier = {"Instrument/default/Currency": txn["currency"]}
+            else:
+                instrument_identifier = {"Instrument/default/Figi": txn["figi"]}
+
+            transactions_request.append(
+                lusid.models.TransactionRequest(
+                    transaction_id=txn["txn_id"],
+                    type=txn["tx_type"],
+                    instrument_identifiers=instrument_identifier,
+                    transaction_date=pytz.UTC.localize(parse(txn["date"])).isoformat(),
+                    settlement_date=pytz.UTC.localize(parse(txn["date"])).isoformat(),
+                    units=txn["quantity"],
+                    transaction_price=lusid.models.TransactionPrice(price=txn["price"], type="Price"),
+                    total_consideration=lusid.models.CurrencyAndAmount(
+                        amount=txn["net_money"], currency=txn["currency"]),
+                    properties={ # <1>
+                        strategy_property_key: lusid.PerpetualProperty(
+                            key=strategy_property_key,
+                            value=lusid.PropertyValue(label_value=txn["strategy"]))
+                    }
+                ))
 
         transaction_portfolios_api.upsert_transactions(
             scope=scope, code=portfolio_code, transaction_request=transactions_request)
-        # end::import-transactions[]
+        # end::import-transactions-shk[]
 
         # tag::format-transactions[]
         def display_transactions_summary(response):

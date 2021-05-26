@@ -35,6 +35,7 @@
 
 * Transactions
 ** xref:ROOT:how-to/transactions/load-transactions.adoc[Load Transactions]
+** xref:ROOT:how-to/transactions/load-transactions-sub-holding-key.adoc[Load Transactions with SHK]
 ** xref:ROOT:how-to/transactions/get-transactions.adoc[Get Transactions]
 ** xref:ROOT:how-to/transactions/get-default-transaction-types.adoc[Get Transaction Types]
 ** xref:ROOT:how-to/transactions/configure-transaction-types.adoc[Set Transaction Types]

@@ -1,13 +1,13 @@
-= How to load transactions
+= How to load transactions with sub holding key (SHK)
 :description: In this guide we'll learn how to import transactions into LUSID.
 
-In this guide we'll learn how to import xref:reference/transaction.adoc[transactions] into LUSID.
+In this guide we'll learn how to import xref:reference/transaction.adoc[transactions] with a xref:reference/sub-holding-key.adoc[sub holding key] property into LUSID.
 
 include::partial$ibor-code.adoc[]
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.
-This guide uses the portfolio created in xref:ROOT:how-to/portfolios/create-transaction-portfolio.adoc[], and the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
+This guide uses the portfolio created in xref:ROOT:how-to/portfolios/create-transaction-portfolio-sub-holding-key.adoc[], and the instruments loaded in  xref:ROOT:how-to/maintain-instruments-master.adoc[].
 
 == Setup
 
@@ -25,8 +25,16 @@ You can specify your own scope and portfolio codes by updating the line below:
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
-include::example$ibor/test_ibor.py[tag="portfolio-code"]
 include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
+----
+
+This guide assumes that you have created a strategy property key, as described below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
+include::example$ibor/test_ibor.py[tag="sub-holding-key-domain-property"]
+include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
 ----
 
 == Initialise API
@@ -60,38 +68,15 @@ We are using the built-in transaction types _FundsIn_ and _Buy_.
 For a full list of transaction types, see the xref:reference/transaction-types/index.adoc#default-transaction-types[transaction types reference guide].
 ====
 
-== Import Transactions API Call
+== API Call
 
-You can import transactions using the code below:
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="import-transactions"]
-----
-
-[NOTE]
-====
-For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
-For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
-====
-
-== Import Transactions with sub holding key API Call
-
-
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
-include::example$ibor/test_ibor.py[tag="sub-holding-key-domain-property"]
-include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
-----
-
-You can import transactions using the code below:
+You can import transactions with the strategy passed in as a property using the code below:
 
 [source,python,indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="import-transactions-shk"]
 ----
+<1> Sub holding key properties are specified as normal properties on transactions
 
 [NOTE]
 ====
