@@ -45,7 +45,7 @@ include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 To recap, these are the transactions that we are basing our holdings on:
 
 .Transactions
-[format="csv", options="header"]
+[format="csv", options="header", role="word-wrap", cols="10,11,10,12,7,10,10,8,12,10"]
 |===
 include::example$ibor/transactions.csv[]
 |===
