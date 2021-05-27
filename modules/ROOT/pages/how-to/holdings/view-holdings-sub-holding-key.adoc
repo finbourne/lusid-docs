@@ -27,7 +27,7 @@ You can specify your own scope and portfolio code by updating the line below:
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
-include::example$ibor/test_ibor.py[tag="portfolio-code-shk-override"] 
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk-override"]
 ----
 
 == Initialise API
@@ -73,9 +73,10 @@ include::example$ibor/test_ibor.py[tag="format-holdings-shk"]
 We loaded $1,000,000 of funds ($500,000 for each of our strategies) on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
 You can do this by running the following code:
 
-[source, python, indent=0]
+[source, python]
 ----
-include::example$holdings.py[tag="get-holdings-funds-loaded"]
+include::example$holdings.py[tag="get-holdings-funds-loaded", indent=0]
+include::example$ibor/test_ibor.py[tag="get-holdings-funds-loaded-shk", indent=0]
 ----
 
 .Holdings after funds loaded
@@ -97,9 +98,10 @@ For more details on holdings types, see xref:reference/holdings.adoc#holdings-ty
 Our first day's trading was 2nd January 2020, when we bought 50 units of Amazon for the _tech_ strategy and 25 units of Amazon for the _nasdaq-tracker_ strategy at a price of $1902.88 each.
 You can compute the holdings after this transaction by running the following code:
 
-[source, python, indent=0]
+[source, python]
 ----
-include::example$holdings.py[tag="get-holdings-first-day-trading"]
+include::example$holdings.py[tag="get-holdings-first-day-trading", indent=0]
+include::example$ibor/test_ibor.py[tag="get-holdings-first-day-trading-shk", indent=0]
 ----
 
 .Holdings after first day's trading
@@ -119,9 +121,10 @@ Our next trades were on 3rd January 2020, when we bought:
 
 You can compute the holdings after these transactions by running the following code:
 
-[source, python, indent=0]
+[source, python]
 ----
-include::example$holdings.py[tag="get-holdings-second-day-trading"]
+include::example$holdings.py[tag="get-holdings-second-day-trading", indent=0]
+include::example$ibor/test_ibor.py[tag="get-holdings-second-day-trading-shk", indent=0]
 ----
 
 .Holdings after second day's trading
@@ -137,9 +140,10 @@ Our cash balances have reduced further, but we've now got shares in Amazon, Appl
 And finally, we can compute our holdings as of 1st February 2020, which will include the purchase of 25 units of Amazon @ $1869.44 for the _tech_ strategy.
 You can see these holdings by running the following code:
 
-[source, python, indent=0]
+[source, python]
 ----
-include::example$holdings.py[tag="get-holdings-today"]
+include::example$holdings.py[tag="get-holdings-today", indent=0]
+include::example$ibor/test_ibor.py[tag="get-holdings-today-shk", indent=0]
 ----
 
 .Holdings after all trading
@@ -155,9 +159,10 @@ The Amazon stock for the _tech_ sub holding key has increased to 75 units at a t
 We can also filter the holdings by type.
 For example, if you only wanted to see holdings of type `Position`, you could run the following code:
 
-[source, python, indent=0]
+[source, python]
 ----
-include::example$holdings.py[tag="get-holdings-positions"]
+include::example$holdings.py[tag="get-holdings-positions", indent=0]
+include::example$ibor/test_ibor.py[tag="get-holdings-positions-shk", indent=0]
 ----
 
 .Holdings of positions
