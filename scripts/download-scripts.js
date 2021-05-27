@@ -84,6 +84,8 @@ const files = [
         "modules/ROOT/examples/ibor/valuation-all.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/valuation-all-multiple-days.csv`,
         "modules/ROOT/examples/ibor/valuation-all-multiple-days.csv"],
+    [`${python_tools_base}/data/test_ibor/test_output/valuation-shk.csv`,
+        "modules/ROOT/examples/ibor/valuation-shk.csv"],
 
     [`${python_tools_base}/data/test_ibor/test_output/get_instrument.csv`,
         "modules/ROOT/examples/ibor/get_instrument.csv"],

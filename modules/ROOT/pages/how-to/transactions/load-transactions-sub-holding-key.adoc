@@ -33,7 +33,6 @@ This guide assumes that you have created a strategy property key, as described b
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
-include::example$ibor/test_ibor.py[tag="sub-holding-key-domain-property"]
 include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
 ----
 

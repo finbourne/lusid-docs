@@ -10,7 +10,7 @@ include::partial$ibor-code.adoc[]
 
 == Pre Requisites
 
-This guide assumes that you have xref:how-to/portfolios/create-transaction-portfolio.adoc[created a transaction portfolio] and imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
+This guide assumes that you have xref:how-to/portfolios/create-transaction-portfolio-sub-holding-key.adoc[created a transaction portfolio with sub holding key] and imported the instruments described in xref:how-to/maintain-instruments-master.adoc[].
 
 == Setup
 
@@ -28,7 +28,15 @@ You can specify your own scope and portfolio code by updating the line below:
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
-include::example$ibor/test_ibor.py[tag="portfolio-code"]
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk-override"]
+----
+
+This guide assumes that you have created a strategy property key, as described below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
+include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
 ----
 
 == Initialise API
@@ -73,10 +81,16 @@ Holdings in instruments that are not included in the supplied holdings are left 
 
 To set the holdings on a transaction portfolio, use the `set_holdings` function, as shown below:
 
-[source, python, indent=0]
+[source, python]
 ----
-include::example$ibor/test_ibor.py[tag="set-holdings"]
+include::example$ibor/test_ibor.py[tag="set-holdings", indent=0]
 ----
+
+[TIP]
+====
+If you don't want to associate a sub holding key with the holdings, remove the _sub_holdings_keys_ argument.
+====
+
 
 === Adjust Holdings
 
@@ -86,3 +100,8 @@ To adjust the holdings on a transaction portfolio, use the `adjust_holdings` fun
 ----
 include::example$ibor/test_ibor.py[tag="adjust-holdings"]
 ----
+
+[TIP]
+====
+If you don't want to associate a sub holding key with the holdings, remove the _sub_holdings_keys_ argument.
+====

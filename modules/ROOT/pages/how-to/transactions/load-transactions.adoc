@@ -75,29 +75,4 @@ For the transaction that loads cash into our portfolio we need to use a differen
 For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
 ====
 
-== Import Transactions with sub holding key API Call
-
-
-
-[source, python, indent=0]
-----
-include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
-include::example$ibor/test_ibor.py[tag="sub-holding-key-domain-property"]
-include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
-----
-
-You can import transactions using the code below:
-
-[source,python,indent=0]
-----
-include::example$ibor/test_ibor.py[tag="import-transactions-shk"]
-----
-
-[NOTE]
-====
-For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
-For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
-====
-
-
 If we want to retrieve those transactions, we can do this by following the xref:how-to/transactions/get-transactions.adoc[] guide.

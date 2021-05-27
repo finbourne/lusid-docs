@@ -44,7 +44,6 @@ Create a property to use as sub holding key:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="sub-holding-key-domain-property"]
 include::example$ibor/test_ibor.py[tag="create-sub-holding-key-property"]
 ----
 

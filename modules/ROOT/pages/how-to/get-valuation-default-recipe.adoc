@@ -55,7 +55,15 @@ You can specify your own scope and portfolio code by updating the line below:
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
-include::example$ibor/test_ibor.py[tag="portfolio-code"]
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk-override"]
+----
+
+This guide assumes that you have created a strategy property key, as described below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
+include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
 ----
 
 == Initialise API
@@ -191,4 +199,20 @@ include::example$ibor/test_ibor.py[tag="get-valuation-20210422"]
 [format="csv", options="header"]
 |===
 include::example$ibor/valuation-20210422.csv[]
+|===
+
+=== Valuation by sub holding key
+
+We can also get a valuation of our portfolio grouped by sub holding key.
+You can do this by adding _strategy_property_key_ as both metrics and group by criteria:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="get-valuation-total-shk"]
+----
+
+.Valuation by sub holding key
+[format="csv", options="header"]
+|===
+include::example$ibor/valuation-shk.csv[]
 |===
