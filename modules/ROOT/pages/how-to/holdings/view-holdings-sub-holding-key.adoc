@@ -1,5 +1,5 @@
-= How to view the holdings of a portfolio
-:description: In this guide we'll learn how to view holdings in LUSID.
+= How to view the holdings of a portfolio by sub holding key (SHK)
+:description: In this guide we'll learn how to view holdings by sub holding key in LUSID.
 
 {description}
 For more background on holdings, see xref:reference/holdings.adoc[].
@@ -9,7 +9,7 @@ include::partial$ibor-code.adoc[]
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
-This guide uses the transactions loaded in xref:how-to/transactions/load-transactions.adoc[].
+This guide uses the transactions loaded in xref:how-to/transactions/load-transactions-sub-holding-key.adoc[].
 
 == Setup
 
@@ -27,7 +27,7 @@ You can specify your own scope and portfolio code by updating the line below:
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
-include::example$ibor/test_ibor.py[tag="portfolio-code"]
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
 ----
 
 == Initialise API
@@ -50,6 +50,14 @@ To recap, these are the transactions that we are basing our holdings on:
 include::example$ibor/transactions.csv[]
 |===
 
+[NOTE]
+====
+The values in the strategy column have been added as a property to each transaction.
+That property was also specified as a sub holding key when creating the transaction portfolio.
+
+For code samples that show how to do this, see xref:how-to/portfolios/create-transaction-portfolio-sub-holding-key.adoc[] and xref:how-to/transactions/load-transactions-sub-holding-key.adoc[].
+====
+
 == Compute holdings
 
 Let's compute holdings based on these transactions.
@@ -57,26 +65,26 @@ We'll use the following function to format the response that we get back from th
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="format-holdings"]
+include::example$ibor/test_ibor.py[tag="format-holdings-shk"]
 ----
 
 === After funds loaded
 
-We loaded $1,000,000 of funds on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
+We loaded $1,000,000 of funds ($500,000 for each of our strategies) on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
 You can do this by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-funds-loaded"]
+include::example$ibor/test_ibor.py[tag="get-holdings-funds-loaded-shk"]
 ----
 
 .Holdings after funds loaded
 [format="csv", options="header"]
 |===
-include::example$ibor/holdings_funds_loaded.csv[]
+include::example$ibor/holdings_funds_loaded_shk.csv[]
 |===
 
-As expected, the only entry is for 1,000,000 USD.
+We have two entries here - $500,000 for each sub holding key.
 
 [NOTE]
 ====
@@ -86,61 +94,61 @@ For more details on holdings types, see xref:reference/holdings.adoc#holdings-ty
 
 === After first day's trading
 
-Our first day's trading was 2nd January 2020, when we bought 75 units of Amazon at a price of $1902.88 each.
+Our first day's trading was 2nd January 2020, when we bought 50 units of Amazon for the _tech_ strategy and 25 units of Amazon for the _nasdaq-tracker_ strategy at a price of $1902.88 each.
 You can compute the holdings after this transaction by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-first-day-trading"]
+include::example$ibor/test_ibor.py[tag="get-holdings-first-day-trading-shk"]
 ----
 
 .Holdings after first day's trading
 [format="csv", options="header"]
 |===
-include::example$ibor/holdings_first_day_trading.csv[]
+include::example$ibor/holdings_first_day_trading_shk.csv[]
 |===
 
-The amount of USD has reduced by 142,716 to 857,284, which is exactly the amount of cash that we spent on the Amazon shares.
+The amount of USD for both sub holding keys has reduced, the _tech_ one by more since we bought 50 units of Amazon using that strategy and 25 units using the _nasdaq-tracker_ strategy.
 
 === After second day's trading
 
 Our next trades were on 3rd January 2020, when we bought:
 
-* 300 of Apple @ $74.95
-* 500 of CoinBase @ $328.28
+* 300 of Apple (150 for each strategy) @ $74.95
+* 500 of CoinBase (100 for the _tech_ strategy, 400 for the _nasdaq-tracker_ strategy) @ $328.28
 
 You can compute the holdings after these transactions by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-second-day-trading"]
+include::example$ibor/test_ibor.py[tag="get-holdings-second-day-trading-shk"]
 ----
 
 .Holdings after second day's trading
 [format="csv", options="header"]
 |===
-include::example$ibor/holdings_second_day_trading.csv[]
+include::example$ibor/holdings_second_day_trading_shk.csv[]
 |===
 
-We're now down to only $670,659 cash, but we've also got shares in Amazon, Apple, and CoinBase.
+Our cash balances have reduced further, but we've now got shares in Amazon, Apple, and CoinBase.
 
 === After all trading
 
-And finally, we can compute our holdings as of 1st February 2020, which will include the purchase of 25 units of Amazon @ $1869.44.
+And finally, we can compute our holdings as of 1st February 2020, which will include the purchase of 25 units of Amazon @ $1869.44 for the _tech_ strategy.
 You can see these holdings by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-today"]
+include::example$ibor/test_ibor.py[tag="get-holdings-today-shk"]
 ----
 
 .Holdings after all trading
 [format="csv", options="header"]
 |===
-include::example$ibor/holdings_today.csv[]
+include::example$ibor/holdings_today_shk.csv[]
 |===
 
-Our cash is now down to $623,923, but our Amazon stock has increased to 100 units at a total cost of $189,452.
+The Amazon stock for the _tech_ sub holding key has increased to 75 units at a total cost of $141,880.
 
 === Filtering by type
 
@@ -149,11 +157,11 @@ For example, if you only wanted to see holdings of type `Position`, you could ru
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-positions"]
+include::example$ibor/test_ibor.py[tag="get-holdings-positions-shk"]
 ----
 
 .Holdings of positions
 [format="csv", options="header"]
 |===
-include::example$ibor/holdings_positions.csv[]
+include::example$ibor/holdings_positions_shk.csv[]
 |===

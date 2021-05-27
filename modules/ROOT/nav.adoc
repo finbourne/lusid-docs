@@ -43,6 +43,7 @@
 * Holdings
 ** xref:ROOT:how-to/holdings/set-holdings.adoc[Set Holdings]
 ** xref:ROOT:how-to/holdings/view-holdings.adoc[View Holdings]
+** xref:ROOT:how-to/holdings/view-holdings-sub-holding-key.adoc[View Holdings by SHK]
 
 * Market Data
     ** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
