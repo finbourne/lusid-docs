@@ -67,7 +67,7 @@ You can do this by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-funds-loaded"]
+include::example$holdings.py[tag="get-holdings-funds-loaded"]
 ----
 
 .Holdings after funds loaded
@@ -91,7 +91,7 @@ You can compute the holdings after this transaction by running the following cod
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-first-day-trading"]
+include::example$holdings.py[tag="get-holdings-first-day-trading"]
 ----
 
 .Holdings after first day's trading
@@ -113,7 +113,7 @@ You can compute the holdings after these transactions by running the following c
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-second-day-trading"]
+include::example$holdings.py[tag="get-holdings-second-day-trading"]
 ----
 
 .Holdings after second day's trading
@@ -131,7 +131,7 @@ You can see these holdings by running the following code:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-today"]
+include::example$holdings.py[tag="get-holdings-today"]
 ----
 
 .Holdings after all trading
@@ -149,7 +149,7 @@ For example, if you only wanted to see holdings of type `Position`, you could ru
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="get-holdings-positions"]
+include::example$holdings.py[tag="get-holdings-positions"]
 ----
 
 .Holdings of positions

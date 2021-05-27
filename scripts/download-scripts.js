@@ -29,6 +29,8 @@ const files = [
 
     [`${python_tools_base}/lusid_utils.py`,
         "modules/ROOT/examples/lusid_utils.py"],
+    [`${python_tools_base}/holdings.py`,
+        "modules/ROOT/examples/holdings.py"],
 
     [`${python_tools_base}/data/test_user_defined_properties/test_output/get_property.csv`,
         "modules/ROOT/examples/user-defined-properties/get_property.csv"],
