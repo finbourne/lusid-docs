@@ -5,3 +5,90 @@ A corporate action is an activity that a company does that causes an economic ch
 Common corporate actions are stock splits and spin-offs.
 
 LUSID allows the details of corporate actions to be uploaded into the system, and will then automatically apply them to any xref:reference/portfolio/index.adoc[portfolios] which are configured correctly and hold the affected xref:reference/instrument.adoc[instruments].
+
+[TIP]
+====
+For an example of how to create a corporate action, see xref:how-to/create-corporate-action.adoc[].
+====
+
+== Importing corporate actions
+
+Corporate actions are loaded into a corporate action source, which must be set up before loading any corporate actions.
+Each corporate action contains the following fields
+
+* Unique identifier
+* Description
+* https://www.investopedia.com/terms/a/announcement-date.asp[Announcement Date^]
+* https://www.investopedia.com/terms/e/ex-date.asp[Ex Date^]
+* https://www.investopedia.com/terms/r/recorddate.asp[Record Date^]
+* https://www.investopedia.com/terms/p/paymentdate.asp[Payment Date^]
+* Input transition - contains the instrument to which the corporate action will be applied.
+* Output transitions - a list containing the results of the corporate action.
+
+=== Transitions
+
+Transitions describe the instrument taking part in a corporate action, and the effect of the corporate action on holdings in that instrument.
+Transitions contain the following fields:
+
+Instrument identifiers ::
+A dictionary of xref:how-to/instrument-identifiers.adoc[instrument identifiers] to which the transition will be applied.
+
+Units Factor ::
+The ratio of the units factor on the input transition, and the units factor on the output transition is used to set or update the quantity of the output Instrument. +
+A 2:1 stock split would be represented with `Input Units Factor = 1`, `Output Units Factor = 2`
+
+Cost Factor ::
+The ratio of the cost factor on the input transition, and the cost factor on the output transition is used to set or update the cost on the holding in the output instrument. +
+A spin off where 20% of the cost is moving to a new company would be represented with `Input Cost Factor = 1`, `Output Cost Factor = 0.8` for the original instrument and `Output Cost Factor = 0.2` for the spun-off instrument.
+
+== Examples
+
+[cols="18,10,10,10,35",width="100%"]
+|====================
+.2+h| Description
+3+h| Input Transitions
+.2+h| Output Transitions
+
+//| A2
+
+h| Instrument
+h| Units Factor
+h| Cost Factor
+
+
+| 2 for 1 Stock Split for "Company A"
+| Company A
+| 1
+| 1
+a|
+[opts="header"]
+!===
+! Instrument ! Units Factory ! Cost Factor
+! Company A ! 2 ! 1
+!===
+
+| Dividend of 35p per share of Company A
+| Company A
+| 1
+| 0
+a|
+[opts="header"]
+!===
+! Instrument ! Units Factory ! Cost Factor
+! GBP ! 0.35 ! 0
+!===
+
+
+| Spin off of 1 new share in new Company B for every 10 shares in Company A, taking 20% of the book cost
+| Company A
+| 10
+| 1
+a|
+[opts="header"]
+!===
+! Instrument ! Units Factory ! Cost Factor
+! Company A ! 10 ! 0.8
+! Company B ! 1 ! 0.2
+!===
+|====================
+

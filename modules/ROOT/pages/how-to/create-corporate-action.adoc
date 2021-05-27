@@ -37,7 +37,7 @@ include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 
 == API calls
 
-Create a corporate action source:
+=== Create a corporate action source:
 
 [source, python, indent=0]
 ----
@@ -46,13 +46,15 @@ include::example$ibor/test_ibor.py[tag="corporate-action-source-code"]
 include::example$ibor/test_ibor.py[tag="create-corporate-action-source"]
 ----
 
-Add corporate action source to transaction portfolio:
+=== Add corporate action source to transaction portfolio:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="corporate-action-created-at"]
 include::example$ibor/test_ibor.py[tag="add-corporate-action-portfolio"]
 ----
+
+=== Apply corporate action
 
 Create a corporate action transition request that represents a $10 dividend for each Coinbase share:
 
@@ -68,6 +70,8 @@ Corporate action transition requests consist of input and output transitions, wh
 | Input | Output
 | 1 unit of Coinbase (`Figi: "BBG00ZGF7HS6"`) | 10 units of USD
 |===
+
+In other words, for every 1 unit of Coinbase, we get 10 units of USD.
 
 You can apply this corporate action by running the following code:
 
