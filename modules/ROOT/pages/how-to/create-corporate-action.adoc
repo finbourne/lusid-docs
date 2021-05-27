@@ -49,7 +49,7 @@ Add corporate action source to transaction portfolio:
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="corporate-action-created-at"]
+include::example$ibor/test_ibor.py[tag="corporate-action-created-at"] 
 include::example$ibor/test_ibor.py[tag="add-corporate-action-portfolio"]
 ----
 
