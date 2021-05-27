@@ -1,0 +1,76 @@
+= How to create a corporate action
+
+In this guide we'll create a xref:reference/corporate-action.adoc[corporate action].
+
+== Pre Requisites
+
+This guide assumes that you have xref:how-to/portfolios/create-transaction-portfolio.adoc[created a transaction portfolio] and xref:how-to/transactions/load-transactions.adoc[loaded some transactions].
+
+== Setup
+
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$identifiers/test_identifiers.py[tag="imports-lusid"]
+include::example$identifiers/test_identifiers.py[tag="imports-pandas"]
+----
+
+You can specify your own scope and portfolio code by updating the lines below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code"]
+----
+
+== Initialise API
+
+Initialise the Corporate Action Sources and Transaction Portfolios APIs:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="corporate-action-source-api"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
+----
+
+== API calls
+
+Create a corporate action source:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="corporate-action-source-code"]
+
+include::example$ibor/test_ibor.py[tag="create-corporate-action-source"]
+----
+
+Add corporate action source to transaction portfolio:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="corporate-action-created-at"]
+include::example$ibor/test_ibor.py[tag="add-corporate-action-portfolio"]
+----
+
+Create a corporate action transition request that represents a $10 dividend for each Coinbase share:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-transition"]
+----
+
+Corporate action transition requests consist of input and output transitions, which looks like this for the dividend:
+
+[opts="header"]
+|===
+| Input | Output
+| 1 unit of Coinbase (`Figi: "BBG00ZGF7HS6"`) | 10 units of USD
+|===
+
+You can apply this corporate action by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="upsert-transition"]
+----

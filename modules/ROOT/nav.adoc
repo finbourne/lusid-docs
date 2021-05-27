@@ -55,6 +55,8 @@
 * Modelling
 ** xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties]
 
+* Corporate Action
+** xref:how-to/create-corporate-action.adoc[Create corporate action]
 
 * xref:ROOT:how-to/access-control/index.adoc[Access Control]
 ** xref:ROOT:how-to/access-control/create-user.adoc[Create user]
