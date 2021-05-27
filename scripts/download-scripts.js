@@ -110,6 +110,8 @@ const files = [
         "modules/ROOT/examples/ibor/get_portfolio.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/get_new_portfolio.csv`,
         "modules/ROOT/examples/ibor/get_new_portfolio.csv"],
+    [`${python_tools_base}/data/test_ibor/test_output/reconciliation.csv`,
+        "modules/ROOT/examples/ibor/reconciliation.csv"],
 
     [`${python_tools_base}/data/test_ibor/test_output/transactions.csv`,
         "modules/ROOT/examples/ibor/transactions.csv"],

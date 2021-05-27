@@ -1,0 +1,70 @@
+= Reconcile two holdings
+
+In this guide we'll reconcile two xref:reference/holdings.adoc[holdings].
+
+include::partial$ibor-code.adoc[]
+
+== Pre Requisites
+
+This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
+This guide uses the transactions loaded in xref:how-to/transactions/load-transactions.adoc[].
+
+== Setup
+
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
+You can specify your own scope and portfolio code by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code"]
+----
+
+== Initialise API
+
+Initialise the Reconciliations API:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="reconciliation-api"]
+----
+
+== API Call
+
+Reconcile the portfolio at two different points in time, 2nd January 2020 and 5th January 2020:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="reconcile-holdings", indent=0]
+----
+
+The following function formats the response into a DataFrame:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="format-reconciliation", indent=0]
+----
+
+Format the response:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="format-reconcile-holdings", indent=0]
+----
+
+
+.Holdings of positions
+[format="csv", options="header"]
+|===
+include::example$ibor/reconciliation.csv[]
+|===
+
+From these table we can see that between these two dates we bought 25 units of Amazon, 300 units of Apple, and 500 units of CoinBase, at a cost of $233,361.

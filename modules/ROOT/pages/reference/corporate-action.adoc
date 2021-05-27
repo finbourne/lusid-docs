@@ -49,8 +49,6 @@ A spin off where 20% of the cost is moving to a new company would be represented
 3+h| Input Transitions
 .2+h| Output Transitions
 
-//| A2
-
 h| Instrument
 h| Units Factor
 h| Cost Factor
