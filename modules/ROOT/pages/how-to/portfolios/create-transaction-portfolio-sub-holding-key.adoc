@@ -44,14 +44,15 @@ Create a property to use as sub holding key:
 
 [source, python, indent=0]
 ----
+include::example$ibor/test_ibor.py[tag="sub-holding-key-domain-property"]
 include::example$ibor/test_ibor.py[tag="create-sub-holding-key-property"]
 ----
-
 
 Create a transaction portfolio using that property as sub holding key:
 
 [source, python, indent=0]
 ----
+include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
 include::example$ibor/test_ibor.py[tag="create-portfolio-with-shk"]
 ----
 <1> Our property becomes a sub holding key by passing it to the `sub_holding_keys` parameter when creating a portfolio.
