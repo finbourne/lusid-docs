@@ -7,6 +7,11 @@ For example, you could define a 'Portfolio Manager' property for your portfolios
 
 LUSID has a number of predefined properties, but you are able to create your own as well.
 
+[TIP]
+====
+For an example of how to use properties, see xref:how-to/user-defined-properties.adoc[].
+====
+
 == Property definition
 
 Every new property must be defined before it can be used.
@@ -71,7 +76,7 @@ You can still overwrite any property value, and LUSID will maintain a full audit
 
 [TIP]
 ====
-If thr property lifetime is not defined when defining a new property, it will default to perpetual.
+If the property lifetime is not defined when defining a new property, it will default to perpetual.
 ====
 
 === Property constraint style
@@ -91,11 +96,6 @@ If this field not defined when defining a new property, constraint style will de
 
 Once a property is defined, you can use it via its property key.
 You set property values against entities, and can request that property values are decorated onto results obtained from the API.
-
-[TIP]
-====
-For an example of creating a user defined property, see xref:how-to/user-defined-properties.adoc[].
-====
 
 == Derived properties
 

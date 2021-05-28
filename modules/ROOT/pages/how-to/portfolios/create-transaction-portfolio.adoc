@@ -54,8 +54,8 @@ This portfolio is effective from 1st January 2019.
 [[user-defined-properties]]
 == User defined properties
 
-LUSID supports user defined properties.
-User defined properties can be associated with portfolios to add in additional model data
+LUSID supports xref:reference/properties.adoc[user defined properties].
+User defined properties can be linked to portfolios if we want to add extra meta-data
 For example, a property for ‘portfolio manager’ could be added and linked to a portfolio for management and reporting purposes.
 
 [NOTE]
@@ -72,7 +72,7 @@ include::example$ibor/test_ibor.py[tag="create-portfolio-property"]
 
 The response returns a `key` that we'll need to use when referring to the user defined property later in this guide.
 
-You can Matt Smith as the portfolio manager by running the following code:
+Add Matt Smith as the portfolio manager by running the following code:
 
 [source, python, indent=0]
 ----

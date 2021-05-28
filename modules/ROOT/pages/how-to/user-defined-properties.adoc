@@ -1,7 +1,7 @@
 = How to work with User Defined Properties
 :description: In this guide we will learn how to use user defined properties, a key part of LUSID's flexible modelling system.
 
-{description}
+In this guide we will learn how to use xref:reference/properties.adoc[user defined properties], a key part of LUSID's flexible modelling system.
 
 LUSID's modelling system has a minimal number of required properties for each entity.
 Often you will want to store metadata for more properties, which is where user defined properties can be used.
@@ -18,12 +18,7 @@ User defined properties can be defined for a whole array of different entities.
 When you create a property, you'll need to specify the `domain` in which it exists.
 The following domains are supported:
 
-NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity
-
-[TIP]
-====
-For more explanation of user defined properties, see xref:reference/properties.adoc[]
-====
+_NotDefined_, _Transaction_, _Portfolio_, _Holding_, _ReferenceHolding_, _TransactionConfiguration_, _Instrument_, _CutLabelDefinition_, _Analytic_, _PortfolioGroup_, _Person_, _AccessMetadata_, _Order_, _UnitResult_, _MarketData_, _ConfigurationRecipe_, _Allocation_, _Calendar_, _LegalEntity_
 
 == Pre Requisites
 

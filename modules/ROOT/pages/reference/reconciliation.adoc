@@ -10,8 +10,19 @@ e.g. an internal view versus an asset service book of record.
 
 The two representations - or sides - of the reconciliation can be defined by two separate sets of _scope_, _code_, _effectiveAt_, and _asAt_; all can differ between sides.
 
+[TIP]
+====
+For an example of a holdings reconciliation, see xref:how-to/holdings/reconcile-holdings.adoc[]
+====
+
+
 == Valuation reconciliation
 
 A valuation reconciliation returns the difference between two aggregations.
 
 It is similar to holdings reconciliation in that there is a left and right-hand side to the reconciliation request, and the function returns the unit differences.
+
+[TIP]
+====
+For an example of a valuation reconciliation, see xref:how-to/valuation/reconcile-valuations.adoc[]
+====

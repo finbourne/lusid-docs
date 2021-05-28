@@ -8,9 +8,9 @@ Sub holding keys let you bucket your holding in one instrument into different gr
 Examples of where we might use sub holding keys could be if:
 
 * You want to account for different types of cash balances
-e.g. principal, income, margin
+e.g. _principal_, _income_, _margin_.
 
-* You want to segregate holdings in a single instrument based on a strategy tag supplied with the transaction, allowing the performance of individual strategies to be calculated - see how are Subholding keys used to capture different investment strategies?
+* You want to segregate holdings in a single instrument based on a strategy tag supplied with the transaction, allowing the performance of individual strategies to be calculated.
 
 
 A sub-holding key is a xref:how-to/user-defined-properties.adoc[user defined property] that is specified on xref:reference/portfolio/index.adoc[portfolio] creation and when xref:how-to/transactions/load-transactions.adoc[loading transactions] or xref:how-to/holdings/set-holdings.adoc[setting holdings].
@@ -18,6 +18,11 @@ A sub-holding key is a xref:how-to/user-defined-properties.adoc[user defined pro
 [WARNING]
 ====
 Since they play such a critical part in how holdings are calculated by LUSID, it is not possible to update a portfolio's sub-holding keys after it has been created.
+====
+
+[TIP]
+====
+For an example of how to create a transaction portfolio with a sub holding key, see xref:how-to/portfolios/create-transaction-portfolio-sub-holding-key.adoc[].
 ====
 
 

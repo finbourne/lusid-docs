@@ -1,7 +1,7 @@
 = How to reconcile two valuations
 
-In this guide we'll reconcile two valuations.
-We can use this approach to compare valuations of the same xref:reference/portfolio/index.adoc[portfolios] at different effective dates or valuations of different portfolios.
+In this guide we'll xref:reference/reconciliation.adoc[reconcile] two valuations.
+We can use this approach to compare valuations of different portfolios or the same xref:reference/portfolio/index.adoc[portfolios] at different times.
 
 
 include::partial$ibor-code.adoc[]
