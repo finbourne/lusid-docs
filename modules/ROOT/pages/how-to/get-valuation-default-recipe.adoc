@@ -95,7 +95,7 @@ The `field` is case-sensitive, so 'Mid' is different to 'mid'.
 The valuation engine will throw an error about not being able to find a quote in the quote store if the field in the quote doesn't exactly match the one used in the recipe.
 ====
 
-== Compute valuation
+== API calls
 
 You can compute the valuation of a portfolio between specific dates using the following function:
 

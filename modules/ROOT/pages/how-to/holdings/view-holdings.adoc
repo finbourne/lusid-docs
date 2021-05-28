@@ -1,8 +1,7 @@
 = How to view the holdings of a portfolio
 :description: In this guide we'll learn how to view holdings in LUSID.
 
-{description}
-For more background on holdings, see xref:reference/holdings.adoc[].
+In this guide we'll learn how to view the xref:reference/holdings.adoc[holdings] of a xref:reference/portfolio/index.adoc[portfolio] in LUSID.
 
 include::partial$ibor-code.adoc[]
 
@@ -10,6 +9,10 @@ include::partial$ibor-code.adoc[]
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
 This guide uses the transactions loaded in xref:how-to/transactions/load-transactions.adoc[].
+
+== Our Transactions
+
+include::partial$transactions.adoc[]
 
 == Setup
 
@@ -32,28 +35,16 @@ include::example$ibor/test_ibor.py[tag="portfolio-code"]
 
 == Initialise API
 
-Viewing holdings is done using the Transaction Portfolios API.
-You can initialise this API end point by running the following code:
+Initialise the Transaction Portfolios API:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 ----
 
-== Our Transactions
+== API calls
 
-To recap, these are the transactions that we are basing our holdings on:
-
-.Transactions
-[format="csv", options="header", role="word-wrap", cols="10,11,10,12,7,10,10,8,12,10"]
-|===
-include::example$ibor/transactions.csv[]
-|===
-
-== Compute holdings
-
-Let's compute holdings based on these transactions.
-We'll use the following function to format the response that we get back from the Get Holdings API:
+Define the following function to format the response that we get back from the Get Holdings end point:
 
 [source, python, indent=0]
 ----

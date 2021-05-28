@@ -2,7 +2,7 @@
 
 :description: In this guide we'll set the holdings of a transaction portfolio.
 
-{description}
+In this guide we'll set the xref:reference/holdings.adoc[holdings] of a xref:reference/portfolio/transaction-portfolio.adoc[transaction portfolio].
 We might want to do this if we have a set of positions, but don't have transaction data to create those positions.
 LUSID will automatically construct adjustment transactions based on the holdings we provide.
 
@@ -67,7 +67,7 @@ include::example$ibor/holdings.csv[]
 From this table, we can see that our portfolio holds 100 units of Amazon stock, 300 units of Apple, and 500 units of CoinBase.
 In this guide we aren't interested in the amount that it cost us to buy these instruments.
 
-== Setting Holdings
+== API calls
 
 There are two ways to set the holdings on a portfolio:
 
@@ -105,3 +105,5 @@ include::example$ibor/test_ibor.py[tag="adjust-holdings"]
 ====
 If you don't want to associate a sub holding key with the holdings, remove the _sub_holdings_keys_ argument.
 ====
+
+For more details on how to view the holdings of a portfolio, see xref:how-to/holdings/view-holdings.adoc[].

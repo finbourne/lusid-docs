@@ -2,6 +2,7 @@
 :description: In this guide we'll learn how to create a transaction portfolio in LUSID by FINBOURNE.
 
 In this guide we'll learn how to create xref:reference/portfolio/transaction-portfolio.adoc[a transaction portfolio] with a xref:reference/sub-holding-key.adoc[sub holding key].
+If you want to create a transaction portfolio without a sub holding key, see xref:how-to/portfolios/create-transaction-portfolio.adoc[].
 
 include::partial$ibor-code.adoc[]
 
