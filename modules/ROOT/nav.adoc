@@ -9,8 +9,11 @@
 
 * xref:ROOT:tutorials/getting-started.adoc[]
 * xref:ROOT:tutorials/set-up-basic-portfolio.adoc[]
-* xref:ROOT:tutorials/create-holdings-report.adoc[]
+* xref:ROOT:tutorials/set-up-ibor.adoc[Setting up an IBOR]
 * xref:ROOT:tutorials/entitlements.adoc[Intro to entitlements]
+
+
+//* xref:ROOT:tutorials/create-holdings-report.adoc[]
 
 [.documentation-type]
 * xref:ROOT:how-to/index.adoc[*How-To Guides*]
@@ -42,6 +45,7 @@
 
 * Holdings
 ** xref:ROOT:how-to/holdings/set-holdings.adoc[Set Holdings]
+** xref:ROOT:how-to/holdings/adjust-holdings.adoc[Adjust Holdings]
 ** xref:ROOT:how-to/holdings/view-holdings.adoc[View Holdings]
 ** xref:ROOT:how-to/holdings/view-holdings-sub-holding-key.adoc[View Holdings by SHK]
 ** xref:ROOT:how-to/holdings/reconcile-holdings.adoc[Reconcile two holdings]
@@ -94,7 +98,7 @@
 * xref:ROOT:reference/corporate-action.adoc[]
 
 
-
+* xref:ROOT:reference/authenticating.adoc[]
 * xref:ROOT:reference/bi-temporal-data.adoc[]
 * xref:ROOT:reference/sub-holding-key.adoc[What is a sub holding key?]
 * xref:ROOT:reference/scope.adoc[]

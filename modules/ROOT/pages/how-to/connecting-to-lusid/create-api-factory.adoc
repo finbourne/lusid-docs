@@ -29,7 +29,7 @@ include::example$lusid_utils.py[tag="imports"]
 
 You can then create an API factory from a secrets file:
 
-include::partial$api-factory.adoc[tag]
+include::partial$api-factory.adoc[]
 
 == Using environment variables
 

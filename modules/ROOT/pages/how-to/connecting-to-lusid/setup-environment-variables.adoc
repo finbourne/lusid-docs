@@ -17,19 +17,7 @@ include::partial$credentials/get-credentials.adoc[tag="how-to-download"]
 
 You can then define the following environment variables:
 
-.Web App -> Environment variables mappings
-[opts="header", cols="2,2,2,3"]
-|===
-|  Environment Variable | LUSID web app |Token | Description
-|  `FBN_LUSID_API_URL` | `API Url` | `<1>` | LUSID API URL
-|  `FBN_TOKEN_URL` | `Token Url` |   `<2>` |  Okta endpoint to generate authentication token
-|  `FBN_CLIENT_ID` | `Client Id` |   `<3>` |  OpenID Connect Client ID
-|  `FBN_CLIENT_SECRET` | `Secret` |  `<4>` |  OpenID Connect Client Secret
-|  `FBN_APP_NAME` | N/A | `<applicationName>` |  An optional identifier for your application
-|  `FBN_USERNAME` | N/A | `<username>` |  Username of the account accessing the API (e.g. email used in xref:tutorials/getting-started.adoc[])
-|  `FBN_PASSWORD` | N/A | `<password>` |  Password of the account accessing the API (e.g. password used in xref:tutorials/getting-started.adoc[])
-|===
-
+include::partial$credentials/auth-mapping.adoc[]
 
 include::partial$credentials/get-credentials.adoc[tag="production-users-tip"]
 

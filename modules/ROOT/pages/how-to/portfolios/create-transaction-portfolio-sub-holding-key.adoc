@@ -38,6 +38,7 @@ You can specify your own scope and code by updating the line below:
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
 include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
 ----
 

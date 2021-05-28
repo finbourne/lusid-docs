@@ -1,7 +1,7 @@
 = How to get transactions
 
 
-In this guide we'll learn how to import xref:reference/transaction.adoc[transactions] into LUSID.
+In this guide we'll learn how to get xref:reference/transaction.adoc[transactions] that have been imported into LUSID.
 
 include::partial$ibor-code.adoc[]
 

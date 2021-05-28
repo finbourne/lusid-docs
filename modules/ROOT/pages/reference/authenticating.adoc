@@ -1,0 +1,27 @@
+= How does authentication work?
+
+* Personal Access Token
+* Secrets file
+* Environment variables
+
+
+== Personal Access Token
+
+
+== Environment variables
+
+This is the most common option.
+
+[TIP]
+====
+For an example of how to connect to LUSID using this approach, see xref:how-to/connecting-to-lusid/setup-environment-variables.adoc[]
+====
+
+== Secrets file
+
+Use this approach if you are connecting to multiple different LUSID environments and don't want to have to keep updating environment variables.
+
+[TIP]
+====
+For an example of how to connect to LUSID using this approach, see xref:how-to/connecting-to-lusid/configure-secrets-file.adoc[]
+====

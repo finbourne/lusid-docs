@@ -4,6 +4,8 @@
 xref:reference/instrument.adoc[Instruments] in LUSID must have at least one unique market identifier, but can have as many non-unique identifiers as they like.
 In this guide we'll see how to return a list of these identifiers.
 
+include::partial$ibor-code.adoc[]
+
 == Pre Requisites
 
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID.

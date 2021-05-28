@@ -1,17 +1,16 @@
-= How to set holdings of a portfolio
+= How to adjust holdings of a portfolio
 
 :description: In this guide we'll set the holdings of a transaction portfolio.
 
-In this guide we'll set the xref:reference/holdings.adoc[holdings] of a xref:reference/portfolio/transaction-portfolio.adoc[transaction portfolio].
+In this guide we'll adjust the xref:reference/holdings.adoc[holdings] of a xref:reference/portfolio/transaction-portfolio.adoc[transaction portfolio].
 We might want to do this if we have a set of positions, but don't have transaction data to create those positions.
 LUSID will automatically construct adjustment transactions based on the holdings we provide.
 
 [TIP]
 ====
-SetHoldings *replaces a portfolio's current holdings* with the supplied holdings.
-Holdings in instruments that are not included in the supplied holdings will be removed (i.e. reduced to zero).
+AdjustHoldings *augments a portfolio's current holdings* with the supplied holdings.
+Holdings in instruments that are not included in the supplied holdings are left untouched.
 ====
-
 
 include::partial$ibor-code.adoc[]
 
@@ -75,11 +74,12 @@ From this table, we can see that our portfolio holds 100 units of Amazon stock, 
 In this guide we aren't interested in the amount that it cost us to buy these instruments.
 
 == API calls
-To set the holdings on a transaction portfolio, use the `set_holdings` function, as shown below:
 
-[source, python]
+To adjust the holdings on a transaction portfolio, use the `adjust_holdings` function, as shown below:
+
+[source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="set-holdings", indent=0]
+include::example$ibor/test_ibor.py[tag="adjust-holdings"]
 ----
 
 [TIP]
@@ -87,5 +87,5 @@ include::example$ibor/test_ibor.py[tag="set-holdings", indent=0]
 If you don't want to associate a sub holding key with the holdings, remove the _sub_holdings_keys_ argument.
 ====
 
-If you want to adjust existing holdings, see xref:how-to/holdings/adjust-holdings.adoc[].
+If you want to replace all existing holdings, see xref:how-to/holdings/set-holdings.adoc[].
 For more details on how to view the holdings of a portfolio, see xref:how-to/holdings/view-holdings.adoc[].

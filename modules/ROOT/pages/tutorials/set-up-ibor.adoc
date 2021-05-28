@@ -1,0 +1,281 @@
+= Set up an IBOR (Investment Book of Record)
+
+image:noun_Book Of Commerce_175562.png[float="right", width="100px"]
+
+Using LUSID to manage an investment book of record (IBOR) is a common use case.
+In this guide we'll walk through how to create a portfolio, load an instruments master, import transactions and quotes, view holdings, and value our portfolio.
+
+== Pre Requisites
+
+This guide assumes that you have followed the xref:tutorials/getting-started.adoc[] tutorial and have created and logged into your LUSID account.
+
+== Installation
+
+We'll be using the https://github.com/finbourne/lusid-sdk-python-preview[LUSID Python Preview SDK^], which you can install by running the following:
+
+[source, bash]
+----
+pip install lusid-sdk-preview
+----
+
+== Setup
+
+Import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
+== Create LUSID application
+
+We need to create a LUSID application so that we can interact with LUSID using language SDKs.
+
+Navigate to your LUSID domain e.g. `yourname.lusid.com` and, after you've logged in, click on the person icon on the left-hand menu and then click on the `Applications` link.
+
+.Select the person icon followed by `Applications`
+image::application-part-3.png[]
+
+You'll see the following screen:
+
+.Create a new application
+image::application-part-4.png[]
+
+Create a new application by clicking on the `Create application` link, choose a `Client Id` and `Display Name`, and then click on the `SAVE` button.
+
+[NOTE]
+====
+The `Client Id` must be a string with no spaces.
+====
+
+You'll then see the following screen if the application has been created:
+
+.Application created
+image::application-part-5.png[]
+
+== Setup environment variables
+
+Let's set up our LUSID credentials.
+Click on the eye icon next to the application that we just set up.
+You'll see the following screen:
+
+.Application credentials
+image::secrets-part-1.png[]
+
+We're going to define the following environment variables:
+
+include::partial$credentials/auth-mapping.adoc[]
+
+[.tabs]
+
+.Unix or Mac OS X
+[source, bash]
+----
+export FBN_LUSID_API_URL="<1>"
+export FBN_TOKEN_URL="<2>"
+export FBN_CLIENT_ID="<3>"
+export FBN_CLIENT_SECRET="<4>"
+export FBN_USERNAME="<username>"
+export FBN_PASSWORD="<password>"
+----
+
+.Windows
+[source, powershell]
+----
+setx FBN_LUSID_API_URL "<1>"
+setx FBN_TOKEN_URL "<2>"
+setx FBN_CLIENT_ID "<3>"
+setx FBN_CLIENT_SECRET "<4>"
+setx FBN_USERNAME "<username>"
+setx FBN_PASSWORD "<password>"
+----
+
+== Configure API Factory
+
+Next we'll create an API factory so that we can connect to LUSID.
+
+[source, python, indent=0]
+----
+include::example$lusid_utils.py[tag="api-factory-env-variables"]
+----
+
+As long as we don't get any exceptions when running this line, we're good to go!
+
+== Initialise APIs
+
+We're going to be using several APIs in this tutorial, so let's initialise those:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="instruments-api"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
+include::example$ibor/test_ibor.py[tag="corporate-action-source-api"]
+include::example$ibor/test_ibor.py[tag="property-api"]
+----
+
+== Instruments master
+
+Before we import instruments into LUSID, let's have a look at what we have.
+Our instruments are stored in a CSV file, so we'll first load that into a Pandas DataFrame:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="instruments-file"]
+include::example$ibor/test_ibor.py[tag="load-instruments"]
+----
+
+.instruments
+[format="csv", options="header"]
+|===
+include::example$ibor/instruments.csv[]
+|===
+
+We've got a mix of equities and government bonds.
+Let's get those instruments into LUSID.
+
+Any instrument imported into LUSID must have at least one unique identifier.
+A list of valid identifiers is described in xref:how-to/instrument-identifiers.adoc[].
+Each of our instruments has a Figi and ClientInternal identifier, so we will use both of those as identifiers.
+
+We'll need to do some mapping between the column names in our DataFrame and those expected by the LUSID API.
+`client_internal` becomes `ClientInternal` and `figi` becomes `Figi`.
+
+You can import the instruments by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="import-instruments"]
+----
+
+The results from importing these instruments are converted into the Pandas DataFrame shown below:
+
+.LUIDs
+[format="csv", options="header"]
+|===
+include::example$ibor/luids.csv[]
+|===
+
+The extra thing added is the `LUID` column, which contains a xref:reference/lusid-unique-instrument-identifier-luid.adoc[LUSID Unique Instrument Identifier].
+
+== Create a transaction portfolio
+
+Now we're going to create a transaction portfolio with a xref:reference/sub-holding-key.adoc[sub holding key].
+
+Sub holding keys let you bucket holdings in one instrument into different groups, giving a more granular break down of holdings.
+We'll create a sub holding key to represent the investment strategy of each of our transactions.
+
+Define a scope, portfolio code, and property code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
+include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
+----
+
+Create a property to use as sub holding key:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-sub-holding-key-property"]
+----
+
+Now let's create a transaction portfolio using that property as sub holding key:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-with-shk"]
+----
+<1> Our property becomes a sub holding key by passing it to the `sub_holding_keys` parameter when creating a portfolio.
+
+== Set initial holdings for instruments
+
+== Book transactions against instruments
+
+We have details of transactions, and their accompanying instruments in a CSV file described below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="transactions-file"]
+include::example$ibor/test_ibor.py[tag="load-transactions"]
+----
+
+.Transactions
+[format="csv", options="header", role="word-wrap", cols="10,11,10,12,7,10,10,8,12,10"]
+|===
+include::example$ibor/transactions.csv[]
+|===
+
+[TIP]
+====
+We are using the built-in transaction types _FundsIn_ and _Buy_.
+For a full list of transaction types, see the xref:reference/transaction-types/index.adoc#default-transaction-types[transaction types reference guide].
+====
+
+You can import transactions with the strategy passed in as a property using the code below:
+
+[source,python,indent=0]
+----
+include::example$ibor/test_ibor.py[tag="import-transactions-shk"]
+----
+<1> Sub holding key properties are specified as normal properties on transactions
+
+[NOTE]
+====
+For the transaction that loads cash into our portfolio we need to use a different identifier than for the shares.
+For more information about instrument identifiers, see xref:ROOT:how-to/instrument-identifiers.adoc[].
+====
+
+== Specify a corporate action
+
+A xref:reference/corporate-action.adoc[corporate action] is an activity that a company does that causes an economic change to all holders of an instrument at a particular point in time.
+Common corporate actions are stock splits, spin-offs, and dividends.
+
+Before creating a corporate action, we need to create a corporate action source:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="corporate-action-source-code"]
+
+include::example$ibor/test_ibor.py[tag="create-corporate-action-source"]
+----
+
+And then attach that corporate action source to our transaction portfolio:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="corporate-action-created-at"]
+include::example$ibor/test_ibor.py[tag="add-corporate-action-portfolio"]
+----
+
+Now we're going to create a corporate action that represents a $10 dividend for each Coinbase share.
+
+We'll need to create a Corporate Action Transition Request to do this.
+Corporate Action Transition Requests are formed of input and output transitions, in which we specify the ratio of units and cost to apply.
+
+In our case for every 1 unit of CoinBase (`Figi: "BBG00ZGF7HS6"`), we should get 10 units of USD.
+You can create the following Corporate Action Transition Request to represent this transition:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="create-transition"]
+----
+
+When we create a corporate action, we also need to define announcement, ex-dividend, record, and payment dates.
+We'll set those to be a range of dates from 1st February 2020 through the 4th February 2020.
+
+You can apply this corporate action by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="upsert-transition"]
+----
+
+This will mean that from the 4th February 2020, our portfolio will have an extra $10 for each CoinBase share that we held on that date.
+We had 500 CoinBase shares, so that translates into $5,000.
+
+
+== Examine input and output transactions (build_transactions?)

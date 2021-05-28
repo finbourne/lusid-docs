@@ -1,7 +1,7 @@
 = How to reconcile two holdings
 
 In this guide we'll xref:reference/reconciliation.adoc[reconcile] two xref:reference/holdings.adoc[holdings].
-We can use this approach to compare holdings of the same xref:reference/portfolio/index.adoc[portfolios] at different effective dates or holdings of different portfolios.
+We can use this approach to compare holdings of different portfolios or the same xref:reference/portfolio/index.adoc[portfolios] at different times.
 
 include::partial$ibor-code.adoc[]
 
