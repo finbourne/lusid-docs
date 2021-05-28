@@ -1,4 +1,4 @@
-= Reconcile two holdings
+= How to reconcile two holdings
 
 In this guide we'll reconcile two xref:reference/holdings.adoc[holdings].
 We can use this approach to compare holdings of the same xref:reference/portfolio/index.adoc[portfolios] at different effective dates or holdings of different portfolios.
@@ -42,7 +42,7 @@ Initialise the Reconciliations API:
 include::example$ibor/test_ibor.py[tag="reconciliation-api"]
 ----
 
-== API Call
+== API call
 
 Reconcile the portfolio at two different points in time, 2nd January 2020 and 5th January 2020:
 
@@ -66,7 +66,7 @@ include::example$ibor/test_ibor.py[tag="format-reconcile-holdings", indent=0]
 ----
 
 
-.Holdings of positions
+.Reconciliation of holdings
 [format="csv", options="header"]
 |===
 include::example$ibor/reconciliation.csv[]

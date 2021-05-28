@@ -16,7 +16,7 @@ You can specify the return information by adding metrics.
 
 [TIP]
 ====
-For an example of how to use the aggregation APIs, see xref:how-to/get-valuation-default-recipe.adoc[].
+For an example of how to use the aggregation APIs, see xref:how-to/valuation/get-valuation-default-recipe.adoc[].
 ====
 
 == Available metrics within the aggregation
@@ -37,7 +37,7 @@ Any custom property can be used as a metric, there are also a number of default 
 
 [TIP]
 ====
-For a full list of the properties that we can use as metrics and group by criteria, see xref:how-to/get-valuation-properties.adoc[].
+For a full list of the properties that we can use as metrics and group by criteria, see xref:how-to/valuation/get-valuation-properties.adoc[].
 ====
 
 == Available Operations

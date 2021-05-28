@@ -1,0 +1,94 @@
+= How to reconcile two valuations
+
+In this guide we'll reconcile two valuations.
+We can use this approach to compare valuations of the same xref:reference/portfolio/index.adoc[portfolios] at different effective dates or valuations of different portfolios.
+
+
+include::partial$ibor-code.adoc[]
+
+== Pre Requisites
+
+This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
+
+It uses the transactions loaded in xref:how-to/transactions/load-transactions.adoc[] and the quotes loaded in xref:how-to/load-quotes.adoc[].
+
+== Our data
+
+include::partial$transactions.adoc[]
+
+These are the quotes that we'll be using:
+
+.Quotes
+[format="csv", options="header"]
+|===
+include::example$ibor/quotes.csv[]
+|===
+
+== Setup
+
+You will need to import the following modules into your Python script:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="imports-lusid"]
+include::example$ibor/test_ibor.py[tag="imports-pandas"]
+include::example$ibor/test_ibor.py[tag="imports-dates"]
+----
+
+You can specify your own scope and portfolio code by updating the line below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="scope"]
+include::example$ibor/test_ibor.py[tag="portfolio-code"]
+----
+
+== Initialise API
+
+Initialise the Reconciliations API:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="reconciliation-api"]
+----
+
+== API call
+
+Define the parameters to use for the reconciliation:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="reconcile-parameters", indent=0]
+----
+
+We're going to reconcile the valuation of our portfolio on 21st April 2021 and 23rd April 2021.
+We'll compute the PV of our holdings for each instrument.
+
+Reconcile the valuations by running the following code:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="reconcile-valuation", indent=0]
+----
+
+The following function formats the response into a DataFrame:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="format-reconciliation-valuation", indent=0]
+----
+
+Format the response:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="format-reconcile-valuation", indent=0]
+----
+
+.Reconciliation of valuations
+[format="csv", options="header"]
+|===
+include::example$ibor/reconciliation_valuation.csv[]
+|===
+
+From this table, we can see that between these two dates our cash position has stayed the same, the value of our Amazon and CoinBase stock has gone down, but our Apple stock has gone up slightly.

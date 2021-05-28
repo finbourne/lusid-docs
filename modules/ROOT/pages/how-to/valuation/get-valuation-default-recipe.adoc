@@ -118,7 +118,7 @@ include::example$ibor/test_ibor.py[tag="get-valuation-all"]
 
 [NOTE]
 ====
-For a full list of the properties that we can use as metrics and group by criteria, see xref:how-to/get-valuation-properties.adoc[].
+For a full list of the properties that we can use as metrics and group by criteria, see xref:how-to/valuation/get-valuation-properties.adoc[].
 ====
 
 And we'll set the `from_date` and `to_date` parameters to the same date.

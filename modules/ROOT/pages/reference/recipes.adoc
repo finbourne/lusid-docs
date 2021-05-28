@@ -98,5 +98,5 @@ e.g. `5D.0D` to look back 5D starting today (0 days ago).
 
 [TIP]
 ====
-For an example of how to compute a valuation using the default recipe, see xref:how-to/get-valuation-default-recipe.adoc[].
+For an example of how to compute a valuation using the default recipe, see xref:how-to/valuation/get-valuation-default-recipe.adoc[].
 ====

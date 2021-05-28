@@ -40,7 +40,7 @@ The guides in this section provide recipes for doing common tasks with LUSID.
 
 == Valuation
 
-* xref:ROOT:how-to/get-valuation-default-recipe.adoc[]
+* xref:ROOT:how-to/valuation/get-valuation-default-recipe.adoc[]
 
 
 == Data Model

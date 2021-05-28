@@ -54,7 +54,7 @@ include::example$ibor/test_ibor.py[tag="load-quotes"]
 include::example$ibor/quotes.csv[]
 |===
 
-When loading quotes we need to make sure that the Provider, Instrument ID, Instrument ID Type, Quote Type, and Field properties match those expected by the recipe that we use to xref:how-to/get-valuation-default-recipe.adoc[value the portfolio].
+When loading quotes we need to make sure that the Provider, Instrument ID, Instrument ID Type, Quote Type, and Field properties match those expected by the recipe that we will use to xref:how-to/valuation/get-valuation-default-recipe.adoc[value the portfolio].
 
 The default recipe that comes with LUSID expects quotes to be loaded by their Lusid Instrument ID.
 We don't know what that is for the instruments described above, but we can find it out using the Instruments API:
@@ -81,5 +81,5 @@ include::example$ibor/test_ibor.py[tag="import-quotes"]
 
 [NOTE]
 ====
-The field value used when loading quotes is case-insensitive and is used when xref:how-to/get-valuation-default-recipe.adoc[valuing a portfolio].
+The field value used when loading quotes is case-insensitive and is used when xref:how-to/valuation/get-valuation-default-recipe.adoc[valuing a portfolio].
 ====

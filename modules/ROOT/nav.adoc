@@ -50,8 +50,9 @@
     ** xref:ROOT:how-to/load-quotes.adoc[Load Quotes]
 
 * Valuation
-** xref:ROOT:how-to/get-valuation-default-recipe.adoc[]
-** xref:ROOT:how-to/get-valuation-properties.adoc[]
+** xref:ROOT:how-to/valuation/get-valuation-default-recipe.adoc[Valuation with default recipe]
+** xref:ROOT:how-to/valuation/get-valuation-properties.adoc[]
+** xref:ROOT:how-to/valuation/reconcile-valuations.adoc[Reconcile valuations]
 
 * Modelling
 ** xref:ROOT:how-to/user-defined-properties.adoc[User Defined Properties]
