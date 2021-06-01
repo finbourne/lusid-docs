@@ -3,7 +3,7 @@
 image:noun_Book Of Commerce_175562.png[float="right", width="100px"]
 
 Using LUSID to manage an investment book of record (IBOR) is a common use case.
-In this guide we'll walk through how to create a portfolio, load an instruments master, import transactions and quotes, view holdings, and value our portfolio.
+In this guide we'll walk through how to create a portfolio, load an instruments master, import transactions and quotes, add a corporate action, view transactions, and view holdings.
 
 == Pre Requisites
 
@@ -233,8 +233,36 @@ We need to make sure that the _created_ data for the portfolio is earlier than t
 
 == Set initial holdings for instruments
 
+Now let's set some initial holdings for our portfolio.
+We might want to do this if we have positions in some instruments, but don't have details of the underlying transactions that formed those positions.
+
+The following file contains holdings in Amazon, Apple, and CoinBase, for both of our strategies:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="holdings-file"]
+include::example$ibor/test_ibor.py[tag="load-holdings"]
+----
+
+.Holdings as of 31st December 2019
+[format="csv", options="header", role="word-wrap", cols="30,10,18,12,15,15"]
+|===
+include::example$ibor/holdings.csv[]
+|===
+
+You can load these holdings by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="set-holdings-shk"]
+----
+
+These holdings will be booked on 31st December 2019.
+
+[[book-transactions]]
 == Book transactions against instruments
 
+We can also import transactions directly.
 We have details of transactions, and their accompanying instruments in a CSV file described below:
 
 [source, python, indent=0]
@@ -251,11 +279,17 @@ include::example$ibor/transactions.csv[]
 
 [TIP]
 ====
-We are using the built-in transaction types _FundsIn_ and _Buy_.
+We are using the built-in transaction types _FundsIn_ and _Buy_, where:
+
+* _FundsIn_ represents cash being added to our portfolio
+* _Buy_ represents the purchase of an instrument, and the deduction of a corresponding amount of cash.
+
 For a full list of transaction types, see the xref:reference/transaction-types/index.adoc#default-transaction-types[transaction types reference guide].
 ====
 
-You can import transactions with the strategy passed in as a property using the code below:
+The strategy for each transaction is described in the _strategy_ field of the DataFrame.
+We'll store the strategy on each transaction using the strategy property that we created earlier.
+You can import transactions by running the following code:
 
 [source,python,indent=0]
 ----
@@ -274,7 +308,9 @@ For more information about instrument identifiers, see xref:ROOT:how-to/instrume
 A xref:reference/corporate-action.adoc[corporate action] is an activity that a company does that causes an economic change to all holders of an instrument at a particular point in time.
 Common corporate actions are stock splits, spin-offs, and dividends.
 
-Before creating a corporate action, we need to create a corporate action source:
+Before creating a corporate action, we need to create a corporate action source.
+This is where any corporate actions that we create will be stored.
+You can create a corporate action source by running the following code:
 
 [source, python, indent=0]
 ----
@@ -315,7 +351,75 @@ include::example$ibor/test_ibor.py[tag="upsert-transition"]
 ----
 
 This will mean that from the 4th February 2020, our portfolio will have an extra $10 for each CoinBase share that we held on that date.
-We had 500 CoinBase shares, so that translates into $5,000.
+We had 1,000 CoinBase shares, so that translates into $10,000.
+
+== Examine input and output transactions
+
+Let's now query the data that we've imported.
+We'll start by retrieving the transactions that we loaded, which you can do using the code below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="get-transactions"]
+----
+
+The following function formats the response:
 
 
-== Examine input and output transactions (build_transactions?)
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="format-transactions"]
+----
+
+You can apply that function to the response, as shown below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="format-get-transactions"]
+----
+
+.Input Transactions
+[format="csv", options="header", role="word-wrap", cols="15,35,10,20,20"]
+|===
+include::example$ibor/transactions_response.csv[]
+|===
+
+This DataFrame contains the transactions that we explicitly created, so it reflects the DataFrame in the  <<book-transactions>> section.
+
+We can, however, also return transactions that weren't explicitly created.
+For example:
+
+* When we created initial holdings, LUSID created transactions to represent each of those positions.
+* When we created the CoinBase corporation action, LUSID created transactions to represent the dividend.
+
+You can get back a list of all transactions by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="get-output-transactions"]
+----
+
+We'll use the following function to format the response:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="format-output-transactions"]
+----
+
+You can apply that function to the response, as shown below:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="format-get-transactions"]
+----
+
+.Output Transactions
+[format="csv", options="header", role="word-wrap", cols="17,15,25,10,10,23"]
+|===
+include::example$ibor/transactions_response_all.csv[]
+|===
+
+The first 6 rows are transactions that set our initial holdings.
+There's one transaction for each instrument/strategy pair.
+The last 2 rows are the dividend for our CoinBase holdings.
+We received $10 per share, which gets split across our two strategies.
