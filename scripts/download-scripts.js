@@ -49,6 +49,10 @@ const files = [
     [`${python_tools_base}/data/test_ibor/test_output/transactions.csv`,
         "modules/ROOT/examples/ibor/transactions.csv"],
 
+    [`${python_tools_base}/data/test_ibor/test_output/holdings_set_holdings.csv`,
+        "modules/ROOT/examples/ibor/holdings_set_holdings.csv"],
+    [`${python_tools_base}/data/test_ibor/test_output/holdings_set_holdings_shk.csv`,
+        "modules/ROOT/examples/ibor/holdings_set_holdings_shk.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/holdings_first_day_trading.csv`,
         "modules/ROOT/examples/ibor/holdings_first_day_trading.csv"],
     [`${python_tools_base}/data/test_ibor/test_output/holdings_first_day_trading_shk.csv`,

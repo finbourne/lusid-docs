@@ -11,11 +11,12 @@ This guide assumes that you have followed the xref:tutorials/getting-started.ado
 
 == Installation
 
-We'll be using the https://github.com/finbourne/lusid-sdk-python-preview[LUSID Python Preview SDK^], which you can install by running the following:
+We'll be using the https://github.com/finbourne/lusid-sdk-python-preview[LUSID Python Preview SDK^] and Pandas libraries.
+You can install these libraries by running the following:
 
 [source, bash]
 ----
-pip install lusid-sdk-preview
+pip install lusid-sdk-preview pandas
 ----
 
 == Setup
@@ -117,7 +118,9 @@ include::example$ibor/test_ibor.py[tag="property-api"]
 
 == Instruments master
 
-Before we import instruments into LUSID, let's have a look at what we have.
+Next we'll create an instruments master.
+xref:reference/instrument.adoc[Instruments] in LUSID are used to represent financial assets that you own or have exposure to.
+
 Our instruments are stored in a CSV file, so we'll first load that into a Pandas DataFrame:
 
 [source, python, indent=0]
@@ -133,7 +136,7 @@ include::example$ibor/instruments.csv[]
 |===
 
 We've got a mix of equities and government bonds.
-Let's get those instruments into LUSID.
+Let's load those instruments into LUSID.
 
 Any instrument imported into LUSID must have at least one unique identifier.
 A list of valid identifiers is described in xref:how-to/instrument-identifiers.adoc[].
@@ -157,29 +160,64 @@ The results from importing these instruments are converted into the Pandas DataF
 include::example$ibor/luids.csv[]
 |===
 
-The extra thing added is the `LUID` column, which contains a xref:reference/lusid-unique-instrument-identifier-luid.adoc[LUSID Unique Instrument Identifier].
+The `LUID` column contains a xref:reference/lusid-unique-instrument-identifier-luid.adoc[LUSID Unique Instrument Identifier], a unique identifier created by LUSID for each instrument.
+
+We can check that those instruments have been imported by trying to retrieve them.
+For example, you can run the following code to retrieve the Amazon and CoinBase instruments by their Figi codes:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="get-instruments"]
+----
+
+.Instruments by FIGI
+[format="csv", options="header"]
+|===
+include::example$ibor/get_instruments.csv[]
+|===
 
 == Create a transaction portfolio
 
 Now we're going to create a transaction portfolio with a xref:reference/sub-holding-key.adoc[sub holding key].
 
+A transaction portfolio acts as a container that records a transaction history of economic events such as transactions and corporate actions.
+
 Sub holding keys let you bucket holdings in one instrument into different groups, giving a more granular break down of holdings.
 We'll create a sub holding key to represent the investment strategy of each of our transactions.
 
-Define a scope, portfolio code, and property code:
+First, we're going to define a scope.
+A scope is a logical data partition within which our other data entities live.
+We'll be using a single scope for this tutorial.
+
+We don't have to explicitly create a scope, it will be created the first time that we reference it.
+In this tutorial we'll use the _Developer-IBOR-Tutorial_ scope:
 
 [source, python, indent=0]
 ----
 include::example$ibor/test_ibor.py[tag="scope"]
-include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
-include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
 ----
 
-Create a property to use as sub holding key:
+You'll also need to provide a code for the transaction portfolio:
 
 [source, python, indent=0]
 ----
+include::example$ibor/test_ibor.py[tag="portfolio-code-shk"]
+----
+
+Before we create the transaction portfolio, we need to create a property to use as a sub holding key.
+This property needs to have a domain of _Transaction_ and must have the same scope that we use for other entities, but the property code can be any value that we want.
+You can create a property by running the following code:
+
+[source, python, indent=0]
+----
+include::example$ibor/test_ibor.py[tag="sub-holding-key-property"]
 include::example$ibor/test_ibor.py[tag="create-sub-holding-key-property"]
+----
+
+.Output
+[source, text]
+----
+Transaction/Developer-IBOR-Tutorial/strategy
 ----
 
 Now let's create a transaction portfolio using that property as sub holding key:
@@ -190,6 +228,8 @@ include::example$ibor/test_ibor.py[tag="portfolio-with-shk-property-key"]
 include::example$ibor/test_ibor.py[tag="create-portfolio-with-shk"]
 ----
 <1> Our property becomes a sub holding key by passing it to the `sub_holding_keys` parameter when creating a portfolio.
+
+We need to make sure that the _created_ data for the portfolio is earlier than the dates of any transactions against that portfolio, otherwise the transactions will be rejected when we try to load them.
 
 == Set initial holdings for instruments
 

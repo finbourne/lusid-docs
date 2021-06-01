@@ -1,4 +1,8 @@
-To recap, these are the transactions that we are basing our holdings on:
+.Holdings as of 31st December 2019
+[format="csv", options="header", role="word-wrap", cols="30,10,18,12,15,15"]
+|===
+include::example$ibor/holdings.csv[]
+|===
 
 .Transactions
 [format="csv", options="header", role="word-wrap", cols="10,11,10,12,7,10,10,8,12,10"]
@@ -8,6 +12,7 @@ include::example$ibor/transactions.csv[]
 
 In other words:
 
+* 31st December 2019 - Bought 100 units of Amazon, 300 units of Apple, 500 units of CoinBase
 * 1st January 2020 - Added $1,000,000 to the portfolio
 * 2nd January 2020 - Bought 75 units of Amazon
 * 3rd January 2020 - Bought 300 units of Apple and 500 units of CoinBase

@@ -51,7 +51,7 @@ Initialise the Transaction Portfolios API.
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="set-holdings-api"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 ----
 
 == Our Holdings

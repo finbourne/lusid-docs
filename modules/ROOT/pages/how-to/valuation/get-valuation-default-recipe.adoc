@@ -15,15 +15,13 @@ include::partial$ibor-code.adoc[]
 This guide assumes that you have gone through the xref:how-to/connecting-to-lusid/index.adoc[] guides.
 It also makes some assumptions about the data that should already be loaded into LUSID.
 
-You should have loaded the following holdings into your portfolio:
+== Data
 
-.Holdings
-[format="csv", options="header"]
-|===
-include::example$ibor/holdings.csv[]
-|===
+These are the holdings and transactions that we'll be using:
 
-As well as these quotes and the associated instruments:
+include::partial$transactions.adoc[]
+
+As well as these quotes and their associated instruments:
 
 .Quotes
 [format="csv", options="header"]
@@ -131,7 +129,7 @@ include::example$ibor/test_ibor.py[tag="get-valuation-total"]
 include::example$ibor/valuation-all.csv[]
 |===
 
-The total value of our portfolio on 21st April 2021 was $532,212.
+The total value of our portfolio on 21st April 2021 was $1,688,347.
 
 === Valuation by multi-day range
 

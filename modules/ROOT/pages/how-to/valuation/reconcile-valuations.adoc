@@ -14,6 +14,8 @@ It uses the transactions loaded in xref:how-to/transactions/load-transactions.ad
 
 == Our data
 
+These are the holdings and transactions that we'll be using:
+
 include::partial$transactions.adoc[]
 
 These are the quotes that we'll be using:

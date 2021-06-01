@@ -52,10 +52,10 @@ Initialise the Transaction Portfolios API.
 
 [source, python, indent=0]
 ----
-include::example$ibor/test_ibor.py[tag="set-holdings-api"]
+include::example$ibor/test_ibor.py[tag="create-portfolio-api"]
 ----
 
-== Our Holdings
+== Data
 
 We have holdings of three instruments stored in the following CSV file:
 
@@ -72,10 +72,21 @@ include::example$ibor/holdings.csv[]
 |===
 
 From this table, we can see that our portfolio holds 100 units of Amazon stock, 300 units of Apple, and 500 units of CoinBase.
-In this guide we aren't interested in the amount that it cost us to buy these instruments.
 
 == API calls
-To set the holdings on a transaction portfolio, use the `set_holdings` function, as shown below:
+
+=== With sub holding key
+
+To set holdings with a sub holding key, run the following code:
+
+[source, python]
+----
+include::example$ibor/test_ibor.py[tag="set-holdings-shk", indent=0]
+----
+
+=== Without sub holding key
+
+To set holdings without a sub holding key, run the following code:
 
 [source, python]
 ----
@@ -84,8 +95,6 @@ include::example$ibor/test_ibor.py[tag="set-holdings", indent=0]
 
 [TIP]
 ====
-If you don't want to associate a sub holding key with the holdings, remove the _sub_holdings_keys_ argument.
-====
-
 If you want to adjust existing holdings, see xref:how-to/holdings/adjust-holdings.adoc[].
 For more details on how to view the holdings of a portfolio, see xref:how-to/holdings/view-holdings.adoc[].
+====

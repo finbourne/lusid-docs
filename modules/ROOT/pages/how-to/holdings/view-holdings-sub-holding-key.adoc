@@ -11,7 +11,9 @@ include::partial$ibor-code.adoc[]
 This guide assumes that you have followed the xref:how-to/connecting-to-lusid/index.adoc[] guides and have successfully connected to LUSID and xref:how-to/connecting-to-lusid/create-api-factory.adoc[created an API factory].
 This guide uses the transactions loaded in xref:how-to/transactions/load-transactions-sub-holding-key.adoc[].
 
-== Our Transactions
+== Data
+
+To recap, you should have loaded the following data:
 
 include::partial$transactions.adoc[]
 
@@ -60,7 +62,24 @@ Define the following function to format the response that we get back from the G
 include::example$ibor/test_ibor.py[tag="format-holdings-shk"]
 ----
 
-=== After funds loaded
+=== By date
+
+We loaded our initial holdings on 31st December 2019, so let's start by computing our holdings on that day.
+You can do this by running the following code:
+
+[source, python]
+----
+include::example$holdings.py[tag="get-holdings-set-holdings", indent=0]
+include::example$ibor/test_ibor.py[tag="get-holdings-set-holdings", indent=0]
+----
+
+.Holdings after initial holdings set
+[format="csv", options="header"]
+|===
+include::example$ibor/holdings_set_holdings_shk.csv[]
+|===
+
+We can see all our initial holdings.
 
 We loaded $1,000,000 of funds ($500,000 for each of our strategies) on 1st January 2020, so let's start by computing our holdings from an hour after we loaded these funds.
 You can do this by running the following code:
@@ -77,60 +96,16 @@ include::example$ibor/test_ibor.py[tag="get-holdings-funds-loaded-shk", indent=0
 include::example$ibor/holdings_funds_loaded_shk.csv[]
 |===
 
-We have two entries here - $500,000 for each sub holding key.
-
 [NOTE]
 ====
-The `Type` returned for this instrument is `B`, which means `Cash Balance`.
+The `Type` returned for this instrument is `P`, which means `Position`.
 For more details on holdings types, see xref:reference/holdings.adoc#holdings-types[What are the holdings types?]
 ====
 
-=== After first day's trading
+We have two extra entries here - $500,000 for each sub holding key.
 
-Our first day's trading was 2nd January 2020, when we bought 50 units of Amazon for the _tech_ strategy and 25 units of Amazon for the _nasdaq-tracker_ strategy at a price of $1902.88 each.
-You can compute the holdings after this transaction by running the following code:
-
-[source, python]
-----
-include::example$holdings.py[tag="get-holdings-first-day-trading", indent=0]
-include::example$ibor/test_ibor.py[tag="get-holdings-first-day-trading-shk", indent=0]
-----
-
-.Holdings after first day's trading
-[format="csv", options="header"]
-|===
-include::example$ibor/holdings_first_day_trading_shk.csv[]
-|===
-
-The amount of USD for both sub holding keys has reduced, the _tech_ one by more since we bought 50 units of Amazon using that strategy and 25 units using the _nasdaq-tracker_ strategy.
-
-=== After second day's trading
-
-Our next trades were on 3rd January 2020, when we bought:
-
-* 300 of Apple (150 for each strategy) @ $74.95
-* 500 of CoinBase (100 for the _tech_ strategy, 400 for the _nasdaq-tracker_ strategy) @ $328.28
-
-You can compute the holdings after these transactions by running the following code:
-
-[source, python]
-----
-include::example$holdings.py[tag="get-holdings-second-day-trading", indent=0]
-include::example$ibor/test_ibor.py[tag="get-holdings-second-day-trading-shk", indent=0]
-----
-
-.Holdings after second day's trading
-[format="csv", options="header"]
-|===
-include::example$ibor/holdings_second_day_trading_shk.csv[]
-|===
-
-Our cash balances have reduced further, but we've now got shares in Amazon, Apple, and CoinBase.
-
-=== After all trading
-
-And finally, we can compute our holdings as of 1st February 2020, which will include the purchase of 25 units of Amazon @ $1869.44 for the _tech_ strategy.
-You can see these holdings by running the following code:
+We then loaded some transactions on 2nd January 2020, 3rd January 2020, and 4th January 2020.
+Let's have a look at our holdings on 1st February 2020, at which points all those transactions have been applied:
 
 [source, python]
 ----
@@ -144,7 +119,7 @@ include::example$ibor/test_ibor.py[tag="get-holdings-today-shk", indent=0]
 include::example$ibor/holdings_today_shk.csv[]
 |===
 
-The Amazon stock for the _tech_ sub holding key has increased to 75 units at a total cost of $141,880.
+We've now doubled our holdings in each instrument compared to our initial holdings.
 
 === Filtering by type
 
@@ -162,3 +137,4 @@ include::example$ibor/test_ibor.py[tag="get-holdings-positions-shk", indent=0]
 |===
 include::example$ibor/holdings_positions_shk.csv[]
 |===
+
